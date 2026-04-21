@@ -89,7 +89,88 @@
   .plc-row { display: flex; gap: 0.5rem; margin-bottom: 0.35rem; }
   .plc-key { font-weight: 600; color: var(--navy); min-width: 110px; }
 
-  .highlight { background: #FFF3CD; border-left: 3px solid var(--orange); padding: 0.75rem 1rem; border-radius: 4px; margin: 1rem 0; }
+  .tab-guidance-wrap { }
+.tab-main-content { padding: 2rem; }
+.highlight { background: #FFF3CD; border-left: 3px solid var(--orange); padding: 0.75rem 1rem; border-radius: 4px; margin: 1rem 0; }
+
+/* ── Option B: Guidance Layer ── */
+.orientation-banner {
+  background: #FFF8EC;
+  border: 1.5px solid #E07B39;
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 18px auto 0;
+  max-width: 960px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  font-family: Calibri, 'Segoe UI', sans-serif;
+}
+.orientation-banner .ob-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+.orientation-banner .ob-body { flex: 1; }
+.orientation-banner .ob-title { font-size: 14px; font-weight: 700; color: #7D3C0E; margin-bottom: 4px; }
+.orientation-banner .ob-text { font-size: 13px; color: #555; line-height: 1.6; }
+.orientation-banner .ob-close {
+  background: none; border: none; cursor: pointer; font-size: 18px;
+  color: #aaa; flex-shrink: 0; padding: 0 4px; line-height: 1;
+}
+.orientation-banner .ob-close:hover { color: #555; }
+
+.tab-section-header {
+  border-radius: 10px 10px 0 0;
+  background: #1A3A5C;
+  padding: 14px 20px 12px;
+  margin-bottom: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media(max-width:600px){ .tab-section-header { grid-template-columns: 1fr; } }
+.tsh-panel { }
+.tsh-label {
+  font-size: 10px; font-weight: 800; text-transform: uppercase;
+  letter-spacing: .8px; color: #BDD7EE; margin-bottom: 5px;
+  display: flex; align-items: center; gap: 6px;
+}
+.tsh-label .tsh-icon { font-size: 13px; }
+.tsh-text { font-size: 13px; color: rgba(255,255,255,.88); line-height: 1.6; }
+.tsh-lo {
+  display: inline-block; background: #E07B39; color: white;
+  font-size: 11px; font-weight: 800; padding: 2px 10px;
+  border-radius: 10px; margin-top: 8px;
+}
+
+.tab-section-footer {
+  background: #F4F8FC;
+  border: 1px solid #D0DEF0;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.tsf-progress { display: flex; align-items: center; gap: 10px; flex: 1; }
+.tsf-dots { display: flex; gap: 5px; }
+.tsf-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: #D0DEF0; transition: background .2s;
+}
+.tsf-dot.done { background: #2E75B6; }
+.tsf-dot.current { background: #E07B39; }
+.tsf-label { font-size: 12px; color: #888; }
+.tsf-next {
+  background: #2E75B6; color: white; border: none;
+  padding: 8px 20px; border-radius: 6px; font-size: 13px;
+  font-weight: 700; cursor: pointer; font-family: inherit;
+  white-space: nowrap; transition: background .15s;
+}
+.tsf-next:hover { background: #1F4E79; }
+.tsf-next.last { background: #1A7A4A; }
+.tsf-next.last:hover { background: #145A32; }
+
 </style>
 </head>
 <body>
@@ -100,6 +181,20 @@
     <span>Market Potential, Market Demand, and Market Share | Interactive Study Guide</span>
   </div>
 </header>
+
+
+<div class="orientation-banner" id="ob">
+  <span class="ob-icon">💡</span>
+  <div class="ob-body">
+    <div class="ob-title">This viewer works differently from Modules 1 &amp; 2</div>
+    <div class="ob-text">
+      Instead of moving through slides one by one, this reference is organized by topic. Each tab covers a distinct analytical method from Chapter 3.
+      <strong>Recommended approach:</strong> work through the tabs in order on your first pass using the <em>Next Section</em> button at the bottom of each tab — it keeps you on track and connects each topic to what Gate 2 will test.
+      After that, use the tabs to jump directly to any topic you need when reviewing.
+    </div>
+  </div>
+  <button class="ob-close" onclick="document.getElementById('ob').style.display='none'" title="Dismiss">✕</button>
+</div>
 
 <nav>
   <button class="active" onclick="showTab('t1',this)">1 · Market Definition</button>
@@ -114,6 +209,18 @@
 <!-- TAB 1: MARKET DEFINITION -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="t1" class="tab-content active">
+<div class="tab-guidance-wrap">
+<div class="tab-section-header">
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">🎯</span> Reading Check Target</div>
+    <div class="tsh-text">The textbook distinguishes three levels of market definition — generic, product-category, and product-form. Gate 2 will ask you to classify a described market at the correct level and explain why broader or narrower definition matters strategically.</div>
+  </div>
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">📖</span> Chapter Connection</div>
+    <div class="tsh-text">Chapter 3 opens with Coca-Cola as the anchor example. The table showing how Coke's market share drops from 53% to 4% as the market definition widens is the key figure to study. Notice how each share point becomes worth dramatically more dollars at the broader level.</div>
+    <span class="tsh-lo">LO1</span>
+  </div>
+</div><div class="tab-main-content">
   <h2>Levels of Market Definition</h2>
   <p>A <strong>market</strong> consists of buyers who have the desire and ability to purchase a product that satisfies a need. Companies must clearly define their market to identify competitors and position products effectively. Markets exist at three levels:</p>
 
@@ -181,10 +288,31 @@
   </div>
 </div>
 
+
+<div class="tab-section-footer">
+  <div class="tsf-progress">
+    <div class="tsf-dots"><div class="tsf-dot current"></div><div class="tsf-dot "></div><div class="tsf-dot "></div><div class="tsf-dot "></div><div class="tsf-dot "></div><div class="tsf-dot "></div></div>
+    <span class="tsf-label">Section 1 of 6</span>
+  </div>
+  <button class="tsf-next" onclick="showTab2('t2')">Next: 2 · Market Potential →</button>
+</div>
+</div></div>
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- TAB 2: MARKET POTENTIAL -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="t2" class="tab-content">
+<div class="tab-guidance-wrap">
+<div class="tab-section-header">
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">🎯</span> Reading Check Target</div>
+    <div class="tsh-text">Be able to apply the four-factor formula: Max Consuming Units × Buying Ceiling × Purchase Rate × Quantity per Purchase × Average Price. Gate 2 will give you a scenario and ask you to calculate market potential from component inputs.</div>
+  </div>
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">📖</span> Chapter Connection</div>
+    <div class="tsh-text">The PC, soft drink, flat-panel TV, and golf cart examples in the chapter are worked through in different ways — some emphasizing consuming unit choice, others emphasizing purchase rate. Make sure you understand why 'household' vs. 'individual' changes the calculation.</div>
+    <span class="tsh-lo">LO2</span>
+  </div>
+</div><div class="tab-main-content">
   <h2>Market Potential</h2>
   <p><strong>Market Potential</strong> = the maximum level of demand possible in a market. It equals the sum of current buyers' demand <em>plus</em> future demand from new buyers not yet in the market.</p>
 
@@ -237,10 +365,31 @@
   </div>
 </div>
 
+
+<div class="tab-section-footer">
+  <div class="tsf-progress">
+    <div class="tsf-dots"><div class="tsf-dot done"></div><div class="tsf-dot current"></div><div class="tsf-dot "></div><div class="tsf-dot "></div><div class="tsf-dot "></div><div class="tsf-dot "></div></div>
+    <span class="tsf-label">Section 2 of 6</span>
+  </div>
+  <button class="tsf-next" onclick="showTab2('t3')">Next: 3 · MDI & Growth →</button>
+</div>
+</div></div>
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- TAB 3: MDI & MARKET GROWTH -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="t3" class="tab-content">
+<div class="tab-guidance-wrap">
+<div class="tab-section-header">
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">🎯</span> Reading Check Target</div>
+    <div class="tsh-text">The MDI formula (Current Demand ÷ Market Potential × 100) and the seven forces restraining full market development are both testable. Focus on what each restraining force implies strategically — not just what it is.</div>
+  </div>
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">📖</span> Chapter Connection</div>
+    <div class="tsh-text">The chapter's discussion of the adoption curve (innovators through laggards) maps directly to MDI thresholds. An MDI under 33 typically means the market is still in innovator/early adopter territory. Connect those two frameworks when reviewing.</div>
+    <span class="tsh-lo">LO2–LO3</span>
+  </div>
+</div><div class="tab-main-content">
   <h2>Market Development Index (MDI) & Market Growth</h2>
   <div class="formula-box">MDI = (Current Market Demand ÷ Market Potential) × 100</div>
 
@@ -302,10 +451,31 @@
   </table>
 </div>
 
+
+<div class="tab-section-footer">
+  <div class="tsf-progress">
+    <div class="tsf-dots"><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot current"></div><div class="tsf-dot "></div><div class="tsf-dot "></div><div class="tsf-dot "></div></div>
+    <span class="tsf-label">Section 3 of 6</span>
+  </div>
+  <button class="tsf-next" onclick="showTab2('t4')">Next: 4 · Product Life Cycle →</button>
+</div>
+</div></div>
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- TAB 4: PRODUCT LIFE CYCLE -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="t4" class="tab-content">
+<div class="tab-guidance-wrap">
+<div class="tab-section-header">
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">🎯</span> Reading Check Target</div>
+    <div class="tsh-text">Know the four PLC stages and the corresponding marketing strategy logic for each (pricing approach, promotion objective, distribution intensity). Gate 2 may present a scenario and ask which stage a market is in and what strategy is appropriate.</div>
+  </div>
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">📖</span> Chapter Connection</div>
+    <div class="tsh-text">The chapter shows price and cost trends over the PLC as separate lines. Notice that price falls faster than cost — this is why gross margin shrinks toward maturity. The NMC peaks in late growth, which is the key implication for resource allocation decisions.</div>
+    <span class="tsh-lo">LO3</span>
+  </div>
+</div><div class="tab-main-content">
   <h2>Product Life Cycle (PLC)</h2>
   <p>The <strong>PLC</strong> describes the pattern of total sales and profit in a market over time, typically progressing through four stages:</p>
 
@@ -378,10 +548,31 @@
   </table>
 </div>
 
+
+<div class="tab-section-footer">
+  <div class="tsf-progress">
+    <div class="tsf-dots"><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot current"></div><div class="tsf-dot "></div><div class="tsf-dot "></div></div>
+    <span class="tsf-label">Section 4 of 6</span>
+  </div>
+  <button class="tsf-next" onclick="showTab2('t5')">Next: 5 · Market Share →</button>
+</div>
+</div></div>
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- TAB 5: MARKET SHARE -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="t5" class="tab-content">
+<div class="tab-guidance-wrap">
+<div class="tab-section-header">
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">🎯</span> Reading Check Target</div>
+    <div class="tsh-text">The market share performance tree and the MSI calculation are the most heavily tested items from this section. Be able to calculate both the MSI from five stage percentages and the leakage at each stage. Also know when unit share ≠ dollar share.</div>
+  </div>
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">📖</span> Chapter Connection</div>
+    <div class="tsh-text">The chapter presents the performance tree as a diagnostic tool — the leakage calculation at each stage tells you where to invest marketing resources. The example (45% × 75% × 50% × 79% × 75% = 10%) is the canonical worked example; make sure you can reproduce it.</div>
+    <span class="tsh-lo">LO4</span>
+  </div>
+</div><div class="tab-main-content">
   <h2>Market Share & Market Share Index (MSI)</h2>
 
   <div class="formula-box">
@@ -449,10 +640,31 @@
   <div class="formula-box">New MSI = 60% × 75% × 50% × 79% × 75% = <span>13.3%</span> (a 33% improvement)</div>
 </div>
 
+
+<div class="tab-section-footer">
+  <div class="tsf-progress">
+    <div class="tsf-dots"><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot current"></div><div class="tsf-dot "></div></div>
+    <span class="tsf-label">Section 5 of 6</span>
+  </div>
+  <button class="tsf-next" onclick="showTab2('t6')">Next: 6 · SDI & Portfolio →</button>
+</div>
+</div></div>
 <!-- ══════════════════════════════════════════════════════ -->
 <!-- TAB 6: SDI & PORTFOLIO -->
 <!-- ══════════════════════════════════════════════════════ -->
 <div id="t6" class="tab-content">
+<div class="tab-guidance-wrap">
+<div class="tab-section-header">
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">🎯</span> Reading Check Target</div>
+    <div class="tsh-text">The SDI (MSI ÷ Share Potential Index × 100) and the 2×2 growth opportunity portfolio matrix are the culminating tools of the chapter. Gate 2 will likely ask you to place a described product in the correct quadrant and justify the strategic recommendation.</div>
+  </div>
+  <div class="tsh-panel">
+    <div class="tsh-label"><span class="tsh-icon">📖</span> Chapter Connection</div>
+    <div class="tsh-text">The chapter combines MDI and SDI into a portfolio grid that mirrors how companies allocate marketing investment across product lines. The four quadrants each have a distinct strategic prescription — 'Very High Growth,' 'Growth with Market Development,' 'Share Growth,' and 'Limited Growth.' That mapping is what Gate 2 tests.</div>
+    <span class="tsh-lo">LO5</span>
+  </div>
+</div><div class="tab-main-content">
   <h2>Share Development Index (SDI) & Growth Opportunity Portfolio</h2>
 
   <div class="formula-box">
@@ -520,7 +732,24 @@
   </table>
 </div>
 
+
+<div class="tab-section-footer">
+  <div class="tsf-progress">
+    <div class="tsf-dots"><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot done"></div><div class="tsf-dot current"></div></div>
+    <span class="tsf-label">Section 6 of 6</span>
+  </div>
+  <button class="tsf-next last" onclick="window.scrollTo({top:0,behavior:'smooth'})">✓ All sections reviewed — Back to top</button>
+</div>
+</div></div>
 <script>
+function showTab2(id) {
+  // called from footer next buttons — find the button for this tab and activate it
+  const btn = Array.from(document.querySelectorAll('nav button')).find(b => {
+    return b.getAttribute('onclick') && b.getAttribute('onclick').includes("'" + id + "'");
+  });
+  if (btn) showTab(id, btn);
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
 function showTab(id, btn) {
   document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
