@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 | Market Potential & MDI Calculator</title>
+<style>
+  :root {
+    --navy: #1F4E79;
+    --blue: #2E75B6;
+    --sky: #BDD7EE;
+    --orange: #E07B39;
+    --light: #F4F8FC;
+    --white: #FFFFFF;
+    --gray: #666;
+    --border: #D0DEF0;
+    --green: #1A7A4A;
+    --red: #C0392B;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Calibri, 'Segoe UI', sans-serif; background: var(--light); color: #222; min-height: 100vh; }
+
+  header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  header .badge {
+    background: var(--orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 9px;
+    border-radius: 12px;
+    letter-spacing: .5px;
+  }
+  header h1 { font-size: 20px; font-weight: 700; }
+  header p { font-size: 13px; opacity: .8; margin-top: 2px; }
+
+  .container { max-width: 860px; margin: 0 auto; padding: 28px 20px 60px; }
+
+  /* Formula strip */
+  .formula-strip {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 8px;
+    padding: 14px 20px;
+    margin-bottom: 24px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .formula-strip .f { font-family: 'Courier New', monospace; background: rgba(255,255,255,.12); padding: 2px 8px; border-radius: 4px; font-size: 13px; }
+
+  /* Panels */
+  .panel {
+    background: var(--white);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .panel-header {
+    background: var(--blue);
+    color: white;
+    padding: 12px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .panel-header .step {
+    background: var(--orange);
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 800; flex-shrink: 0;
+  }
+  .panel-body { padding: 20px; }
+
+  /* Grid inputs */
+  .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  @media (max-width: 560px) { .input-grid { grid-template-columns: 1fr; } }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+  .field label { font-size: 13px; font-weight: 700; color: var(--navy); }
+  .field .hint { font-size: 11px; color: var(--gray); }
+  .field input, .field select {
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-size: 15px;
+    font-family: inherit;
+    transition: border-color .2s;
+    background: var(--white);
+  }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--blue); }
+  .field input.has-value { border-color: var(--blue); background: #F0F6FF; }
+
+  .input-note {
+    background: var(--sky);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 12.5px;
+    color: var(--navy);
+    margin-top: 12px;
+  }
+
+  /* Optional section */
+  .optional-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--gray);
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    margin: 16px 0 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .optional-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+
+  /* Buttons */
+  .btn-row { display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap; }
+  .btn {
+    padding: 11px 24px;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+    transition: opacity .15s, transform .1s;
+  }
+  .btn:hover { opacity: .88; }
+  .btn:active { transform: scale(.97); }
+  .btn-primary { background: var(--orange); color: white; }
+  .btn-secondary { background: var(--sky); color: var(--navy); }
+  .btn-clear { background: #eee; color: #555; }
+
+  /* Results */
+  .results {
+    display: none;
+    margin-top: 24px;
+  }
+  .results.visible { display: block; }
+
+  .results-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .results-header h2 { font-size: 16px; color: var(--navy); font-weight: 700; }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 20px;
+  }
+  @media (max-width: 560px) { .kpi-row { grid-template-columns: 1fr 1fr; } }
+
+  .kpi {
+    background: var(--light);
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .kpi.highlight { background: var(--navy); border-color: var(--navy); color: white; }
+  .kpi.highlight .kpi-label { color: var(--sky); }
+  .kpi-value { font-size: 26px; font-weight: 800; color: var(--blue); line-height: 1.2; }
+  .kpi.highlight .kpi-value { color: white; }
+  .kpi-label { font-size: 11.5px; color: var(--gray); margin-top: 4px; font-weight: 600; text-transform: uppercase; letter-spacing: .4px; }
+
+  /* Step-through calculation */
+  .calc-steps {
+    background: var(--light);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+  }
+  .calc-steps h3 { font-size: 13px; font-weight: 700; color: var(--navy); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .4px; }
+  .step-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 5px 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13.5px;
+  }
+  .step-line:last-child { border-bottom: none; font-weight: 700; color: var(--navy); }
+  .step-line .op { color: var(--gray); font-size: 12px; margin: 0 6px; }
+  .step-line .val { font-family: 'Courier New', monospace; font-size: 13px; }
+
+  /* MDI gauge */
+  .mdi-section { margin-top: 0; }
+  .mdi-bar-wrap {
+    background: #e8e8e8;
+    border-radius: 20px;
+    height: 22px;
+    overflow: hidden;
+    margin: 8px 0;
+    position: relative;
+  }
+  .mdi-bar {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.8s cubic-bezier(.4,0,.2,1);
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    font-size: 12px;
+    font-weight: 700;
+    color: white;
+  }
+  .mdi-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: var(--gray);
+    margin-top: 4px;
+  }
+  .mdi-interp {
+    background: var(--sky);
+    border-left: 4px solid var(--blue);
+    padding: 10px 14px;
+    border-radius: 0 6px 6px 0;
+    font-size: 13px;
+    color: var(--navy);
+    margin-top: 10px;
+  }
+
+  /* Example presets */
+  .presets {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .preset-btn {
+    padding: 6px 14px;
+    background: var(--white);
+    border: 1.5px solid var(--blue);
+    border-radius: 20px;
+    font-size: 12.5px;
+    color: var(--blue);
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: 600;
+    transition: all .15s;
+  }
+  .preset-btn:hover { background: var(--blue); color: white; }
+
+  .error-msg { color: var(--red); font-size: 13px; margin-top: 6px; display: none; }
+  .error-msg.show { display: block; }
+
+  footer { text-align: center; font-size: 11px; color: var(--gray); padding: 20px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <h1>Market Potential &amp; MDI Calculator</h1>
+      <span class="badge">MKT 472 · Ch. 3</span>
+    </div>
+    <p>LO2 · LO3 — Estimate market potential in units and dollars; compute MDI</p>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Formula -->
+  <div class="formula-strip">
+    <strong>Formula:</strong>&nbsp;&nbsp;
+    <span class="f">Market Potential (units) = Max Consuming Units × Buying Ceiling × Purchase Rate × Qty/Purchase</span><br>
+    <span style="opacity:.6;font-size:12px;margin-left:8px">Market Potential ($) = units × Avg. Price &nbsp;|&nbsp; MDI = (Current Demand ÷ Market Potential) × 100</span>
+  </div>
+
+  <!-- Presets -->
+  <div style="margin-bottom:10px;font-size:13px;color:var(--navy);font-weight:700;">Load a textbook example:</div>
+  <div class="presets">
+    <button class="preset-btn" onclick="loadPreset('softdrinks')">🥤 Soft Drinks</button>
+    <button class="preset-btn" onclick="loadPreset('tv')">📺 Flat-Panel TVs</button>
+    <button class="preset-btn" onclick="loadPreset('golf')">⛳ Golf Carts</button>
+    <button class="preset-btn" onclick="loadPreset('pc')">💻 PCs (MDI demo)</button>
+  </div>
+
+  <!-- Step 1: Market inputs -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="step">1</div>
+      Define the Market
+    </div>
+    <div class="panel-body">
+      <div class="input-grid">
+        <div class="field">
+          <label>Consuming Unit Type</label>
+          <select id="unitType" onchange="updateUnitHint()">
+            <option value="individual">Individual person</option>
+            <option value="household">Household</option>
+            <option value="business">Business / organization</option>
+            <option value="custom">Custom (enter below)</option>
+          </select>
+          <span class="hint" id="unitHint">e.g., individual consumers</span>
+        </div>
+        <div class="field">
+          <label>Market / Product Name <span style="font-weight:400;color:var(--gray)">(optional)</span></label>
+          <input type="text" id="marketName" placeholder="e.g., Soft Drinks, Smartphones…">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: Formula inputs -->
+  <div class="panel">
+    <div class="panel-header">
+      <div class="step">2</div>
+      Enter Formula Inputs
+    </div>
+    <div class="panel-body">
+      <div class="input-grid">
+        <div class="field">
+          <label>Max Consuming Units (A)</label>
+          <input type="number" id="maxUnits" placeholder="e.g., 300000000" min="0" oninput="markInput(this)">
+          <span class="hint">Total possible buyers in the market</span>
+        </div>
+        <div class="field">
+          <label>Buying Ceiling (B) — %</label>
+          <input type="number" id="buyingCeiling" placeholder="e.g., 80" min="0" max="100" oninput="markInput(this)">
+          <span class="hint">% of consuming units that would buy</span>
+        </div>
+        <div class="field">
+          <label>Purchase Rate (C) — per year</label>
+          <input type="number" id="purchaseRate" placeholder="e.g., 365" min="0" step="0.01" oninput="markInput(this)">
+          <span class="hint">Times purchased per year (enter years between purchase as fraction, e.g. 0.333 = once per 3 yrs)</span>
+        </div>
+        <div class="field">
+          <label>Units per Purchase (D)</label>
+          <input type="number" id="unitsPerPurchase" placeholder="e.g., 1" min="0" step="0.01" oninput="markInput(this)">
+          <span class="hint">Quantity purchased per transaction</span>
+        </div>
+        <div class="field">
+          <label>Average Price per Unit ($)</label>
+          <input type="number" id="avgPrice" placeholder="e.g., 1.00" min="0" step="0.01" oninput="markInput(this)">
+          <span class="hint">Used to calculate dollar potential</span>
+        </div>
+      </div>
+
+      <div class="input-note">
+        <strong>Tip — years between purchase:</strong> For products bought every N years, enter <strong>1 ÷ N</strong> as the purchase rate. Example: TV bought every 5 years → enter <strong>0.2</strong>.
+      </div>
+
+      <!-- Optional: MDI -->
+      <div class="optional-label">MDI (optional — enter current demand)</div>
+      <div class="input-grid">
+        <div class="field">
+          <label>Current Market Demand (units)</label>
+          <input type="number" id="currentDemand" placeholder="e.g., 325000000" min="0" oninput="markInput(this)">
+          <span class="hint">Actual demand this period — used to compute MDI</span>
+        </div>
+      </div>
+
+      <p class="error-msg" id="errorMsg">⚠ Please fill in all required fields (A, B, C, D, and Price) before calculating.</p>
+
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="calculate()">Calculate ▶</button>
+        <button class="btn btn-clear" onclick="clearAll()">Clear</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results">
+    <div class="results-header">
+      <svg width="22" height="22" viewBox="0 0 22 22"><circle cx="11" cy="11" r="10" fill="#1A7A4A"/><path d="M6 11l3.5 3.5L16 8" stroke="white" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h2 id="resultsTitle">Results</h2>
+    </div>
+
+    <div class="kpi-row">
+      <div class="kpi highlight">
+        <div class="kpi-value" id="kpi-units">—</div>
+        <div class="kpi-label">Market Potential (units)</div>
+      </div>
+      <div class="kpi highlight">
+        <div class="kpi-value" id="kpi-dollars">—</div>
+        <div class="kpi-label">Market Potential ($)</div>
+      </div>
+      <div class="kpi" id="kpi-mdi-box" style="display:none">
+        <div class="kpi-value" id="kpi-mdi" style="color:var(--orange)">—</div>
+        <div class="kpi-label">Market Dev. Index (MDI)</div>
+      </div>
+    </div>
+
+    <div class="calc-steps">
+      <h3>Step-by-Step Calculation</h3>
+      <div id="stepLines"></div>
+    </div>
+
+    <div class="mdi-section" id="mdiSection" style="display:none">
+      <div class="panel" style="margin-bottom:0">
+        <div class="panel-header" style="background:var(--navy)">
+          <div class="step" style="background:var(--orange)">MDI</div>
+          Market Development Index
+        </div>
+        <div class="panel-body">
+          <div style="font-size:13px;color:var(--gray);margin-bottom:6px">Current Demand ÷ Market Potential × 100</div>
+          <div class="mdi-bar-wrap">
+            <div class="mdi-bar" id="mdiBar" style="width:0%;background:var(--blue)"></div>
+          </div>
+          <div class="mdi-labels">
+            <span>MDI 0 (no penetration)</span>
+            <span>MDI 50</span>
+            <span>MDI 100 (fully developed)</span>
+          </div>
+          <div class="mdi-interp" id="mdiInterp"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<footer>MKT 472 · Module 03 · Market Potential &amp; MDI Calculator · For educational use</footer>
+
+<script>
+const presets = {
+  softdrinks: {
+    marketName: 'Soft Drinks',
+    unitType: 'individual',
+    maxUnits: 300000000,
+    buyingCeiling: 80,
+    purchaseRate: 365,
+    unitsPerPurchase: 1,
+    avgPrice: 1,
+    currentDemand: ''
+  },
+  tv: {
+    marketName: 'Flat-Panel TVs',
+    unitType: 'household',
+    maxUnits: 120000000,
+    buyingCeiling: 80,
+    purchaseRate: 0.2,
+    unitsPerPurchase: 1,
+    avgPrice: 500,
+    currentDemand: ''
+  },
+  golf: {
+    marketName: 'Golf Carts',
+    unitType: 'business',
+    maxUnits: 17000,
+    buyingCeiling: 95,
+    purchaseRate: 0.333,
+    unitsPerPurchase: 100,
+    avgPrice: 2500,
+    currentDemand: ''
+  },
+  pc: {
+    marketName: 'Personal Computers',
+    unitType: 'individual',
+    maxUnits: 450000000,
+    buyingCeiling: 100,
+    purchaseRate: 1,
+    unitsPerPurchase: 1,
+    avgPrice: 800,
+    currentDemand: 325000000
+  }
+};
+
+function loadPreset(key) {
+  const p = presets[key];
+  document.getElementById('marketName').value = p.marketName;
+  document.getElementById('unitType').value = p.unitType;
+  document.getElementById('maxUnits').value = p.maxUnits;
+  document.getElementById('buyingCeiling').value = p.buyingCeiling;
+  document.getElementById('purchaseRate').value = p.purchaseRate;
+  document.getElementById('unitsPerPurchase').value = p.unitsPerPurchase;
+  document.getElementById('avgPrice').value = p.avgPrice;
+  document.getElementById('currentDemand').value = p.currentDemand;
+  updateUnitHint();
+  ['maxUnits','buyingCeiling','purchaseRate','unitsPerPurchase','avgPrice'].forEach(id => markInput(document.getElementById(id)));
+  calculate();
+}
+
+function updateUnitHint() {
+  const hints = {
+    individual: 'Total individual consumers in the market',
+    household: 'Total households in the market',
+    business: 'Total businesses / organizations in the market',
+    custom: 'Enter your own consuming unit count'
+  };
+  document.getElementById('unitHint').textContent = hints[document.getElementById('unitType').value];
+}
+
+function markInput(el) {
+  if (el.value !== '') el.classList.add('has-value');
+  else el.classList.remove('has-value');
+}
+
+function fmt(n) {
+  if (Math.abs(n) >= 1e12) return (n/1e12).toFixed(2) + 'T';
+  if (Math.abs(n) >= 1e9) return (n/1e9).toFixed(2) + 'B';
+  if (Math.abs(n) >= 1e6) return (n/1e6).toFixed(2) + 'M';
+  if (Math.abs(n) >= 1e3) return (n/1e3).toFixed(1) + 'K';
+  return n.toLocaleString('en-US', {maximumFractionDigits: 2});
+}
+
+function fmtDollar(n) {
+  if (Math.abs(n) >= 1e12) return '$' + (n/1e12).toFixed(2) + 'T';
+  if (Math.abs(n) >= 1e9) return '$' + (n/1e9).toFixed(2) + 'B';
+  if (Math.abs(n) >= 1e6) return '$' + (n/1e6).toFixed(2) + 'M';
+  if (Math.abs(n) >= 1e3) return '$' + (n/1e3).toFixed(1) + 'K';
+  return '$' + n.toFixed(2);
+}
+
+function calculate() {
+  const errEl = document.getElementById('errorMsg');
+  const A = parseFloat(document.getElementById('maxUnits').value);
+  const B = parseFloat(document.getElementById('buyingCeiling').value) / 100;
+  const C = parseFloat(document.getElementById('purchaseRate').value);
+  const D = parseFloat(document.getElementById('unitsPerPurchase').value);
+  const P = parseFloat(document.getElementById('avgPrice').value);
+  const demand = document.getElementById('currentDemand').value;
+
+  if (isNaN(A) || isNaN(B) || isNaN(C) || isNaN(D) || isNaN(P)) {
+    errEl.classList.add('show');
+    document.getElementById('results').classList.remove('visible');
+    return;
+  }
+  errEl.classList.remove('show');
+
+  const mpUnits = A * B * C * D;
+  const mpDollar = mpUnits * P;
+
+  const name = document.getElementById('marketName').value || 'Market';
+  document.getElementById('resultsTitle').textContent = `Results — ${name}`;
+
+  document.getElementById('kpi-units').textContent = fmt(mpUnits);
+  document.getElementById('kpi-dollars').textContent = fmtDollar(mpDollar);
+
+  // Step lines
+  const unitLabel = document.getElementById('unitType').options[document.getElementById('unitType').selectedIndex].text;
+  const lines = [
+    { label: `A — Max Consuming Units (${unitLabel})`, val: fmt(A) },
+    { label: `B — Buying Ceiling`, val: (B*100).toFixed(1) + '%' },
+    { label: `C — Purchase Rate (per year)`, val: C },
+    { label: `D — Units per Purchase`, val: D },
+    { label: `MP (units) = A × B × C × D`, val: fmt(mpUnits) },
+    { label: `Average Price`, val: fmtDollar(P) },
+    { label: `MP ($) = units × avg price`, val: fmtDollar(mpDollar) },
+  ];
+
+  const container = document.getElementById('stepLines');
+  container.innerHTML = lines.map((l, i) => `
+    <div class="step-line ${i >= 4 ? 'font-bold' : ''}">
+      <span>${l.label}</span>
+      <span class="val">${l.val}</span>
+    </div>
+  `).join('');
+
+  // MDI
+  const mdiBox = document.getElementById('kpi-mdi-box');
+  const mdiSection = document.getElementById('mdiSection');
+  if (demand !== '' && !isNaN(parseFloat(demand))) {
+    const d = parseFloat(demand);
+    const mdi = (d / mpUnits) * 100;
+    document.getElementById('kpi-mdi').textContent = mdi.toFixed(1);
+    mdiBox.style.display = '';
+    mdiSection.style.display = '';
+
+    const pct = Math.min(mdi, 100);
+    const bar = document.getElementById('mdiBar');
+    let color = '#2E75B6';
+    if (mdi < 40) color = '#1A7A4A';
+    else if (mdi < 70) color = '#E07B39';
+    else color = '#C0392B';
+    bar.style.width = pct + '%';
+    bar.style.background = color;
+    bar.textContent = mdi.toFixed(1);
+
+    let interp = '';
+    if (mdi < 40) {
+      interp = `<strong>Low MDI (${mdi.toFixed(1)}):</strong> Market is underdeveloped — large untapped potential exists. Strategy: invest in market development to attract new buyers. Restraining forces (awareness, availability, affordability, etc.) are limiting penetration.`;
+    } else if (mdi < 70) {
+      interp = `<strong>Moderate MDI (${mdi.toFixed(1)}):</strong> Market is growing but has meaningful room to develop further. Dual strategy: continue attracting new buyers while building share among existing buyers.`;
+    } else if (mdi < 90) {
+      interp = `<strong>High MDI (${mdi.toFixed(1)}):</strong> Market is approaching maturity. Growth from new buyers is slowing. Strategy shifts toward retaining current customers, building brand loyalty, and increasing share of existing demand.`;
+    } else {
+      interp = `<strong>Very High MDI (${mdi.toFixed(1)}):</strong> Market is mature/saturated — near market potential ceiling. Limited new-buyer growth. Focus on retention, share-taking from competitors, and profitability.`;
+    }
+    document.getElementById('mdiInterp').innerHTML = interp;
+
+    // Add MDI step
+    container.innerHTML += `
+      <div class="step-line" style="margin-top:8px;border-top:2px solid var(--border);padding-top:8px">
+        <span>Current Demand</span><span class="val">${fmt(d)}</span>
+      </div>
+      <div class="step-line" style="font-weight:700;color:var(--orange)">
+        <span>MDI = (${fmt(d)} ÷ ${fmt(mpUnits)}) × 100</span>
+        <span class="val">${mdi.toFixed(1)}</span>
+      </div>
+    `;
+  } else {
+    mdiBox.style.display = 'none';
+    mdiSection.style.display = 'none';
+  }
+
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function clearAll() {
+  ['marketName','maxUnits','buyingCeiling','purchaseRate','unitsPerPurchase','avgPrice','currentDemand'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = '';
+    el.classList.remove('has-value');
+  });
+  document.getElementById('results').classList.remove('visible');
+  document.getElementById('errorMsg').classList.remove('show');
+}
+</script>
+</body>
+</html>

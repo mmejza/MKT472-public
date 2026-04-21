@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 | Module 04 — Customer Value</title>
+<style>
+:root {
+  --navy:#1F4E79; --blue:#2E75B6; --sky:#BDD7EE; --orange:#E07B39;
+  --white:#FFFFFF; --light:#F4F8FC; --gray:#666; --border:#D0DEF0;
+  --green:#1A7A4A; --red:#C0392B;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Calibri,'Segoe UI',sans-serif;background:var(--light);color:#222;}
+header{background:var(--navy);color:white;padding:16px 28px;display:flex;align-items:center;gap:12px;}
+header h1{font-size:20px;font-weight:700;}
+header p{font-size:13px;opacity:.8;margin-top:2px;}
+.badge{background:var(--orange);font-size:11px;font-weight:700;padding:3px 9px;border-radius:12px;}
+
+/* Tabs */
+.tab-nav{display:flex;background:var(--navy);overflow-x:auto;flex-shrink:0;}
+.tab-btn{padding:11px 20px;font-size:13px;font-weight:700;color:rgba(255,255,255,.65);background:none;border:none;cursor:pointer;white-space:nowrap;border-bottom:3px solid transparent;transition:all .15s;font-family:inherit;}
+.tab-btn:hover{color:white;}
+.tab-btn.active{color:white;border-bottom-color:var(--orange);}
+
+.container{max-width:960px;margin:0 auto;padding:24px 18px 60px;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+
+/* Cards */
+.card{background:white;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:20px;}
+.card-header{background:var(--blue);color:white;padding:11px 18px;font-size:15px;font-weight:700;display:flex;align-items:center;gap:10px;}
+.card-header .lo{background:var(--orange);padding:2px 10px;border-radius:10px;font-size:11px;font-weight:800;}
+.card-body{padding:18px;}
+
+/* Formula */
+.formula{background:var(--navy);color:white;border-radius:8px;padding:12px 18px;font-size:14px;margin:10px 0;line-height:1.8;}
+.formula .f{font-family:'Courier New',monospace;background:rgba(255,255,255,.12);padding:2px 8px;border-radius:4px;}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:13.5px;margin:10px 0;}
+th{background:var(--navy);color:white;padding:8px 10px;text-align:left;font-size:12.5px;font-weight:700;}
+td{padding:8px 10px;border-bottom:1px solid var(--border);}
+tr:nth-child(even) td{background:#F0F6FF;}
+.number{text-align:right;font-family:'Courier New',monospace;}
+
+/* Callout */
+.callout{border-left:4px solid var(--blue);background:#EDF4FB;padding:10px 14px;border-radius:0 8px 8px 0;font-size:13.5px;color:var(--navy);margin:12px 0;}
+.callout.orange{border-left-color:var(--orange);background:#FFF4EC;color:#7D3C0E;}
+.callout.green{border-left-color:var(--green);background:#EFF8F1;color:#145A32;}
+.callout.red{border-left-color:var(--red);background:#FDF0EF;color:#7B241C;}
+
+/* Value type grid */
+.vt-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:10px 0;}
+@media(max-width:560px){.vt-grid{grid-template-columns:1fr;}}
+.vt-card{border:1.5px solid var(--border);border-radius:8px;padding:14px;}
+.vt-card .vt-name{font-size:15px;font-weight:800;color:var(--navy);margin-bottom:4px;}
+.vt-card .vt-basis{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--gray);margin-bottom:6px;}
+.vt-card p{font-size:13px;color:#333;}
+
+/* Accordion */
+.acc-item{border:1px solid var(--border);border-radius:8px;margin-bottom:6px;overflow:hidden;}
+.acc-header{padding:11px 16px;font-size:14px;font-weight:700;color:var(--navy);cursor:pointer;background:var(--light);display:flex;justify-content:space-between;align-items:center;}
+.acc-header:hover{background:#E8F0F8;}
+.acc-arrow{transition:transform .2s;}
+.acc-body{display:none;padding:14px 16px;font-size:13.5px;line-height:1.7;background:white;border-top:1px solid var(--border);}
+.acc-item.open .acc-body{display:block;}
+.acc-item.open .acc-arrow{transform:rotate(180deg);}
+
+/* Worked example */
+.worked{background:var(--light);border:1px solid var(--border);border-radius:8px;padding:14px;margin:10px 0;}
+.worked .step{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--border);font-size:13.5px;}
+.worked .step:last-child{border-bottom:none;font-weight:700;color:var(--navy);}
+.worked .step .val{font-family:'Courier New',monospace;font-size:13px;}
+
+/* Brand personality cards */
+.bp-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:10px 0;}
+@media(max-width:640px){.bp-grid{grid-template-columns:1fr 1fr;}}
+.bp-card{background:var(--light);border:1.5px solid var(--border);border-radius:8px;padding:12px;text-align:center;}
+.bp-type{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:3px;}
+.bp-brand{font-size:12px;color:var(--orange);font-weight:700;margin-bottom:4px;}
+.bp-traits{font-size:11.5px;color:var(--gray);line-height:1.5;}
+
+footer{text-align:center;font-size:11px;color:var(--gray);padding:20px;}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <div style="display:flex;align-items:center;gap:10px"><h1>Module 04: Customer Value</h1><span class="badge">MKT 472 · Ch. 4</span></div>
+    <p>Interactive reference · 6 sections · LO1–LO6</p>
+  </div>
+</header>
+
+<div class="tab-nav">
+  <button class="tab-btn active" onclick="showTab('economic')">Economic Value</button>
+  <button class="tab-btn" onclick="showTab('lifecycle')">Lifecycle Costs</button>
+  <button class="tab-btn" onclick="showTab('relative')">Relative Performance</button>
+  <button class="tab-btn" onclick="showTab('perceived')">Perceived Value</button>
+  <button class="tab-btn" onclick="showTab('conjoint')">Conjoint Analysis</button>
+  <button class="tab-btn" onclick="showTab('emotional')">Emotional Value</button>
+</div>
+
+<div class="container">
+
+<!-- ── TAB 1: Economic Value ── -->
+<div class="tab-content active" id="tab-economic">
+  <div class="card">
+    <div class="card-header"><span class="lo">LO1–LO3</span> Economic Value</div>
+    <div class="card-body">
+      <div class="formula">
+        <strong>Economic Value = Competitor Lifecycle Cost − Our Lifecycle Cost</strong><br>
+        <span style="opacity:.7;font-size:12px">A higher-priced product can deliver economic value when its total lifecycle costs are lower than the competitor's.</span>
+      </div>
+
+      <div class="vt-grid" style="grid-template-columns:1fr 1fr 1fr 1fr;margin-bottom:14px">
+        <div class="vt-card"><div class="vt-name" style="color:var(--navy)">Economic</div><div class="vt-basis">Cost Savings</div><p>Monetary savings from lower lifecycle costs vs. competitor</p></div>
+        <div class="vt-card"><div class="vt-name" style="color:var(--blue)">Relative Perf.</div><div class="vt-basis">Performance Ratings</div><p>Dollar value derived from objective performance vs. market</p></div>
+        <div class="vt-card"><div class="vt-name" style="color:var(--orange)">Perceived</div><div class="vt-basis">Customer Perception</div><p>Buyer perceptions of benefits minus perceived costs</p></div>
+        <div class="vt-card"><div class="vt-name" style="color:var(--green)">Emotional</div><div class="vt-basis">Emotional Response</div><p>Psychological needs met through brand personality</p></div>
+      </div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Worked Example: Telecommunications Switch</h3>
+      <table>
+        <thead><tr><th></th><th>Competitor</th><th>Company</th><th>Difference</th></tr></thead>
+        <tbody>
+          <tr><td>Price</td><td class="number">$300</td><td class="number">$375</td><td class="number" style="color:var(--red)">−$75 (premium)</td></tr>
+          <tr><td>Other Lifecycle Costs</td><td class="number">$700</td><td class="number">$500</td><td class="number" style="color:var(--green)">+$200 savings</td></tr>
+          <tr><td><strong>Total Lifecycle Cost</strong></td><td class="number"><strong>$1,000</strong></td><td class="number"><strong>$875</strong></td><td class="number" style="color:var(--green)"><strong>$125 net savings</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="callout green">Economic Value = $1,000 − $875 = <strong>$125 per switch</strong>. Customer pays $75 more but saves $125 in total costs → net gain of $50.</div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Economic Value at Scale</h3>
+      <table>
+        <thead><tr><th># Purchased</th><th>Competitor Price</th><th>Competitor LC Cost</th><th>Company Price</th><th>Company LC Cost</th><th>Customer Savings</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td class="number">$300</td><td class="number">$1,000</td><td class="number">$375</td><td class="number">$875</td><td class="number" style="color:var(--green)">$125</td></tr>
+          <tr><td>10</td><td class="number">$3,000</td><td class="number">$10,000</td><td class="number">$3,750</td><td class="number">$8,750</td><td class="number" style="color:var(--green)">$1,250</td></tr>
+          <tr><td>100</td><td class="number">$30,000</td><td class="number">$100,000</td><td class="number">$37,500</td><td class="number">$87,500</td><td class="number" style="color:var(--green)">$12,500</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Using EV to Set Price: What Should the Company Charge?</h3>
+      <p style="font-size:13.5px;margin-bottom:8px">Competitor: Price $1,000 + Other costs $700 = Total LC cost $1,700. Company: Other costs $400. What price creates economic value?</p>
+      <table>
+        <thead><tr><th>Price Option</th><th>Company LC Cost</th><th>Competitor LC Cost</th><th>Customer Savings (EV)</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td>$1,300</td><td class="number">$1,700</td><td class="number">$1,700</td><td class="number">$0</td><td>Break-even — no EV created</td></tr>
+          <tr><td>$1,150</td><td class="number">$1,550</td><td class="number">$1,700</td><td class="number" style="color:var(--green)">$150</td><td>Moderate EV</td></tr>
+          <tr><td>$1,000</td><td class="number">$1,400</td><td class="number">$1,700</td><td class="number" style="color:var(--green)">$300</td><td>Strong EV — same price as competitor</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout orange"><strong>LO3 — Why willingness-to-pay ≠ economic value:</strong> Segments differ in risk aversion, time preference, switching costs, budget constraints, and trust in cost claims. EV sets the pricing ceiling — market research determines where to actually price.</div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Three Ways to Create More Economic Value (LO2)</h3>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">1. Reduce Purchase Price <span class="acc-arrow">▼</span></div>
+        <div class="acc-body">Price the product below the competitor's price while maintaining the same total lifecycle cost structure. Creates immediate visible EV. Example: pricing a switch at $250 instead of $300 while LC costs remain equal.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">2. Reduce Acquisition, Usage, or Ownership Costs <span class="acc-arrow">▼</span></div>
+        <div class="acc-body">Redesign the product or service model to reduce what customers spend beyond the purchase price. Examples: AirCap packaging reduces labor costs $0.70/shipment, offsetting its $0.25 higher price. SW Airlines includes baggage in ticket price.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">3. Reduce Maintenance or Disposal Costs <span class="acc-arrow">▼</span></div>
+        <div class="acc-body">Engineering the product to require less service, last longer, or have salvage value at end of life. Example: longer-lasting filters reduce replacement frequency; products with recyclable components have lower disposal cost or positive residual value.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB 2: Lifecycle Costs ── -->
+<div class="tab-content" id="tab-lifecycle">
+  <div class="card">
+    <div class="card-header"><span class="lo">LO1</span> Types of Lifecycle Costs</div>
+    <div class="card-body">
+      <div class="formula">Lifecycle Cost = Price + Acquisition + Usage + Ownership/Financing + Maintenance + Disposal</div>
+      <table>
+        <thead><tr><th>Cost Type</th><th>Definition</th><th>Auto Example</th><th>B2B Example</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Price Paid</strong></td><td>Purchase price</td><td>Sticker price</td><td>Invoice price</td></tr>
+          <tr><td><strong>Acquisition Costs</strong></td><td>Search, ordering, delivery</td><td>Dealer visits, test drives</td><td>Purchasing dept time, shipping</td></tr>
+          <tr><td><strong>Usage Costs</strong></td><td>Operating expenses</td><td>Fuel, registration</td><td>Electricity, consumables</td></tr>
+          <tr><td><strong>Ownership Costs</strong></td><td>Financing, insurance</td><td>Car insurance, loan interest</td><td>Capital financing, inventory holding</td></tr>
+          <tr><td><strong>Maintenance Costs</strong></td><td>Upkeep, repairs</td><td>Oil changes, tires, service</td><td>Calibration, service contracts</td></tr>
+          <tr><td><strong>Disposal Costs</strong></td><td>End-of-life expenses (net of salvage)</td><td>Trade-in value (negative cost)</td><td>Recycling fees, landfill costs</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">AirCap Packaging — Full Lifecycle Cost Analysis</h3>
+      <table>
+        <thead><tr><th>Lifecycle Cost Component</th><th>AirCap (Company)</th><th>Cardboard (Competitor)</th><th>Difference</th></tr></thead>
+        <tbody>
+          <tr><td>Price Paid (Direct Purchase)</td><td class="number">$1.05</td><td class="number">$0.80</td><td class="number" style="color:var(--red)">+$0.25</td></tr>
+          <tr><td>Delivery (Shipping Cost)</td><td class="number">$2.40</td><td class="number">$2.60</td><td class="number" style="color:var(--green)">−$0.20</td></tr>
+          <tr><td>Shipping Materials (Carton)</td><td class="number">$0.55</td><td class="number">$0.55</td><td class="number">$0.00</td></tr>
+          <tr><td>Usage Cost (Labor per Shipment)</td><td class="number">$0.13</td><td class="number">$0.83</td><td class="number" style="color:var(--green)">−$0.70</td></tr>
+          <tr><td><strong>Total Lifecycle Cost</strong></td><td class="number"><strong>$4.13</strong></td><td class="number"><strong>$4.78</strong></td><td class="number" style="color:var(--green)"><strong>−$0.65 savings</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="callout green">Despite costing $0.25 more per unit to purchase, AirCap saves $0.65 per shipment in total lifecycle costs — primarily through $0.70 in reduced labor costs. Economic Value = $0.65/shipment.</div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Southwest Airlines — Simplified Example</h3>
+      <table>
+        <thead><tr><th></th><th>Southwest</th><th>Typical Competitor</th></tr></thead>
+        <tbody>
+          <tr><td>Ticket Price</td><td class="number">$300</td><td class="number">$240</td></tr>
+          <tr><td>Baggage Fees (acquisition cost)</td><td class="number">$0</td><td class="number">$80</td></tr>
+          <tr><td><strong>Total Traveler Cost</strong></td><td class="number"><strong>$300</strong></td><td class="number"><strong>$320</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="callout">Southwest's higher ticket price is more than offset by eliminating baggage fees. EV = $320 − $300 = $20 savings per traveler.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB 3: Relative Performance ── -->
+<div class="tab-content" id="tab-relative">
+  <div class="card">
+    <div class="card-header"><span class="lo">LO4</span> Relative Performance Value & Fair Price Line</div>
+    <div class="card-body">
+      <div class="formula">
+        <strong>Method 1 — Price-Performance Ratio:</strong><br>
+        <span class="f">Fair Price = Performance Rating × (Average Market Price ÷ Average Market Rating)</span><br><br>
+        <strong>Method 2 — Regression Line:</strong><br>
+        <span class="f">Plot rating vs. price for all competitors → fit regression → substitute brand's rating</span>
+      </div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Digital Camera Data — 10 Competing Models</h3>
+      <table>
+        <thead><tr><th>#</th><th>Brand</th><th>Rating</th><th>Price</th><th>Fair Price (Regression)</th><th>Fair Price (P/P Ratio)</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>Canon A590</td><td class="number">80</td><td class="number">$180</td><td class="number">$224</td><td class="number">$229</td><td style="color:var(--green)">Underpriced</td></tr>
+          <tr><td>2</td><td>Canon SD790</td><td class="number">90</td><td class="number">$300</td><td class="number">$246</td><td class="number">$258</td><td style="color:var(--red)">Overpriced</td></tr>
+          <tr><td>3</td><td>Canon SD870</td><td class="number">80</td><td class="number">$280</td><td class="number">$224</td><td class="number">$229</td><td style="color:var(--red)">Overpriced</td></tr>
+          <tr><td>4</td><td>Casio EX-29</td><td class="number">70</td><td class="number">$150</td><td class="number">$202</td><td class="number">$200</td><td style="color:var(--green)">Underpriced</td></tr>
+          <tr><td>5</td><td>Casio EX-280</td><td class="number">50</td><td class="number">$180</td><td class="number">$157</td><td class="number">$143</td><td style="color:var(--red)">Overpriced</td></tr>
+          <tr><td>6</td><td>Fuji J10</td><td class="number">70</td><td class="number">$130</td><td class="number">$202</td><td class="number">$200</td><td style="color:var(--green)">Underpriced</td></tr>
+          <tr><td>7</td><td>Kodak M1033</td><td class="number">80</td><td class="number">$200</td><td class="number">$224</td><td class="number">$229</td><td style="color:var(--green)">Underpriced</td></tr>
+          <tr><td>8</td><td>Kodak V0172</td><td class="number">60</td><td class="number">$230</td><td class="number">$179</td><td class="number">$172</td><td style="color:var(--red)">Overpriced</td></tr>
+          <tr><td>9</td><td>Nikon P60</td><td class="number">70</td><td class="number">$230</td><td class="number">$202</td><td class="number">$200</td><td style="color:var(--red)">Overpriced</td></tr>
+          <tr><td>10</td><td>Pentax M50</td><td class="number">70</td><td class="number">$180</td><td class="number">$202</td><td class="number">$200</td><td style="color:var(--green)">Underpriced</td></tr>
+          <tr style="background:#EDF4FB"><td></td><td><strong>Average</strong></td><td class="number"><strong>72</strong></td><td class="number"><strong>$206</strong></td><td></td><td class="number"><strong>Ratio: 2.86</strong></td><td></td></tr>
+        </tbody>
+      </table>
+
+      <div class="worked">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Price-Performance Ratio Calculation</div>
+        <div class="step"><span>Average Market Price</span><span class="val">$206</span></div>
+        <div class="step"><span>Average Market Rating</span><span class="val">72</span></div>
+        <div class="step"><span>Price-Performance Ratio = $206 ÷ 72</span><span class="val">2.86</span></div>
+        <div class="step"><span>Pentax M50 Fair Price = 70 × 2.86</span><span class="val">$200</span></div>
+        <div class="step"><span>Pentax M50 Actual Price</span><span class="val">$180</span></div>
+        <div class="step"><span>Underpriced by</span><span class="val">~$20</span></div>
+      </div>
+
+      <div class="callout orange">Canon SD870: actual $280 vs fair $224 → overpriced by $56. Buyers pay a premium not justified by its performance rating. Fuji J10: actual $130 vs fair $200 → underpriced by $70 — exceptional value for buyers.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB 4: Perceived Value ── -->
+<div class="tab-content" id="tab-perceived">
+  <div class="card">
+    <div class="card-header"><span class="lo">LO5</span> Perceived Value — Importance-Performance Analysis</div>
+    <div class="card-body">
+      <div class="formula">
+        <strong>Performance Index</strong> = 100 + Σ(Relative Advantage scores)<br>
+        <strong>Cost of Purchase Index</strong> = 100 + Σ(Relative Cost Importance scores)<br>
+        <strong>Perceived Value Index</strong> = Performance Index − Cost of Purchase Index
+      </div>
+
+      <h3 style="color:var(--navy);margin:14px 0 6px;font-size:15px">Award Rules for Relative Advantage</h3>
+      <table>
+        <thead><tr><th>Company vs Competitor Rating Difference</th><th>Relative Importance Points Awarded</th></tr></thead>
+        <tbody>
+          <tr><td>Company higher by MORE than 1 point (≥ +2)</td><td style="color:var(--green);font-weight:700">Company earns full importance points for that attribute</td></tr>
+          <tr><td>Within ±1 point (tied or close)</td><td>0 points — no perceived advantage</td></tr>
+          <tr><td>Company lower by MORE than 1 point (≤ −2)</td><td style="color:var(--red);font-weight:700">Company loses full importance points for that attribute</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--navy);margin:14px 0 6px;font-size:15px">Worked Example: Commercial Copier (3 Competitors)</h3>
+      <table>
+        <thead><tr><th>Attribute</th><th>Importance</th><th>Company</th><th>Comp A</th><th>Comp B</th><th>Comp C</th><th>Relative Advantage</th></tr></thead>
+        <tbody>
+          <tr><td>Machine Uptime</td><td class="number">40</td><td class="number">8</td><td class="number">7</td><td class="number">5</td><td class="number">6</td><td class="number" style="color:var(--green)">+27</td></tr>
+          <tr><td>Print Speed</td><td class="number">30</td><td class="number">9</td><td class="number">8</td><td class="number">5</td><td class="number">5</td><td class="number" style="color:var(--green)">+20</td></tr>
+          <tr><td>Image Quality</td><td class="number">20</td><td class="number">7</td><td class="number">7</td><td class="number">7</td><td class="number">6</td><td class="number">0</td></tr>
+          <tr><td>Ease of Use</td><td class="number">10</td><td class="number">4</td><td class="number">6</td><td class="number">7</td><td class="number">6</td><td class="number" style="color:var(--red)">−10</td></tr>
+          <tr style="background:#EDF4FB"><td><strong>Total</strong></td><td class="number"><strong>100</strong></td><td></td><td></td><td></td><td></td><td class="number" style="color:var(--navy)"><strong>+37</strong></td></tr>
+        </tbody>
+      </table>
+
+      <div class="worked">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Calculating Relative Advantage — Machine Uptime (Importance = 40)</div>
+        <div class="step"><span>Company (8) vs Comp A (7): difference = +1 → within ±1</span><span class="val">0 pts</span></div>
+        <div class="step"><span>Company (8) vs Comp B (5): difference = +3 → earns full 40 pts</span><span class="val">+40 pts</span></div>
+        <div class="step"><span>Company (8) vs Comp C (6): difference = +2 → earns full 40 pts</span><span class="val">+40 pts</span></div>
+        <div class="step"><span>Average across 3 competitors: (0 + 40 + 40) ÷ 3</span><span class="val">+27</span></div>
+      </div>
+
+      <div class="worked">
+        <div style="font-size:14px;font-weight:700;color:var(--navy);margin-bottom:8px">Final Indices</div>
+        <div class="step"><span>Product Performance Index = 100 + 37</span><span class="val">137</span></div>
+        <div class="step"><span>After service + brand attributes (net): Performance Index</span><span class="val">123</span></div>
+        <div class="step"><span>Cost of Purchase Index (price slightly higher than competitor)</span><span class="val">103</span></div>
+        <div class="step"><span>Perceived Value Index = 123 − 103</span><span class="val">+20</span></div>
+      </div>
+
+      <div class="callout green"><strong>PV Index = +20 → Superior Value.</strong> The company's copier is plotted below the fair value line on the value map — customers perceive it delivers more benefit than it costs. Higher PV index correlates with higher profitability.</div>
+
+      <h3 style="color:var(--navy);margin:14px 0 6px;font-size:15px">Value Map Interpretation</h3>
+      <table>
+        <thead><tr><th>Region</th><th>What It Means</th><th>Profitability Implication</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--green);font-weight:700">Superior Value (below/left of fair value line)</td><td>Performance Index > Cost Index → PV Index > 0</td><td>Above-average profitability</td></tr>
+          <tr><td>On the Fair Value Line</td><td>Performance Index = Cost Index → PV Index = 0</td><td>Average profitability</td></tr>
+          <tr><td style="color:var(--red);font-weight:700">Inferior Value (above/right of fair value line)</td><td>Cost Index > Performance Index → PV Index < 0</td><td>Below-average profitability</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB 5: Conjoint Analysis ── -->
+<div class="tab-content" id="tab-conjoint">
+  <div class="card">
+    <div class="card-header"><span class="lo">LO6</span> Conjoint Analysis</div>
+    <div class="card-body">
+      <div class="formula">
+        <strong>Customer Value Index (CVI) = Σ(performance value for each attribute level in the bundle)</strong><br>
+        <span style="opacity:.7;font-size:12px">Higher CVI = more preferred bundle. CVI identifies value drivers and enables positioning strategy comparison.</span>
+      </div>
+
+      <h3 style="color:var(--navy);margin:14px 0 6px;font-size:15px">Silent Floor Flooring System — Attribute Levels</h3>
+      <table>
+        <thead><tr><th>Attribute</th><th>Level 1</th><th>Level 2</th><th>Level 3</th><th>Importance Weight</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Price</strong></td><td>Competitive</td><td>+20% premium</td><td>+40% premium</td><td class="number" style="color:var(--navy);font-weight:700">34% ← most important</td></tr>
+          <tr><td><strong>Labor Savings</strong></td><td>None (0%)</td><td>20%</td><td>40%</td><td class="number" style="color:var(--blue);font-weight:700">28%</td></tr>
+          <tr><td><strong>Product Warranty</strong></td><td>None</td><td>5 years</td><td>10 years</td><td class="number">19%</td></tr>
+          <tr><td><strong>Customer Callbacks</strong></td><td>Frequent</td><td>Some</td><td>None</td><td class="number">19%</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--navy);margin:14px 0 6px;font-size:15px">Performance Values (from conjoint analysis)</h3>
+      <table>
+        <thead><tr><th>Attribute</th><th>Level</th><th>Performance Value</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td rowspan="3">Labor Savings (28%)</td><td>None</td><td class="number">0.17</td><td>Least preferred</td></tr>
+          <tr><td>20%</td><td class="number">0.33</td><td>Moderate</td></tr>
+          <tr><td>40%</td><td class="number" style="color:var(--green);font-weight:700">1.00</td><td>Most preferred</td></tr>
+          <tr><td rowspan="3">Product Warranty (19%)</td><td>None</td><td class="number">0.25</td><td>Least preferred</td></tr>
+          <tr><td>5 years</td><td class="number">0.42</td><td>Moderate</td></tr>
+          <tr><td>10 years</td><td class="number" style="color:var(--green)">0.83</td><td>More preferred</td></tr>
+          <tr><td rowspan="3">Price (34%)</td><td>Competitive</td><td class="number" style="color:var(--green);font-weight:700">1.00</td><td>Most preferred</td></tr>
+          <tr><td>+20% premium</td><td class="number">0.50</td><td>Moderate</td></tr>
+          <tr><td>+40% premium</td><td class="number" style="color:var(--red)">0.00</td><td>Least preferred</td></tr>
+          <tr><td rowspan="3">Callbacks (19%)</td><td>Frequent</td><td class="number" style="color:var(--red)">0.25</td><td>Least preferred</td></tr>
+          <tr><td>Some</td><td class="number">0.42</td><td>Moderate</td></tr>
+          <tr><td>None</td><td class="number" style="color:var(--green)">0.83</td><td>Most preferred</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--navy);margin:14px 0 6px;font-size:15px">CVI Calculations — Strategy Comparison</h3>
+      <table>
+        <thead><tr><th>Strategy</th><th>Labor</th><th>Warranty</th><th>Price</th><th>Callbacks</th><th>CVI</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Conventional (baseline)</strong></td><td class="number">None (0.17)</td><td class="number">None (0.25)</td><td class="number">Competitive (1.00)</td><td class="number">Frequent (0.25)</td><td class="number"><strong>1.67</strong></td></tr>
+          <tr><td><strong>Strategy A</strong></td><td class="number">40% (1.00)</td><td class="number">10yr (0.83)</td><td class="number">+40% (0.00)</td><td class="number">None (0.83)</td><td class="number" style="color:var(--blue)"><strong>2.66</strong></td></tr>
+          <tr><td><strong>Strategy B</strong></td><td class="number">40% (1.00)</td><td class="number">5yr (0.42)</td><td class="number">+20% (0.50)</td><td class="number">None (0.83)</td><td class="number" style="color:var(--green)"><strong>2.75</strong></td></tr>
+        </tbody>
+      </table>
+      <div class="callout green">Strategy B (CVI 2.75) beats Strategy A (2.66) — the lower price premium (+20% vs +40%) adds 0.50 vs 0.00 in price performance value, more than compensating for the shorter warranty (0.42 vs 0.83). Strategy B is preferred by builders.</div>
+
+      <div class="callout orange"><strong>Value Drivers:</strong> Conventional = Price (1.00 of 1.67 = 60%). Strategy A = Labor Savings (1.00 of 2.66 = 38%). Strategy B = Labor Savings (1.00 of 2.75 = 36%). The value driver shifts from price in the conventional system to labor savings in differentiated strategies.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── TAB 6: Emotional Value ── -->
+<div class="tab-content" id="tab-emotional">
+  <div class="card">
+    <div class="card-header"><span class="lo">LO6</span> Emotional Value & Brand Personality</div>
+    <div class="card-body">
+      <div class="callout" style="margin-bottom:14px">
+        <strong>Emotional Value</strong> occurs when a brand's meaning resonates with the psychological needs, personalities, or personal values of buyers — creating positive affective responses (moods, emotions, attitudes).
+      </div>
+      <div class="formula">Customers' Psychological Needs → Brand Personality → Emotional Benefits → Customer Value</div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Five Brand Personality Types</h3>
+      <div class="bp-grid">
+        <div class="bp-card"><div class="bp-type">Sincerity</div><div class="bp-brand">Betty Crocker</div><div class="bp-traits">Down-to-Earth · Honest · Wholesome · Cheerful · Family-Oriented</div></div>
+        <div class="bp-card"><div class="bp-type">Excitement</div><div class="bp-brand">Nike</div><div class="bp-traits">Daring · Spirited · Imaginative · Up-to-Date · Independent</div></div>
+        <div class="bp-card"><div class="bp-type">Competence</div><div class="bp-brand">Hewlett-Packard</div><div class="bp-traits">Reliable · Intelligent · Successful · Leader · Confident</div></div>
+        <div class="bp-card"><div class="bp-type">Sophistication</div><div class="bp-brand">Lexus</div><div class="bp-traits">Upper Class · Charming · Sophisticated · Glamorous</div></div>
+        <div class="bp-card"><div class="bp-type">Ruggedness</div><div class="bp-brand">Timberline</div><div class="bp-traits">Rugged · Outdoorsy · Tough · Masculine · Western</div></div>
+      </div>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Brand Personality → Emotional Value Examples</h3>
+      <table>
+        <thead><tr><th>Psychological Need</th><th>Brand Personality Match</th><th>Example Brand</th><th>Emotional Benefit</th></tr></thead>
+        <tbody>
+          <tr><td>Ruggedness, self-sufficiency</td><td>Ruggedness</td><td>Chevy Pickup ("Like a Rock")</td><td>Feeling of durability, independence</td></tr>
+          <tr><td>Recognition, respect, status</td><td>Sophistication</td><td>Mercedes, Lexus</td><td>Prestige, social recognition</td></tr>
+          <tr><td>Achievement, excitement</td><td>Excitement</td><td>Nike, Red Bull</td><td>Feeling daring, spirited, capable</td></tr>
+          <tr><td>Security, reliability</td><td>Competence</td><td>HP, IBM, Volvo</td><td>Confidence, trust, peace of mind</td></tr>
+          <tr><td>Warmth, family, tradition</td><td>Sincerity</td><td>Betty Crocker, Hallmark</td><td>Comfort, nostalgia, belonging</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="color:var(--navy);margin:14px 0 8px;font-size:15px">Measuring Brand Personality</h3>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">How brand personality is measured <span class="acc-arrow">▼</span></div>
+        <div class="acc-body">Researchers develop a list of human trait words (e.g., "honest," "daring," "reliable," "rugged") and ask consumers to rate how well each word describes a specific brand on a scale of 0–10 or using agree/disagree ratings. The set of traits receiving the highest ratings characterizes the brand's personality type. For example, if consumers rate Lexus highest on "upper class," "charming," and "sophisticated," the brand's personality is classified as Sophistication.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">Why brand personality matters for value creation <span class="acc-arrow">▼</span></div>
+        <div class="acc-body">When two or more brands equally meet a consumer's rational needs (price, product, service benefits), the brand personality that most closely matches the buyer's psychological needs will be preferred. A brand that resonates emotionally can command a price premium, build stronger loyalty, and generate word-of-mouth advocacy that functional benefits alone cannot. Nike's association with achievement and excitement explains why consumers pay premium prices for what are functionally athletic shoes.</div>
+      </div>
+      <div class="acc-item">
+        <div class="acc-header" onclick="toggleAcc(this)">Challenges of emotional value <span class="acc-arrow">▼</span></div>
+        <div class="acc-body">Unlike economic value (measured in dollars) or relative performance value (measured in ratings), emotional value is difficult to quantify. It varies by individual psychology, culture, and life stage. It must be reinforced consistently across all brand touchpoints — advertising, product design, packaging, customer service, and social media. A single negative high-profile incident can undermine emotional value built over years.</div>
+      </div>
+
+      <div class="callout orange"><strong>Key principle:</strong> Products have personalities just as people do. The more carefully a brand's personality aligns with the psychological needs of its target segment, the greater the emotional value — and the stronger the competitive advantage when rational product benefits are comparable.</div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /container -->
+
+<footer>MKT 472 · Module 04 · Customer Value · Interactive Viewer · For student use</footer>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  event.target.classList.add('active');
+}
+function toggleAcc(header) {
+  header.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>
