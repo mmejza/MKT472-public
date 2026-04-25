@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M02 App 3 — Marketing ROS/ROI Benchmarking Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <h1 id="appTitle"></h1>
+  <p id="instructions"></p>
+
+  <div id="appContainer">
+
+    <!-- Tab navigation -->
+    <div class="tab-nav">
+      <button class="tab-btn" data-tab="tabA">Tab A: Vantage Calculator</button>
+      <button class="tab-btn" data-tab="tabB">Tab B: Competitor Benchmarking</button>
+    </div>
+
+    <!-- Tab A: Vantage Calculator (built by script.js) -->
+    <div id="tabA" class="tab-panel"></div>
+
+    <!-- Tab B: Competitor Benchmarking (built by script.js) -->
+    <div id="tabB" class="tab-panel"></div>
+
+  </div>
+
+  <button id="resetBtn">Reset to Vantage Defaults</button>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

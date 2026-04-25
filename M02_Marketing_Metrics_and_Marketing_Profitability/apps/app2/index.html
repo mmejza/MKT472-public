@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>M02 App 2 — Product-Line Profitability Analyzer</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+
+  <h1 id="appTitle"></h1>
+  <p id="instructions"></p>
+
+  <div id="appContainer">
+
+    <!-- View toggle -->
+    <div class="view-toggle">
+      <span class="view-toggle-label">Emphasis:</span>
+      <button class="view-btn active" data-view="financial">Financial View (Net Profit)</button>
+      <button class="view-btn" data-view="marketing">Marketing View (NMC)</button>
+    </div>
+
+    <!-- Product-line table injected by script.js -->
+    <div id="tableWrapper"></div>
+
+    <!-- Operating Income panel injected by script.js -->
+    <div id="oiPanel"></div>
+
+    <!-- Add-Line Worksheet injected by script.js -->
+    <div id="worksheetSection"></div>
+
+  </div>
+
+  <button id="resetBtn">Reset</button>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

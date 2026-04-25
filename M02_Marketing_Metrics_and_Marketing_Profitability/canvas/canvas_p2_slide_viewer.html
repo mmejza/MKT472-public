@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M02 Slide Deck Viewer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:   #1F3864;
+    --blue:   #2E5FA3;
+    --gold:   #C9A84C;
+    --gold-l: #E8C96A;
+    --cream:  #FAF8F4;
+    --grey:   #F2F4F8;
+    --white:  #FFFFFF;
+    --text:   #1A1A2E;
+    --muted:  #6B7280;
+    --red:    #8B0000;
+    --ltred:  #FDECEA;
+    --green:  #1A5C1A;
+    --ltgrn:  #E8F5E8;
+    --amber:  #7B4F00;
+    --ltamb:  #FFF3CD;
+    --teal:   #1A6B6B;
+    --ltteal: #D4EFEF;
+    --purple: #4A1A6B;
+    --ltpur:  #EDE4F5;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── TOP BAR ─────────────────────────── */
+  .topbar {
+    background: var(--navy);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .topbar-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .topbar-badge {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.4);
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+  .topbar-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.9);
+  }
+  .topbar-right {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+
+  /* ── ORIENTATION BANNER ──────────────── */
+  .orientation-banner {
+    background: linear-gradient(90deg, var(--amber) 0%, #9B6500 100%);
+    padding: 12px 20px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .banner-icon {
+    font-size: 18px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .banner-text {
+    font-size: 13px;
+    color: var(--white);
+    line-height: 1.55;
+  }
+  .banner-text strong { color: var(--gold-l); }
+
+  /* ── MAIN LAYOUT ─────────────────────── */
+  .viewer-layout {
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    min-height: calc(100vh - 90px);
+    gap: 0;
+  }
+  @media (max-width: 780px) {
+    .viewer-layout { grid-template-columns: 1fr; }
+    .sidebar { border-top: 1px solid #e0e4ed; }
+  }
+
+  /* ── SLIDE AREA ──────────────────────── */
+  .slide-area {
+    background: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    min-height: 480px;
+  }
+  .slide-viewport {
+    flex: 1;
+    position: relative;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    overflow: hidden;
+  }
+
+  /* Replace this iframe with the actual slide embed URL in Canvas */
+  .slide-iframe-placeholder {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 40px;
+    font-family: 'Source Sans 3', sans-serif;
+  }
+  .slide-iframe-placeholder .big-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+  }
+  .slide-iframe-placeholder .small-text {
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: 380px;
+    color: rgba(255,255,255,0.3);
+  }
+  .slide-iframe-placeholder code {
+    background: rgba(255,255,255,0.08);
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    color: var(--gold);
+    display: block;
+    margin-top: 16px;
+    font-family: 'Courier New', monospace;
+  }
+
+  /* In production, replace placeholder with: */
+  /* <iframe src="SLIDE_EMBED_URL" ...></iframe> */
+  .actual-iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 400px;
+    border: none;
+    display: block;
+  }
+
+  /* ── SLIDE CONTROLS ──────────────────── */
+  .slide-controls {
+    background: #222;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .ctrl-btn {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.8);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ctrl-btn:hover {
+    background: rgba(255,255,255,0.14);
+    border-color: rgba(255,255,255,0.28);
+  }
+  .slide-counter {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-left: auto;
+  }
+  .kbd-hint {
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+  }
+  .kbd-hint kbd {
+    background: rgba(255,255,255,0.08);
+    padding: 1px 5px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  /* ── SIDEBAR ─────────────────────────── */
+  .sidebar {
+    background: var(--white);
+    border-left: 1px solid #e0e4ed;
+    overflow-y: auto;
+    max-height: calc(100vh - 90px);
+    position: sticky;
+    top: 0;
+  }
+  .sidebar-section {
+    border-bottom: 1px solid #f0f2f5;
+  }
+  .sidebar-section-header {
+    padding: 14px 18px 10px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    background: #f8f9fc;
+    border-bottom: 1px solid #f0f2f5;
+  }
+
+  /* current slide info */
+  .slide-info {
+    padding: 16px 18px;
+  }
+  .slide-lo-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+  }
+  .slide-title-display {
+    font-family: 'DM Serif Display', serif;
+    font-size: 16px;
+    color: var(--navy);
+    line-height: 1.4;
+    margin-bottom: 8px;
+  }
+  .slide-chapter-note {
+    font-size: 12.5px;
+    color: var(--muted);
+    line-height: 1.55;
+  }
+
+  /* chapter flag */
+  .chapter-flag {
+    margin: 0 18px 14px;
+    background: var(--ltamb);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-left: 3px solid var(--gold);
+    border-radius: 0 4px 4px 0;
+    padding: 10px 12px;
+    font-size: 12px;
+    color: var(--amber);
+    line-height: 1.5;
+    display: none; /* shown via JS when slide has chapter-exclusive note */
+  }
+  .chapter-flag.visible { display: block; }
+  .chapter-flag strong { display: block; margin-bottom: 3px; font-size: 11px; letter-spacing: 0.5px; text-transform: uppercase; }
+
+  /* slide nav list */
+  .slide-nav {
+    padding: 10px 0 4px;
+  }
+  .slide-nav-item {
+    padding: 7px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: background 0.1s;
+    font-size: 12.5px;
+    color: var(--text);
+    border-left: 3px solid transparent;
+    line-height: 1.4;
+  }
+  .slide-nav-item:hover { background: #f8f9fc; }
+  .slide-nav-item.active {
+    background: #eef2ff;
+    border-left-color: var(--blue);
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .slide-nav-item.has-flag { position: relative; }
+  .flag-dot {
+    width: 6px; height: 6px;
+    background: var(--gold);
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+  .slide-nav-num {
+    font-size: 10px;
+    color: var(--muted);
+    width: 20px;
+    flex-shrink: 0;
+    text-align: right;
+  }
+
+  /* gate reminder */
+  .gate-reminder {
+    padding: 16px 18px;
+  }
+  .gate-reminder-card {
+    background: linear-gradient(135deg, var(--navy) 0%, #2a4a8a 100%);
+    border-radius: 6px;
+    padding: 16px 16px;
+    color: var(--white);
+  }
+  .gate-reminder-card h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 15px;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+  .gate-reminder-card p {
+    font-size: 12px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.55;
+    margin-bottom: 12px;
+  }
+  .gate-btn {
+    display: block;
+    background: var(--gold);
+    color: var(--navy);
+    font-weight: 700;
+    font-size: 12px;
+    text-align: center;
+    padding: 8px 14px;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    font-family: 'Source Sans 3', sans-serif;
+    transition: background 0.15s;
+  }
+  .gate-btn:hover { background: var(--gold-l); }
+
+  /* ── LEGEND ──────────────────────────── */
+  .legend {
+    padding: 12px 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11.5px;
+    color: var(--muted);
+  }
+  .legend-swatch {
+    width: 12px; height: 12px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<!-- ── TOP BAR ─────────────────────────────────────────── -->
+<div class="topbar">
+  <div class="topbar-left">
+    <div class="topbar-badge">M02 · Slide Viewer</div>
+    <div class="topbar-title">Marketing Metrics &amp; Profitability</div>
+  </div>
+  <div class="topbar-right">Unlocked by Gate 1 · Advance to Gate 2 when complete</div>
+</div>
+
+<!-- ── ORIENTATION BANNER ───────────────────────────────── -->
+<div class="orientation-banner">
+  <div class="banner-icon">📋</div>
+  <div class="banner-text">
+    <strong>These slides do not cover everything.</strong>
+    The chapter contains five topics not in this deck — including the $41M lost-profit figure,
+    the four criteria for a valid metric, and the customer-segment NMC framework. 
+    Gold flags in the sidebar mark the slides where adjacent chapter content is most important.
+    Gate 2 requires both sources.
+  </div>
+</div>
+
+<!-- ── LAYOUT ───────────────────────────────────────────── -->
+<div class="viewer-layout">
+
+  <!-- ── SLIDE AREA ──────────────────────────────────────── -->
+  <div class="slide-area">
+    <div class="slide-viewport">
+      <!--
+        ══════════════════════════════════════════════════════
+        CANVAS EMBED INSTRUCTION:
+        Replace the placeholder div below with your actual
+        slide embed. Typical options:
+
+        Option A — Google Slides embed:
+        <iframe class="actual-iframe"
+          src="https://docs.google.com/presentation/d/SLIDE_ID/embed?start=false&loop=false"
+          allowfullscreen></iframe>
+
+        Option B — Office 365 / OneDrive embed:
+        <iframe class="actual-iframe"
+          src="https://onedrive.live.com/embed?resid=...&authkey=..."
+          frameborder="0" scrolling="no"></iframe>
+
+        Option C — Canvas Studio embed:
+        Paste Canvas Studio embed code here.
+        ══════════════════════════════════════════════════════
+      -->
+      <div class="slide-iframe-placeholder">
+        <div class="big-text">Slide Deck</div>
+        <div class="small-text">
+          Paste your slide embed URL here. The viewer shell and sidebar are ready.
+          Replace this placeholder with an &lt;iframe&gt; pointing to your hosted deck.
+        </div>
+        <code>src="YOUR_SLIDE_EMBED_URL_HERE"</code>
+      </div>
+    </div>
+
+    <div class="slide-controls">
+      <button class="ctrl-btn" onclick="changeSlide(-1)">
+        ← Prev
+      </button>
+      <button class="ctrl-btn" onclick="changeSlide(1)">
+        Next →
+      </button>
+      <span class="slide-counter" id="slideCounter">Slide 1 of 29</span>
+      <span class="kbd-hint" style="margin-left:auto;">
+        Keyboard: <kbd>←</kbd> <kbd>→</kbd>
+      </span>
+    </div>
+  </div>
+
+  <!-- ── SIDEBAR ─────────────────────────────────────────── -->
+  <div class="sidebar">
+
+    <!-- Current slide info -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">Current Slide</div>
+      <div class="slide-info">
+        <div class="slide-lo-tag" id="currentLO">LO1 · Analysis</div>
+        <div class="slide-title-display" id="currentTitle">BioTronics: What Financial Metrics Miss</div>
+        <div class="slide-chapter-note" id="currentNote">See also: Chapter 2, pp. 40–44. The financial metrics in this slide look excellent — but the chapter reveals what they hide.</div>
+      </div>
+      <div class="chapter-flag" id="chapterFlag">
+        <strong>📖 Chapter covers more</strong>
+        The $41M lost profit figure from Figure 2-4 does not appear on any slide. Find it before Gate 2.
+      </div>
+    </div>
+
+    <!-- Legend -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">Legend</div>
+      <div class="legend">
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--gold);"></div>
+          Gold dot — slide has adjacent chapter-exclusive content
+        </div>
+        <div class="legend-item">
+          <div class="legend-swatch" style="background:var(--blue);"></div>
+          Blue border — currently viewing
+        </div>
+      </div>
+    </div>
+
+    <!-- Slide nav -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">All Slides</div>
+      <div class="slide-nav" id="slideNav">
+        <!-- populated by JS -->
+      </div>
+    </div>
+
+    <!-- Gate 2 reminder -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-header">Next Step</div>
+      <div class="gate-reminder">
+        <div class="gate-reminder-card">
+          <h4>Proceed to Gate 2</h4>
+          <p>Gate 2 tests your synthesis of chapter and slides together. 8 questions. 1 attempt. 20 points. Make sure you have read the chapter before proceeding.</p>
+          <button class="gate-btn" onclick="alert('Navigate to Gate 2 in the Canvas module sequence.')">Take Gate 2 →</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.sidebar -->
+</div><!-- /.viewer-layout -->
+
+<script>
+// ── SLIDE METADATA ─────────────────────────────────────────
+// Instructors: edit this array to match actual slide content.
+// hasFlag: true = shows gold dot + chapter callout in sidebar.
+const SLIDES = [
+  { title:"Title Slide", lo:"", note:"", hasFlag:false, flag:"" },
+  { title:"Learning Objectives", lo:"All LOs", note:"Chapter covers additional topics not in this deck — see the orientation panel above.", hasFlag:false, flag:"" },
+  { title:"What Chapter Covers Beyond This Deck", lo:"All LOs", note:"Five chapter-exclusive topics that Gate 1 will test.", hasFlag:true, flag:"This orientation slide lists the five topics that appear only in Chapter 2. None of these are in any other slide." },
+  { title:"BioTronics: Financial Metrics", lo:"LO1 · Analysis", note:"Chapter pp. 40–42. These numbers look excellent — which is precisely the problem.", hasFlag:true, flag:"The $41M lost profit figure (Fig 2-4, pp. 42–44) is not on this slide. Find it in the chapter before Gate 2." },
+  { title:"BioTronics: Marketing Metrics", lo:"LO1 · Analysis", note:"Chapter pp. 41–43. The marketing metrics paint a completely different picture.", hasFlag:false, flag:"" },
+  { title:"Market Share When the Market Grows — Setup", lo:"LO1 · Analysis", note:"Before looking at the solution slides, attempt the calculation yourself.", hasFlag:false, flag:"" },
+  { title:"Market Size: Year 0–3 (Visual)", lo:"LO1 · Analysis", note:"Compounding formula: Market(t) = Current × (1+g)^t", hasFlag:false, flag:"" },
+  { title:"Market Share Calculation: Answer", lo:"LO1 · Analysis", note:"Chapter pp. 41–43. Company needs $17.2M in Year 3 to hold 10% share at 20% growth.", hasFlag:false, flag:"" },
+  { title:"Market Share + Year 4 Projection", lo:"LO1 · Analysis", note:"Revenue doubles at Year 4 while maintaining 10% share in 20% growth market.", hasFlag:false, flag:"" },
+  { title:"Market Share Full Solution", lo:"LO1 · Analysis", note:"Doubling time ≈ 4 years at this growth rate and share level.", hasFlag:false, flag:"" },
+  { title:"Financial vs. Marketing Metrics Framework", lo:"LO2 · Analysis", note:"Chapter pp. 44–48, Fig 2-6. Left side = internal. Right side = external.", hasFlag:true, flag:"Chapter p. 44 lists the four criteria a valid marketing metric must satisfy: necessary, precise, consistent, sufficient. These are Gate 1 targets." },
+  { title:"Marketing Metrics and the 'Profitability Gene'", lo:"LO2 · Analysis", note:"Four graphs showing the correlation between marketing metrics and profitability.", hasFlag:false, flag:"" },
+  { title:"Forward-Looking vs. Backward-Looking", lo:"LO2 · Analysis", note:"Chapter pp. 47–48, Fig 2-8. Apply during the period vs. report at period end.", hasFlag:false, flag:"" },
+  { title:"Net Marketing Contribution — Income Statements", lo:"LO3 · Application", note:"Chapter pp. 49–52. NMC = Gross Profit − Marketing & Sales Expenses.", hasFlag:false, flag:"" },
+  { title:"NMC Bar Chart Visualization", lo:"LO3 · Application", note:"NMC is the only source of positive profit. All other costs deducted from it.", hasFlag:false, flag:"" },
+  { title:"75% MSE Rule of Thumb", lo:"LO3 · Application", note:"Chapter pp. 52–53. When MSE is not separately reported, use 75% of SGA.", hasFlag:false, flag:"" },
+  { title:"MROS and MROI: Formula Overview", lo:"LO3 · Application", note:"MROS = NMC ÷ Sales. MROI = NMC ÷ MSE.", hasFlag:false, flag:"" },
+  { title:"Marketing ROS: Company X vs. Y", lo:"LO3 · Application", note:"Lower absolute NMC can produce higher MROS. Scale ≠ efficiency.", hasFlag:false, flag:"" },
+  { title:"Marketing ROI: Company X vs. Y", lo:"LO3 · Application", note:"MROI below 100% means marketing investment does not recover its own cost.", hasFlag:false, flag:"" },
+  { title:"Decomposing NMC: The 6-Lever Equation", lo:"LO5 · Synthesis", note:"NMC = Demand × Share × Price × Channel Keep × Margin − Budget.", hasFlag:false, flag:"" },
+  { title:"NMC Decomposition: Strategy Tree", lo:"LO5 · Synthesis", note:"Each lever is the basis of a distinct marketing strategy.", hasFlag:false, flag:"" },
+  { title:"Strategy 1: Grow Market Demand", lo:"LO5 · Synthesis", note:"Demand 7M→8M, budget +$1M → NMC rises $15.7M → $17.9M.", hasFlag:false, flag:"" },
+  { title:"Strategy 2: Grow Share via Lower Price", lo:"LO5 · Synthesis", note:"Price cut 10%, share 9%→11% → NMC falls to $13.8M. Margin compression trap.", hasFlag:false, flag:"" },
+  { title:"Strategy 3: Grow Share via Advertising", lo:"LO5 · Synthesis", note:"Share 9%→10%, budget +$2M → NMC rises to $16.2M.", hasFlag:false, flag:"" },
+  { title:"Strategy 4: Increase Average Price", lo:"LO5 · Synthesis", note:"Price +$20, budget +$3M → NMC rises to $19M.", hasFlag:false, flag:"" },
+  { title:"Example Problem: Which Share-Growth Tactic?", lo:"LO5 · Synthesis", note:"Break-even market share calculation. Attempt before the next slide.", hasFlag:false, flag:"" },
+  { title:"Break-Even Market Share: Solution", lo:"LO5 · Synthesis", note:"Price cut needs 11.2% share. Budget increase needs only 8.05%.", hasFlag:false, flag:"" },
+  { title:"Price Reduction: Break-Even Formula", lo:"LO5 · Synthesis", note:"BE Unit Volume = (−%ΔP) ÷ (CM + %ΔP) × current share.", hasFlag:false, flag:"" },
+  { title:"Budget Increase: Break-Even Formula", lo:"LO5 · Synthesis", note:"Solve the NMC equation for X (market share) algebraically.", hasFlag:false, flag:"" },
+  { title:"Product Line Profitability: Drop Decision", lo:"LO4 · Evaluation", note:"Chapter pp. 54–56. NMC = +$1M for casual shorts despite net profit = −$1M.", hasFlag:true, flag:"Chapter pp. 55–56 contains the quantitative result: dropping casual shorts reduces total profit from $10M to $9M. Dropping both unprofitable lines drops it to $7M. These numbers are not shown on this slide." },
+];
+
+let currentSlide = 0;
+
+function buildNav() {
+  const nav = document.getElementById('slideNav');
+  nav.innerHTML = '';
+  SLIDES.forEach((s, i) => {
+    const item = document.createElement('div');
+    item.className = 'slide-nav-item' + (i === 0 ? ' active' : '') + (s.hasFlag ? ' has-flag' : '');
+    item.innerHTML = `
+      <span class="slide-nav-num">${i + 1}</span>
+      <span>${s.title}</span>
+      ${s.hasFlag ? '<span class="flag-dot" title="Chapter covers more here"></span>' : ''}
+    `;
+    item.addEventListener('click', () => goToSlide(i));
+    nav.appendChild(item);
+  });
+}
+
+function goToSlide(n) {
+  currentSlide = Math.max(0, Math.min(n, SLIDES.length - 1));
+  updateSidebar();
+  updateNavHighlight();
+  // In production with a real embed, you would post a message to the iframe here:
+  // document.querySelector('.actual-iframe').contentWindow.postMessage({slide: currentSlide}, '*');
+}
+
+function changeSlide(dir) {
+  goToSlide(currentSlide + dir);
+}
+
+function updateSidebar() {
+  const s = SLIDES[currentSlide];
+  document.getElementById('slideCounter').textContent = `Slide ${currentSlide + 1} of ${SLIDES.length}`;
+  document.getElementById('currentLO').textContent    = s.lo || '—';
+  document.getElementById('currentTitle').textContent = s.title;
+  document.getElementById('currentNote').textContent  = s.note;
+
+  const flag = document.getElementById('chapterFlag');
+  if (s.hasFlag && s.flag) {
+    flag.querySelector('strong').nextSibling.textContent = ' ' + s.flag;
+    flag.classList.add('visible');
+  } else {
+    flag.classList.remove('visible');
+  }
+}
+
+function updateNavHighlight() {
+  document.querySelectorAll('.slide-nav-item').forEach((el, i) => {
+    el.classList.toggle('active', i === currentSlide);
+  });
+  // Scroll active item into view
+  const activeEl = document.querySelector('.slide-nav-item.active');
+  if (activeEl) activeEl.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changeSlide(1);
+  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   changeSlide(-1);
+});
+
+// Init
+buildNav();
+updateSidebar();
+</script>
+</body>
+</html>
