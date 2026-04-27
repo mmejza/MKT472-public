@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>M03 App 1 - Market Potential Estimator</title>
+	<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+	<main class="app-shell" aria-label="Market Potential Estimator">
+		<header class="app-header">
+			<h1>Market Potential Estimator</h1>
+			<p class="subtitle">
+				Explore how market definition changes measured market share and market potential.
+			</p>
+		</header>
+
+		<section class="preset-section" aria-label="Preset Scenarios">
+			<div class="preset-buttons">
+				<button type="button" class="preset-btn active" data-preset="narrow">Narrow Definition</button>
+				<button type="button" class="preset-btn" data-preset="broad">Broad Definition</button>
+				<button type="button" class="preset-btn" data-preset="custom">Custom</button>
+			</div>
+			<p id="presetInfo" class="preset-info"></p>
+		</section>
+
+		<section class="content-grid">
+			<section class="panel inputs-panel" aria-label="Inputs">
+				<h2>Inputs</h2>
+				<div class="input-grid">
+					<label for="maxConsumingUnits">Max Consuming Units (M people)</label>
+					<input id="maxConsumingUnits" type="number" />
+
+					<label for="buyingCeilingPct">Buying Ceiling (%)</label>
+					<input id="buyingCeilingPct" type="number" />
+
+					<label for="annualPurchaseRate">Annual Purchase Rate (units/year)</label>
+					<input id="annualPurchaseRate" type="number" />
+
+					<label for="quantityPerPurchase">Quantity per Purchase</label>
+					<input id="quantityPerPurchase" type="number" />
+
+					<label for="avgPrice">Average Price ($)</label>
+					<input id="avgPrice" type="number" />
+
+					<label for="currentDemandDollars">Current Demand ($)</label>
+					<input id="currentDemandDollars" type="number" />
+				</div>
+
+				<div class="growth-control">
+					<div class="growth-head">
+						<label for="growthRate">3-Year Growth Rate</label>
+						<span id="growthRateValue">0%</span>
+					</div>
+					<input id="growthRate" type="range" min="0" max="30" step="1" value="0" />
+				</div>
+			</section>
+
+			<section class="panel outputs-panel" aria-label="Outputs">
+				<h2>Outputs</h2>
+
+				<div class="primary-metrics">
+					<article class="metric-card">
+						<h3>Market Potential (Units)</h3>
+						<p id="potentialUnitsPrimary" class="metric-primary"></p>
+						<p id="potentialUnitsSub" class="metric-sub"></p>
+					</article>
+					<article class="metric-card">
+						<h3>Market Potential (Dollars)</h3>
+						<p id="potentialDollarsPrimary" class="metric-primary"></p>
+						<p id="potentialDollarsSub" class="metric-sub"></p>
+					</article>
+				</div>
+
+				<div class="mdi-share-grid">
+					<article class="mdi-box" aria-live="polite">
+						<h3>Market Development Index (MDI)</h3>
+						<p id="mdiValue" class="mdi-value">—</p>
+						<p class="mdi-note">Record this MDI for App 3.</p>
+					</article>
+
+					<article id="sharePointCallout" class="share-callout" aria-live="polite">
+						<h3>Value of 1 Share Point</h3>
+						<p id="sharePointValue" class="share-value">—</p>
+						<p class="share-note">1% of current demand dollars</p>
+					</article>
+				</div>
+
+				<article class="projection-panel" aria-label="3 Year Projection">
+					<h3>3-Year Demand Projection (Dollars)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Year</th>
+								<th>Projected Demand</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Year 1</td>
+								<td id="projectionY1"></td>
+							</tr>
+							<tr>
+								<td>Year 2</td>
+								<td id="projectionY2"></td>
+							</tr>
+							<tr>
+								<td>Year 3</td>
+								<td id="projectionY3"></td>
+							</tr>
+						</tbody>
+					</table>
+				</article>
+			</section>
+		</section>
+
+		<footer class="app-footer">
+			<p>Record your MDI — you will need it in App 3.</p>
+			<button id="resetBtn" type="button">Reset to Narrow Preset</button>
+		</footer>
+	</main>
+
+	<script src="script.js"></script>
+</body>
+</html>

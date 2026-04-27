@@ -1,0 +1,302 @@
+:root {
+	--bg: #f7f8fb;
+	--panel: #ffffff;
+	--text: #1f2937;
+	--muted: #6b7280;
+	--border: #d1d5db;
+	--accent: #0f4c81;
+	--good: #0b7a3e;
+	--warn: #b45309;
+	--bad: #b42318;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+.app-shell {
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 16px;
+}
+
+.app-header h1 {
+	margin: 0 0 6px;
+	font-size: 1.5rem;
+}
+
+.app-header p {
+	margin: 0;
+	color: var(--muted);
+}
+
+.preset-section,
+.panel,
+.app-footer {
+	margin-top: 12px;
+	background: var(--panel);
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 12px;
+}
+
+.preset-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.preset-btn,
+#resetBtn {
+	border: 1px solid var(--accent);
+	background: #fff;
+	color: var(--accent);
+	padding: 8px 12px;
+	border-radius: 6px;
+	cursor: pointer;
+}
+
+.preset-btn.active {
+	background: var(--accent);
+	color: #fff;
+}
+
+.preset-info {
+	margin: 8px 0 0;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.grid-two {
+	margin-top: 12px;
+	display: grid;
+	grid-template-columns: 1.1fr 1fr;
+	gap: 12px;
+}
+
+.panel h2 {
+	margin: 0 0 12px;
+	font-size: 1.1rem;
+}
+
+.field-row {
+	display: grid;
+	grid-template-columns: 220px 1fr;
+	gap: 10px;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.slider-wrap {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 8px;
+	align-items: center;
+}
+
+.field-row input[type="range"] {
+	width: 100%;
+}
+
+.value-tag {
+	min-width: 58px;
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+	color: var(--accent);
+	font-weight: 600;
+}
+
+.field-row select {
+	width: 100%;
+	padding: 6px 8px;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+}
+
+.diagnosis-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.stage-badge {
+	display: inline-block;
+	padding: 8px 14px;
+	border-radius: 999px;
+	font-weight: 700;
+	border: 1px solid var(--accent);
+	background: #edf5fc;
+}
+
+.diagnosis-note {
+	margin: 0;
+	color: var(--muted);
+}
+
+.confidence-block {
+	margin-top: 10px;
+}
+
+.confidence-meta {
+	display: flex;
+	justify-content: space-between;
+	font-size: 0.92rem;
+}
+
+.confidence-track {
+	margin-top: 6px;
+	height: 14px;
+	border-radius: 999px;
+	background: #e5e7eb;
+	overflow: hidden;
+}
+
+.confidence-fill {
+	height: 100%;
+	width: 0;
+	background: linear-gradient(90deg, #f59e0b, #22c55e);
+}
+
+.strategy-card {
+	margin-top: 12px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 10px;
+	background: #fcfdff;
+}
+
+.strategy-card h3 {
+	margin: 0 0 8px;
+}
+
+.strategy-card ul {
+	margin: 0;
+	padding-left: 18px;
+}
+
+.strategy-card li {
+	margin-bottom: 6px;
+}
+
+.summary-table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.summary-table th,
+.summary-table td {
+	border-bottom: 1px solid var(--border);
+	padding: 8px;
+	font-size: 0.92rem;
+}
+
+.summary-table th {
+	text-align: left;
+	color: var(--muted);
+}
+
+.summary-table td:last-child {
+	font-weight: 700;
+}
+
+.status-green {
+	color: var(--good);
+}
+
+.status-amber {
+	color: var(--warn);
+}
+
+.status-red {
+	color: var(--bad);
+}
+
+.chart-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+	flex-wrap: wrap;
+}
+
+.toggle-wrap {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: 0.92rem;
+}
+
+.chart-wrap {
+	margin-top: 10px;
+	border: 1px solid var(--border);
+	border-radius: 8px;
+	padding: 8px;
+	background: #fff;
+	overflow-x: auto;
+}
+
+.chart-note {
+	margin: 8px 0 0;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.app-footer {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.legend {
+	display: flex;
+	gap: 14px;
+	flex-wrap: wrap;
+	margin-top: 8px;
+	font-size: 0.85rem;
+	color: var(--muted);
+}
+
+.legend-key {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.swatch {
+	width: 12px;
+	height: 12px;
+	border-radius: 2px;
+	display: inline-block;
+}
+
+.swatch-demand {
+	background: #334155;
+}
+
+.swatch-nmc {
+	background: #0ea5e9;
+}
+
+.swatch-gp {
+	background: #8b5cf6;
+}
+
+@media (max-width: 920px) {
+	.grid-two {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 700px) {
+	.field-row {
+		grid-template-columns: 1fr;
+	}
+}
