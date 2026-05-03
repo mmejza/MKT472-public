@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 — M05 Slide Deck Viewer</title>
+<style>
+  /* ── RESET & BASE ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Barlow', 'Segoe UI', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #1a2530;
+    background: #ffffff;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 0 48px 0;
+  }
+
+  /* ── DESIGN TOKENS ────────────────────────────────────────── */
+  :root {
+    --teal:   #0D9B87;
+    --navy:   #0F2027;
+    --amber:  #E6A800;
+    --lteal:  #E0F2EF;
+    --lgray:  #F4F6F7;
+    --border: #D0D8E0;
+    --text:   #1a2530;
+    --muted:  #5a6a7a;
+    --red:    #C0392B;
+  }
+
+  /* ── PAGE HEADER ──────────────────────────────────────────── */
+  .page-header {
+    background: var(--navy);
+    padding: 22px 30px 18px;
+    position: relative;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 5px;
+    background: var(--teal);
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 3px;
+    background: var(--amber);
+  }
+  .header-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 5px;
+  }
+  .header-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+  }
+  .header-sub {
+    font-size: 12px;
+    color: #8ab0a8;
+    margin-top: 4px;
+  }
+
+  /* ── INSTRUCTION BAR ──────────────────────────────────────── */
+  .instruction-bar {
+    background: var(--lteal);
+    border-bottom: 1px solid #b0ddd6;
+    padding: 10px 30px;
+    font-size: 12.5px;
+    color: #1a4a42;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+  }
+  .instruction-bar strong { color: var(--navy); }
+  .kbd {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 1px 6px;
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--navy);
+    box-shadow: 0 1px 0 var(--border);
+  }
+
+  /* ── TWO-COLUMN LAYOUT ────────────────────────────────────── */
+  .viewer-layout {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 0;
+    min-height: 520px;
+  }
+  @media (max-width: 700px) {
+    .viewer-layout { grid-template-columns: 1fr; }
+    .sidebar { border-left: none; border-top: 2px solid var(--border); }
+  }
+
+  /* ── SLIDE IFRAME PANEL ───────────────────────────────────── */
+  .slide-panel {
+    background: #1a1a2e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    min-height: 480px;
+  }
+  .slide-frame-wrap {
+    width: 100%;
+    max-width: 720px;
+    aspect-ratio: 16/9;
+    background: #000;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.5);
+    position: relative;
+  }
+
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     ★  SWAP THIS URL  ★
+     Replace the src value below with your actual embed URL.
+     See the deployment note at the bottom of this file.
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  .slide-frame-wrap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .slide-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #0e1a24;
+    color: #6a8a9a;
+    text-align: center;
+    padding: 24px;
+    gap: 12px;
+  }
+  .slide-placeholder .pl-icon {
+    font-size: 40px;
+    opacity: 0.5;
+  }
+  .slide-placeholder .pl-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #a0c0c8;
+  }
+  .slide-placeholder .pl-note {
+    font-size: 12px;
+    color: #5a7a8a;
+    max-width: 280px;
+    line-height: 1.5;
+  }
+  .slide-placeholder .pl-badge {
+    display: inline-block;
+    background: rgba(230,168,0,0.15);
+    border: 1px solid rgba(230,168,0,0.4);
+    border-radius: 4px;
+    padding: 4px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── SIDEBAR ──────────────────────────────────────────────── */
+  .sidebar {
+    border-left: 2px solid var(--border);
+    background: #fafbfc;
+    overflow-y: auto;
+    max-height: 600px;
+  }
+  .sidebar-section {
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-section:last-child { border-bottom: none; }
+  .sidebar-hdr {
+    padding: 10px 14px 8px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    background: var(--lgray);
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Slide index */
+  .slide-index { list-style: none; }
+  .slide-index li {
+    display: flex;
+    gap: 8px;
+    padding: 7px 14px;
+    font-size: 12px;
+    line-height: 1.4;
+    border-bottom: 1px solid #eef0f2;
+    align-items: flex-start;
+    cursor: default;
+  }
+  .slide-index li:last-child { border-bottom: none; }
+  .slide-index li:hover { background: var(--lteal); }
+  .si-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--navy);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 1px;
+  }
+  .si-num.gate-flag { background: var(--red); }
+  .si-num.amber-flag { background: var(--amber); color: var(--navy); }
+  .si-num.teal-flag { background: var(--teal); }
+  .si-body { flex: 1; }
+  .si-title { font-weight: 600; color: var(--navy); }
+  .si-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* Tags */
+  .tag {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 1px 5px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+  .tag-gate { background: #fdecea; color: var(--red); border: 1px solid #f5c0bb; }
+  .tag-lo { background: var(--lteal); color: var(--teal); border: 1px solid #b0ddd6; }
+  .tag-calc { background: #ede9ff; color: #5a3ea0; border: 1px solid #c5b8f0; }
+  .tag-trap { background: #fff3cd; color: #7b4f00; border: 1px solid #f0c940; }
+
+  /* LO reference */
+  .lo-ref-list { list-style: none; }
+  .lo-ref-list li {
+    padding: 7px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid #eef0f2;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+  }
+  .lo-ref-list li:last-child { border-bottom: none; }
+  .lor-badge {
+    flex-shrink: 0;
+    width: 30px;
+    height: 20px;
+    background: var(--teal);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 1px;
+  }
+  .lor-text { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+  /* Chapter connection list */
+  .ch-conn-list { list-style: none; }
+  .ch-conn-list li {
+    padding: 7px 14px;
+    font-size: 12px;
+    border-bottom: 1px solid #eef0f2;
+    line-height: 1.4;
+  }
+  .ch-conn-list li:last-child { border-bottom: none; }
+  .ch-conn-title { font-weight: 600; color: var(--navy); }
+  .ch-conn-ref { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* Gate 1 callout */
+  .gate1-callout {
+    margin: 10px 14px;
+    background: #fdecea;
+    border: 1px solid #f5c0bb;
+    border-left: 3px solid var(--red);
+    border-radius: 0 4px 4px 0;
+    padding: 10px 12px;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: #6a1a14;
+  }
+  .gate1-callout strong { color: var(--red); }
+
+  /* ── BOTTOM BAR ───────────────────────────────────────────── */
+  .bottom-bar {
+    background: var(--lgray);
+    border-top: 2px solid var(--border);
+    padding: 12px 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--muted);
+  }
+  .next-step {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--teal);
+    color: #fff;
+    border-radius: 4px;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .next-step:hover { background: #0b8270; }
+
+  /* ── DEPLOY NOTE (instructor-only, hidden in student view) ── */
+  .deploy-note {
+    margin: 24px 30px 0;
+    background: #fff8e6;
+    border: 1px solid #f0c940;
+    border-left: 4px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    font-size: 13px;
+    color: #4a3800;
+  }
+  .deploy-note .dn-title {
+    font-weight: 700;
+    font-size: 13px;
+    color: #7b4f00;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 11px;
+  }
+  .deploy-note code {
+    display: block;
+    background: #fff;
+    border: 1px solid #e0c060;
+    border-radius: 4px;
+    padding: 8px 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 12.5px;
+    color: var(--navy);
+    margin: 8px 0;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+  .deploy-note ol {
+    padding-left: 18px;
+    margin: 6px 0;
+  }
+  .deploy-note ol li {
+    margin-bottom: 5px;
+    line-height: 1.55;
+  }
+  .deploy-note strong { color: #7b4f00; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ════════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="header-eyebrow">MKT 472 · M05 · Chapter 5</div>
+  <div class="header-title">Slide Deck Viewer — Market Segmentation and Segmentation Strategies</div>
+  <div class="header-sub">32 slides · Complete Gate 1 before viewing · Gate 2 unlocks after this item</div>
+</div>
+
+<!-- ═══════════════════ INSTRUCTION BAR ══════════════════════════════════ -->
+<div class="instruction-bar">
+  <span><strong>Navigate:</strong> use the slide controls inside the viewer, or <span class="kbd">←</span> <span class="kbd">→</span> arrow keys in the embedded player</span>
+  <span><strong>After viewing:</strong> complete Gate 2 to unlock the lecture video</span>
+  <span><strong>Note:</strong> Chapter 5 covers more than these slides — see the sidebar for what Gate 1 tests that is not in this deck</span>
+</div>
+
+<!-- ═══════════════════ TWO-COLUMN LAYOUT ════════════════════════════════ -->
+<div class="viewer-layout">
+
+  <!-- SLIDE PANEL -->
+  <div class="slide-panel">
+    <div class="slide-frame-wrap">
+
+      <!-- ╔══════════════════════════════════════════════════════════════╗
+           ║  ★  SWAP THIS URL — LINE TO UPDATE  ★                      ║
+           ║                                                              ║
+           ║  Replace PLACEHOLDER_EMBED_URL below with either:           ║
+           ║                                                              ║
+           ║  Option A — Google Slides:                                   ║
+           ║    1. Upload M05_Slides.pptx to Google Drive                 ║
+           ║    2. File → Share → Publish to web → Embed tab              ║
+           ║    3. Copy the src="..." URL from the <iframe> code          ║
+           ║    4. Paste it here (keep the surrounding quotes)            ║
+           ║                                                              ║
+           ║  Option B — GitHub Pages:                                    ║
+           ║    1. Push M05_Slides_Viewer.html to mmejza/MKT472-public    ║
+           ║    2. URL will be:                                           ║
+           ║       https://mmejza.github.io/MKT472-public/               ║
+           ║           modules/M05_.../slides/M05_Slides_Viewer.html     ║
+           ║    3. Paste that URL here                                    ║
+           ║                                                              ║
+           ╚══════════════════════════════════════════════════════════════╝ -->
+
+      <iframe
+        id="slide-iframe"
+        src="PLACEHOLDER_EMBED_URL"
+        allowfullscreen
+        title="M05 Slide Deck — Market Segmentation and Segmentation Strategies"
+        aria-label="Slide deck viewer for Module 5"
+      ></iframe>
+
+      <!-- Placeholder shown when src is still PLACEHOLDER_EMBED_URL -->
+      <div class="slide-placeholder" id="slide-placeholder">
+        <div class="pl-icon">🖥</div>
+        <div class="pl-title">Slides Not Yet Linked</div>
+        <div class="pl-note">The slide deck URL has not been configured. Contact your instructor if you see this message after the module opens.</div>
+        <div class="pl-badge">Pending Deployment</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <!-- GATE 1 WARNING -->
+    <div class="sidebar-section">
+      <div class="sidebar-hdr">⚠ Before Gate 2</div>
+      <div class="gate1-callout">
+        <strong>Gate 1 tests 5 topics not in these slides.</strong> If you have not yet found them in Chapter 5, do not take Gate 2. Review the Module Overview page for the full list with page references.
+      </div>
+    </div>
+
+    <!-- SLIDE INDEX -->
+    <div class="sidebar-section">
+      <div class="sidebar-hdr">Slide Index (32 slides)</div>
+      <ul class="slide-index">
+        <li>
+          <div class="si-num teal-flag">1</div>
+          <div class="si-body"><div class="si-title">Title</div></div>
+        </li>
+        <li>
+          <div class="si-num">2</div>
+          <div class="si-body">
+            <div class="si-title">Learning Objectives <span class="tag tag-lo">LO1–LO6</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num gate-flag">3</div>
+          <div class="si-body">
+            <div class="si-title">What Chapter 5 Covers Beyond This Deck <span class="tag tag-gate">Gate 1</span></div>
+            <div class="si-note">5 chapter-exclusive topics with page refs</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">4</div>
+          <div class="si-body">
+            <div class="si-title">Market Segmentation — Definition <span class="tag tag-lo">LO1</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">5</div>
+          <div class="si-body">
+            <div class="si-title">Needs-Based vs. Demographic-First <span class="tag tag-lo">LO1</span></div>
+            <div class="si-note">Side-by-side contrast; correct sequence vs. the trap</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">6</div>
+          <div class="si-body">
+            <div class="si-title">The 7-Step Segmentation Process <span class="tag tag-lo">LO2</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">7</div>
+          <div class="si-body">
+            <div class="si-title">Toothpaste Market — Diagnostic Table <span class="tag tag-lo">LO2</span></div>
+            <div class="si-note">Predict before next slide</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num gate-flag">8</div>
+          <div class="si-body">
+            <div class="si-title">Forces Shaping Consumer Needs <span class="tag tag-lo">LO1</span> <span class="tag tag-gate">Gate 1</span></div>
+            <div class="si-note">B2B forces in Chapter 5 Fig. 5-6 — not on slides</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">9</div>
+          <div class="si-body">
+            <div class="si-title">Female Investor Segments — Steps 1 &amp; 2 Output <span class="tag tag-lo">LO2</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num gate-flag">10</div>
+          <div class="si-body">
+            <div class="si-title">Segment Attractiveness Framework <span class="tag tag-lo">LO3</span> <span class="tag tag-gate">Gate 1</span></div>
+            <div class="si-note">Sub-factors in Ch. 5 Fig. 5-10 — not on slides</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">11</div>
+          <div class="si-body">
+            <div class="si-title">Attractiveness — Two Segments Compared <span class="tag tag-lo">LO3</span></div>
+            <div class="si-note">Diagnostic — predict before slide 12</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">12</div>
+          <div class="si-body">
+            <div class="si-title">Attractiveness Reveal <span class="tag tag-lo">LO3</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">13</div>
+          <div class="si-body">
+            <div class="si-title">NMC and Marketing ROI Formulas <span class="tag tag-lo">LO4</span> <span class="tag tag-calc">Calc</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num amber-flag">14</div>
+          <div class="si-body">
+            <div class="si-title">Segment Profitability — Setup <span class="tag tag-lo">LO4</span> <span class="tag tag-calc">Calc</span></div>
+            <div class="si-note">Attempt before slide 15</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">15</div>
+          <div class="si-body">
+            <div class="si-title">Segment Profitability — Solution <span class="tag tag-lo">LO4</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">16</div>
+          <div class="si-body">
+            <div class="si-title">The Targeting Trap <span class="tag tag-lo">LO4</span> <span class="tag tag-trap">Trap</span></div>
+            <div class="si-note">Highest NMC ≠ best target for resource-constrained firms</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">17</div>
+          <div class="si-body">
+            <div class="si-title">Targeting Strategy Spectrum <span class="tag tag-lo">LO5</span></div>
+            <div class="si-note">Mass → Large → Adjacent → Multi → Niche → Subsegment</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">18</div>
+          <div class="si-body">
+            <div class="si-title">James Hardie — Mass Market → Segmentation <span class="tag tag-lo">LO5</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">19</div>
+          <div class="si-body">
+            <div class="si-title">Positioning Statement — Four-Element Template <span class="tag tag-lo">LO6</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num amber-flag">20</div>
+          <div class="si-body">
+            <div class="si-title">Positioning — Evaluate the Voss Example <span class="tag tag-lo">LO6</span></div>
+            <div class="si-note">Attempt before slide 21</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">21</div>
+          <div class="si-body">
+            <div class="si-title">Positioning — Solution <span class="tag tag-lo">LO6</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num gate-flag">22</div>
+          <div class="si-body">
+            <div class="si-title">CRM — Three Strategies <span class="tag tag-lo">LO5</span> <span class="tag tag-gate">Gate 1</span></div>
+            <div class="si-note">Full CRM program types in Ch. 5 pp. 181–184</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num amber-flag">23</div>
+          <div class="si-body">
+            <div class="si-title">Segment Portfolio Decision — Practice <span class="tag tag-lo">LO4</span> <span class="tag tag-calc">Calc</span></div>
+            <div class="si-note">Attempt before lecture video</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">24</div>
+          <div class="si-body">
+            <div class="si-title">Gasoline Station Multi-Segment Strategy <span class="tag tag-lo">LO5</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">25</div>
+          <div class="si-body">
+            <div class="si-title">Multi-Segment vs. Mass-Market Results <span class="tag tag-lo">LO5</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num gate-flag">26</div>
+          <div class="si-body">
+            <div class="si-title">Segment Strategy Acid Test <span class="tag tag-lo">LO6</span> <span class="tag tag-gate">Gate 1</span></div>
+            <div class="si-note">Acid test mechanics in Ch. 5 pp. 172–173</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num amber-flag">27</div>
+          <div class="si-body">
+            <div class="si-title">Build a Positioning Statement — Apex Athletic <span class="tag tag-lo">LO6</span> <span class="tag tag-calc">Calc</span></div>
+            <div class="si-note">Attempt before slide 28</div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">28</div>
+          <div class="si-body">
+            <div class="si-title">Positioning Statement — Solution <span class="tag tag-lo">LO6</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">29</div>
+          <div class="si-body">
+            <div class="si-title">The Size Trap <span class="tag tag-lo">LO3</span> <span class="tag tag-trap">Trap</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">30</div>
+          <div class="si-body">
+            <div class="si-title">Subsegment Strategy — James Hardie Detail <span class="tag tag-lo">LO5</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num">31</div>
+          <div class="si-body">
+            <div class="si-title">Positioning to Marketing Mix — Step 7 <span class="tag tag-lo">LO6</span></div>
+          </div>
+        </li>
+        <li>
+          <div class="si-num teal-flag">32</div>
+          <div class="si-body">
+            <div class="si-title">Bridge — Complete Gate 2 to Unlock Lecture</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- CHAPTER CONNECTIONS -->
+    <div class="sidebar-section">
+      <div class="sidebar-hdr">Chapter Connections</div>
+      <ul class="ch-conn-list">
+        <li>
+          <div class="ch-conn-title">Needs-based sequencing (Slides 4–6)</div>
+          <div class="ch-conn-ref">Fig. 5-2, pp. 157–165 — Full 7-step process with segment identification detail</div>
+        </li>
+        <li>
+          <div class="ch-conn-title">Segment attractiveness sub-factors (Slide 10)</div>
+          <div class="ch-conn-ref">Fig. 5-10, pp. 165–167 — Full sub-factor list; health insurance pivot case (Fig. 5-11)</div>
+        </li>
+        <li>
+          <div class="ch-conn-title">NMC and ROI formulas (Slides 13–15)</div>
+          <div class="ch-conn-ref">Fig. 5-12, pp. 168–170 — Silicon sealants three-segment NMC comparison (lecture works through this)</div>
+        </li>
+        <li>
+          <div class="ch-conn-title">CRM strategies (Slide 22)</div>
+          <div class="ch-conn-ref">pp. 181–187 — Mass personalization, mass customization, CRM; touch points; database marketing</div>
+        </li>
+        <li>
+          <div class="ch-conn-title">Acid test mechanics (Slide 26)</div>
+          <div class="ch-conn-ref">pp. 172–173 — How to administer storyboard test and interpret classification accuracy</div>
+        </li>
+      </ul>
+    </div>
+
+    <!-- LO REFERENCE -->
+    <div class="sidebar-section">
+      <div class="sidebar-hdr">Learning Objective Reference</div>
+      <ul class="lo-ref-list">
+        <li><div class="lor-badge">LO1</div><div class="lor-text">Needs-first vs. demographic-first sequencing (Slides 4–5, 8)</div></li>
+        <li><div class="lor-badge">LO2</div><div class="lor-text">7-step segmentation process and segment profiles (Slides 6–7, 9)</div></li>
+        <li><div class="lor-badge">LO3</div><div class="lor-text">Segment attractiveness framework (Slides 10–12, 29)</div></li>
+        <li><div class="lor-badge">LO4</div><div class="lor-text">NMC, ROS, ROI calculation and targeting trap (Slides 13–16, 23)</div></li>
+        <li><div class="lor-badge">LO5</div><div class="lor-text">Targeting strategy spectrum and CRM (Slides 17–18, 22, 24–25, 30)</div></li>
+        <li><div class="lor-badge">LO6</div><div class="lor-text">Positioning statement construction (Slides 19–21, 26–28, 31)</div></li>
+      </ul>
+    </div>
+
+  </div><!-- /sidebar -->
+</div><!-- /viewer-layout -->
+
+<!-- ═══════════════════ BOTTOM BAR ════════════════════════════════════════ -->
+<div class="bottom-bar">
+  <span>32 slides · M05 · Chapter 5 · Market Segmentation and Segmentation Strategies</span>
+  <span>After reviewing all slides → complete Gate 2 to unlock the lecture video</span>
+</div>
+
+<!-- ═══════════════════ DEPLOYMENT NOTE (remove before publishing) ════════ -->
+<div class="deploy-note">
+  <div class="dn-title">⚙ Instructor Deployment Note — Remove this section before publishing to students</div>
+  <p><strong>One line to update before this page is live:</strong> find the <code>&lt;iframe&gt;</code> tag in the slide panel and replace <code>PLACEHOLDER_EMBED_URL</code> with the actual slide URL.</p>
+  <p style="margin-top:8px;"><strong>Option A — Google Slides (recommended for quick deploy):</strong></p>
+  <ol>
+    <li>Upload <code>M05_Slides.pptx</code> to Google Drive</li>
+    <li>Open the file in Google Slides → File → Share → Publish to web</li>
+    <li>Click the <strong>Embed</strong> tab → copy the <code>src="..."</code> URL from the iframe code shown</li>
+    <li>In this HTML file, replace <code>PLACEHOLDER_EMBED_URL</code> with that URL</li>
+    <li>Also delete the <code>&lt;div class="slide-placeholder"&gt;</code> block (or it will show on top of the slides)</li>
+  </ol>
+  <p style="margin-top:8px;"><strong>Option B — GitHub Pages:</strong></p>
+  <ol>
+    <li>Push <code>M05_Slides_Viewer.html</code> to the <code>mmejza/MKT472-public</code> repo under <code>modules/M05/slides/</code></li>
+    <li>The live URL will be:<br>
+      <code>https://mmejza.github.io/MKT472-public/modules/M05/slides/M05_Slides_Viewer.html</code>
+    </li>
+    <li>Replace <code>PLACEHOLDER_EMBED_URL</code> with that URL and delete the placeholder div</li>
+  </ol>
+  <p style="margin-top:8px;"><strong>After updating the URL:</strong> delete this entire <code>&lt;div class="deploy-note"&gt;</code> block, save, and push to the public repo. Then paste the final HTML into the Canvas page RCE.</p>
+  <code>&lt;!-- ★ EXACT LINE TO UPDATE ★ --&gt;
+&lt;iframe
+  id="slide-iframe"
+  src="PLACEHOLDER_EMBED_URL"   ← replace this value
+  ...</code>
+</div>
+
+<!-- Hide placeholder if iframe loads successfully -->
+<script>
+  const iframe = document.getElementById('slide-iframe');
+  const placeholder = document.getElementById('slide-placeholder');
+  if (iframe && iframe.src && !iframe.src.includes('PLACEHOLDER')) {
+    if (placeholder) placeholder.style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
