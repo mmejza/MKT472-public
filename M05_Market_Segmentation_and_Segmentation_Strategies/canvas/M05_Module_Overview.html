@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 — M05 Module Overview</title>
+<style>
+  /* ── RESET & BASE ─────────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Barlow', 'Segoe UI', Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1a2530;
+    background: #ffffff;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 0 48px 0;
+  }
+
+  /* ── DESIGN TOKENS ────────────────────────────────────────── */
+  :root {
+    --teal:   #0D9B87;
+    --navy:   #0F2027;
+    --amber:  #E6A800;
+    --lteal:  #E0F2EF;
+    --lgray:  #F4F6F7;
+    --border: #D0D8E0;
+    --text:   #1a2530;
+    --muted:  #5a6a7a;
+  }
+
+  /* ── HEADER BANNER ────────────────────────────────────────── */
+  .page-header {
+    background: var(--navy);
+    padding: 32px 36px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 6px;
+    background: var(--teal);
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 4px;
+    background: var(--amber);
+  }
+  .header-eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 8px;
+  }
+  .header-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 6px;
+  }
+  .header-subtitle {
+    font-size: 14px;
+    color: #a0c8c0;
+    margin-bottom: 14px;
+  }
+  .header-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 14px;
+  }
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(13,155,135,0.18);
+    border: 1px solid rgba(13,155,135,0.35);
+    border-radius: 4px;
+    padding: 3px 10px;
+    font-size: 12px;
+    color: #b0e8e0;
+    font-weight: 600;
+  }
+
+  /* ── CONTENT WRAPPER ──────────────────────────────────────── */
+  .content { padding: 0 36px; }
+
+  /* ── SECTION HEADERS ──────────────────────────────────────── */
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin: 32px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 2px solid var(--teal);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* ── FRAMING BLOCK ────────────────────────────────────────── */
+  .framing {
+    background: var(--lteal);
+    border-left: 4px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    padding: 18px 20px;
+    margin: 20px 0;
+  }
+  .framing p { margin-bottom: 10px; font-size: 14.5px; line-height: 1.65; }
+  .framing p:last-child { margin-bottom: 0; }
+  .framing strong { color: var(--navy); }
+
+  /* ── PREREQ CALLOUT ───────────────────────────────────────── */
+  .prereq-callout {
+    background: #FFF8E6;
+    border: 1px solid #F0C940;
+    border-left: 4px solid var(--amber);
+    border-radius: 0 6px 6px 0;
+    padding: 14px 18px;
+    margin: 18px 0;
+    font-size: 13.5px;
+  }
+  .prereq-callout .prereq-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8a6000;
+    margin-bottom: 5px;
+  }
+  .prereq-callout p { color: #4a3800; margin: 0; }
+
+  /* ── LEARNING OBJECTIVES ──────────────────────────────────── */
+  .lo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 4px 0;
+  }
+  @media (max-width: 620px) { .lo-grid { grid-template-columns: 1fr; } }
+  .lo-card {
+    background: var(--lgray);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 12px 14px;
+    display: flex;
+    gap: 10px;
+  }
+  .lo-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--teal);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .lo-content { flex: 1; }
+  .lo-bloom {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--teal);
+    margin-bottom: 3px;
+  }
+  .lo-text { font-size: 13px; line-height: 1.5; color: var(--text); }
+
+  /* ── TWO-GATE MODEL ───────────────────────────────────────── */
+  .gate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 4px 0;
+  }
+  @media (max-width: 580px) { .gate-grid { grid-template-columns: 1fr; } }
+  .gate-card {
+    border-radius: 6px;
+    padding: 16px;
+    border: 1px solid var(--border);
+  }
+  .gate-card.gate1 { background: #f0faf8; border-top: 3px solid var(--teal); }
+  .gate-card.gate2 { background: #f5f3ff; border-top: 3px solid #7c5ccc; }
+  .gate-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .gate1 .gate-label { color: var(--teal); }
+  .gate2 .gate-label { color: #5a3ea0; }
+  .gate-name { font-size: 15px; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+  .gate-specs { list-style: none; }
+  .gate-specs li {
+    font-size: 12.5px;
+    color: var(--muted);
+    padding: 3px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+  }
+  .gate-specs li:last-child { border-bottom: none; }
+  .gate-specs li span:last-child { font-weight: 600; color: var(--text); }
+
+  /* ── CHAPTER-EXCLUSIVE LIST ───────────────────────────────── */
+  .exclusive-list {
+    list-style: none;
+    margin: 4px 0;
+  }
+  .exclusive-list li {
+    display: flex;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    background: var(--lgray);
+    margin-bottom: 6px;
+    border: 1px solid var(--border);
+    font-size: 13.5px;
+    align-items: flex-start;
+  }
+  .excl-num {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    background: var(--navy);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--amber);
+    margin-top: 1px;
+  }
+  .excl-body { flex: 1; }
+  .excl-title { font-weight: 700; color: var(--navy); margin-bottom: 2px; }
+  .excl-ref { font-size: 11.5px; color: var(--muted); }
+
+  /* ── MODULE SEQUENCE ──────────────────────────────────────── */
+  .sequence-list { list-style: none; margin: 4px 0; counter-reset: seq; }
+  .sequence-list li {
+    counter-increment: seq;
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+    font-size: 13.5px;
+  }
+  .sequence-list li:last-child { border-bottom: none; }
+  .seq-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    background: var(--teal);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 2px;
+  }
+  .seq-num.gate-item { background: var(--amber); color: var(--navy); }
+  .seq-num.locked { background: var(--muted); }
+  .seq-body { flex: 1; }
+  .seq-title { font-weight: 700; color: var(--navy); }
+  .seq-meta {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .seq-time { }
+  .seq-pts {
+    font-weight: 700;
+    color: var(--teal);
+  }
+  .seq-unlocks { font-style: italic; }
+
+  /* ── GRADING TABLE ────────────────────────────────────────── */
+  .grade-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13.5px;
+    margin: 4px 0;
+  }
+  .grade-table th {
+    background: var(--navy);
+    color: #fff;
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+  .grade-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+  .grade-table tr:nth-child(even) td { background: var(--lgray); }
+  .grade-table tr.total-row td {
+    background: var(--lteal);
+    font-weight: 700;
+    color: var(--navy);
+    border-top: 2px solid var(--teal);
+  }
+  .pts-badge {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    border-radius: 4px;
+    padding: 1px 8px;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 36px;
+    text-align: center;
+  }
+  .pts-badge.zero { background: var(--muted); }
+  .pts-badge.large { background: var(--navy); }
+
+  /* ── TIPS BOX ─────────────────────────────────────────────── */
+  .tips-box {
+    background: var(--lgray);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 16px 18px;
+    margin: 6px 0;
+  }
+  .tips-box ul { padding-left: 18px; margin: 0; }
+  .tips-box li { font-size: 13.5px; padding: 3px 0; line-height: 1.55; }
+  .tips-box li strong { color: var(--navy); }
+
+  /* ── FOOTER ───────────────────────────────────────────────── */
+  .page-footer {
+    margin-top: 40px;
+    padding: 16px 36px;
+    background: var(--navy);
+    font-size: 11.5px;
+    color: #6a8a9a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .page-footer span { color: var(--teal); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HEADER ═══════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="header-eyebrow">MKT 472 · Module 05 · Chapter 5</div>
+  <div class="header-title">Market Segmentation and Segmentation Strategies</div>
+  <div class="header-subtitle">Who do you serve — and who do you walk away from?</div>
+  <div class="header-meta">
+    <span class="meta-chip">⏱ 4.3–5.5 hours total</span>
+    <span class="meta-chip">📖 Chapter 5</span>
+    <span class="meta-chip">⚖ 200 points</span>
+    <span class="meta-chip">Part II · Market Analysis</span>
+  </div>
+</div>
+
+<!-- ═══════════════════ CONTENT ══════════════════════════════════════════ -->
+<div class="content">
+
+  <!-- FRAMING -->
+  <div class="section-title">Module Overview</div>
+  <div class="framing">
+    <p>This module develops the analytical and strategic foundations of market segmentation. You will learn that segmentation is not a classification exercise — it is a <strong>resource allocation decision</strong>. The firm that segments well knows which customers to pursue, which to ignore, and how to build a value proposition that survives competitive pressure.</p>
+    <p>The module is analytically demanding in a specific way: you already know how to calculate NMC from Module 2. The challenge here is using NMC <em>across multiple segments simultaneously</em> to make a targeting recommendation under resource constraints. This is a portfolio problem, not a computation problem — and most students will not see that distinction until it is made explicit.</p>
+    <p>The central intellectual challenge is the <strong>targeting trap</strong>: the instinct to pursue the largest segment or the highest-NMC segment. The module's case is designed so that the "obvious" target is the wrong answer.</p>
+  </div>
+
+  <!-- PREREQ CALLOUT -->
+  <div class="prereq-callout">
+    <div class="prereq-label">⚠ Prerequisite Check — M02 NMC Fluency Required</div>
+    <p>This module assumes you can calculate Net Marketing Contribution (NMC) fluently from Module 2. If you are uncertain, review the M02 App 3 worksheets before starting App 3 in this module. NMC is a tool here, not the subject — we are using it to compare segments and make targeting decisions.</p>
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+  <div class="section-title">Learning Objectives</div>
+  <div class="lo-grid">
+
+    <div class="lo-card">
+      <div class="lo-badge">LO1</div>
+      <div class="lo-content">
+        <div class="lo-bloom">Analysis</div>
+        <div class="lo-text">Explain why needs-first sequencing produces more actionable segments than demographic-first approaches; identify conditions under which demographic-first segmentation fails.</div>
+      </div>
+    </div>
+
+    <div class="lo-card">
+      <div class="lo-badge">LO2</div>
+      <div class="lo-content">
+        <div class="lo-bloom">Application</div>
+        <div class="lo-text">Apply the 7-step needs-based segmentation process: group by need, identify segment characteristics, and construct a complete segment profile.</div>
+      </div>
+    </div>
+
+    <div class="lo-card">
+      <div class="lo-badge">LO3</div>
+      <div class="lo-content">
+        <div class="lo-bloom">Evaluation</div>
+        <div class="lo-text">Assess segment attractiveness by scoring market demand, competitive intensity, and market access; explain why a firm with high share in an unattractive segment should consider exiting it.</div>
+      </div>
+    </div>
+
+    <div class="lo-card">
+      <div class="lo-badge">LO4</div>
+      <div class="lo-content">
+        <div class="lo-bloom">Application / Analysis</div>
+        <div class="lo-text">Calculate NMC, Marketing ROS, and Marketing ROI across segments; identify which segment combination maximizes total return under a resource constraint.</div>
+      </div>
+    </div>
+
+    <div class="lo-card">
+      <div class="lo-badge">LO5</div>
+      <div class="lo-content">
+        <div class="lo-bloom">Analysis</div>
+        <div class="lo-text">Distinguish among mass-market, large-segment, adjacent, multi-segment, niche, and subsegment targeting strategies; select the right strategy given resource level and competitive position.</div>
+      </div>
+    </div>
+
+    <div class="lo-card">
+      <div class="lo-badge">LO6</div>
+      <div class="lo-content">
+        <div class="lo-bloom">Synthesis</div>
+        <div class="lo-text">Construct a complete 4-element positioning statement (target market, competitive set, value proposition, reasons to believe); evaluate statements for completeness and strategic alignment.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TWO-GATE MODEL -->
+  <div class="section-title">How This Module Works — The Two-Gate Model</div>
+  <p style="font-size:13.5px;color:var(--muted);margin-bottom:12px;">Every module uses a two-gate reading accountability structure. Gate 1 certifies you read before viewing slides. Gate 2 certifies you synthesized reading with slides before watching the lecture. You cannot game both gates — Gate 2 requires both sources.</p>
+  <div class="gate-grid">
+    <div class="gate-card gate1">
+      <div class="gate-label">Gate 1</div>
+      <div class="gate-name">Basic Reading Check</div>
+      <ul class="gate-specs">
+        <li><span>Unlocks</span><span>Slide Deck Viewer</span></li>
+        <li><span>Questions</span><span>5 (chapter-only)</span></li>
+        <li><span>Threshold</span><span>70% to proceed</span></li>
+        <li><span>Attempts</span><span>2</span></li>
+        <li><span>Feedback</span><span>Per-answer + page ref</span></li>
+        <li><span>Points</span><span>0 (access control only)</span></li>
+      </ul>
+    </div>
+    <div class="gate-card gate2">
+      <div class="gate-label">Gate 2</div>
+      <div class="gate-name">Applied Reading Check</div>
+      <ul class="gate-specs">
+        <li><span>Unlocks</span><span>Lecture Video</span></li>
+        <li><span>Questions</span><span>8 (chapter + slides)</span></li>
+        <li><span>Threshold</span><span>Graded as submitted</span></li>
+        <li><span>Attempts</span><span>1</span></li>
+        <li><span>Feedback</span><span>Correct/Incorrect only</span></li>
+        <li><span>Points</span><span>20 pts · 10% of module</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CHAPTER-EXCLUSIVE CONTENT -->
+  <div class="section-title">What the Chapter Covers Beyond the Slide Deck</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Gate 1 tests these topics. They do not appear on the slides. You must find them in Chapter 5 before taking Gate 1.</p>
+  <ul class="exclusive-list">
+    <li>
+      <div class="excl-num">1</div>
+      <div class="excl-body">
+        <div class="excl-title">The Demographic Trap</div>
+        <div class="excl-ref">pp. 163–164 — Why segmenting first on demographics can produce up to 729 meaningless combinations and why starting with needs avoids this.</div>
+      </div>
+    </li>
+    <li>
+      <div class="excl-num">2</div>
+      <div class="excl-body">
+        <div class="excl-title">Health Insurance Pivot Case</div>
+        <div class="excl-ref">Fig. 5-11, pp. 167–168 — A firm held 40% share in its least-valuable segment (revenue index 100) while Premium Buyers had index 181. What this means strategically.</div>
+      </div>
+    </li>
+    <li>
+      <div class="excl-num">3</div>
+      <div class="excl-body">
+        <div class="excl-title">CRM Program Types</div>
+        <div class="excl-ref">pp. 181–184 — Mass personalization vs. mass customization vs. customer relationship management. What triggers each level and when CRM is justified.</div>
+      </div>
+    </li>
+    <li>
+      <div class="excl-num">4</div>
+      <div class="excl-body">
+        <div class="excl-title">Customer Touch Points</div>
+        <div class="excl-ref">pp. 186–187 — Direct vs. indirect touch points; why indirect touch points (news, word-of-mouth) are sometimes more powerful in acquiring new customers.</div>
+      </div>
+    </li>
+    <li>
+      <div class="excl-num">5</div>
+      <div class="excl-body">
+        <div class="excl-title">B2B Segmentation Forces</div>
+        <div class="excl-ref">Fig. 5-6, pp. 161–162 — Firm demographics, company culture, and usage behaviors as B2B parallels to consumer segmentation forces. Growth-oriented entrepreneurs vs. cost-focused sustainers.</div>
+      </div>
+    </li>
+  </ul>
+
+  <!-- MODULE SEQUENCE -->
+  <div class="section-title">Module Sequence</div>
+  <p style="font-size:13px;color:var(--muted);margin-bottom:10px;">Complete each item before the next unlocks. Estimated total: 4.3–5.5 hours.</p>
+  <ol class="sequence-list">
+    <li>
+      <div class="seq-num">1</div>
+      <div class="seq-body">
+        <div class="seq-title">Module Overview &amp; Orientation (this page)</div>
+        <div class="seq-meta"><span class="seq-time">5 min</span><span class="seq-unlocks">→ Unlocks Chapter 5 Reading</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">2</div>
+      <div class="seq-body">
+        <div class="seq-title">Chapter 5 Reading + Study Focus Guide</div>
+        <div class="seq-meta"><span class="seq-time">70–80 min</span><span class="seq-unlocks">→ Unlocks Gate 1</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num gate-item">3</div>
+      <div class="seq-body">
+        <div class="seq-title">Gate 1: Basic Reading Check</div>
+        <div class="seq-meta"><span class="seq-time">10–12 min</span><span class="seq-pts">0 pts · access control</span><span class="seq-unlocks">→ Unlocks Slide Deck</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">4</div>
+      <div class="seq-body">
+        <div class="seq-title">Slide Deck Viewer</div>
+        <div class="seq-meta"><span class="seq-time">15–20 min</span><span class="seq-unlocks">→ Unlocks Gate 2</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num gate-item">5</div>
+      <div class="seq-body">
+        <div class="seq-title">Gate 2: Applied Reading Check</div>
+        <div class="seq-meta"><span class="seq-time">20–23 min</span><span class="seq-pts">20 pts · 10% of module</span><span class="seq-unlocks">→ Unlocks Lecture Video</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">6</div>
+      <div class="seq-body">
+        <div class="seq-title">Lecture Video: "Who Do You Serve — and Who Do You Walk Away From?"</div>
+        <div class="seq-meta"><span class="seq-time">~30 min</span><span class="seq-pts">10 pts (2 graded check Qs)</span><span class="seq-unlocks">→ Unlocks Apps</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">7</div>
+      <div class="seq-body">
+        <div class="seq-title">App 1: Needs-Based Segmentation Builder + Worksheet</div>
+        <div class="seq-meta"><span class="seq-time">20–25 min</span><span class="seq-pts">10 pts</span><span class="seq-unlocks">→ Unlocks App 2</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">8</div>
+      <div class="seq-body">
+        <div class="seq-title">App 2: Segment Attractiveness Scorer + Worksheet</div>
+        <div class="seq-meta"><span class="seq-time">15–20 min</span><span class="seq-pts">10 pts</span><span class="seq-unlocks">→ Unlocks App 3</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">9</div>
+      <div class="seq-body">
+        <div class="seq-title">App 3: Segment Portfolio Optimizer + Worksheet</div>
+        <div class="seq-meta"><span class="seq-time">20–25 min</span><span class="seq-pts">10 pts</span><span class="seq-unlocks">→ Unlocks Discussion</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">10</div>
+      <div class="seq-body">
+        <div class="seq-title">Discussion: The Segment You Should Walk Away From</div>
+        <div class="seq-meta"><span class="seq-time">20–25 min</span><span class="seq-pts">20 pts · due 3 days before case</span><span class="seq-unlocks">→ Unlocks Case</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num">11</div>
+      <div class="seq-body">
+        <div class="seq-title">Case Analysis: Apex Athletic</div>
+        <div class="seq-meta"><span class="seq-time">55–65 min</span><span class="seq-pts">120 pts · 60% of module</span><span class="seq-unlocks">→ Unlocks Self-Check</span></div>
+      </div>
+    </li>
+    <li>
+      <div class="seq-num locked">12</div>
+      <div class="seq-body">
+        <div class="seq-title">Module Self-Check (optional)</div>
+        <div class="seq-meta"><span class="seq-time">10 min</span><span class="seq-pts">0 pts · formative only</span></div>
+      </div>
+    </li>
+  </ol>
+
+  <!-- GRADING SUMMARY -->
+  <div class="section-title">Grading Summary — 200 Points Total</div>
+  <table class="grade-table">
+    <thead>
+      <tr>
+        <th>Assessment</th>
+        <th>Points</th>
+        <th>% of Module</th>
+        <th>Grading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Gate 1: Basic Reading Check</td>
+        <td><span class="pts-badge zero">0</span></td>
+        <td>Access control only</td>
+        <td>Auto · 70% threshold</td>
+      </tr>
+      <tr>
+        <td>Gate 2: Applied Reading Check</td>
+        <td><span class="pts-badge">20</span></td>
+        <td>10%</td>
+        <td>Auto-graded</td>
+      </tr>
+      <tr>
+        <td>In-Video Check Questions (2 graded of 3)</td>
+        <td><span class="pts-badge">10</span></td>
+        <td>5%</td>
+        <td>Q2 auto · Q1 &amp; Q3 instructor</td>
+      </tr>
+      <tr>
+        <td>App Worksheets (3 × 10 pts)</td>
+        <td><span class="pts-badge">30</span></td>
+        <td>15%</td>
+        <td>Auto-graded</td>
+      </tr>
+      <tr>
+        <td>Discussion: The Segment You Should Walk Away From</td>
+        <td><span class="pts-badge">20</span></td>
+        <td>10%</td>
+        <td>Rubric</td>
+      </tr>
+      <tr>
+        <td>Case Analysis: Apex Athletic</td>
+        <td><span class="pts-badge large">120</span></td>
+        <td>60%</td>
+        <td>Rubric</td>
+      </tr>
+      <tr class="total-row">
+        <td>Total</td>
+        <td><span class="pts-badge large">200</span></td>
+        <td>100%</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- STUDY TIPS -->
+  <div class="section-title">Before You Begin — Study Tips</div>
+  <div class="tips-box">
+    <ul>
+      <li><strong>Read Chapter 5 actively.</strong> The slide deck and lecture video deliberately leave out five topics that Gate 1 tests. The chapter covers more than this module's slides — that is intentional. Find the five chapter-exclusive topics listed above before you take Gate 1.</li>
+      <li><strong>Complete the apps before the case.</strong> App 3 (Segment Portfolio Optimizer) is a direct preview of the Apex Athletic case structure. Students who run the Silicon Sealants scenario in App 3 before opening the case arrive knowing what questions to ask.</li>
+      <li><strong>Post the discussion before starting the case.</strong> The discussion argument you write will become the VP Sales rebuttal you need in Case Part 4. The sequence is intentional.</li>
+      <li><strong>Show your calculation steps.</strong> The case rubric awards partial credit only when intermediate steps are visible — Revenue, Gross Profit, M&amp;S Expense, NMC, then ROI. A final number without a work trail earns reduced credit regardless of accuracy.</li>
+      <li><strong>The biggest market is not always the best target.</strong> One segment in the Apex Athletic case will appear attractive by size alone. It is not. Your attractiveness analysis and NMC calculations will reveal why.</li>
+    </ul>
+  </div>
+
+</div><!-- /content -->
+
+<!-- FOOTER -->
+<div class="page-footer">
+  <span>MKT 472 · Module 05 · Chapter 5</span>
+  <span style="color:#6a8a9a;">Market Segmentation and Segmentation Strategies · Part II: Market Analysis</span>
+</div>
+
+</body>
+</html>
