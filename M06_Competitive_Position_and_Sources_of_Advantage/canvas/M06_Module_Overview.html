@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>M06 – Competitive Position and Sources of Advantage</title>
+<style>
+  /* ── LIGHT ENERGY SYSTEM ─────────────────────────────────────────── */
+  :root {
+    --teal:   #0D9B87;
+    --navy:   #0F2027;
+    --amber:  #E6A800;
+    --white:  #FFFFFF;
+    --offwhite: #F4F6F7;
+    --lgray:  #E8ECEE;
+    --mgray:  #9AA5AB;
+    --dgray:  #3D4F57;
+    --red:    #C0392B;
+    --green:  #1A6B3C;
+    --body-width: 860px;
+    --font-head: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --font-body: 'Barlow', Arial, sans-serif;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--navy);
+    background: var(--white);
+    max-width: var(--body-width);
+    margin: 0 auto;
+    padding: 0 16px 60px;
+  }
+
+  /* ── MODULE HEADER ───────────────────────────────────────────────── */
+  .module-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 28px 32px 20px;
+    margin: 0 -16px 0;
+    border-bottom: 5px solid var(--amber);
+  }
+  .module-header .eyebrow {
+    font-family: var(--font-head);
+    font-size: 13px;
+    letter-spacing: 2px;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .module-header h1 {
+    font-family: var(--font-head);
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .module-header .subtitle {
+    font-size: 14px;
+    color: var(--mgray);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 10px;
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .module-header .subtitle span { display: flex; align-items: center; gap: 5px; }
+  .meta-pill {
+    display: inline-block;
+    background: rgba(13,155,135,0.25);
+    border: 1px solid var(--teal);
+    border-radius: 3px;
+    padding: 2px 10px;
+    font-size: 12px;
+    color: var(--teal);
+    font-family: var(--font-head);
+    letter-spacing: 0.5px;
+    margin-right: 6px;
+  }
+
+  /* ── SECTION HEADINGS ────────────────────────────────────────────── */
+  .section-heading {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    border-left: 4px solid var(--teal);
+    padding: 6px 0 6px 12px;
+    margin: 36px 0 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── CENTRAL QUESTION BLOCK ──────────────────────────────────────── */
+  .central-question {
+    background: var(--navy);
+    border-left: 6px solid var(--amber);
+    padding: 20px 24px;
+    margin: 24px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .central-question .label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .central-question p {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.4;
+  }
+
+  /* ── BODY PROSE ──────────────────────────────────────────────────── */
+  .prose { margin: 14px 0; color: var(--dgray); line-height: 1.7; }
+  .prose strong { color: var(--navy); }
+
+  /* ── THREE QUESTIONS GRID ────────────────────────────────────────── */
+  .three-q {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+  .three-q .q-card {
+    background: var(--offwhite);
+    border-top: 4px solid var(--teal);
+    padding: 16px;
+    border-radius: 0 0 4px 4px;
+  }
+  .three-q .q-card .num {
+    font-family: var(--font-head);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .three-q .q-card p {
+    font-size: 13.5px;
+    color: var(--dgray);
+    line-height: 1.5;
+  }
+
+  /* ── PARAMETER TABLE ─────────────────────────────────────────────── */
+  .param-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .param-table tr:nth-child(odd) td { background: var(--lgray); }
+  .param-table tr:nth-child(even) td { background: var(--white); }
+  .param-table td {
+    padding: 9px 14px;
+    border: 1px solid var(--lgray);
+    color: var(--dgray);
+  }
+  .param-table td:first-child {
+    font-weight: 600;
+    color: var(--navy);
+    width: 38%;
+  }
+
+  /* ── GATE EXPLAINER ──────────────────────────────────────────────── */
+  .gate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin: 16px 0;
+  }
+  .gate-card {
+    border: 2px solid var(--lgray);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .gate-card .gate-header {
+    padding: 10px 16px;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .gate-card.g1 .gate-header { background: var(--navy); color: var(--white); }
+  .gate-card.g2 .gate-header { background: var(--teal); color: var(--white); }
+  .gate-card .badge {
+    background: var(--amber);
+    color: var(--navy);
+    border-radius: 2px;
+    padding: 1px 7px;
+    font-size: 11px;
+    font-family: var(--font-head);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .gate-card .gate-body {
+    padding: 14px 16px;
+    background: var(--white);
+  }
+  .gate-card .gate-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .gate-card .gate-body li {
+    padding: 5px 0;
+    font-size: 13.5px;
+    color: var(--dgray);
+    border-bottom: 1px solid var(--lgray);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+  }
+  .gate-card .gate-body li:last-child { border-bottom: none; }
+  .gate-card .gate-body li .val {
+    color: var(--navy);
+    font-weight: 600;
+    font-size: 13px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .gate-card .gate-body .gate-note {
+    margin-top: 10px;
+    padding: 8px 10px;
+    background: var(--offwhite);
+    border-radius: 3px;
+    font-size: 12.5px;
+    color: var(--mgray);
+    font-style: italic;
+  }
+
+  /* ── WHY TWO GATES ───────────────────────────────────────────────── */
+  .why-box {
+    background: #EBF7F5;
+    border: 1px solid var(--teal);
+    border-left: 5px solid var(--teal);
+    padding: 14px 18px;
+    margin: 14px 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 14px;
+    color: var(--dgray);
+    line-height: 1.6;
+  }
+  .why-box strong { color: var(--teal); }
+
+  /* ── CHAPTER-EXCLUSIVE TOPICS ────────────────────────────────────── */
+  .gate1-topics {
+    margin: 16px 0;
+    border: 2px solid var(--navy);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .gate1-topics .gt-header {
+    background: var(--navy);
+    color: var(--white);
+    padding: 10px 16px;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gate1-topics .gt-header .warn-badge {
+    background: var(--amber);
+    color: var(--navy);
+    padding: 2px 10px;
+    border-radius: 2px;
+    font-size: 11px;
+    font-family: var(--font-head);
+    font-weight: 700;
+  }
+  .gate1-topics .gt-item {
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--lgray);
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    gap: 10px;
+    align-items: start;
+    background: var(--white);
+  }
+  .gate1-topics .gt-item:nth-child(even) { background: var(--offwhite); }
+  .gate1-topics .gt-item:last-child { border-bottom: none; }
+  .gate1-topics .gt-num {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--amber);
+    line-height: 1.2;
+  }
+  .gate1-topics .gt-content .gt-title {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 14px;
+    margin-bottom: 2px;
+  }
+  .gate1-topics .gt-content .gt-desc {
+    font-size: 13px;
+    color: var(--dgray);
+    line-height: 1.5;
+  }
+  .gate1-topics .gt-ref {
+    font-size: 11.5px;
+    color: var(--teal);
+    font-style: italic;
+    white-space: nowrap;
+    padding-top: 2px;
+  }
+
+  /* ── STUDY FOCUS GUIDE ───────────────────────────────────────────── */
+  .focus-guide {
+    margin: 16px 0;
+    border: 1px solid var(--lgray);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  .focus-guide .fg-header {
+    background: var(--teal);
+    color: var(--white);
+    padding: 10px 16px;
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .focus-guide .fg-subhead {
+    background: #EBF7F5;
+    padding: 8px 16px;
+    font-size: 12.5px;
+    color: var(--teal);
+    font-style: italic;
+    border-bottom: 1px solid var(--lgray);
+  }
+  .focus-guide ol {
+    margin: 0;
+    padding: 0;
+    counter-reset: guide;
+    list-style: none;
+  }
+  .focus-guide li {
+    counter-increment: guide;
+    padding: 10px 16px 10px 48px;
+    border-bottom: 1px solid var(--lgray);
+    font-size: 14px;
+    color: var(--dgray);
+    line-height: 1.5;
+    position: relative;
+  }
+  .focus-guide li:last-child { border-bottom: none; }
+  .focus-guide li::before {
+    content: counter(guide);
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    width: 22px;
+    height: 22px;
+    background: var(--navy);
+    color: var(--amber);
+    border-radius: 50%;
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .focus-guide li .tag {
+    display: inline-block;
+    background: var(--lgray);
+    color: var(--mgray);
+    border-radius: 2px;
+    padding: 1px 6px;
+    font-size: 11px;
+    font-family: var(--font-head);
+    margin-left: 6px;
+    vertical-align: middle;
+  }
+  .focus-guide li .tag.g1 { background: #E8F4F2; color: var(--teal); }
+  .focus-guide li .tag.g2 { background: #EBF1F8; color: #2B6CB0; }
+
+  /* ── MODULE MAP ──────────────────────────────────────────────────── */
+  .module-map {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mm-item {
+    display: grid;
+    grid-template-columns: 36px 1fr auto;
+    gap: 12px;
+    align-items: center;
+    padding: 10px 14px;
+    border-left: 3px solid var(--lgray);
+    transition: border-color 0.15s;
+  }
+  .mm-item:nth-child(odd) { background: var(--offwhite); }
+  .mm-item:nth-child(even) { background: var(--white); }
+  .mm-item.highlight { border-left-color: var(--teal); }
+  .mm-item.gate { border-left-color: var(--amber); }
+  .mm-num {
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--mgray);
+    text-align: center;
+  }
+  .mm-item.highlight .mm-num { color: var(--teal); }
+  .mm-item.gate .mm-num { color: var(--amber); }
+  .mm-content .mm-title {
+    font-weight: 600;
+    color: var(--navy);
+    font-size: 14px;
+    margin-bottom: 1px;
+  }
+  .mm-content .mm-desc {
+    font-size: 12.5px;
+    color: var(--mgray);
+  }
+  .mm-time {
+    font-family: var(--font-head);
+    font-size: 12px;
+    color: var(--mgray);
+    white-space: nowrap;
+    text-align: right;
+  }
+  .mm-badge {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 3px;
+  }
+  .mm-badge.gate1 { background: var(--navy); color: var(--amber); }
+  .mm-badge.gate2 { background: var(--teal); color: var(--white); }
+  .mm-badge.case  { background: var(--amber); color: var(--navy); }
+
+  /* ── LO TABLE ────────────────────────────────────────────────────── */
+  .lo-list {
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .lo-row {
+    display: grid;
+    grid-template-columns: 40px 100px 1fr;
+    gap: 0;
+    border: 1px solid var(--lgray);
+    border-radius: 3px;
+    overflow: hidden;
+    align-items: stretch;
+  }
+  .lo-num {
+    background: var(--navy);
+    color: var(--amber);
+    font-family: var(--font-head);
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lo-bloom {
+    background: var(--teal);
+    color: var(--white);
+    font-family: var(--font-head);
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6px;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+  .lo-text {
+    padding: 9px 12px;
+    font-size: 13.5px;
+    color: var(--dgray);
+    line-height: 1.5;
+    background: var(--white);
+  }
+
+  /* ── CALLOUT BOX ─────────────────────────────────────────────────── */
+  .callout {
+    border: 1px solid var(--amber);
+    background: #FFF9E6;
+    border-left: 5px solid var(--amber);
+    padding: 14px 18px;
+    margin: 16px 0;
+    border-radius: 0 4px 4px 0;
+  }
+  .callout .callout-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--amber);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .callout p { font-size: 14px; color: var(--dgray); line-height: 1.6; }
+
+  /* ── DIVIDER ─────────────────────────────────────────────────────── */
+  .divider {
+    height: 2px;
+    background: linear-gradient(to right, var(--teal), transparent);
+    margin: 32px 0;
+    border: none;
+  }
+
+  /* ── FOOTER ──────────────────────────────────────────────────────── */
+  .page-footer {
+    margin-top: 40px;
+    padding: 16px 0;
+    border-top: 1px solid var(--lgray);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--mgray);
+  }
+  .page-footer .pf-module { font-family: var(--font-head); font-weight: 600; color: var(--navy); }
+
+  @media (max-width: 600px) {
+    .three-q { grid-template-columns: 1fr; }
+    .gate-grid { grid-template-columns: 1fr; }
+    .lo-row { grid-template-columns: 36px 80px 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── MODULE HEADER ────────────────────────────────────────────────── -->
+<div class="module-header">
+  <div class="eyebrow">MKT 472 &nbsp;·&nbsp; Module 06 &nbsp;·&nbsp; Chapter 6</div>
+  <h1>Competitive Position<br>and Sources of Advantage</h1>
+  <div class="subtitle">
+    <span><span class="meta-pill">~4.4–5.6 hrs</span></span>
+    <span><span class="meta-pill">Chapter 6</span></span>
+    <span><span class="meta-pill">2 Gates</span></span>
+    <span><span class="meta-pill">2 Apps</span></span>
+    <span><span class="meta-pill">Case: Vantage Industrial</span></span>
+  </div>
+</div>
+
+<!-- ── THE ADVANTAGE SELECTION PROBLEM ─────────────────────────────── -->
+<div class="section-heading">The Advantage Selection Problem</div>
+
+<div class="central-question">
+  <div class="label">Central Question This Module Answers</div>
+  <p>Given a firm's actual cost structure, product performance, and market position — which source of competitive advantage should it commit to, and what happens when it refuses to choose?</p>
+</div>
+
+<p class="prose">
+  This module develops your capacity to analyze competitive position <strong>analytically</strong> — not as a list of strategic options but as a set of measurable, quantifiable advantages with predictable profit implications.
+</p>
+
+<p class="prose">
+  The central intellectual challenge is the <strong>advantage selection problem</strong>: you will be presented with three legitimate sources of competitive advantage (cost, differentiation, marketing) and shown that choosing the wrong one — or pursuing all three — produces worse outcomes than focused commitment to the one that fits the firm's actual data. The Prisoner's Dilemma in Chapter 6 makes this concrete: firms that misread competitive dynamics destroy industry-wide profit in pursuit of individual gain.
+</p>
+
+<div class="three-q">
+  <div class="q-card">
+    <div class="num">01</div>
+    <p>What is our source of competitive advantage — and is it actually defensible given the data?</p>
+  </div>
+  <div class="q-card">
+    <div class="num">02</div>
+    <p>Who are our real competitors, and how do we measure the gaps that actually matter?</p>
+  </div>
+  <div class="q-card">
+    <div class="num">03</div>
+    <p>Is this industry worth competing in at all — or are we fighting over a shrinking pool?</p>
+  </div>
+</div>
+
+<p class="prose">
+  This module is analytically demanding. You will compute Variable Cost Advantage Indices, calculate Differentiation Advantage scores using importance-weighted performance ratings, derive Relative Market Share, and score Industry Attractiveness across six Porter forces. All calculations feed a case that requires a specific, quantitatively grounded strategy — not generic advice.
+</p>
+
+<!-- ── MODULE PARAMETERS ─────────────────────────────────────────────── -->
+<div class="section-heading">Module at a Glance</div>
+
+<table class="param-table">
+  <tr><td>Textbook</td><td>Chapter 6: Competitive Position and Sources of Advantage</td></tr>
+  <tr><td>Estimated time</td><td>4.4–5.6 hours total (all activities)</td></tr>
+  <tr><td>Summer session load</td><td>2–3 modules per week — plan ~5 hours for this module</td></tr>
+  <tr><td>Prerequisites</td><td>M03–M05 (Market Analysis sequence); introductory marketing principles</td></tr>
+  <tr><td>Lecture video</td><td>~30 minutes in two segments</td></tr>
+  <tr><td>Interactive apps</td><td>2 apps with worksheets (~45–60 minutes combined)</td></tr>
+  <tr><td>Case analysis</td><td>Vantage Industrial (~55–65 minutes)</td></tr>
+</table>
+
+<!-- ── LEARNING OBJECTIVES ───────────────────────────────────────────── -->
+<div class="section-heading">Learning Objectives</div>
+
+<p class="prose">By the end of this module you will be able to:</p>
+
+<div class="lo-list">
+  <div class="lo-row">
+    <div class="lo-num">1</div>
+    <div class="lo-bloom">Evaluate</div>
+    <div class="lo-text">Assess a firm's most defensible source of competitive advantage given its cost structure, product performance, and market position; explain why pursuing all three sources simultaneously undermines competitive clarity.</div>
+  </div>
+  <div class="lo-row">
+    <div class="lo-num">2</div>
+    <div class="lo-bloom">Apply</div>
+    <div class="lo-text">Calculate a Variable Cost Advantage Index, a Differentiation Advantage score using importance-performance analysis, and a Relative Market Share index; interpret each metric's strategic implication.</div>
+  </div>
+  <div class="lo-row">
+    <div class="lo-num">3</div>
+    <div class="lo-bloom">Analyze</div>
+    <div class="lo-text">Distinguish the three sub-types of marketing advantage (market share, product line, channel); compute Relative Market Share; explain the mechanism linking market dominance to profitability.</div>
+  </div>
+  <div class="lo-row">
+    <div class="lo-num">4</div>
+    <div class="lo-bloom">Analyze</div>
+    <div class="lo-text">Analyze the Prisoner's Dilemma payoff structure; identify the Nash equilibrium outcome; explain why mutual price-cutting destroys industry profit even though it is individually rational for each firm.</div>
+  </div>
+  <div class="lo-row">
+    <div class="lo-num">5</div>
+    <div class="lo-bloom">Apply</div>
+    <div class="lo-text">Classify competitor behaviors as signals of financial distress or marketing leadership failure; distinguish competitive benchmarking (outside industry) from competitor benchmarking; describe the three-step benchmarking process.</div>
+  </div>
+  <div class="lo-row">
+    <div class="lo-num">6</div>
+    <div class="lo-bloom">Synthesize</div>
+    <div class="lo-text">Score industry attractiveness across six Porter forces; compute an Industry Attractiveness Index; predict profit potential and recommend whether to enter, hold, or exit a competitive environment.</div>
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ── TWO-GATE MODEL ────────────────────────────────────────────────── -->
+<div class="section-heading">How This Module Works: The Two-Gate Model</div>
+
+<div class="why-box">
+  <strong>Why two gates?</strong> A single quiz before the lecture creates a weakness: students who score just above 70% proceed without genuinely internalizing the chapter. The two-gate model closes this gap. Gate 1 certifies you read <em>before</em> viewing slides. Gate 2 certifies you synthesized reading <em>with</em> slides before viewing the lecture video. Students who game Gate 1 cannot game Gate 2 — the applied questions require both sources.
+</div>
+
+<div class="gate-grid">
+  <div class="gate-card g1">
+    <div class="gate-header">
+      Gate 1: Basic Reading Check
+      <span class="badge">ACCESS CONTROL</span>
+    </div>
+    <div class="gate-body">
+      <ul>
+        <li><span>Purpose</span><span class="val">Unlocks slide deck</span></li>
+        <li><span>Questions</span><span class="val">5 MC questions</span></li>
+        <li><span>Content source</span><span class="val">Chapter 6 only</span></li>
+        <li><span>Threshold</span><span class="val">70% to pass</span></li>
+        <li><span>Attempts</span><span class="val">2 attempts</span></li>
+        <li><span>Point value</span><span class="val">0 pts (access only)</span></li>
+        <li><span>Time estimate</span><span class="val">10–12 minutes</span></li>
+        <li><span>Feedback</span><span class="val">Per-answer with page reference</span></li>
+      </ul>
+      <div class="gate-note">Tests content in Chapter 6 that does <em>not</em> appear in the slides or lecture. You must read the chapter to pass.</div>
+    </div>
+  </div>
+
+  <div class="gate-card g2">
+    <div class="gate-header">
+      Gate 2: Applied Reading Check
+      <span class="badge">GRADED</span>
+    </div>
+    <div class="gate-body">
+      <ul>
+        <li><span>Purpose</span><span class="val">Unlocks lecture video</span></li>
+        <li><span>Questions</span><span class="val">8 questions (4 numeric, 4 MC)</span></li>
+        <li><span>Content source</span><span class="val">Chapter + slides synthesis</span></li>
+        <li><span>Threshold</span><span class="val">No threshold — graded as-is</span></li>
+        <li><span>Attempts</span><span class="val">1 attempt</span></li>
+        <li><span>Point value</span><span class="val">20 pts = 10% of module grade</span></li>
+        <li><span>Time estimate</span><span class="val">20–24 minutes</span></li>
+        <li><span>Feedback</span><span class="val">Correct / Incorrect only</span></li>
+      </ul>
+      <div class="gate-note">Requires calculation — VCAI, Differentiation Index, RMS, IAI — using numbers from the slides you just viewed. Chapter alone is not sufficient.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CHAPTER-EXCLUSIVE TOPICS ─────────────────────────────────────── -->
+<div class="section-heading">What Chapter 6 Covers Beyond the Slides</div>
+
+<p class="prose">Gate 1 tests five topics that appear <strong>only in Chapter 6</strong> — not in the slide deck, not in the lecture video. Hunt for these while you read.</p>
+
+<div class="gate1-topics">
+  <div class="gt-header">
+    Five Topics Gate 1 Will Test
+    <span class="warn-badge">NOT IN SLIDES</span>
+  </div>
+
+  <div class="gt-item">
+    <div class="gt-num">1</div>
+    <div class="gt-content">
+      <div class="gt-title">Customer Value Map &amp; Fair Price Line</div>
+      <div class="gt-desc">Customer value = Fair price − Actual price. A brand priced <em>above</em> the fair price line delivers negative customer value, predicting defection and profitability decline. The value map is the diagnostic tool.</div>
+    </div>
+    <div class="gt-ref">pp. 191–192 + Appendix 6.1</div>
+  </div>
+
+  <div class="gt-item">
+    <div class="gt-num">2</div>
+    <div class="gt-content">
+      <div class="gt-title">Prisoner's Dilemma Payoff Structure</div>
+      <div class="gt-desc">When both competitors cut price simultaneously, total industry contribution falls below the "both hold" outcome. Each firm is individually rational but collectively destructive. This is not a theoretical curiosity — it is how real price wars begin.</div>
+    </div>
+    <div class="gt-ref">pp. 218–219, Fig 6-24</div>
+  </div>
+
+  <div class="gt-item">
+    <div class="gt-num">3</div>
+    <div class="gt-content">
+      <div class="gt-title">Competitive Benchmarking (Non-Competitor)</div>
+      <div class="gt-desc">A three-step process: identify a competitive weakness → find a world-class performer <em>outside</em> the industry → adapt their process. Xerox used American Express; General Mills used hospital food service. Different from competitor benchmarking.</div>
+    </div>
+    <div class="gt-ref">pp. 215–216</div>
+  </div>
+
+  <div class="gt-item">
+    <div class="gt-num">4</div>
+    <div class="gt-content">
+      <div class="gt-title">Competitor Intelligence Signals (Figure 6-17)</div>
+      <div class="gt-desc">Two distinct lists: behaviors signaling a competitor is under <em>cash-flow pressure</em> (financial distress) versus behaviors signaling <em>lack of marketing leadership</em>. Each list opens a different strategic window. Knowing which is which is the skill.</div>
+    </div>
+    <div class="gt-ref">p. 211, Fig 6-17</div>
+  </div>
+
+  <div class="gt-item">
+    <div class="gt-num">5</div>
+    <div class="gt-content">
+      <div class="gt-title">Sustainable Advantage Erosion</div>
+      <div class="gt-desc">GM, NBC, and Sears each lost dominant competitive positions — not by cutting quality or raising prices, but because external competitive forces overtook them. Grove's core message: "Only the Paranoid Survive." Competitive monitoring is a management discipline, not a periodic exercise.</div>
+    </div>
+    <div class="gt-ref">pp. 194–195</div>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="callout-label">Strategic Tip</div>
+  <p>Gate 1 is not designed to trick you. It tests whether you actually read Chapter 6 rather than relying on the slides alone. Every question targets content that is in the chapter but absent from the slide deck. If you read carefully, these questions are straightforward.</p>
+</div>
+
+<hr class="divider" />
+
+<!-- ── STUDY FOCUS GUIDE ─────────────────────────────────────────────── -->
+<div class="section-heading">Study Focus Guide — 8 Questions to Answer While Reading</div>
+
+<p class="prose">Answer these questions as you read Chapter 6. They are drawn directly from Gate 1 and Gate 2 targets. Students who complete these eight questions before viewing the slides consistently perform better on both gates.</p>
+
+<div class="focus-guide">
+  <div class="fg-header">8 Reading Questions — Chapter 6</div>
+  <div class="fg-subhead">Complete these while reading. Do not skip ahead to check answers — work through the chapter to find them.</div>
+  <ol>
+    <li>
+      According to Figure 6-2, what is the relationship between a firm's primary source of competitive advantage and its pre-tax ROI? What happens to ROI when a firm has no clear advantage?
+      <span class="tag g1">Gate 1</span>
+    </li>
+    <li>
+      Define customer value using the fair price line concept. If a brand's actual price is <em>above</em> the fair price line, what does this predict about customer retention and profitability?
+      <span class="tag g1">Gate 1</span>
+    </li>
+    <li>
+      What is the Variable Cost Advantage Index? Write the formula. What does an index value below 100 mean? What does a value above 100 mean?
+      <span class="tag g2">Gate 2</span>
+    </li>
+    <li>
+      In an importance-performance differentiation analysis, when does a firm <em>earn</em> importance points for a given customer benefit? What is the threshold rule, and why is it necessary?
+      <span class="tag g2">Gate 2</span>
+    </li>
+    <li>
+      Explain the Prisoner's Dilemma in a two-competitor pricing context. Identify the Nash equilibrium. Why do both firms cut price even though both end up worse than if both had held?
+      <span class="tag g1">Gate 1</span>
+    </li>
+    <li>
+      List the six Porter forces. For each force, identify whether a <em>high</em> or <em>low</em> level of that force makes an industry <em>more attractive</em>. Pay special attention to exit barriers — the direction surprises most people.
+      <span class="tag g2">Gate 2</span>
+    </li>
+    <li>
+      What is the difference between competitive benchmarking and competitor benchmarking? Describe the three-step competitive benchmarking process. Why benchmark outside the industry?
+      <span class="tag g1">Gate 1</span>
+    </li>
+    <li>
+      Find Figure 6-17. List two behaviors that signal a competitor is in financial distress and two that signal a lack of marketing leadership. What is the key difference in how you should respond to each?
+      <span class="tag g1">Gate 1</span>
+    </li>
+  </ol>
+</div>
+
+<hr class="divider" />
+
+<!-- ── MODULE SEQUENCE ───────────────────────────────────────────────── -->
+<div class="section-heading">Module Sequence &amp; Time Estimates</div>
+
+<p class="prose">Each item must be marked complete before the next unlocks. Items are listed in order.</p>
+
+<div class="module-map">
+  <div class="mm-item">
+    <div class="mm-num">1</div>
+    <div class="mm-content">
+      <div class="mm-title">Module Overview &amp; Orientation</div>
+      <div class="mm-desc">You are here — read this page, then proceed to the chapter</div>
+    </div>
+    <div class="mm-time">5 min</div>
+  </div>
+
+  <div class="mm-item">
+    <div class="mm-num">2</div>
+    <div class="mm-content">
+      <div class="mm-title">Chapter 6 Reading</div>
+      <div class="mm-desc">Use the study focus guide above while you read</div>
+    </div>
+    <div class="mm-time">70–80 min</div>
+  </div>
+
+  <div class="mm-item gate">
+    <div class="mm-num">3</div>
+    <div class="mm-content">
+      <div class="mm-badge gate1">GATE 1</div>
+      <div class="mm-title">Basic Reading Check</div>
+      <div class="mm-desc">5 chapter-exclusive questions · 70% threshold · 2 attempts · 0 pts</div>
+    </div>
+    <div class="mm-time">10–12 min</div>
+  </div>
+
+  <div class="mm-item highlight">
+    <div class="mm-num">4</div>
+    <div class="mm-content">
+      <div class="mm-title">Slide Deck Viewer</div>
+      <div class="mm-desc">~28 slides covering all six metrics and Porter framework</div>
+    </div>
+    <div class="mm-time">15–20 min</div>
+  </div>
+
+  <div class="mm-item gate">
+    <div class="mm-num">5</div>
+    <div class="mm-content">
+      <div class="mm-badge gate2">GATE 2</div>
+      <div class="mm-title">Applied Reading Check</div>
+      <div class="mm-desc">8 questions (4 numeric) · 1 attempt · 20 pts = 10% of module grade</div>
+    </div>
+    <div class="mm-time">20–24 min</div>
+  </div>
+
+  <div class="mm-item highlight">
+    <div class="mm-num">6</div>
+    <div class="mm-content">
+      <div class="mm-title">Lecture Video: "Choosing and Defending a Competitive Position"</div>
+      <div class="mm-desc">Two segments — strategic argument (~12 min) + competitive environment analysis (~18 min)</div>
+    </div>
+    <div class="mm-time">~30 min</div>
+  </div>
+
+  <div class="mm-item">
+    <div class="mm-num">7</div>
+    <div class="mm-content">
+      <div class="mm-title">App 1: Competitive Advantage Profiler + Worksheet</div>
+      <div class="mm-desc">Input firm metrics; watch which CA source is genuinely accessible · 10 pts</div>
+    </div>
+    <div class="mm-time">25–30 min</div>
+  </div>
+
+  <div class="mm-item">
+    <div class="mm-num">8</div>
+    <div class="mm-content">
+      <div class="mm-title">App 2: Industry Attractiveness Scorer + Worksheet</div>
+      <div class="mm-desc">Score six Porter forces; compare two industries side-by-side · 10 pts</div>
+    </div>
+    <div class="mm-time">20–25 min</div>
+  </div>
+
+  <div class="mm-item">
+    <div class="mm-num">9</div>
+    <div class="mm-content">
+      <div class="mm-title">Discussion: "Hold or Fold? The Price War Trap"</div>
+      <div class="mm-desc">150–300 words + 1 peer reply · 20 pts · Due 3 days before case</div>
+    </div>
+    <div class="mm-time">20–25 min</div>
+  </div>
+
+  <div class="mm-item">
+    <div class="mm-num">10</div>
+    <div class="mm-content">
+      <div class="mm-badge case">CASE</div>
+      <div class="mm-title">Case Analysis: Vantage Industrial</div>
+      <div class="mm-desc">4 parts · calculations required · 125 pts = 62.5% of module grade</div>
+    </div>
+    <div class="mm-time">55–65 min</div>
+  </div>
+
+  <div class="mm-item">
+    <div class="mm-num">11</div>
+    <div class="mm-content">
+      <div class="mm-title">Module Self-Check (Optional)</div>
+      <div class="mm-desc">5 ungraded practice questions · score below 80% → revisit lecture before case deadline</div>
+    </div>
+    <div class="mm-time">10 min</div>
+  </div>
+</div>
+
+<!-- ── COUNTERINTUITIVE RESULT WARNING ──────────────────────────────── -->
+<div class="callout" style="border-color: var(--red); background: #FEF2F2; margin-top: 28px;">
+  <div class="callout-label" style="color: var(--red);">One Result Will Surprise You</div>
+  <p>The case analysis contains a result that contradicts most students' initial intuition. The lecture video warns you this is coming — and explains exactly why the data produces it. Students who engage seriously with the lecture before the case consistently handle the counterintuitive result better than those who skip ahead.</p>
+</div>
+
+<!-- ── FOOTER ─────────────────────────────────────────────────────────── -->
+<div class="page-footer">
+  <div class="pf-module">MKT 472 &nbsp;·&nbsp; Module 06 &nbsp;·&nbsp; Competitive Position and Sources of Advantage</div>
+  <div>Chapter 6 &nbsp;·&nbsp; Canvas LMS</div>
+</div>
+
+</body>
+</html>
