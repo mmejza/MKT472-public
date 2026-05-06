@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>M06 Study Focus Guide — Chapter 6 Reading</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ── RESET & ROOT ──────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --teal:    #0D9B87;
+  --navy:    #0F2027;
+  --amber:   #E6A800;
+  --lgray:   #F2F4F5;
+  --mgray:   #D0D5D8;
+  --dgray:   #3D4F57;
+  --white:   #FFFFFF;
+  --red:     #C0392B;
+  --teal-lt: #EBF7F5;
+  --navy-lt: #E8ECF0;
+  --amber-lt:#FFF8E1;
+  --font-h:  'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+  --font-b:  'Barlow', Arial, sans-serif;
+  --max:     820px;
+}
+
+body {
+  font-family: var(--font-b);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--navy);
+  background: var(--white);
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 0 56px;
+}
+
+/* ── PAGE HEADER ───────────────────────────────────────────────────── */
+.page-header {
+  background: var(--navy);
+  padding: 28px 32px 22px;
+  border-bottom: 5px solid var(--amber);
+}
+.page-header .eyebrow {
+  font-family: var(--font-h);
+  font-size: 12px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--amber);
+  margin-bottom: 8px;
+}
+.page-header h1 {
+  font-family: var(--font-h);
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.page-header .subtitle {
+  font-family: var(--font-b);
+  font-size: 14px;
+  color: var(--mgray);
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255,255,255,.14);
+}
+
+/* ── BADGE ROW ─────────────────────────────────────────────────────── */
+.badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 16px 32px;
+  background: var(--lgray);
+  border-bottom: 1px solid var(--mgray);
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1px solid var(--mgray);
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  letter-spacing: 0.3px;
+}
+.badge .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.badge .dot.teal  { background: var(--teal); }
+.badge .dot.amber { background: var(--amber); }
+.badge .dot.navy  { background: var(--navy); }
+
+/* ── CONTENT WRAPPER ───────────────────────────────────────────────── */
+.content { padding: 0 32px; }
+
+/* ── SECTION HEADING ───────────────────────────────────────────────── */
+.sh {
+  font-family: var(--font-h);
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--navy);
+  border-left: 4px solid var(--teal);
+  padding: 5px 0 5px 12px;
+  margin: 32px 0 14px;
+}
+
+/* ── PURPOSE BLOCK ─────────────────────────────────────────────────── */
+.purpose {
+  background: var(--navy);
+  border-left: 6px solid var(--amber);
+  border-radius: 0 4px 4px 0;
+  padding: 18px 22px;
+  margin: 24px 0;
+}
+.purpose p {
+  font-family: var(--font-b);
+  font-size: 14.5px;
+  color: rgba(255,255,255,.88);
+  line-height: 1.7;
+}
+.purpose p + p { margin-top: 8px; }
+.purpose strong { color: var(--amber); }
+
+/* ── GATE CARDS ────────────────────────────────────────────────────── */
+.gate-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin: 14px 0;
+}
+.gate-card {
+  border-radius: 4px;
+  overflow: hidden;
+  border: 2px solid var(--mgray);
+}
+.gate-card .gc-head {
+  padding: 10px 16px;
+  font-family: var(--font-h);
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.gate-card.g1 .gc-head { background: var(--navy); color: var(--white); }
+.gate-card.g2 .gc-head { background: var(--teal); color: var(--white); }
+.gc-badge {
+  background: var(--amber);
+  color: var(--navy);
+  font-family: var(--font-h);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+}
+.gate-card .gc-body { background: var(--white); padding: 12px 16px; }
+.gc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--lgray);
+  font-size: 13px;
+  color: var(--dgray);
+  gap: 8px;
+}
+.gc-row:last-child { border-bottom: none; }
+.gc-row .label { font-weight: 500; }
+.gc-row .val { font-weight: 700; color: var(--navy); text-align: right; }
+.gc-note {
+  margin-top: 10px;
+  padding: 8px 10px;
+  background: var(--lgray);
+  border-radius: 3px;
+  font-size: 12px;
+  color: var(--dgray);
+  font-style: italic;
+}
+
+/* ── STRATEGY TIPS GRID ────────────────────────────────────────────── */
+.tips-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 14px 0;
+}
+.tip-card {
+  background: var(--lgray);
+  border-top: 4px solid var(--teal);
+  border-radius: 0 0 4px 4px;
+  padding: 14px 16px;
+}
+.tip-card .tip-icon {
+  font-size: 20px;
+  margin-bottom: 6px;
+  display: block;
+}
+.tip-card .tip-title {
+  font-family: var(--font-h);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+}
+.tip-card p {
+  font-size: 13px;
+  color: var(--dgray);
+  line-height: 1.55;
+}
+
+/* ── QUESTION LIST ─────────────────────────────────────────────────── */
+.q-list { display: flex; flex-direction: column; gap: 14px; margin: 14px 0; }
+
+.q-item {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Gate 1 style */
+.q-item.g1 { border: 1.5px solid var(--teal); border-left: 5px solid var(--teal); }
+.q-item.g1 .q-num {
+  background: var(--teal);
+  color: var(--white);
+}
+
+/* Gate 2 style */
+.q-item.g2 { border: 1.5px solid var(--navy); border-left: 5px solid var(--navy); }
+.q-item.g2 .q-num {
+  background: var(--navy);
+  color: var(--amber);
+}
+
+.q-num {
+  font-family: var(--font-h);
+  font-size: 22px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 0;
+  min-height: 100%;
+  flex-shrink: 0;
+}
+
+.q-body {
+  background: var(--white);
+  padding: 12px 16px 12px 14px;
+}
+
+.q-tag {
+  display: inline-block;
+  font-family: var(--font-h);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-bottom: 7px;
+}
+.q-item.g1 .q-tag { background: var(--teal-lt); color: var(--teal); }
+.q-item.g2 .q-tag { background: var(--navy-lt); color: var(--navy); }
+
+.q-text {
+  font-family: var(--font-b);
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.q-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.q-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-h);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dgray);
+  background: var(--lgray);
+  border-radius: 2px;
+  padding: 3px 8px;
+}
+.q-loc .icon { opacity: 0.6; font-size: 11px; }
+
+.q-counterintuitive {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-h);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--red);
+  background: #FEF2F2;
+  border: 1px solid #F5C6CB;
+  border-radius: 2px;
+  padding: 3px 8px;
+  letter-spacing: 0.3px;
+}
+
+.q-hint {
+  font-family: var(--font-b);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--dgray);
+  line-height: 1.5;
+  padding-top: 6px;
+  border-top: 1px solid var(--lgray);
+}
+
+/* Section divider label between gate groups */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 12px;
+}
+.section-label .sl-line {
+  flex: 1;
+  height: 1px;
+}
+.section-label.g1 .sl-line { background: var(--teal); }
+.section-label.g2 .sl-line { background: var(--navy); }
+.section-label .sl-pill {
+  font-family: var(--font-h);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+.section-label.g1 .sl-pill { background: var(--teal); color: var(--white); }
+.section-label.g2 .sl-pill { background: var(--navy); color: var(--amber); }
+
+/* ── AMBER CALLOUT ─────────────────────────────────────────────────── */
+.amber-callout {
+  background: var(--amber-lt);
+  border: 2px solid var(--amber);
+  border-left: 6px solid var(--amber);
+  border-radius: 0 4px 4px 0;
+  padding: 16px 20px;
+  margin: 28px 0;
+}
+.amber-callout .ac-label {
+  font-family: var(--font-h);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8A6200;
+  margin-bottom: 8px;
+}
+.amber-callout p {
+  font-size: 14px;
+  color: var(--navy);
+  line-height: 1.65;
+}
+.amber-callout strong { color: #8A6200; }
+
+/* ── SEQUENCE FOOTER ───────────────────────────────────────────────── */
+.seq-footer {
+  margin-top: 32px;
+  border: 1px solid var(--mgray);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.seq-footer .sf-head {
+  background: var(--navy);
+  padding: 9px 18px;
+  font-family: var(--font-h);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.sf-steps {
+  display: flex;
+  align-items: stretch;
+  background: var(--white);
+}
+.sf-step {
+  flex: 1;
+  padding: 14px 16px;
+  border-right: 1px solid var(--mgray);
+  position: relative;
+}
+.sf-step:last-child { border-right: none; }
+.sf-step.current { background: var(--teal-lt); }
+.sf-step .sf-num {
+  font-family: var(--font-h);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.sf-step.current .sf-num { color: var(--teal); }
+.sf-step:not(.current) .sf-num { color: var(--mgray); }
+.sf-step .sf-label {
+  font-family: var(--font-h);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 3px;
+}
+.sf-step .sf-desc {
+  font-size: 12px;
+  color: var(--dgray);
+  line-height: 1.45;
+}
+.sf-step.current .sf-desc { color: var(--teal); font-weight: 500; }
+.sf-arrow {
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lgray);
+  font-size: 14px;
+  color: var(--mgray);
+  flex-shrink: 0;
+  padding: 0;
+}
+
+/* ── PAGE FOOTER ───────────────────────────────────────────────────── */
+.page-foot {
+  margin-top: 36px;
+  padding: 14px 32px;
+  border-top: 1px solid var(--mgray);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-h);
+  font-size: 12px;
+  color: var(--mgray);
+}
+
+/* ── RESPONSIVE ────────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .page-header { padding: 20px 18px 16px; }
+  .badge-row { padding: 12px 18px; }
+  .content { padding: 0 18px; }
+  .gate-grid { grid-template-columns: 1fr; }
+  .tips-grid { grid-template-columns: 1fr; }
+  .sf-steps { flex-direction: column; }
+  .sf-arrow { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ── PAGE HEADER ─────────────────────────────────────────────────────── -->
+<div class="page-header">
+  <div class="eyebrow">MKT 472 &nbsp;·&nbsp; Module 06 &nbsp;·&nbsp; Chapter 6 Reading</div>
+  <h1>Study Focus Guide</h1>
+  <div class="subtitle">
+    Chapter 6: Competitive Position and Sources of Advantage &nbsp;·&nbsp; Estimated reading time: 70–80 minutes
+  </div>
+</div>
+
+<!-- ── BADGE ROW ───────────────────────────────────────────────────────── -->
+<div class="badge-row">
+  <div class="badge"><span class="dot navy"></span>Chapter 6 &nbsp;|&nbsp; pp. 183–222</div>
+  <div class="badge"><span class="dot teal"></span>70–80 min reading</div>
+  <div class="badge"><span class="dot teal"></span>5 Gate 1 targets</div>
+  <div class="badge"><span class="dot navy"></span>3 Gate 2 targets</div>
+  <div class="badge"><span class="dot amber"></span>8 focus questions</div>
+</div>
+
+<div class="content">
+
+<!-- ── PURPOSE BLOCK ──────────────────────────────────────────────────── -->
+<div class="purpose" style="margin-top:26px;">
+  <p>This guide tells you exactly what to find, write down, and be ready to use before the gates close. <strong>Gate 1 tests five topics that appear only in the chapter</strong> — not in the slides, not in the lecture. If you skip or skim those sections, you will not pass Gate 1.</p>
+  <p><strong>Gate 2 tests whether you can apply what you read</strong> — in combination with the slide deck — to solve numeric problems. Three of Gate 2's eight questions draw directly from chapter data and formulas that are not repeated in the slides.</p>
+  <p>Questions 1–5 below target Gate 1 content. Questions 6–8 target the chapter-dependent portions of Gate 2. Answer all eight as you read — not after.</p>
+</div>
+
+<!-- ── GATE OVERVIEW CARDS ────────────────────────────────────────────── -->
+<div class="sh">Gate Overview</div>
+
+<div class="gate-grid">
+  <div class="gate-card g1">
+    <div class="gc-head">
+      Gate 1: Basic Reading Check
+      <span class="gc-badge">ACCESS CONTROL</span>
+    </div>
+    <div class="gc-body">
+      <div class="gc-row"><span class="label">Questions</span><span class="val">5 multiple choice</span></div>
+      <div class="gc-row"><span class="label">Content source</span><span class="val">Chapter 6 only</span></div>
+      <div class="gc-row"><span class="label">Threshold to pass</span><span class="val">70% (3.5 / 5)</span></div>
+      <div class="gc-row"><span class="label">Attempts</span><span class="val">2 attempts</span></div>
+      <div class="gc-row"><span class="label">Unlocks</span><span class="val">Slide Deck Viewer</span></div>
+      <div class="gc-row"><span class="label">Point value</span><span class="val">0 pts (access only)</span></div>
+      <div class="gc-note">Feedback after each question includes the page reference. If you miss it, you know exactly where to go back.</div>
+    </div>
+  </div>
+
+  <div class="gate-card g2">
+    <div class="gc-head">
+      Gate 2: Applied Reading Check
+      <span class="gc-badge">GRADED</span>
+    </div>
+    <div class="gc-body">
+      <div class="gc-row"><span class="label">Questions</span><span class="val">8 (numeric + MC)</span></div>
+      <div class="gc-row"><span class="label">Content source</span><span class="val">Chapter + slides synthesis</span></div>
+      <div class="gc-row"><span class="label">Threshold to pass</span><span class="val">None — graded as submitted</span></div>
+      <div class="gc-row"><span class="label">Attempts</span><span class="val">1 attempt only</span></div>
+      <div class="gc-row"><span class="label">Unlocks</span><span class="val">Lecture Video</span></div>
+      <div class="gc-row"><span class="label">Point value</span><span class="val">20 pts = 10% of module</span></div>
+      <div class="gc-note">Chapter alone is not enough for Gate 2. Complete the slide deck before attempting Gate 2.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── READING STRATEGY TIPS ──────────────────────────────────────────── -->
+<div class="sh">Reading Strategy for Chapter 6</div>
+
+<div class="tips-grid">
+  <div class="tip-card">
+    <span class="tip-icon">📍</span>
+    <div class="tip-title">Mark the Five Figures</div>
+    <p>Before reading, tab or highlight Fig 6-2 (competitive position–profitability), Fig 6-17 (competitor signals), Fig 6-24 (Prisoner's Dilemma payoff matrix), and Appendix 6.1 (customer value map). Gate 1 pulls from all four.</p>
+  </div>
+  <div class="tip-card">
+    <span class="tip-icon">✍️</span>
+    <div class="tip-title">Write Down the Formulas</div>
+    <p>The VCAI, Differentiation Index, and RMS formulas appear in both the chapter and the slides — but the chapter shows the derivation logic. Write the formula and its direction rule (what does a value above 100 mean?) before viewing the slides.</p>
+  </div>
+  <div class="tip-card">
+    <span class="tip-icon">⚠️</span>
+    <div class="tip-title">Slow Down at Exit Barriers</div>
+    <p>The direction of the exit barriers force in the IAI is the most commonly confused concept in this chapter. The chapter explains why. Read the explanation twice, write it in your own words, and check your understanding with Question 7 below.</p>
+  </div>
+  <div class="tip-card">
+    <span class="tip-icon">🔗</span>
+    <div class="tip-title">Connect the Three Tools</div>
+    <p>Chapter 6 presents three analytical tools: competitive advantage indices (VCAI, DI, RMS), competitor intelligence signals, and industry attractiveness scoring. These are not independent — the case asks you to use all three together. Notice how the chapter connects them.</p>
+  </div>
+</div>
+
+<!-- ── QUESTIONS ──────────────────────────────────────────────────────── -->
+<div class="sh">Eight Focus Questions — Answer These While Reading</div>
+
+<!-- Gate 1 section label -->
+<div class="section-label g1">
+  <div class="sl-line"></div>
+  <div class="sl-pill">Gate 1 &nbsp;·&nbsp; Chapter Only &nbsp;·&nbsp; Questions 1–5</div>
+  <div class="sl-line"></div>
+</div>
+
+<div class="q-list">
+
+  <!-- Q1: Customer Value Map & Fair Price Line -->
+  <div class="q-item g1">
+    <div class="q-num">1</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 1 · Chapter Only</div>
+      <div class="q-text">
+        According to the customer value map in Appendix 6.1, what does it mean when a brand is priced <em>above</em> the fair price line — and what does that predict about the firm's customer retention and profitability?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> pp. 191–192 + Appendix 6.1</span>
+        <span class="q-counterintuitive">⚠️ Counterintuitive</span>
+      </div>
+      <div class="q-hint">
+        Record the formula: Customer Value = _______ − _______. Then identify which SUV brand in the appendix has the most negative customer value. The result may surprise you — negative customer value does not require a bad product.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2: Prisoner's Dilemma -->
+  <div class="q-item g1">
+    <div class="q-num">2</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 1 · Chapter Only</div>
+      <div class="q-text">
+        In the Prisoner's Dilemma payoff matrix (Fig 6-24), which cell represents the Nash equilibrium — the outcome where neither firm can improve by changing its strategy — and why does each firm rationally choose that outcome even though both end up worse than if they had both held price?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> pp. 218–219, Fig 6-24</span>
+        <span class="q-counterintuitive">⚠️ Counterintuitive</span>
+      </div>
+      <div class="q-hint">
+        Draw the 2×2 matrix with the four contribution outcomes. Label each cell. Then identify which cell is the Nash equilibrium and write one sentence explaining why "both hold price" is NOT the equilibrium even though it produces better outcomes for both firms.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3: Competitive Benchmarking -->
+  <div class="q-item g1">
+    <div class="q-num">3</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 1 · Chapter Only</div>
+      <div class="q-text">
+        What is the three-step competitive benchmarking process described in the chapter, and why does it specify finding a world-class performer <em>outside</em> your industry rather than benchmarking against your nearest competitor?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> pp. 215–216</span>
+      </div>
+      <div class="q-hint">
+        Write the three steps in order. For the Xerox example: what was the competitive weakness, which outside company did they benchmark against, and what category did that company belong to? Answer those three questions before moving on.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q4: Competitor Intelligence Signals -->
+  <div class="q-item g1">
+    <div class="q-num">4</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 1 · Chapter Only</div>
+      <div class="q-text">
+        Figure 6-17 lists two distinct categories of competitor behavior signals. What is the difference between a signal of <em>financial distress</em> and a signal of <em>marketing leadership failure</em> — and why does it matter which category a competitor's behavior falls into?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> p. 211, Fig 6-17</span>
+      </div>
+      <div class="q-hint">
+        List two behaviors from each category. Then answer: if a competitor is laying off employees and cutting trade show attendance, which category does that fall into — and what strategic window does it open for your firm?
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5: Sustainable Advantage Erosion -->
+  <div class="q-item g1">
+    <div class="q-num">5</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 1 · Chapter Only</div>
+      <div class="q-text">
+        The chapter describes how GM, NBC, and Sears each lost dominant competitive positions. What was the common cause of their erosion, and what is the core strategic implication of Andrew Grove's "Only the Paranoid Survive" thesis for how firms should manage competitive advantage?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> pp. 194–195</span>
+      </div>
+      <div class="q-hint">
+        Write one sentence explaining why each firm lost its position — the cause was NOT poor product quality or price increases. Then write Grove's core argument in your own words. This is the chapter's answer to the question: how long does a competitive advantage last?
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.q-list -->
+
+<!-- Gate 2 section label -->
+<div class="section-label g2" style="margin-top:28px;">
+  <div class="sl-line"></div>
+  <div class="sl-pill">Gate 2 &nbsp;·&nbsp; Chapter + Slides &nbsp;·&nbsp; Questions 6–8</div>
+  <div class="sl-line"></div>
+</div>
+
+<div class="q-list">
+
+  <!-- Q6: VCAI formula -->
+  <div class="q-item g2">
+    <div class="q-num">6</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 2 · Chapter + Slides</div>
+      <div class="q-text">
+        Write out the Variable Cost Advantage Index formula from the chapter. Then apply it: if a firm's COGS is 52% of sales and the three nearest competitors have COGS of 58%, 61%, and 55% respectively, what is the VCAI and what does the resulting number mean?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> Ch. 6, VCAI section (see also Slide S6 and S10)</span>
+      </div>
+      <div class="q-hint">
+        Gate 2 will give you a different set of numbers — but the same formula. Record: (1) the formula, (2) the direction rule (index below 100 means _______, index above 100 means _______), and (3) this worked answer so you can check your Gate 2 calculation for consistency.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7: IAI direction rule -->
+  <div class="q-item g2">
+    <div class="q-num">7</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 2 · Chapter + Slides</div>
+      <div class="q-text">
+        For each of the six Porter forces, does a <em>high</em> level of that force make an industry more attractive or less attractive to compete in? List all six, and for any force where your initial intuition might be wrong, write a one-sentence explanation of the correct direction.
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> Ch. 6, Industry Attractiveness section (see also Slides S24–S27)</span>
+      </div>
+      <div class="q-hint">
+        Pay special attention to exit barriers — this is the most commonly confused force. The chapter explains why high exit barriers reduce attractiveness. Write the explanation in your own words before you see the slides. Gate 2 Q4 will ask you to calculate an IAI using a set of six force scores.
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8: Prisoner's Dilemma + industry context -->
+  <div class="q-item g2">
+    <div class="q-num">8</div>
+    <div class="q-body">
+      <div class="q-tag">Gate 2 · Chapter + Slides</div>
+      <div class="q-text">
+        If a firm competes in an industry with an above-average Industry Attractiveness Index, and the payoff matrix shows that cutting price is the dominant strategy for both competitors, should the firm cut price? What does the IAI add to the Prisoner's Dilemma analysis?
+      </div>
+      <div class="q-meta">
+        <span class="q-loc"><span class="icon">📖</span> pp. 218–219, Fig 6-24 + Ch. 6 IAI section</span>
+      </div>
+      <div class="q-hint">
+        Gate 2 Q8 is a best-answer question that integrates these two frameworks. The chapter doesn't give you a single formula for this — it requires reasoning. Draft your answer in 2–3 sentences now. Does a high IAI change the dominant strategy? Does it change the recommendation?
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.q-list -->
+
+<!-- ── AMBER CALLOUT ───────────────────────────────────────────────────── -->
+<div class="amber-callout">
+  <div class="ac-label">Highest-Probability Gate 1 Targets</div>
+  <p>
+    Three topics appear in virtually every Gate 1 version. If you can answer these from memory before you start the quiz, you are well-positioned: <strong>(1) The customer value formula and what a negative customer value predicts</strong> (pp. 191–192); <strong>(2) why mutual price-cutting is the Nash equilibrium even though "both hold" is better for both firms</strong> (pp. 218–219); and <strong>(3) the correct category for a competitor that is cutting headcount and reducing trade show presence</strong> (Fig 6-17). None of these answers appear anywhere in the slides — they require reading.
+  </p>
+</div>
+
+<!-- ── SEQUENCE FOOTER ─────────────────────────────────────────────────── -->
+<div class="sh">What Comes Next</div>
+
+<div class="seq-footer">
+  <div class="sf-head">Module 06 Sequence</div>
+  <div class="sf-steps">
+
+    <div class="sf-step">
+      <div class="sf-num">1</div>
+      <div class="sf-label">Module Overview</div>
+      <div class="sf-desc">Frames the advantage selection problem</div>
+    </div>
+
+    <div class="sf-arrow">›</div>
+
+    <div class="sf-step current">
+      <div class="sf-num">2</div>
+      <div class="sf-label">Chapter 6 Reading</div>
+      <div class="sf-desc" style="font-weight:600;">You are here — answer all 8 questions before leaving</div>
+    </div>
+
+    <div class="sf-arrow">›</div>
+
+    <div class="sf-step">
+      <div class="sf-num">3</div>
+      <div class="sf-label">Gate 1 Quiz</div>
+      <div class="sf-desc">5 Qs · Chapter only · 70% to unlock slides</div>
+    </div>
+
+    <div class="sf-arrow">›</div>
+
+    <div class="sf-step">
+      <div class="sf-num">4</div>
+      <div class="sf-label">Slide Deck</div>
+      <div class="sf-desc">~28 slides · all six metrics · unlocked by Gate 1</div>
+    </div>
+
+    <div class="sf-arrow">›</div>
+
+    <div class="sf-step">
+      <div class="sf-num">5</div>
+      <div class="sf-label">Gate 2 Quiz</div>
+      <div class="sf-desc">8 Qs · 20 pts · 1 attempt · unlocks lecture</div>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /.content -->
+
+<!-- ── PAGE FOOTER ─────────────────────────────────────────────────────── -->
+<div class="page-foot">
+  <span>MKT 472 &nbsp;·&nbsp; Module 06 &nbsp;·&nbsp; Study Focus Guide</span>
+  <span>Chapter 6: Competitive Position and Sources of Advantage</span>
+</div>
+
+</body>
+</html>
