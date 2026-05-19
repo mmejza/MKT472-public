@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 — M05 Study Focus Guide</title>
+<style>
+/* ── GOOGLE FONTS ────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ── RESET ───────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── BASE ────────────────────────────────────────────────────── */
+body {
+  font-family: 'Barlow', Arial, sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #1a2530;
+  background: #ffffff;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 0 52px;
+}
+
+/* ── TOKENS ──────────────────────────────────────────────────── */
+:root {
+  --teal:    #0D9B87;
+  --navy:    #0F2027;
+  --amber:   #E6A800;
+  --lteal:   #E0F2EF;
+  --lgray:   #F2F4F5;
+  --mgray:   #D0D5D8;
+  --text:    #1a2530;
+  --muted:   #5a6a7a;
+  --g1:      #0D9B87;   /* gate 1 teal */
+  --g2:      #0F2027;   /* gate 2 navy */
+}
+
+/* ════════════════════════════════════════════════════════════════
+   1. PAGE HEADER
+   ════════════════════════════════════════════════════════════════ */
+.page-header {
+  background: var(--navy);
+  padding: 30px 36px 26px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; left: 0; top: 0; bottom: 0; width: 6px;
+  background: var(--teal);
+}
+.page-header::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+  background: var(--amber);
+}
+.header-eyebrow {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 8px;
+}
+.header-title {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 32px; font-weight: 700;
+  color: #ffffff; line-height: 1.1;
+  margin-bottom: 6px;
+}
+.header-subtitle {
+  font-size: 14px; color: #a0c4bc;
+  margin-top: 4px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   2. BADGE ROW
+   ════════════════════════════════════════════════════════════════ */
+.badge-row {
+  background: var(--lgray);
+  border-bottom: 2px solid var(--mgray);
+  padding: 12px 36px;
+  display: flex; flex-wrap: wrap; gap: 12px;
+  align-items: center;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.badge-teal  { background: var(--lteal);  color: var(--teal);  border: 1px solid #b0ddd6; }
+.badge-navy  { background: #e8eaf0;       color: var(--navy);  border: 1px solid #c0c8d8; }
+.badge-amber { background: #fff3cc;       color: #7b5000;      border: 1px solid #f0d060; }
+.badge-icon  { font-size: 14px; }
+
+/* ════════════════════════════════════════════════════════════════
+   CONTENT WRAPPER
+   ════════════════════════════════════════════════════════════════ */
+.content { padding: 0 36px; }
+
+/* ── SECTION LABEL ───────────────────────────────────────────── */
+.section-label {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--teal);
+  margin: 30px 0 10px;
+  padding-bottom: 5px;
+  border-bottom: 2px solid var(--teal);
+}
+
+/* ════════════════════════════════════════════════════════════════
+   3. PURPOSE BLOCK
+   ════════════════════════════════════════════════════════════════ */
+.purpose-block {
+  background: var(--lteal);
+  border-left: 5px solid var(--teal);
+  border-radius: 0 6px 6px 0;
+  padding: 18px 22px;
+  margin: 22px 0 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+.purpose-block p { margin-bottom: 10px; }
+.purpose-block p:last-child { margin-bottom: 0; }
+.purpose-block strong { color: var(--navy); }
+.purpose-block em { color: var(--teal); font-style: normal; font-weight: 600; }
+
+/* ════════════════════════════════════════════════════════════════
+   4. GATE OVERVIEW CARDS
+   ════════════════════════════════════════════════════════════════ */
+.gate-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 14px;
+  margin-top: 4px;
+}
+@media (max-width: 580px) { .gate-grid { grid-template-columns: 1fr; } }
+
+.gate-card {
+  border-radius: 8px;
+  border: 1px solid var(--mgray);
+  overflow: hidden;
+}
+.gate-card-head {
+  padding: 12px 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.gate1 .gate-card-head { background: var(--teal); }
+.gate2 .gate-card-head { background: var(--navy); }
+.gate-card-icon {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.gate-card-label {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.75); text-transform: uppercase;
+  line-height: 1.1; margin-bottom: 2px;
+}
+.gate-card-name {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 17px; font-weight: 700; color: #fff;
+  line-height: 1.1;
+}
+.gate-card-body { padding: 14px 16px; background: #fff; }
+.gate-spec-list { list-style: none; }
+.gate-spec-list li {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--lgray);
+  font-size: 13px;
+}
+.gate-spec-list li:last-child { border-bottom: none; }
+.spec-key { color: var(--muted); }
+.spec-val { font-weight: 700; color: var(--text); text-align: right; }
+.gate1 .spec-val-accent { color: var(--teal); }
+.gate2 .spec-val-accent { color: var(--navy); }
+.spec-val.unlocks {
+  font-size: 12px; font-weight: 600;
+  padding: 2px 8px; border-radius: 3px;
+}
+.gate1 .unlocks { background: var(--lteal); color: var(--teal); }
+.gate2 .unlocks { background: #e8eaf0; color: var(--navy); }
+
+/* ════════════════════════════════════════════════════════════════
+   5. READING STRATEGY TIPS
+   ════════════════════════════════════════════════════════════════ */
+.tips-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+  margin-top: 4px;
+}
+@media (max-width: 580px) { .tips-grid { grid-template-columns: 1fr; } }
+
+.tip-card {
+  background: var(--lgray);
+  border: 1px solid var(--mgray);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+.tip-icon {
+  font-size: 20px; margin-bottom: 6px; display: block;
+}
+.tip-title {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: var(--navy); margin-bottom: 5px;
+  text-transform: uppercase; letter-spacing: 0.05em;
+}
+.tip-body {
+  font-size: 13px; color: var(--muted); line-height: 1.55;
+}
+.tip-body strong { color: var(--text); }
+
+/* ════════════════════════════════════════════════════════════════
+   6. EIGHT QUESTIONS
+   ════════════════════════════════════════════════════════════════ */
+.questions-list { list-style: none; margin-top: 4px; }
+
+.q-item {
+  display: flex; gap: 14px;
+  margin-bottom: 14px;
+  border-radius: 7px;
+  border: 1px solid var(--mgray);
+  overflow: hidden;
+}
+
+/* Gate 1 left accent */
+.q-item.gate1-q { border-left: 4px solid var(--g1); }
+.q-item.gate2-q { border-left: 4px solid var(--g2); }
+
+.q-num-col {
+  display: flex; flex-direction: column;
+  align-items: center;
+  padding: 14px 10px 14px 6px;
+  min-width: 46px;
+  flex-shrink: 0;
+}
+.q-circle {
+  width: 30px; height: 30px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 13px; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.gate1-q .q-circle { background: var(--g1); }
+.gate2-q .q-circle { background: var(--g2); }
+
+.q-tag {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 8px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.06em;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  transform: rotate(180deg);
+  margin-top: 8px;
+  line-height: 1;
+}
+.gate1-q .q-tag { color: var(--g1); }
+.gate2-q .q-tag { color: var(--g2); }
+
+.q-content {
+  flex: 1; padding: 14px 16px 14px 0;
+}
+
+.q-header-row {
+  display: flex; flex-wrap: wrap;
+  align-items: flex-start; gap: 8px;
+  margin-bottom: 8px;
+}
+.q-gate-badge {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 10px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em;
+  padding: 2px 7px; border-radius: 3px;
+  white-space: nowrap; flex-shrink: 0;
+}
+.gate1-q .q-gate-badge {
+  background: var(--lteal); color: var(--g1);
+  border: 1px solid #b0ddd6;
+}
+.gate2-q .q-gate-badge {
+  background: #e8eaf0; color: var(--g2);
+  border: 1px solid #c0c8d8;
+}
+.q-loc-badge {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 10px; font-weight: 600;
+  color: var(--muted);
+  background: var(--lgray);
+  border: 1px solid var(--mgray);
+  border-radius: 3px;
+  padding: 2px 7px;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+.counterintuitive-flag {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 10px; font-weight: 700;
+  background: #fff3cc; color: #7b5000;
+  border: 1px solid #f0d060;
+  border-radius: 3px;
+  padding: 2px 7px;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+.q-text {
+  font-size: 14px; font-weight: 600;
+  color: var(--navy); line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.q-hint {
+  font-size: 12.5px;
+  font-style: italic;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.q-hint strong { font-style: normal; color: var(--text); }
+
+/* ════════════════════════════════════════════════════════════════
+   7. AMBER CALLOUT
+   ════════════════════════════════════════════════════════════════ */
+.amber-callout {
+  background: #fffaeb;
+  border: 1px solid #f0d060;
+  border-left: 5px solid var(--amber);
+  border-radius: 0 7px 7px 0;
+  padding: 16px 20px;
+  margin-top: 4px;
+}
+.amber-callout .ac-label {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: #7b5000; margin-bottom: 8px;
+}
+.amber-callout .ac-body {
+  font-size: 14px; color: #4a3800; line-height: 1.6;
+}
+.amber-callout .ac-body strong { color: #2a2000; }
+.amber-callout .ac-topics {
+  list-style: none; margin-top: 10px; display: flex;
+  flex-direction: column; gap: 6px;
+}
+.amber-callout .ac-topics li {
+  display: flex; gap: 8px; align-items: flex-start;
+  font-size: 13.5px; color: #4a3800;
+}
+.ac-dot {
+  flex-shrink: 0; width: 7px; height: 7px;
+  border-radius: 50%; background: var(--amber);
+  margin-top: 6px;
+}
+
+/* ════════════════════════════════════════════════════════════════
+   8. SEQUENCE FOOTER
+   ════════════════════════════════════════════════════════════════ */
+.seq-footer {
+  background: var(--lgray);
+  border: 1px solid var(--mgray);
+  border-radius: 7px;
+  padding: 16px 20px;
+  margin-top: 4px;
+}
+.seq-footer .sf-label {
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 11px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.12em;
+  color: var(--muted); margin-bottom: 12px;
+}
+.seq-steps {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0;
+}
+.seq-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; min-width: 100px;
+}
+.seq-step-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Barlow Condensed', Arial, sans-serif;
+  font-size: 13px; font-weight: 700; color: #fff;
+  margin-bottom: 5px;
+}
+.step-current .seq-step-icon { background: var(--teal); }
+.step-done    .seq-step-icon { background: var(--mgray); }
+.step-next    .seq-step-icon { background: var(--navy); }
+.step-future  .seq-step-icon { background: #c0c8d8; }
+.seq-step-name {
+  font-size: 11px; font-weight: 600; color: var(--text);
+  line-height: 1.3; max-width: 90px;
+}
+.step-current .seq-step-name { color: var(--teal); }
+.step-future  .seq-step-name { color: var(--muted); }
+.seq-arrow {
+  font-size: 16px; color: var(--mgray);
+  padding: 0 4px; margin-bottom: 18px;
+  flex-shrink: 0;
+}
+
+/* ── PAGE FOOTER ─────────────────────────────────────────────── */
+.page-footer {
+  margin-top: 40px;
+  padding: 14px 36px;
+  background: var(--navy);
+  font-size: 11.5px; color: #6a8a9a;
+  display: flex; justify-content: space-between;
+  flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.page-footer span { color: var(--teal); font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     1. PAGE HEADER
+     ══════════════════════════════════════════════════════════════ -->
+<div class="page-header">
+  <div class="header-eyebrow">MKT 472 · Module 05 · Chapter 5 Reading</div>
+  <div class="header-title">Study Focus Guide</div>
+  <div class="header-subtitle">Chapter 5: Market Segmentation and Segmentation Strategies &nbsp;·&nbsp; Est. 70–80 min reading</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     2. BADGE ROW
+     ══════════════════════════════════════════════════════════════ -->
+<div class="badge-row">
+  <span class="badge badge-navy"><span class="badge-icon">📖</span>Chapter 5 · pp. 155–188</span>
+  <span class="badge badge-teal"><span class="badge-icon">⏱</span>70–80 min reading</span>
+  <span class="badge badge-amber"><span class="badge-icon">❓</span>8 focus questions</span>
+  <span class="badge badge-navy"><span class="badge-icon">🔒</span>Gate 1 tests 5 chapter-only topics</span>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════
+     CONTENT
+     ══════════════════════════════════════════════════════════════ -->
+<div class="content">
+
+  <!-- ── 3. PURPOSE BLOCK ──────────────────────────────────────── -->
+  <div class="section-label">What This Guide Does</div>
+  <div class="purpose-block">
+    <p>Chapter 5 covers more than the slide deck and lecture video. <strong>Gate 1 tests five topics that appear only in the chapter</strong> — not in the slides and not in the script. If you skim or skip the reading, you will not have the information you need to pass Gate 1 and unlock the slides.</p>
+    <p><strong>Gate 2 adds a synthesis layer</strong>: it tests three constructs that require combining what you read in the chapter with what you see in the slides. The questions in this guide are divided by gate, so you know exactly what to look for as you read and which questions require you to also study the slides.</p>
+    <p>Use this guide <em>while you read</em> — not after. Write down your answers as you find them. These are the same constructs that will appear in Gate 1, Gate 2, and the Apex Athletic case analysis.</p>
+  </div>
+
+  <!-- ── 4. GATE OVERVIEW CARDS ────────────────────────────────── -->
+  <div class="section-label">Two-Gate Model — Quick Reference</div>
+  <div class="gate-grid">
+
+    <!-- GATE 1 -->
+    <div class="gate-card gate1">
+      <div class="gate-card-head">
+        <div class="gate-card-icon">🔒</div>
+        <div>
+          <div class="gate-card-label">Gate 1</div>
+          <div class="gate-card-name">Basic Reading Check</div>
+        </div>
+      </div>
+      <div class="gate-card-body">
+        <ul class="gate-spec-list">
+          <li>
+            <span class="spec-key">Questions</span>
+            <span class="spec-val gate1-q">5 · Multiple choice</span>
+          </li>
+          <li>
+            <span class="spec-key">Content source</span>
+            <span class="spec-val">Chapter 5 only</span>
+          </li>
+          <li>
+            <span class="spec-key">Passing threshold</span>
+            <span class="spec-val spec-val-accent">70% (3.5 / 5)</span>
+          </li>
+          <li>
+            <span class="spec-key">Attempts</span>
+            <span class="spec-val">2 attempts</span>
+          </li>
+          <li>
+            <span class="spec-key">Feedback</span>
+            <span class="spec-val">Per-answer + page ref</span>
+          </li>
+          <li>
+            <span class="spec-key">Points</span>
+            <span class="spec-val">0 pts — access control</span>
+          </li>
+          <li>
+            <span class="spec-key">Unlocks</span>
+            <span class="spec-val unlocks">Slide Deck Viewer →</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- GATE 2 -->
+    <div class="gate-card gate2">
+      <div class="gate-card-head">
+        <div class="gate-card-icon">📝</div>
+        <div>
+          <div class="gate-card-label">Gate 2</div>
+          <div class="gate-card-name">Applied Reading Check</div>
+        </div>
+      </div>
+      <div class="gate-card-body">
+        <ul class="gate-spec-list">
+          <li>
+            <span class="spec-key">Questions</span>
+            <span class="spec-val">8 · MC + numeric entry</span>
+          </li>
+          <li>
+            <span class="spec-key">Content source</span>
+            <span class="spec-val">Chapter 5 + slides</span>
+          </li>
+          <li>
+            <span class="spec-key">Threshold</span>
+            <span class="spec-val spec-val-accent" style="color:var(--g2)">None — graded as submitted</span>
+          </li>
+          <li>
+            <span class="spec-key">Attempts</span>
+            <span class="spec-val">1 attempt only</span>
+          </li>
+          <li>
+            <span class="spec-key">Feedback</span>
+            <span class="spec-val">Correct / Incorrect only</span>
+          </li>
+          <li>
+            <span class="spec-key">Points</span>
+            <span class="spec-val spec-val-accent" style="color:var(--g2);font-size:13px;">20 pts · 10% of module</span>
+          </li>
+          <li>
+            <span class="spec-key">Unlocks</span>
+            <span class="spec-val unlocks">Lecture Video →</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div><!-- /gate-grid -->
+
+  <!-- ── 5. READING STRATEGY TIPS ──────────────────────────────── -->
+  <div class="section-label">Reading Strategy — Chapter 5 Specifics</div>
+  <div class="tips-grid">
+
+    <div class="tip-card">
+      <span class="tip-icon">📐</span>
+      <div class="tip-title">Record the exact numbers</div>
+      <div class="tip-body">Several Gate 1 questions are built around specific data points in the chapter — revenue indexes, profit multiples, segment percentages. <strong>Write down any figure that includes a precise number</strong> (e.g., "729 combinations," "revenue index 100 vs. 181," "16 times"). These are the details the slides do not repeat.</div>
+    </div>
+
+    <div class="tip-card">
+      <span class="tip-icon">🗂️</span>
+      <div class="tip-title">Study every figure and table</div>
+      <div class="tip-body">Chapter 5 is figure-dense. <strong>Fig. 5-6, 5-7, 5-10, 5-11, and 5-12 all contain Gate-tested content</strong> that does not appear on the slides. For each figure, ask: what is the key distinction or data relationship this figure is showing?</div>
+    </div>
+
+    <div class="tip-card">
+      <span class="tip-icon">⚠️</span>
+      <div class="tip-title">Flag counterintuitive results</div>
+      <div class="tip-body">Two questions in this guide are marked <strong>Counterintuitive</strong> — the chapter result contradicts common intuition. Slow down when you encounter these. They are the highest-probability Gate 1 targets and the most common source of errors on the case analysis.</div>
+    </div>
+
+    <div class="tip-card">
+      <span class="tip-icon">🔗</span>
+      <div class="tip-title">Questions 6–8 require both sources</div>
+      <div class="tip-body">The last three questions in this guide (Gate 2 targets) cannot be answered from the chapter alone. <strong>After you view the slides, return to Questions 6–8</strong> and verify your answers using the combined chapter + slide content before taking Gate 2.</div>
+    </div>
+
+  </div><!-- /tips-grid -->
+
+  <!-- ── 6. EIGHT QUESTIONS ─────────────────────────────────────── -->
+  <div class="section-label">Focus Questions — Answer These While Reading</div>
+  <ul class="questions-list">
+
+    <!-- ── Q1: Demographic Trap ── -->
+    <li class="q-item gate1-q">
+      <div class="q-num-col">
+        <div class="q-circle">1</div>
+        <span class="q-tag">Gate 1 · Chapter Only</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 1 · Chapter Only</span>
+          <span class="q-loc-badge">📍 pp. 163–164</span>
+        </div>
+        <div class="q-text">The chapter describes a specific error called "the demographic trap." If a marketer uses six segmentation variables with three categories each, how many possible segment combinations does this produce — and why does the chapter argue this number is strategically useless?</div>
+        <div class="q-hint">Record the exact number of combinations (formula: 3<sup>6</sup>) and the chapter's explanation of why the correct segmentation sequence starts with needs, not demographics.</div>
+      </div>
+    </li>
+
+    <!-- ── Q2: Health Insurance Case — COUNTERINTUITIVE ── -->
+    <li class="q-item gate1-q">
+      <div class="q-num-col">
+        <div class="q-circle">2</div>
+        <span class="q-tag">Gate 1 · Chapter Only</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 1 · Chapter Only</span>
+          <span class="q-loc-badge">📍 Fig. 5-11 · pp. 167–168</span>
+          <span class="counterintuitive-flag">⚠️ Counterintuitive</span>
+        </div>
+        <div class="q-text">In the health insurance market segmentation case (Figure 5-11), the company held 40% market share in Segment I (Insurance Minimizers) and only 19% in Segment III (Premium Buyers). The revenue index for Insurance Minimizers is 100; for Premium Buyers it is 181. What does this pattern reveal about the strategic error the company had been making — and why is high market share not evidence of good targeting?</div>
+        <div class="q-hint">This result is counterintuitive: the company was strongest exactly where it generated the least value per customer. Record the three revenue index values (Segments I, II, III) and write one sentence explaining the strategic implication.</div>
+      </div>
+    </li>
+
+    <!-- ── Q3: CRM Program Types ── -->
+    <li class="q-item gate1-q">
+      <div class="q-num-col">
+        <div class="q-circle">3</div>
+        <span class="q-tag">Gate 1 · Chapter Only</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 1 · Chapter Only</span>
+          <span class="q-loc-badge">📍 pp. 181–184</span>
+        </div>
+        <div class="q-text">Chapter 5 defines three distinct customer relationship marketing programs: mass personalization, mass customization, and customer relationship management (in the narrow sense). What is the defining characteristic that distinguishes each type — and what specific condition (involving both customer value and company value) must be met before a firm is justified in using the full CRM program?</div>
+        <div class="q-hint">Record the one-sentence definition of each program type, and the exact dual-condition threshold for CRM. The American Express and Marriott examples in the chapter illustrate which level applies to each company.</div>
+      </div>
+    </li>
+
+    <!-- ── Q4: Customer Touch Points ── -->
+    <li class="q-item gate1-q">
+      <div class="q-num-col">
+        <div class="q-circle">4</div>
+        <span class="q-tag">Gate 1 · Chapter Only</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 1 · Chapter Only</span>
+          <span class="q-loc-badge">📍 pp. 186–187</span>
+        </div>
+        <div class="q-text">Chapter 5 defines customer touch points and distinguishes two types: direct and indirect. What are three examples of direct touch points and two examples of indirect touch points — and why does the chapter describe indirect touch points as "sometimes even more important" than direct ones?</div>
+        <div class="q-hint">List the examples the chapter gives for each type. The chapter's explanation of why indirect touch points outperform direct ones in acquiring new customers is a key testable claim — write it in your own words.</div>
+      </div>
+    </li>
+
+    <!-- ── Q5: B2B Segmentation Forces ── -->
+    <li class="q-item gate1-q">
+      <div class="q-num-col">
+        <div class="q-circle">5</div>
+        <span class="q-tag">Gate 1 · Chapter Only</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 1 · Chapter Only</span>
+          <span class="q-loc-badge">📍 Fig. 5-6 · pp. 161–162 · Fig. 5-7</span>
+        </div>
+        <div class="q-text">Figure 5-6 shows three forces that shape business-to-business customer needs, parallel to the three forces that shape consumer needs. What are the three B2B forces, what are the specific sub-factors listed under each, and which consumer force does each B2B force parallel? Then, from Figure 5-7: what are the two core segments of the small business market, and what distinguishes them?</div>
+        <div class="q-hint">Draw the three-column structure of Fig. 5-6 in your notes. For Fig. 5-7, record the two segment names (growth-oriented entrepreneurs vs. cost-focused sustainers) and the two or three characteristics that most clearly separate them.</div>
+      </div>
+    </li>
+
+    <!-- ── GATE 2 DIVIDER ── -->
+    <li style="list-style:none; margin: 20px 0 14px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <div style="flex:1; height:1px; background:var(--mgray);"></div>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif; font-size:11px; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--navy); white-space:nowrap; padding:4px 12px; background:#e8eaf0; border:1px solid #c0c8d8; border-radius:3px;">
+          Questions 6–8 · Complete After Viewing Slides · Gate 2
+        </div>
+        <div style="flex:1; height:1px; background:var(--mgray);"></div>
+      </div>
+    </li>
+
+    <!-- ── Q6: Segment Attractiveness ── -->
+    <li class="q-item gate2-q">
+      <div class="q-num-col">
+        <div class="q-circle">6</div>
+        <span class="q-tag">Gate 2 · Ch + Slides</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 2 · Chapter + Slides</span>
+          <span class="q-loc-badge">📍 Fig. 5-10 · pp. 165–167</span>
+        </div>
+        <div class="q-text">Figure 5-10 lists the three forces that determine segment attractiveness and the sub-factors under each. For a hypothetical segment with a large current market size but 38 direct competitors, low entry barriers, and poor company channel access — which attractiveness force most clearly makes this segment unattractive, and which specific sub-factors drive that judgment?</div>
+        <div class="q-hint">Record all nine sub-factors from Fig. 5-10 (three per force). Then apply them to the scenario: identify which force scores lowest and which two sub-factors are decisive. This is the exact reasoning structure Gate 2 Q2 tests.</div>
+      </div>
+    </li>
+
+    <!-- ── Q7: Demographic Trap (synthesis) ── -->
+    <li class="q-item gate2-q">
+      <div class="q-num-col">
+        <div class="q-circle">7</div>
+        <span class="q-tag">Gate 2 · Ch + Slides</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 2 · Chapter + Slides</span>
+          <span class="q-loc-badge">📍 pp. 163–165 · Fig. 5-8</span>
+        </div>
+        <div class="q-text">A product team segmented its market by purchase frequency (daily, weekly, occasional buyers) and built separate retention programs for each group. Six months later, retention rates were nearly identical across all three groups. Using the 7-step needs-based segmentation process from Figure 5-8, which specific step did the team skip — and what consequence does skipping that step produce?</div>
+        <div class="q-hint">Figure 5-8 lists all seven steps in order. The answer requires identifying both the skipped step by name and explaining the mechanism: segments formed without Step 1 may be identifiable but not differentiable — meaning they do not respond differently to different programs.</div>
+      </div>
+    </li>
+
+    <!-- ── Q8: NMC / ROI Comparison — COUNTERINTUITIVE ── -->
+    <li class="q-item gate2-q">
+      <div class="q-num-col">
+        <div class="q-circle">8</div>
+        <span class="q-tag">Gate 2 · Ch + Slides</span>
+      </div>
+      <div class="q-content">
+        <div class="q-header-row">
+          <span class="q-gate-badge">Gate 2 · Chapter + Slides</span>
+          <span class="q-loc-badge">📍 Fig. 5-12 · pp. 168–170</span>
+          <span class="counterintuitive-flag">⚠️ Counterintuitive</span>
+        </div>
+        <div class="q-text">Figure 5-12 shows the segment profitability analysis for three silicon sealant segments: Engineered Solution, Service Solution, and Price Solution. Using the NMC, Marketing ROS, and Marketing ROI values from the figure: which segment has the highest absolute NMC — and which segment has the highest Marketing ROI? Are they the same segment, and what does any difference imply for a firm with a limited marketing budget?</div>
+        <div class="q-hint">Work through the NMC formula for all three segments (NMC = Demand × Share × Price × Margin − M&amp;S Expense). Then calculate Marketing ROI = NMC ÷ M&amp;S Expense for each. The counterintuitive result: the segment with the highest NMC does not have the highest ROI. Record both rankings and the strategic implication for a resource-constrained firm.</div>
+      </div>
+    </li>
+
+  </ul><!-- /questions-list -->
+
+  <!-- ── 7. AMBER CALLOUT ───────────────────────────────────────── -->
+  <div class="section-label">Highest-Probability Gate 1 Targets</div>
+  <div class="amber-callout">
+    <div class="ac-label">⚡ Focus Here First — These Three Are Most Likely to Appear</div>
+    <div class="ac-body">
+      Based on the module's Gate 1 content map, these topics have the highest probability of appearing in your specific version of Gate 1. The chapter covers all five focus areas, but these three are the most precisely testable — and the most frequently missed by students who skim:
+    </div>
+    <ul class="ac-topics">
+      <li>
+        <div class="ac-dot"></div>
+        <div><strong>The health insurance case (Fig. 5-11, pp. 167–168).</strong> Know the exact revenue index values for all three segments and be able to explain why the firm's highest-share segment was its least-valuable one. This is the counterintuitive result most students miss on first read.</div>
+      </li>
+      <li>
+        <div class="ac-dot"></div>
+        <div><strong>The CRM program types (pp. 181–184).</strong> Know the precise definition of each of the three programs and the specific dual-condition that triggers full CRM. The chapter's examples (American Express, United Airlines, Marriott) are designed to make the distinctions concrete — use them.</div>
+      </li>
+      <li>
+        <div class="ac-dot"></div>
+        <div><strong>The B2B segmentation forces (Fig. 5-6, pp. 161–162).</strong> Know which of the three B2B forces corresponds to which consumer segmentation force. The parallel structure is the exact pattern Gate 1 tests — a scenario description of a B2B customer need, and you must identify which force is shaping it.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ── 8. SEQUENCE FOOTER ─────────────────────────────────────── -->
+  <div class="section-label">What Comes Next</div>
+  <div class="seq-footer">
+    <div class="sf-label">Module 05 Sequence — Your Current Position</div>
+    <div class="seq-steps">
+
+      <div class="seq-step step-done">
+        <div class="seq-step-icon">✓</div>
+        <div class="seq-step-name">Module Overview</div>
+      </div>
+      <div class="seq-arrow">›</div>
+
+      <div class="seq-step step-current">
+        <div class="seq-step-icon">📖</div>
+        <div class="seq-step-name">Chapter 5 Reading</div>
+      </div>
+      <div class="seq-arrow">›</div>
+
+      <div class="seq-step step-next">
+        <div class="seq-step-icon">🔒</div>
+        <div class="seq-step-name">Gate 1<br><span style="font-size:10px;font-weight:400;color:var(--muted);">5 Qs · 70% to pass</span></div>
+      </div>
+      <div class="seq-arrow">›</div>
+
+      <div class="seq-step step-future">
+        <div class="seq-step-icon">🖥</div>
+        <div class="seq-step-name">Slide Deck<br><span style="font-size:10px;font-weight:400;color:var(--muted);">32 slides</span></div>
+      </div>
+      <div class="seq-arrow">›</div>
+
+      <div class="seq-step step-future">
+        <div class="seq-step-icon">📝</div>
+        <div class="seq-step-name">Gate 2<br><span style="font-size:10px;font-weight:400;color:var(--muted);">20 pts</span></div>
+      </div>
+      <div class="seq-arrow">›</div>
+
+      <div class="seq-step step-future">
+        <div class="seq-step-icon">🎬</div>
+        <div class="seq-step-name">Lecture Video<br><span style="font-size:10px;font-weight:400;color:var(--muted);">~30 min</span></div>
+      </div>
+
+    </div>
+  </div>
+
+</div><!-- /content -->
+
+<!-- PAGE FOOTER -->
+<div class="page-footer">
+  <span>MKT 472 · Module 05 · Study Focus Guide</span>
+  <span style="color:#6a8a9a;">Chapter 5 · Market Segmentation and Segmentation Strategies</span>
+</div>
+
+</body>
+</html>

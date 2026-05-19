@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 08 Overview | MKT 472</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────────────────────────────────── */
+:root {
+  --ink:      #0f1923;
+  --ink-mid:  #2d3f52;
+  --ink-soft: #5a6f82;
+  --rule:     #d4dce4;
+  --surface:  #f7f9fb;
+  --white:    #ffffff;
+
+  --teal:     #0a7c6e;
+  --teal-lt:  #e0f4f1;
+  --teal-mid: #c2ece7;
+  --gold:     #c9860a;
+  --gold-lt:  #fdf3e0;
+  --gold-mid: #f9dfa0;
+  --red:      #b92b27;
+  --red-lt:   #fdecea;
+  --blue:     #1a56a0;
+  --blue-lt:  #e6effa;
+  --blue-mid: #c3d9f5;
+
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans:  'Outfit', system-ui, sans-serif;
+  --mono:  'DM Mono', 'Courier New', monospace;
+
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 14px;
+
+  --shadow-sm: 0 1px 3px rgba(15,25,35,.07), 0 1px 2px rgba(15,25,35,.05);
+  --shadow-md: 0 4px 12px rgba(15,25,35,.09), 0 2px 4px rgba(15,25,35,.06);
+}
+
+/* ── RESET ──────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--surface);
+  line-height: 1.6;
+  padding-bottom: 80px;
+}
+
+/* ── PAGE HEADER ────────────────────────────────────────────────────── */
+.page-header {
+  background: var(--ink);
+  color: var(--white);
+  padding: 48px 40px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -55deg, transparent, transparent 28px,
+    rgba(255,255,255,.022) 28px, rgba(255,255,255,.022) 29px
+  );
+  pointer-events: none;
+}
+/* teal accent bar — top */
+.page-header::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: var(--teal);
+}
+.header-eyebrow {
+  display: flex; flex-wrap: wrap;
+  align-items: center; gap: 10px;
+  margin-bottom: 20px;
+}
+.badge {
+  display: inline-flex; align-items: center;
+  font-family: var(--mono); font-size: .69rem;
+  font-weight: 500; letter-spacing: .08em; text-transform: uppercase;
+  padding: 4px 11px; border-radius: 100px;
+  background: rgba(255,255,255,.1); color: rgba(255,255,255,.8);
+}
+.badge-teal { background: rgba(10,124,110,.3); color: #7de8dc; }
+.badge-gold { background: rgba(201,134,10,.3); color: #f9d87a; }
+
+.header-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 4vw, 2.85rem);
+  line-height: 1.12; letter-spacing: -.01em;
+  color: var(--white);
+  max-width: 620px; margin-bottom: 8px;
+}
+.header-sub {
+  font-size: .95rem; font-weight: 300;
+  color: rgba(255,255,255,.58);
+  max-width: 560px; line-height: 1.6;
+  margin-bottom: 30px;
+}
+.header-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+
+/* ── CONTAINER ──────────────────────────────────────────────────────── */
+.container { max-width: 880px; margin: 0 auto; padding: 0 32px; }
+
+/* ── SECTION ────────────────────────────────────────────────────────── */
+.section { margin-top: 48px; }
+.section-label {
+  font-family: var(--mono); font-size: .7rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--teal);
+  display: block; margin-bottom: 14px;
+}
+
+/* ── CENTRAL QUESTION ───────────────────────────────────────────────── */
+.central-question {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--teal);
+  border-radius: 0 var(--r-lg) var(--r-lg) 0;
+  padding: 28px 32px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+}
+.central-question .cq-label {
+  font-family: var(--mono); font-size: .66rem; font-weight: 500;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--teal);
+  margin-bottom: 12px; display: block;
+}
+.central-question .cq-text {
+  font-family: var(--serif);
+  font-size: 1.45rem; line-height: 1.35;
+  color: var(--ink);
+}
+.central-question .cq-follow {
+  margin-top: 14px;
+  font-size: .91rem; color: var(--ink-mid); line-height: 1.6;
+}
+
+/* ── TRAP CARD ──────────────────────────────────────────────────────── */
+.trap-card {
+  background: var(--ink);
+  border-radius: var(--r-lg);
+  padding: 28px 32px;
+  margin-top: 20px;
+  position: relative; overflow: hidden;
+}
+.trap-card::before {
+  content: 'THE TRAP';
+  position: absolute; top: 14px; right: 20px;
+  font-family: var(--mono); font-size: .6rem; letter-spacing: .14em;
+  color: rgba(255,255,255,.18);
+}
+.trap-scenario {
+  display: grid; grid-template-columns: 1fr auto 1fr;
+  align-items: center; gap: 16px;
+  margin-bottom: 20px;
+}
+@media (max-width: 540px) {
+  .trap-scenario { grid-template-columns: 1fr; }
+  .trap-arrow { transform: rotate(90deg); }
+}
+.trap-box {
+  border-radius: var(--r-md); padding: 16px 18px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+.trap-box.before { background: rgba(10,124,110,.2); }
+.trap-box.after  { background: rgba(185,43,39,.2); }
+.trap-box .t-label {
+  font-family: var(--mono); font-size: .62rem; font-weight: 500;
+  letter-spacing: .09em; text-transform: uppercase;
+  margin-bottom: 8px; display: block;
+}
+.trap-box.before .t-label { color: #7de8dc; }
+.trap-box.after  .t-label { color: #f4a5a3; }
+.trap-box .t-claim {
+  font-size: .88rem; color: rgba(255,255,255,.85);
+  line-height: 1.55;
+}
+.trap-box .t-claim strong { color: var(--white); font-weight: 600; }
+.trap-arrow {
+  font-size: 1.4rem; color: rgba(255,255,255,.3);
+  text-align: center; flex-shrink: 0;
+}
+.trap-reveal {
+  background: rgba(255,255,255,.06);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  font-size: .87rem; color: rgba(255,255,255,.72);
+  line-height: 1.6; border: 1px solid rgba(255,255,255,.08);
+}
+.trap-reveal strong { color: #f9d87a; }
+
+/* ── PARAMS TABLE ───────────────────────────────────────────────────── */
+.params-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; background: var(--rule);
+  border: 1px solid var(--rule); border-radius: var(--r-lg);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+  margin-top: 20px;
+}
+@media (max-width: 540px) { .params-grid { grid-template-columns: 1fr; } }
+.param-cell {
+  background: var(--white);
+  padding: 14px 18px;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.param-cell .p-label {
+  font-family: var(--mono); font-size: .67rem; font-weight: 500;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--ink-soft); flex-shrink: 0; min-width: 130px;
+  margin-top: 2px;
+}
+.param-cell .p-val {
+  font-size: .9rem; color: var(--ink-mid); line-height: 1.5;
+}
+.param-cell .p-val strong { color: var(--ink); font-weight: 600; }
+
+/* ── LO TABLE ───────────────────────────────────────────────────────── */
+.lo-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border: 1px solid var(--rule); border-radius: var(--r-lg);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+  margin-top: 20px; font-size: .87rem;
+}
+.lo-table th {
+  background: var(--ink-mid);
+  font-family: var(--mono); font-size: .66rem; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase;
+  color: rgba(255,255,255,.8); padding: 11px 16px; text-align: left;
+}
+.lo-table td {
+  padding: 11px 16px; border-bottom: 1px solid var(--rule);
+  vertical-align: top; line-height: 1.5; color: var(--ink-mid);
+  background: var(--white);
+}
+.lo-table tr:last-child td { border-bottom: none; }
+.lo-table tr:nth-child(even) td { background: var(--surface); }
+.lo-num {
+  font-family: var(--mono); font-size: .75rem; font-weight: 500;
+  color: var(--ink); white-space: nowrap;
+}
+.lo-bloom {
+  display: inline-block;
+  font-family: var(--mono); font-size: .62rem; font-weight: 500;
+  letter-spacing: .05em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 100px;
+  white-space: nowrap;
+}
+.bl-analysis    { background: var(--blue-lt);  color: var(--blue); border: 1px solid var(--blue-mid); }
+.bl-application { background: var(--teal-lt);  color: var(--teal); border: 1px solid var(--teal-mid); }
+.bl-evaluation  { background: var(--gold-lt);  color: var(--gold); border: 1px solid var(--gold-mid); }
+
+/* ── TWO-GATE EXPLAINER ─────────────────────────────────────────────── */
+.gate-flow {
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: center; gap: 8px; margin-top: 24px;
+}
+@media (max-width: 600px) {
+  .gate-flow { grid-template-columns: 1fr; }
+  .gate-arrow { transform: rotate(90deg); text-align: center; }
+}
+.gate-node {
+  background: var(--white); border: 1px solid var(--rule);
+  border-radius: var(--r-lg); padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+}
+.gate-node .g-step {
+  font-family: var(--mono); font-size: .62rem; font-weight: 500;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--ink-soft); margin-bottom: 6px; display: block;
+}
+.gate-node h4 { font-size: .95rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.gate-node p  { font-size: .82rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+.gate-node.highlight-teal { border-color: var(--teal); }
+.gate-node.highlight-teal .g-step { color: var(--teal); }
+.gate-node.highlight-gold { border-color: var(--gold); }
+.gate-node.highlight-gold .g-step { color: var(--gold); }
+.gate-node.highlight-blue { border-color: var(--blue); }
+.gate-node.highlight-blue .g-step { color: var(--blue); }
+.gate-arrow { color: var(--ink-soft); font-size: 1.2rem; text-align: center; flex-shrink: 0; }
+
+.gate-why {
+  background: var(--gold-lt); border: 1px solid var(--gold-mid);
+  border-radius: var(--r-md); padding: 16px 20px;
+  margin-top: 16px; font-size: .88rem; color: #7a4e00; line-height: 1.65;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.gate-why-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+
+/* ── GATE 1 TOPICS ──────────────────────────────────────────────────── */
+.gate1-list {
+  list-style: none; display: flex; flex-direction: column; gap: 10px;
+  margin-top: 20px;
+}
+.gate1-item {
+  background: var(--white); border: 1px solid var(--rule);
+  border-radius: var(--r-md); padding: 14px 18px;
+  display: flex; gap: 14px; align-items: flex-start;
+  box-shadow: var(--shadow-sm);
+  transition: border-color .15s;
+}
+.gate1-item:hover { border-color: var(--teal); }
+.gate1-num {
+  flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+  background: var(--gold); color: var(--white);
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  display: flex; align-items: center; justify-content: center;
+  margin-top: 1px;
+}
+.gate1-content .g1-title {
+  font-weight: 600; font-size: .92rem; color: var(--ink); margin-bottom: 3px;
+}
+.gate1-content .g1-desc {
+  font-size: .83rem; color: var(--ink-soft); line-height: 1.55;
+}
+.gate1-content .g1-ref {
+  display: inline-block; margin-top: 5px;
+  font-family: var(--mono); font-size: .65rem; font-weight: 500;
+  letter-spacing: .05em; padding: 2px 8px; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--rule); color: var(--ink-soft);
+}
+.not-in-slides {
+  font-family: var(--mono); font-size: .6rem; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 2px 8px; border-radius: 100px; margin-left: 6px;
+  background: var(--red-lt); color: var(--red);
+  border: 1px solid rgba(185,43,39,.2);
+}
+
+/* ── SEQUENCE TABLE ─────────────────────────────────────────────────── */
+.sequence-table {
+  width: 100%; border-collapse: separate; border-spacing: 0;
+  border: 1px solid var(--rule); border-radius: var(--r-lg);
+  overflow: hidden; box-shadow: var(--shadow-sm);
+  margin-top: 20px; font-size: .85rem;
+}
+.sequence-table th {
+  background: var(--ink-mid); color: rgba(255,255,255,.8);
+  font-family: var(--mono); font-size: .64rem; font-weight: 500;
+  letter-spacing: .07em; text-transform: uppercase;
+  padding: 11px 16px; text-align: left;
+}
+.sequence-table td {
+  padding: 11px 16px; border-bottom: 1px solid var(--rule);
+  vertical-align: top; line-height: 1.5;
+  background: var(--white); color: var(--ink-mid);
+}
+.sequence-table tr:last-child td { border-bottom: none; }
+.sequence-table tr:nth-child(even) td { background: var(--surface); }
+.seq-num {
+  font-family: var(--mono); font-size: .78rem; font-weight: 500;
+  color: var(--white); background: var(--ink);
+  width: 24px; height: 24px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+}
+.seq-time {
+  font-family: var(--mono); font-size: .78rem;
+  color: var(--teal); white-space: nowrap;
+}
+.seq-item-name { font-weight: 600; color: var(--ink); display: block; margin-bottom: 2px; }
+.seq-item-note { font-size: .8rem; color: var(--ink-soft); line-height: 1.45; }
+.seq-pts {
+  font-family: var(--mono); font-size: .75rem; font-weight: 500;
+  color: var(--gold); white-space: nowrap;
+}
+.seq-pts.zero { color: var(--ink-soft); }
+
+/* ── CALLOUT ────────────────────────────────────────────────────────── */
+.callout {
+  border-radius: var(--r-md); padding: 14px 18px;
+  margin: 16px 0; font-size: .88rem; line-height: 1.65;
+  display: flex; gap: 12px; align-items: flex-start;
+}
+.callout-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
+.callout.info { background: var(--blue-lt); border: 1px solid var(--blue-mid); color: var(--blue); }
+.callout.key  { background: var(--teal-lt); border: 1px solid var(--teal-mid); color: #005446; }
+.callout strong { font-weight: 600; }
+
+/* ── DIVIDER ────────────────────────────────────────────────────────── */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--rule) 20%, var(--rule) 80%, transparent);
+  margin: 44px 0;
+}
+
+/* ── UTILITIES ──────────────────────────────────────────────────────── */
+p { margin-bottom: 12px; font-size: .92rem; color: var(--ink-mid); line-height: 1.65; }
+p:last-child { margin-bottom: 0; }
+strong { color: var(--ink); font-weight: 600; }
+
+/* ── ANIMATIONS ─────────────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.section { animation: fadeUp .38s ease both; }
+.section:nth-child(2) { animation-delay: .04s; }
+.section:nth-child(3) { animation-delay: .08s; }
+.section:nth-child(4) { animation-delay: .12s; }
+.section:nth-child(5) { animation-delay: .16s; }
+.section:nth-child(6) { animation-delay: .20s; }
+.section:nth-child(7) { animation-delay: .24s; }
+</style>
+</head>
+<body>
+
+<!-- ── HEADER ──────────────────────────────────────────────────────────── -->
+<div class="page-header">
+  <div class="container">
+    <div class="header-eyebrow">
+      <span class="badge">MKT 472</span>
+      <span class="badge">Module 08</span>
+      <span class="badge badge-gold">Chapter 8</span>
+      <span class="badge badge-teal">~5 hours total</span>
+    </div>
+    <h1 class="header-title">Value-Based Pricing<br>and Pricing Strategies</h1>
+    <p class="header-sub">Read Chapter 8 before doing anything else in this module. Gate 1 tests content that does not appear on slides or in the lecture video.</p>
+    <div class="header-meta">
+      <span class="badge">Junior–Senior Level</span>
+      <span class="badge">Asynchronous Online</span>
+      <span class="badge">Five-Week Summer Session</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- ── CENTRAL QUESTION ───────────────────────────────────────────────── -->
+<div class="section">
+  <span class="section-label">The Central Question</span>
+
+  <div class="central-question">
+    <span class="cq-label">What this module asks you to figure out</span>
+    <div class="cq-text">If you cut price by 10% and volume grows by 25%, does profit go up or down?</div>
+    <p class="cq-follow">Most managers say up. The data in this module will show you why they're wrong — and what to do instead. By the end, you will have a framework for making pricing decisions that starts with customer value, not production cost, and a set of analytical tools that tell you precisely when to raise price, when to cut it, and when the math says the intuitive move is the wrong one.</p>
+  </div>
+
+  <!-- Cognitive trap -->
+  <div class="trap-card">
+    <div class="trap-scenario">
+      <div class="trap-box before">
+        <span class="t-label">The Setup</span>
+        <p class="t-claim">A company cuts price <strong>10%</strong>. Volume grows <strong>25%</strong>. Revenue rises <strong>12.5%</strong>. The VP of Sales declares success.</p>
+      </div>
+      <div class="trap-arrow">→</div>
+      <div class="trap-box after">
+        <span class="t-label">The Reality</span>
+        <p class="t-claim">Gross profit falls <strong>16.7%</strong>. The margin reduction outweighs the volume gain. The company earned more revenue and <em>lost money doing it</em>.</p>
+      </div>
+    </div>
+    <div class="trap-reveal">
+      <strong>Why this happens:</strong> Breaking even on a 10% price cut at a 30% contribution margin requires a 50% volume increase — not 25%. The intuition is off by a factor of two. This module teaches you to run the calculation before you cut the price, not after you lose the margin.
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── MODULE PARAMETERS ──────────────────────────────────────────────── -->
+<div class="section">
+  <span class="section-label">Module at a Glance</span>
+  <div class="params-grid">
+    <div class="param-cell">
+      <span class="p-label">Textbook</span>
+      <span class="p-val"><strong>Chapter 8</strong> — Value-Based Pricing and Pricing Strategies</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Estimated Time</span>
+      <span class="p-val"><strong>4.3–5.5 hours</strong> across all activities</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Lecture Video</span>
+      <span class="p-val"><strong>~30 minutes</strong>, two segments</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Interactive Apps</span>
+      <span class="p-val"><strong>3 apps</strong> with worksheets (~55–75 min combined)</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Case Analysis</span>
+      <span class="p-val"><strong>Vantara Medical Devices</strong> — ~55–65 min</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Prerequisites</span>
+      <span class="p-val">Introductory marketing principles or instructor waiver</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Summer Pacing</span>
+      <span class="p-val">2–3 modules per week; plan <strong>~5 hours</strong> for this module</span>
+    </div>
+    <div class="param-cell">
+      <span class="p-label">Total Points</span>
+      <span class="p-val"><strong>200 pts</strong> — Gate 2 (20) · Video (10) · Apps (30) · Discussion (20) · Case (120)</span>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── LEARNING OBJECTIVES ────────────────────────────────────────────── -->
+<div class="section">
+  <span class="section-label">Learning Objectives</span>
+  <p>Six objectives span analysis, application, and evaluation. All are testable and appear in gate questions, app worksheets, or the case.</p>
+
+  <table class="lo-table">
+    <thead>
+      <tr>
+        <th style="width:44px;">LO</th>
+        <th style="width:100px;">Level</th>
+        <th>What you will be able to do</th>
+        <th style="width:180px;">Assessed in</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="lo-num">LO1</td>
+        <td><span class="lo-bloom bl-analysis">Analysis</span></td>
+        <td>Explain why cost-based pricing systematically leads to underpricing or overpricing; identify where market-based pricing produces superior profit outcomes</td>
+        <td>Gate 2 Q1 · Discussion</td>
+      </tr>
+      <tr>
+        <td class="lo-num">LO2</td>
+        <td><span class="lo-bloom bl-application">Application</span></td>
+        <td>Calculate economic value (value-in-use) by comparing total cost of ownership; determine the maximum justifiable price premium</td>
+        <td>Gate 2 Q3 · App 1 · Case Pt 1</td>
+      </tr>
+      <tr>
+        <td class="lo-num">LO3</td>
+        <td><span class="lo-bloom bl-application">Application</span></td>
+        <td>Compute performance-based value scores from conjoint weights; compare company vs. competitor value advantage across customer segments</td>
+        <td>Gate 2 Q2 · App 2 · Case Pt 2</td>
+      </tr>
+      <tr>
+        <td class="lo-num">LO4</td>
+        <td><span class="lo-bloom bl-analysis">Analysis</span></td>
+        <td>Classify a market situation into the correct product life-cycle pricing strategy; explain the conditions that make each of the eight strategies appropriate</td>
+        <td>Gate 1 · Gate 2 Q7 · Discussion</td>
+      </tr>
+      <tr>
+        <td class="lo-num">LO5</td>
+        <td><span class="lo-bloom bl-application">Application</span></td>
+        <td>Apply the break-even percentage formula to price-increase and price-decrease decisions; interpret the result against break-even market share</td>
+        <td>Gate 2 Q4–Q5 · App 3 · Case Pt 3</td>
+      </tr>
+      <tr>
+        <td class="lo-num">LO6</td>
+        <td><span class="lo-bloom bl-evaluation">Evaluation</span></td>
+        <td>Determine the correct direction of a price change given elasticity; synthesize economic value, value scoring, and break-even analysis into a pricing recommendation</td>
+        <td>Gate 2 Q6 · Q8 · Case Pt 4</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── TWO-GATE MODEL ──────────────────────────────────────────────────── -->
+<div class="section">
+  <span class="section-label">How This Module Is Sequenced</span>
+  <p>This module uses a two-gate reading accountability structure. Every item unlocks the next. You cannot skip ahead.</p>
+
+  <div class="gate-flow">
+    <div class="gate-node highlight-teal">
+      <span class="g-step">Step 1 · ~75 min</span>
+      <h4>Read Chapter 8</h4>
+      <p>The chapter covers 8 pricing methodologies. The slides only cover 5. Gate 1 tests the 3 you will only find in the chapter.</p>
+    </div>
+    <div class="gate-arrow">→</div>
+    <div class="gate-node highlight-gold">
+      <span class="g-step">Gate 1 · ~10 min</span>
+      <h4>Basic Reading Check</h4>
+      <p>5 questions, chapter-only content. Score 70%+ to unlock the slide deck. 2 attempts. 0 points — access control only.</p>
+    </div>
+    <div class="gate-arrow">→</div>
+    <div class="gate-node highlight-blue">
+      <span class="g-step">Gate 2 · ~20 min</span>
+      <h4>Applied Reading Check</h4>
+      <p>8 questions, chapter + slides synthesis. 1 attempt. 20 pts. Unlocks the lecture video.</p>
+    </div>
+  </div>
+
+  <div class="gate-why">
+    <span class="gate-why-icon">💡</span>
+    <div><strong>Why two gates?</strong> A single pre-lecture quiz creates one gap: students who score just above 70% proceed without genuinely internalizing the chapter. Gate 1 certifies you read before viewing slides. Gate 2 certifies you synthesized both before watching the lecture. Students who game Gate 1 cannot game Gate 2 — the applied questions require both sources. This matters especially in Module 08 because <strong>five pricing methodologies in the chapter appear nowhere in the slides or lecture video.</strong></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── GATE 1 TOPICS ───────────────────────────────────────────────────── -->
+<div class="section">
+  <span class="section-label">What the Chapter Covers That the Slides Do Not</span>
+  <p>Gate 1 tests these five topics. <strong>They do not appear on slides or in the lecture video.</strong> If you only watch the slides, you will not be able to answer Gate 1 correctly. Read the chapter first.</p>
+
+  <ul class="gate1-list">
+    <li class="gate1-item">
+      <div class="gate1-num">1</div>
+      <div class="gate1-content">
+        <div class="g1-title">Life-Cycle Value Pricing (NPV method) <span class="not-in-slides">Not on slides</span></div>
+        <div class="g1-desc">How to discount 5 years of ownership savings to compute economic value; when a price premium is justified by the NPV of ownership cost differences rather than by purchase price alone.</div>
+        <span class="g1-ref">pp. 275–276, Fig. 8-7</span>
+      </div>
+    </li>
+    <li class="gate1-item">
+      <div class="gate1-num">2</div>
+      <div class="gate1-content">
+        <div class="g1-title">Perceived-Value Pricing <span class="not-in-slides">Not on slides</span></div>
+        <div class="g1-desc">Product performance, service quality, and brand reputation indexes combined into a Customer Benefits Index; how the target Perceived Value Index (~25) determines the optimal price point.</div>
+        <span class="g1-ref">pp. 276–278, Fig. 8-8 &amp; 8-9</span>
+      </div>
+    </li>
+    <li class="gate1-item">
+      <div class="gate1-num">3</div>
+      <div class="gate1-content">
+        <div class="g1-title">Reduce-Focus Pricing <span class="not-in-slides">Not on slides</span></div>
+        <div class="g1-desc">A maturity-stage strategy that deliberately raises prices to shed price-sensitive customers; market share falls from 11.7% to 8.6% in the chapter example, but Net Marketing Contribution more than doubles.</div>
+        <span class="g1-ref">pp. 289–290, Fig. 8-21</span>
+      </div>
+    </li>
+    <li class="gate1-item">
+      <div class="gate1-num">4</div>
+      <div class="gate1-content">
+        <div class="g1-title">Harvest Pricing — the niche discovery twist <span class="not-in-slides">Not on slides</span></div>
+        <div class="g1-desc">Sequential price increases in the decline stage; the counterintuitive result when volume stabilizes at a higher price point, revealing a profitable niche worth managing rather than a market to exit.</div>
+        <span class="g1-ref">pp. 290–291, Fig. 8-22</span>
+      </div>
+    </li>
+    <li class="gate1-item">
+      <div class="gate1-num">5</div>
+      <div class="gate1-content">
+        <div class="g1-title">Break-Even Market Share vs. Break-Even Volume <span class="not-in-slides">Not on slides</span></div>
+        <div class="g1-desc">Why market share (constrained 0–100%) is a superior risk metric to break-even volume (unconstrained); how to calculate the safety cushion between current share and the break-even threshold.</div>
+        <span class="g1-ref">pp. 297–298, Fig. 8-28</span>
+      </div>
+    </li>
+  </ul>
+
+  <div class="callout key" style="margin-top:16px;">
+    <span class="callout-icon">📖</span>
+    <div><strong>Read these sections before Gate 1.</strong> The slides will not help you here. Gate 1 is open-chapter — look up what you need while you read, not after.</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ── MODULE SEQUENCE ────────────────────────────────────────────────── -->
+<div class="section">
+  <span class="section-label">Complete Module Sequence</span>
+  <p>Each item must be marked complete before the next unlocks. Work through them in order. Total estimated time: 4.3–5.5 hours.</p>
+
+  <table class="sequence-table">
+    <thead>
+      <tr>
+        <th style="width:36px;">#</th>
+        <th>Item</th>
+        <th style="width:80px;">Time</th>
+        <th style="width:80px;">Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="seq-num">1</span></td>
+        <td>
+          <span class="seq-item-name">Module Overview &amp; Orientation</span>
+          <span class="seq-item-note">You are here. Read before moving on.</span>
+        </td>
+        <td class="seq-time">5 min</td>
+        <td class="seq-pts zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">2</span></td>
+        <td>
+          <span class="seq-item-name">Chapter 8 Reading + Study Focus Guide</span>
+          <span class="seq-item-note">Read all sections. Use the Study Focus Guide questions to direct your attention. The 5 Gate 1 topics listed above are your priority.</span>
+        </td>
+        <td class="seq-time">70–80 min</td>
+        <td class="seq-pts zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">3</span></td>
+        <td>
+          <span class="seq-item-name">Gate 1: Basic Reading Check</span>
+          <span class="seq-item-note">5 questions, chapter-exclusive content. Score 70%+ to proceed. 2 attempts. Per-answer feedback with page references.</span>
+        </td>
+        <td class="seq-time">10–12 min</td>
+        <td class="seq-pts zero">0 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">4</span></td>
+        <td>
+          <span class="seq-item-name">Slide Deck Viewer</span>
+          <span class="seq-item-note">~45 slides. Covers cost-based vs. market-based pricing, value-in-use (EV), performance value scoring, PLC strategies (skim &amp; penetration in depth), and break-even % formula.</span>
+        </td>
+        <td class="seq-time">15–20 min</td>
+        <td class="seq-pts zero">—</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">5</span></td>
+        <td>
+          <span class="seq-item-name">Gate 2: Applied Reading Check</span>
+          <span class="seq-item-note">8 questions, chapter + slides synthesis. 5 numeric entry + 3 MC. 1 attempt. Correct/incorrect feedback only.</span>
+        </td>
+        <td class="seq-time">20–23 min</td>
+        <td class="seq-pts">20 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">6</span></td>
+        <td>
+          <span class="seq-item-name">Lecture Video: "Price, Value, and the Profit Trap"</span>
+          <span class="seq-item-note">Two segments: (1) The strategic argument — why managers systematically get price wrong (~12 min). (2) Worked calculations — EV, performance value, and break-even using parallel problems (~18 min). 3 embedded check questions.</span>
+        </td>
+        <td class="seq-time">30 min</td>
+        <td class="seq-pts">10 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">7</span></td>
+        <td>
+          <span class="seq-item-name">App 1: Value-in-Use Calculator + Worksheet</span>
+          <span class="seq-item-note">Compute total cost of ownership for two competing products. Determine the maximum justified price premium. 2 auto-graded worksheet questions.</span>
+        </td>
+        <td class="seq-time">20–25 min</td>
+        <td class="seq-pts">10 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">8</span></td>
+        <td>
+          <span class="seq-item-name">App 2: Performance Value Simulator + Worksheet</span>
+          <span class="seq-item-note">Apply conjoint weights to compute value scores. Discover that the same product can have a value advantage in one segment and a value deficiency in another. 2 auto-graded worksheet questions.</span>
+        </td>
+        <td class="seq-time">15–20 min</td>
+        <td class="seq-pts">10 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">9</span></td>
+        <td>
+          <span class="seq-item-name">App 3: Break-Even Pricing Calculator + Worksheet</span>
+          <span class="seq-item-note">Run price-cut and price-increase scenarios. Confront the inelastic-market result. Connect break-even % to break-even market share. 2 auto-graded worksheet questions.</span>
+        </td>
+        <td class="seq-time">20–25 min</td>
+        <td class="seq-pts">10 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">10</span></td>
+        <td>
+          <span class="seq-item-name">Discussion: "The VP of Sales vs. the CFO"</span>
+          <span class="seq-item-note">Take a position. Show the break-even calculation. Reply to one peer who took the opposite side. Due 3 days before the case deadline — this seeds arguments you will need in Case Part 4.</span>
+        </td>
+        <td class="seq-time">20–25 min</td>
+        <td class="seq-pts">20 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">11</span></td>
+        <td>
+          <span class="seq-item-name">Case Analysis: Vantara Medical Devices</span>
+          <span class="seq-item-note">Four-part analysis using all three tools: economic value (Part 1), performance value scoring (Part 2), break-even + elasticity (Part 3), strategic recommendation (Part 4). 300–500 words + calculations. Individual submission.</span>
+        </td>
+        <td class="seq-time">55–65 min</td>
+        <td class="seq-pts">120 pts</td>
+      </tr>
+      <tr>
+        <td><span class="seq-num">12</span></td>
+        <td>
+          <span class="seq-item-name">Module Self-Check (optional, ungraded)</span>
+          <span class="seq-item-note">5 practice questions. If you score below 80%, review the recommended lecture timestamps and chapter pages before submitting the case.</span>
+        </td>
+        <td class="seq-time">10 min</td>
+        <td class="seq-pts zero">0 pts</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="callout info" style="margin-top:16px;">
+    <span class="callout-icon">⏱️</span>
+    <div><strong>Summer session pacing:</strong> This module should take approximately 2–3 days to complete at 90–120 minutes per day. The discussion deadline is set 3 days before the case deadline intentionally — working through the VP vs. CFO debate sharpens the argument you'll make in Case Part 4. Do not leave the discussion until the last day.</div>
+  </div>
+</div>
+
+</div><!-- /container -->
+</body>
+</html>
