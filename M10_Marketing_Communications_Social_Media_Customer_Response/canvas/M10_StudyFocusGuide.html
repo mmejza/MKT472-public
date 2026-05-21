@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 · M10 · Study Focus Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+:root{
+  --navy:#0f2a4a; --blue:#1a4f8a; --acc:#1d6fa4;
+  --sky:#e8f2fb; --gold:#c8932a; --goldb:#fdf3e0;
+  --text:#1a1a2e; --muted:#5a6478; --rule:#d0dcea;
+  --red:#b91c1c; --redb:#fef2f2;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'IBM Plex Sans',system-ui,sans-serif;
+  font-size:14px; color:var(--text);
+  background:#f4f7fa; line-height:1.65;
+}
+
+.page{
+  max-width:820px; margin:32px auto 48px;
+  background:#fff; border-radius:4px;
+  box-shadow:0 2px 16px rgba(0,0,0,.1); overflow:hidden;
+}
+
+.hdr{
+  background:var(--navy); padding:28px 44px 24px;
+  border-bottom:3px solid var(--acc);
+}
+.hdr-eyebrow{
+  font-size:11px; font-weight:700; letter-spacing:.15em;
+  text-transform:uppercase; color:#7fafd4; margin-bottom:10px;
+}
+.hdr-title{
+  font-size:24px; font-weight:700; color:#fff;
+  line-height:1.2; margin-bottom:10px;
+}
+.hdr-sub{font-size:13px; color:#7fafd4; line-height:1.7;}
+.hdr-sub strong{color:#c8ddf0;}
+
+.body{padding:36px 44px;}
+
+.intro{
+  background:var(--sky); border-radius:4px;
+  padding:16px 20px; margin-bottom:28px;
+  font-size:13.5px; color:var(--text); line-height:1.6;
+}
+.intro strong{color:var(--navy);}
+
+/* ── QUESTION CARDS ── */
+.q-section-label{
+  font-size:10px; font-weight:700; letter-spacing:.14em;
+  text-transform:uppercase; color:var(--acc);
+  margin:28px 0 12px; padding-bottom:6px;
+  border-bottom:1px solid var(--rule);
+}
+.q-section-label:first-of-type{margin-top:0;}
+
+.q-card{
+  border:1.5px solid var(--rule); border-radius:4px;
+  margin-bottom:16px; overflow:hidden;
+}
+.q-card-hdr{
+  display:flex; align-items:center; gap:14px;
+  padding:11px 16px;
+  background:var(--sky); border-bottom:1px solid var(--rule);
+}
+.q-num{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px; font-weight:700; color:var(--navy);
+  background:#fff; border:1.5px solid var(--acc);
+  border-radius:3px; padding:2px 8px;
+  flex-shrink:0;
+}
+.q-gate-flag{
+  font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--gold);
+  border:1px solid var(--gold); border-radius:2px;
+  padding:2px 6px; flex-shrink:0;
+}
+.q-gate-flag.g2{color:var(--acc); border-color:var(--acc);}
+.q-page{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px; color:var(--muted);
+  margin-left:auto; flex-shrink:0;
+}
+
+.q-card-body{padding:14px 16px;}
+.q-text{font-size:14px; line-height:1.6; color:var(--text); margin-bottom:0;}
+.q-text strong{color:var(--navy);}
+
+.q-hint{
+  margin-top:10px; padding:8px 12px;
+  background:var(--goldb); border-left:3px solid var(--gold);
+  font-size:12.5px; color:#6b4c00; line-height:1.5;
+  border-radius:0 3px 3px 0;
+}
+.q-hint .hint-label{
+  font-size:10px; font-weight:700; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--gold); margin-bottom:3px;
+}
+
+/* ── WARNING ── */
+.warn{
+  background:var(--redb); border-left:4px solid var(--red);
+  padding:12px 16px; border-radius:0 3px 3px 0;
+  font-size:13px; color:#7f1d1d; margin:20px 0;
+}
+.warn strong{color:#450a0a;}
+
+/* ── FORMULA REFERENCE ── */
+.formula-box{
+  background:#1a1a2e; color:#e8f2fb;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:13px; padding:14px 18px;
+  border-radius:4px; margin:10px 0;
+  line-height:1.7;
+}
+.formula-box .fl{
+  font-size:10px; font-family:'IBM Plex Sans',sans-serif;
+  font-weight:700; letter-spacing:.12em;
+  text-transform:uppercase; color:#7fafd4; margin-bottom:6px;
+}
+.fo-var{color:#f5c842;}
+
+/* ── FOOTER ── */
+.pg-footer{
+  margin-top:32px; padding-top:14px;
+  border-top:1px solid var(--rule);
+  font-size:12px; color:var(--muted);
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="hdr">
+    <p class="hdr-eyebrow">MKT 472 &nbsp;·&nbsp; Module 10 &nbsp;·&nbsp; Study Focus Guide</p>
+    <h1 class="hdr-title">Chapter 10 Reading Targets</h1>
+    <p class="hdr-sub">
+      Answer these <strong>8 questions</strong> while reading Chapter 10.
+      They are drawn directly from Gate 1 and Gate 2 targets.
+      <strong>This guide primes your reading — it does not give away gate answers.</strong>
+    </p>
+  </div>
+
+  <div class="body">
+
+    <div class="intro">
+      <strong>How to use this guide:</strong> Read Chapter 10 with these questions open. When you encounter the relevant section, write a brief answer in your own words. Students who answer all 8 before Gate 1 consistently score above the 70% threshold on the first attempt. Students who skip this step frequently need their second attempt.
+    </div>
+
+    <div class="warn">
+      <strong>Do not skim.</strong> Gate 1 questions test five topics that appear only in the chapter — not in the slides or lecture. The AFLAC case, the trade promotion trap, the Loctite rebrand, the Post-it free-sample case, and the promotional sub-types (pp. 341–342, 358, 360, 362, 367–368) cannot be answered from slides alone. Budget the full 70–80 minutes for the reading.
+    </div>
+
+    <!-- SECTION: GATE 1 TARGETS -->
+    <div class="q-section-label">Questions 1–5 &nbsp;·&nbsp; Gate 1 Targets &nbsp;·&nbsp; Chapter-Only Content</div>
+
+    <!-- Q1 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q1</span>
+        <span class="q-gate-flag">Gate 1</span>
+        <span class="q-page">p. 358</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>AFLAC duck campaign.</strong> Before the duck campaign launched, what was AFLAC's name recognition rating in the United States? What happened to revenues in the first two weeks after the commercials aired? And what eventually caused the campaign to lose effectiveness over time — what does Chapter 10 call this phenomenon?
+        </p>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          This case illustrates both the power of message frequency (awareness → 90%) and its ceiling (wear-out). Gate 1 tests a specific statistic — look for the exact percentage.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q2</span>
+        <span class="q-gate-flag">Gate 1</span>
+        <span class="q-page">pp. 367–368 · Fig. 10-24</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>Trade promotion forward-buying trap (Figure 10-24).</strong> When the supplier announced a price promotion in advance, what did the retailer do in the month <em>before</em> the promotion began, and why? Over the full three-month window (before, during, after), which party's gross profit declined relative to the no-promotion baseline — and by approximately what percentage?
+        </p>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          This is the case's central counterintuitive result. The month-2 volume spike looks like success. The 3-month comparison reveals the loss. Make sure you understand both numbers.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q3</span>
+        <span class="q-gate-flag">Gate 1</span>
+        <span class="q-page">p. 360</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>Loctite / RC-601 → Quick Metal.</strong> What was the original brand name? Who was the original target audience, and why did the initial ad campaign fail despite a technically superior product? Who turned out to be the actual buyers? What happened to sales after the relaunch?
+        </p>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          This case illustrates the "ad copy and target audience" root cause of low CRI comprehension. The fix wasn't the product or the budget — it was the audience definition and the message.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q4</span>
+        <span class="q-gate-flag">Gate 1</span>
+        <span class="q-page">pp. 341–342</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>Promotional sub-types.</strong> Chapter 10 identifies three sub-types of brand-action promotional communications. Define each one in a sentence and give a real example from the chapter:
+        </p>
+        <p class="q-text" style="margin-top:8px">
+          (a) <strong>Promotional Giveaway</strong> — <br>
+          (b) <strong>Promotional Gift</strong> — <br>
+          (c) <strong>Minimum Purchase</strong> —
+        </p>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          Gate 1 will give you a scenario and ask which sub-type it represents. The distinctions are subtle — "something for nothing" vs. "free item with purchase" vs. "spending threshold." Know the difference.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q5</span>
+        <span class="q-gate-flag">Gate 1</span>
+        <span class="q-page">p. 362</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>Post-it Note free-sample case.</strong> For how long did 3M's advertising campaign for Post-it Notes fail, and across how many test markets? What was 3M's corporate policy that initially blocked the solution? How did the marketing director circumvent it? What does this case imply about when advertising alone is insufficient to stimulate customer action?
+        </p>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          This case extends the CRI framework: even perfect comprehension doesn't guarantee action if the product's benefits can only be discovered through use. Knowing the product ≠ wanting the product ≠ buying the product.
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION: GATE 2 + SLIDES SYNTHESIS -->
+    <div class="q-section-label">Questions 6–8 &nbsp;·&nbsp; Gate 2 Targets &nbsp;·&nbsp; Chapter + Slides Synthesis</div>
+
+    <!-- Q6 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q6</span>
+        <span class="q-gate-flag g2">Gate 2</span>
+        <span class="q-page">p. 355 · Fig. 10-15</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>Customer Response Index hierarchy.</strong> List the five stages in the CRI hierarchy in order. For the department-store campaign example in Figure 10-15, write out the CRI calculation step by step and confirm the 4.4% result. Then identify which stage had the lowest rate — and note whether that stage was also the one that would have yielded the highest marginal CRI gain if improved.
+        </p>
+        <div class="formula-box">
+          <div class="fl">Formula</div>
+          CRI = <span class="fo-var">Exposure</span> × <span class="fo-var">Awareness</span> × <span class="fo-var">Comprehension</span> × <span class="fo-var">Intention</span> × <span class="fo-var">Purchase</span>
+        </div>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          Gate 2 Q1 gives you different stage inputs and asks you to compute the CRI. Gate 2 Q2 asks which stage improvement yields the highest marginal gain. Practice both on the chapter example before Gate 2.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q7 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q7</span>
+        <span class="q-gate-flag g2">Gate 2</span>
+        <span class="q-page">pp. 359–360</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>GRP and weighted average message frequency.</strong> Write out the GRP formula and calculate it for the chapter example (60% reach, 4 exposures). Then work through the weighted-average message frequency table on p. 359: multiply each recall level by its percentage, sum the column, and confirm the ~3.85 result. What is the strategic implication of the gap between messages sent (8) and average messages received (~4)?
+        </p>
+        <div class="formula-box">
+          <div class="fl">Formulas</div>
+          GRP = <span class="fo-var">Reach%</span> × <span class="fo-var">Frequency</span><br>
+          WA Freq = Σ (<span class="fo-var">Recall Level</span> × <span class="fo-var">% Recalling That Many</span>)
+        </div>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          Gate 2 Q3 gives you different reach and frequency inputs. Gate 2 Q4 gives you a different recall distribution. Both are straightforward if you've practiced the formulas on the chapter data.
+        </div>
+      </div>
+    </div>
+
+    <!-- Q8 -->
+    <div class="q-card">
+      <div class="q-card-hdr">
+        <span class="q-num">Q8</span>
+        <span class="q-gate-flag g2">Gate 2</span>
+        <span class="q-page">pp. 364–366</span>
+      </div>
+      <div class="q-card-body">
+        <p class="q-text">
+          <strong>Advertising carryover — two formulas.</strong> Write out the carryover model for Hart Schaffner Marx (p. 365): what is the current-period sales impact? What is the total multi-period impact using the total-impact formula? What percentage of the total does the current period represent? What does this imply about a manager who uses only current-period ROI to evaluate the ad budget?
+        </p>
+        <div class="formula-box">
+          <div class="fl">Formulas</div>
+          Current-Period Impact = <span class="fo-var">Multiplier</span> × <span class="fo-var">Ad Spend</span><br>
+          Total Impact = <span class="fo-var">Current</span> ÷ (1 − <span class="fo-var">Carryover Coefficient</span>)
+        </div>
+        <div class="q-hint">
+          <div class="hint-label">Why this matters</div>
+          Gate 2 Q6 and Q7 test these two formulas with different parameter values. The case Part 3 uses them with Apex Audio's inputs. If the formula is clear in your head from the chapter example, the case calculation is straightforward.
+        </div>
+      </div>
+    </div>
+
+    <!-- FINAL NOTE -->
+    <div class="intro" style="margin-top:24px; background:var(--goldb); border-left:4px solid var(--gold); border-radius:0 4px 4px 0;">
+      <strong>After completing the reading:</strong> Open Gate 1. You have two attempts. If you score below 70% on your first attempt, review the five chapter sections flagged in Questions 1–5 before your second attempt — the page references are exact. Do not proceed to the slide deck until Gate 1 is cleared.
+    </div>
+
+    <div class="pg-footer">
+      <p>MKT 472 · Module 10 · Study Focus Guide · Chapter 10 reading companion</p>
+    </div>
+
+  </div>
+</div>
+</body>
+</html>
