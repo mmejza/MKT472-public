@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 · M11 · Study Focus Guide</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0F2027;--teal:#0D9B87;--teal-dk:#0D7A6B;--teal-lt:#E5F5F3;--teal-bd:#C8E8E4;
+  --amber:#E6A800;--amb-lt:#FFF8E6;--amb-bd:#F5D78A;
+  --red:#C0392B;--red-lt:#FEF5F5;
+  --text:#1A2E2C;--muted:#7A9896;
+  --off:#F7FDFC;--bg:#F0F4F3;--white:#FFFFFF;
+}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--bg);color:var(--text);min-height:100vh;
+}
+
+/* ── Header ── */
+.page-hdr{
+  background:var(--navy);padding:18px 28px 16px;
+  border-bottom:3px solid var(--teal);
+}
+.hdr-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--teal);margin-bottom:5px;
+}
+.hdr-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:24px;
+  font-weight:800;text-transform:uppercase;letter-spacing:.02em;
+  color:var(--white);line-height:1;
+}
+.hdr-sub{font-size:12px;color:#6A9898;margin-top:6px;}
+.hdr-chips{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap;}
+.chip{
+  background:rgba(255,255,255,.08);border:.5px solid rgba(255,255,255,.15);
+  border-radius:3px;padding:3px 9px;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#A8C8D0;
+}
+.chip span{color:var(--amber);}
+
+/* ── Content ── */
+.content{max-width:900px;margin:0 auto;padding:22px 24px 52px;}
+
+/* ── How to use block ── */
+.how-to{
+  background:var(--white);border-radius:8px;border:.5px solid var(--teal-bd);
+  padding:14px 18px;margin-bottom:20px;
+  display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;
+}
+.ht-item{display:flex;gap:10px;align-items:flex-start;}
+.ht-icon{font-size:18px;flex-shrink:0;margin-top:1px;}
+.ht-text{font-size:12px;color:var(--text);line-height:1.5;}
+.ht-text strong{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;
+  font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+  color:var(--navy);display:block;margin-bottom:2px;
+}
+
+/* ── Section header band ── */
+.section-band{
+  border-radius:6px;padding:11px 18px;margin-bottom:14px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.section-band.g1{background:var(--navy);}
+.section-band.g2{background:var(--teal-dk);}
+.sb-left{display:flex;align-items:center;gap:10px;}
+.sb-badge{
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;padding:3px 8px;border-radius:2px;
+}
+.section-band.g1 .sb-badge{background:rgba(230,168,0,.2);color:var(--amber);}
+.section-band.g2 .sb-badge{background:rgba(255,255,255,.2);color:var(--white);}
+.sb-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.04em;color:var(--white);
+}
+.sb-meta{font-size:11px;color:rgba(255,255,255,.55);}
+
+/* ── Question cards ── */
+.q-card{
+  background:var(--white);border-radius:8px;border:.5px solid var(--teal-bd);
+  margin-bottom:12px;overflow:hidden;
+}
+.q-card-hdr{
+  padding:10px 16px;display:flex;align-items:center;gap:10px;
+  border-bottom:.5px solid var(--teal-lt);
+}
+.q-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;
+  line-height:1;flex-shrink:0;
+}
+.q-card.g1 .q-num{color:var(--amber);}
+.q-card.g2 .q-num{color:var(--teal-dk);}
+.q-meta{flex:1;}
+.q-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.05em;color:var(--navy);margin-bottom:2px;
+}
+.q-lo{
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;
+}
+.q-card.g1 .q-lo{color:var(--muted);}
+.q-card.g2 .q-lo{color:var(--teal-dk);}
+.q-loc{
+  display:flex;align-items:center;gap:5px;
+  background:var(--navy);border-radius:3px;padding:4px 10px;flex-shrink:0;
+}
+.q-loc-text{
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  font-weight:700;color:var(--teal);letter-spacing:.04em;
+}
+
+.q-body{padding:12px 16px;display:flex;flex-direction:column;gap:10px;}
+
+/* ── The actual question ── */
+.q-question{
+  background:var(--off);border:.5px solid var(--teal-bd);
+  border-radius:4px;padding:10px 14px;
+  font-size:13px;color:var(--text);line-height:1.6;font-style:italic;
+}
+.q-question strong{color:var(--navy);font-style:normal;}
+
+/* ── Why / Look for rows ── */
+.q-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+
+.q-panel{border-radius:4px;padding:9px 12px;}
+.q-panel.why{background:var(--amb-lt);border:.5px solid var(--amb-bd);}
+.q-panel.look{background:var(--teal-lt);border:.5px solid var(--teal-bd);}
+
+.qp-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;margin-bottom:4px;
+}
+.q-panel.why  .qp-label{color:var(--amber);}
+.q-panel.look .qp-label{color:var(--teal-dk);}
+
+.qp-text{font-size:12px;line-height:1.55;}
+.q-panel.why  .qp-text{color:#5C4200;}
+.q-panel.look .qp-text{color:var(--teal-dk);}
+.qp-text strong{font-weight:700;}
+
+/* ── Checklist items ── */
+.checklist{display:flex;flex-direction:column;gap:3px;margin-top:4px;}
+.cl-item{
+  display:flex;gap:7px;align-items:flex-start;
+  font-size:11px;color:var(--teal-dk);line-height:1.4;
+}
+.cl-item::before{
+  content:'□';font-size:12px;flex-shrink:0;
+  color:var(--teal);margin-top:-1px;
+}
+
+/* ── Gate 2 timing note ── */
+.timing-note{
+  background:var(--teal-lt);border:.5px solid var(--teal-bd);
+  border-radius:4px;padding:9px 14px;margin-bottom:14px;
+  display:flex;gap:10px;align-items:flex-start;
+}
+.tn-icon{font-size:16px;flex-shrink:0;}
+.tn-text{font-size:12px;color:var(--teal-dk);line-height:1.55;}
+.tn-text strong{color:var(--navy);}
+
+/* ── Answer box ── */
+.answer-note{
+  background:var(--off);border:.5px dashed var(--teal-bd);
+  border-radius:4px;padding:8px 12px;margin-top:2px;
+}
+.an-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;
+}
+.an-text{font-size:11px;color:var(--muted);line-height:1.5;font-style:italic;}
+
+/* ── Bottom callout ── */
+.bottom-callout{
+  background:var(--navy);border-radius:8px;padding:14px 18px;
+  display:flex;gap:14px;align-items:flex-start;margin-top:20px;
+}
+.bc-icon{font-size:20px;flex-shrink:0;margin-top:2px;}
+.bc-text{flex:1;}
+.bc-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:5px;
+}
+.bc-body{font-size:12px;color:#8AB0B0;line-height:1.6;}
+.bc-body strong{color:var(--white);}
+
+@media(max-width:640px){
+  .how-to{grid-template-columns:1fr;}
+  .q-row{grid-template-columns:1fr;}
+  .content{padding:16px 14px 40px;}
+  .page-hdr{padding:14px 16px;}
+}
+</style>
+</head>
+<body>
+
+<div class="page-hdr">
+  <div class="hdr-eyebrow">MKT 472 · Module 11 · Reading Companion</div>
+  <div class="hdr-title">Study Focus Guide — Chapter 11</div>
+  <div class="hdr-sub">Open this guide alongside your chapter. Answer each question in writing as you read.</div>
+  <div class="hdr-chips">
+    <div class="chip">Questions <span>8 total</span></div>
+    <div class="chip">Gate 1 targets <span>5 questions</span></div>
+    <div class="chip">Gate 2 targets <span>3 questions</span></div>
+    <div class="chip">Est. reading time <span>70–80 min with guide</span></div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ── How to use ── -->
+<div class="how-to">
+  <div class="ht-item">
+    <div class="ht-icon">📖</div>
+    <div class="ht-text">
+      <strong>Read with this open</strong>
+      Use both screens or print this guide. Answer each question in your own words as you reach the relevant section — not after finishing the chapter.
+    </div>
+  </div>
+  <div class="ht-item">
+    <div class="ht-icon">🎯</div>
+    <div class="ht-text">
+      <strong>Gate 1 questions first</strong>
+      Questions 1–5 are the Gate 1 targets. These appear only in Chapter 11 — not in the slides. You cannot pass Gate 1 without finding these answers yourself.
+    </div>
+  </div>
+  <div class="ht-item">
+    <div class="ht-icon">🔁</div>
+    <div class="ht-text">
+      <strong>Return for Questions 6–8</strong>
+      Questions 6–8 require both the chapter and the slides. Read them now to know what to watch for, but revisit your answers after viewing the slide deck.
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     GATE 1 SECTION
+═══════════════════════════════════════════════════ -->
+<div class="section-band g1">
+  <div class="sb-left">
+    <span class="sb-badge">Gate 1 Targets</span>
+    <span class="sb-title">Find These Before the Slides Open</span>
+  </div>
+  <span class="sb-meta">5 questions · Chapter 11 only · answers not in slides</span>
+</div>
+
+<!-- Q1 -->
+<div class="q-card g1">
+  <div class="q-card-hdr">
+    <span class="q-num">1</span>
+    <div class="q-meta">
+      <div class="q-title">GE/McKinsey Multi-Factor Model</div>
+      <div class="q-lo">LO2 — Analysis</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">p. 385</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">Who developed the multi-factor portfolio matrix, and what specific limitation of single-factor analysis does it address? <strong>Name both organizations and state the limitation in one sentence.</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 1 tests this</div>
+        <div class="qp-text">The slides show the framework structure but never name who developed it. This is the one fact about the GE/McKinsey model that cannot be found anywhere except Chapter 11, p. 385. Gate 1 will give you a scenario and ask which component of the model it illustrates — you need the conceptual origin to answer correctly.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">Two organization names (not just "GE")</div>
+          <div class="cl-item">The specific single-factor limitation the model solves</div>
+          <div class="cl-item">The three dimensions of market attractiveness named on p. 385</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q2 -->
+<div class="q-card g1">
+  <div class="q-card-hdr">
+    <span class="q-num">2</span>
+    <div class="q-meta">
+      <div class="q-title">Share Development Index Formula</div>
+      <div class="q-lo">LO4 — Application</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">Fig. 11-5 · pp. 380–381</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">Write out the SDI formula and define each component. Then interpret: <strong>what does an SDI of 32 mean strategically, versus an SDI of 90?</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 1 tests this</div>
+        <div class="qp-text">Gate 1 will give you a Market Share Index and a Share Potential Index and ask you to compute SDI — or give you an SDI score and ask what it implies strategically. The slides use SDI throughout but never show its derivation. The tree diagram in Figure 11-5 is the only source.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">Formula: SDI = (Market Share Index ÷ Share Potential Index) × 100</div>
+          <div class="cl-item">Definition of Market Share Index vs. Share Potential Index</div>
+          <div class="cl-item">The tree diagram showing how both components are built up</div>
+          <div class="cl-item">Strategic interpretation: SDI 32 = large untapped potential; SDI 90 = near share ceiling</div>
+        </div>
+      </div>
+    </div>
+    <div class="answer-note">
+      <div class="an-label">Write your answer here while reading</div>
+      <div class="an-text">SDI = _______ ÷ _______ × 100 &nbsp;|&nbsp; SDI 32 means: _______ &nbsp;|&nbsp; SDI 90 means: _______</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q3 -->
+<div class="q-card g1">
+  <div class="q-card-hdr">
+    <span class="q-num">3</span>
+    <div class="q-meta">
+      <div class="q-title">Relative Market Share vs. SDI</div>
+      <div class="q-lo">LO4 — Analysis</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">pp. 378–379</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">How does relative market share differ from a company's absolute market share? How is relative market share calculated? <strong>How does it differ from SDI as a measure of competitive position?</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 1 tests this</div>
+        <div class="qp-text">Gate 1 will ask you to classify or distinguish these two measures. The slides use SDI but do not define relative market share. Students who skip pages 378–379 typically confuse the two on Gate 1 and answer incorrectly.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">RMS formula: firm's share ÷ combined share of three largest competitors</div>
+          <div class="cl-item">What an RMS above 1.0 vs. below 1.0 signals</div>
+          <div class="cl-item">Key difference from SDI: RMS measures position relative to rivals; SDI measures how much potential has been captured</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Q4 -->
+<div class="q-card g1">
+  <div class="q-card-hdr">
+    <span class="q-num">4</span>
+    <div class="q-meta">
+      <div class="q-title">Offensive vs. Defensive Trade-Off — Figure 11-14</div>
+      <div class="q-lo">LO6 — Evaluation</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">Fig. 11-14 · p. 393</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">In Figure 11-14, the offensive plan produces higher Year-3 NMC than the defensive plan — but lower ROS and ROI. <strong>Write down the specific Year-3 NMC, ROS, and ROI values for both plans. Then explain in one sentence why NMC rises while ROS and ROI fall.</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 1 tests this</div>
+        <div class="qp-text">This is the module's central intellectual tension — the efficiency paradox. Gate 1 will ask you which metric improves and which declines under the offensive plan, or ask you to explain why a firm would choose a plan with lower ROI. If you cannot recall the specific numbers from Figure 11-14, you are guessing.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">Offensive Y3: NMC, Marketing ROS, Marketing ROI (exact values)</div>
+          <div class="cl-item">Defensive Y3: same three metrics</div>
+          <div class="cl-item">The mathematical explanation: ROS = NMC ÷ Sales; as marketing spend grows faster than NMC, the ratio falls even while the absolute rises</div>
+          <div class="cl-item">Why a firm would still choose the offensive plan despite the efficiency decline</div>
+        </div>
+      </div>
+    </div>
+    <div class="answer-note">
+      <div class="an-label">Record the exact numbers from Figure 11-14</div>
+      <div class="an-text">Offensive Y3: NMC = $___B · ROS = ___% · ROI = ___%&nbsp;&nbsp;|&nbsp;&nbsp;Defensive Y3: NMC = $___B · ROS = ___% · ROI = ___%</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q5 -->
+<div class="q-card g1">
+  <div class="q-card-hdr">
+    <span class="q-num">5</span>
+    <div class="q-meta">
+      <div class="q-title">Portfolio Diversification — Two Levels + Variance Data</div>
+      <div class="q-lo">LO1 — Analysis</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">Fig. 11-16 · pp. 395–397</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">Chapter 11 describes two levels of portfolio diversification. <strong>What are they? What specific variance data does Figure 11-16 use to demonstrate the stability benefit of diversification?</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 1 tests this</div>
+        <div class="qp-text">Gate 1 will ask you to identify which type of diversification a described scenario represents, or to interpret what the variance data implies about portfolio stability. The specific percentages (42% / 17% / 57% individual → 6% combined) are the proof point the chapter uses — and they appear nowhere in the slides.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">Level 1: product diversification (multiple products in one market)</div>
+          <div class="cl-item">Level 2: market diversification (same or related products across multiple markets)</div>
+          <div class="cl-item">Variance data: three individual product-markets at 42%, 17%, 57% variance</div>
+          <div class="cl-item">Combined portfolio variance: 6% — the diversification benefit quantified</div>
+          <div class="cl-item">HP example of market diversification (if present) — Gate 1 V2 tests this</div>
+        </div>
+      </div>
+    </div>
+    <div class="answer-note">
+      <div class="an-label">Record the variance numbers</div>
+      <div class="an-text">Individual variances: ___%, ___%, ___% &nbsp;|&nbsp; Combined portfolio variance: ___%</div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════
+     GATE 2 SECTION
+═══════════════════════════════════════════════════ -->
+<div class="timing-note" style="margin-top:24px;">
+  <div class="tn-icon">🔁</div>
+  <div class="tn-text"><strong>Return here after viewing the slides.</strong> Questions 6–8 require synthesis of Chapter 11 and the slide deck. Read them now so you know what to watch for during the slides — then revisit your answers before taking Gate 2.</div>
+</div>
+
+<div class="section-band g2">
+  <div class="sb-left">
+    <span class="sb-badge">Gate 2 Targets</span>
+    <span class="sb-title">Revisit After the Slides</span>
+  </div>
+  <span class="sb-meta">3 questions · Chapter 11 + slides · 20 pts</span>
+</div>
+
+<!-- Q6 -->
+<div class="q-card g2">
+  <div class="q-card-hdr">
+    <span class="q-num">6</span>
+    <div class="q-meta">
+      <div class="q-title">MAI Calculation — 5-Step Method</div>
+      <div class="q-lo">LO3 — Application</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">Figs. 11-9, 11-10 · p. 387</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">Using Figure 11-10, work through all three dimensions of the MAI calculation from scratch. <strong>Verify your results: Market Forces dimension score = 62, Competitive Environment = 44, Market Access = 84, overall MAI = 61.</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 2 tests this</div>
+        <div class="qp-text">Gate 2 Q1 gives you a different set of ratings and asks you to compute a dimension score and its weighted contribution — a direct numeric entry question. Practicing the method here on Figure 11-10's known values confirms you understand the sequence before Gate 2 gives you unfamiliar numbers. The most common error: applying the dimension weight to individual metric scores instead of to the dimension score.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for — the 5 steps</div>
+        <div class="checklist">
+          <div class="cl-item">Step 1: Metric score = Relative Importance × Attractiveness Rating</div>
+          <div class="cl-item">Step 2: Dimension score = sum of all metric scores within the dimension</div>
+          <div class="cl-item">Step 3: Weighted contribution = Dimension Weight × Dimension Score</div>
+          <div class="cl-item">Step 4: Repeat for all three dimensions</div>
+          <div class="cl-item">Step 5: MAI = sum of three weighted contributions</div>
+        </div>
+      </div>
+    </div>
+    <div class="answer-note">
+      <div class="an-label">Verify your work against these checkpoints</div>
+      <div class="an-text">Market Forces: dim score = 62 → 30% × 62 = 18.6 &nbsp;|&nbsp; Comp Env: dim score = 44 → 40% × 44 = 17.6 &nbsp;|&nbsp; Market Access: dim score = 84 → 30% × 84 = 25.2 &nbsp;|&nbsp; MAI = 61.4 ≈ 61</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q7 -->
+<div class="q-card g2">
+  <div class="q-card-hdr">
+    <span class="q-num">7</span>
+    <div class="q-meta">
+      <div class="q-title">CPI Calculation — Rating Scale Warning</div>
+      <div class="q-lo">LO4 — Application</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">Figs. 11-11, 11-12 · pp. 388–389</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">Using Figure 11-12, work through the CPI calculation. <strong>Before you start: note how the CPI rating scale differs from the MAI rating scale. Verify: Differentiation = 74, Cost Advantage = 46, Marketing Advantage = 34, CPI = 55.</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 2 tests this</div>
+        <div class="qp-text">Gate 2 Q2 is a parallel CPI calculation — same method as Q1 but different inputs and a different rating anchor. The single most common Gate 2 error is applying the wrong scale: students give a rating of 40 thinking it means "moderately unattractive" (MAI logic) when it actually means "behind competitors" (CPI logic). The scale difference is stated in the chapter and on the slides — Gate 2 checks whether you noticed.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">CPI scale: 0 = Considerably Behind Competitors · 100 = Considerably Ahead</div>
+          <div class="cl-item">MAI scale: 0 = Very Unattractive · 100 = Very Attractive — <strong>not the same</strong></div>
+          <div class="cl-item">Why Marketing Advantage dimension scores lowest (34): Distribution rated only 20</div>
+          <div class="cl-item">Strategic implication: the weakest CPI dimension is the highest-leverage improvement target</div>
+        </div>
+      </div>
+    </div>
+    <div class="answer-note">
+      <div class="an-label">Verify your work</div>
+      <div class="an-text">Differentiation: dim score = 74 → 40% × 74 = 29.6 &nbsp;|&nbsp; Cost Adv: dim score = 46 → 40% × 46 = 18.4 &nbsp;|&nbsp; Mktg Adv: dim score = 34 → 20% × 34 = 6.8 &nbsp;|&nbsp; CPI = 54.8 ≈ 55</div>
+    </div>
+  </div>
+</div>
+
+<!-- Q8 -->
+<div class="q-card g2">
+  <div class="q-card-hdr">
+    <span class="q-num">8</span>
+    <div class="q-meta">
+      <div class="q-title">Portfolio Grid Placement and Zone Thresholds</div>
+      <div class="q-lo">LO5 — Evaluation</div>
+    </div>
+    <div class="q-loc"><span class="q-loc-text">Fig. 11-13 · p. 390 &amp; Fig. 11-18 · p. 399</span></div>
+  </div>
+  <div class="q-body">
+    <div class="q-question">Using Figure 11-13, identify which cell a product with MAI = 61 and CPI = 55 lands in, and name the strategies for that cell. <strong>Then look at the Zi-Tech case in Figure 11-18 — what numerical thresholds define the Low / Medium / High zone boundaries on both axes?</strong></div>
+    <div class="q-row">
+      <div class="q-panel why">
+        <div class="qp-label">Why Gate 2 tests this</div>
+        <div class="qp-text">Gate 2 Q3 gives you a MAI score and a CPI score and asks you to place a product on the grid and name the strategy. The zone thresholds (0/33/67/100) are visible only in Figure 11-18 — the Zi-Tech case appendix — not in the main grid diagram at Figure 11-13. Students who do not look at Figure 11-18 typically misclassify borderline scores.</div>
+      </div>
+      <div class="q-panel look">
+        <div class="qp-label">What to look for</div>
+        <div class="checklist">
+          <div class="cl-item">Figure 11-13: the 9-cell grid and all seven strategy names</div>
+          <div class="cl-item">Zone boundaries from Figure 11-18: Low = 0–33, Medium = 34–67, High = 68–100</div>
+          <div class="cl-item">MAI 61 = Medium zone; CPI 55 = Medium zone → center cell</div>
+          <div class="cl-item">Center cell strategies: Improve Position and Optimize Position</div>
+          <div class="cl-item">How life-cycle stage helps choose between the two center-cell strategies</div>
+        </div>
+      </div>
+    </div>
+    <div class="answer-note">
+      <div class="an-label">Record zone thresholds from Figure 11-18</div>
+      <div class="an-text">Low = 0 to ___ &nbsp;|&nbsp; Medium = ___ to ___ &nbsp;|&nbsp; High = ___ to 100 &nbsp;|&nbsp; MAI 61 zone: ___ &nbsp;|&nbsp; CPI 55 zone: ___ &nbsp;|&nbsp; Cell: ___ &nbsp;|&nbsp; Strategies: ___</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── Bottom CTA ── -->
+<div class="bottom-callout">
+  <div class="bc-icon">✅</div>
+  <div class="bc-text">
+    <div class="bc-title">Ready for Gate 1?</div>
+    <div class="bc-body">If you can answer Questions 1–5 from memory — without looking back at the chapter — you are ready for Gate 1. If any answer is unclear, return to the specific page reference before attempting the quiz. Gate 1 has <strong>2 attempts</strong> and requires <strong>70%</strong> to proceed. Students who fail Gate 1 on the first attempt consistently report they skipped one of the five topics above.</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+</body>
+</html>

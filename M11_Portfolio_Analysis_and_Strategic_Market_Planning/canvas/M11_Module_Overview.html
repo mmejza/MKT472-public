@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 · M11 · Module Overview</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --navy:#0F2027;--teal:#0D9B87;--teal-dk:#0D7A6B;--teal-lt:#E5F5F3;--teal-bd:#C8E8E4;
+  --amber:#E6A800;--amb-lt:#FFF8E6;--amb-bd:#F5D78A;
+  --red:#C0392B;--red-lt:#FEF5F5;--red-bd:#F5BFBF;
+  --text:#1A2E2C;--muted:#7A9896;--border:#E8F5F3;
+  --off:#F7FDFC;--bg:#F0F4F3;--white:#FFFFFF;
+}
+body{
+  font-family:'Barlow',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+}
+
+/* ── Page header ── */
+.page-hdr{
+  background:var(--navy);
+  padding:20px 28px 18px;
+  border-bottom:3px solid var(--teal);
+  position:relative;overflow:hidden;
+}
+.page-hdr::after{
+  content:'';position:absolute;right:-80px;top:-80px;
+  width:300px;height:300px;border-radius:50%;
+  background:rgba(13,155,135,.06);pointer-events:none;
+}
+.page-hdr-eyebrow{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:10px;font-weight:700;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--teal);margin-bottom:6px;
+}
+.page-hdr-title{
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:28px;font-weight:800;text-transform:uppercase;
+  letter-spacing:.02em;color:var(--white);line-height:1;
+}
+.page-hdr-title span{color:var(--teal);}
+.page-hdr-sub{
+  font-size:12px;color:#6A9898;margin-top:8px;
+}
+.meta-row{
+  display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;align-items:center;
+}
+.meta-chip{
+  background:rgba(255,255,255,.08);border:.5px solid rgba(255,255,255,.15);
+  border-radius:3px;padding:4px 10px;
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:#A8C8D0;
+}
+.meta-chip span{color:var(--amber);}
+
+/* ── Content ── */
+.content{max-width:900px;margin:0 auto;padding:24px 24px 52px;}
+
+/* ── Central question block ── */
+.cq-block{
+  background:var(--navy);border-radius:8px;
+  border-left:6px solid var(--amber);
+  padding:20px 22px;margin-bottom:20px;
+  position:relative;overflow:hidden;
+}
+.cq-block::before{
+  content:'';position:absolute;right:-40px;top:-40px;
+  width:180px;height:180px;border-radius:50%;
+  background:rgba(230,168,0,.05);pointer-events:none;
+}
+.cq-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;
+}
+.cq-text{
+  font-family:'Barlow Condensed',sans-serif;font-size:22px;font-weight:800;
+  text-transform:uppercase;letter-spacing:.02em;color:var(--white);
+  line-height:1.2;margin-bottom:12px;
+}
+.cq-text span{color:var(--teal);}
+.cq-body{font-size:13px;color:#C0D8DA;line-height:1.65;}
+.cq-body strong{color:var(--white);}
+
+/* ── Generic white section card ── */
+.section{
+  background:var(--white);border-radius:8px;
+  border:.5px solid var(--teal-bd);
+  margin-bottom:20px;overflow:hidden;
+}
+.section-hdr{
+  background:var(--navy);padding:10px 18px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.section-hdr-title{
+  font-family:'Barlow Condensed',sans-serif;font-size:13px;
+  font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);
+}
+.section-hdr-meta{
+  font-family:'Barlow Condensed',sans-serif;font-size:11px;
+  font-weight:700;color:#6A9898;letter-spacing:.04em;
+}
+.section-body{padding:16px 18px;}
+
+/* ── LO grid ── */
+.lo-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.lo-card{
+  background:var(--off);border:.5px solid var(--teal-bd);
+  border-left:3px solid var(--teal);border-radius:4px;
+  padding:8px 12px;display:flex;gap:10px;align-items:flex-start;
+}
+.lo-n{
+  font-family:'Barlow Condensed',sans-serif;font-size:24px;font-weight:800;
+  color:var(--teal);line-height:1;flex-shrink:0;margin-top:1px;
+}
+.lo-content{}
+.lo-level{
+  font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:2px;
+}
+.lo-text{font-size:12px;color:var(--text);line-height:1.45;}
+
+/* ── Gate model ── */
+.gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.gate-card{border-radius:6px;overflow:hidden;border:.5px solid var(--teal-bd);}
+.gate-hdr{
+  padding:9px 14px;
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;
+  font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.gate-card.g1 .gate-hdr{background:var(--navy);color:var(--teal);}
+.gate-card.g2 .gate-hdr{background:var(--teal-dk);color:var(--white);}
+.gate-badge{
+  font-size:10px;padding:2px 7px;border-radius:2px;
+  font-family:'Barlow Condensed',sans-serif;font-weight:700;
+}
+.gate-card.g1 .gate-badge{background:rgba(230,168,0,.2);color:var(--amber);}
+.gate-card.g2 .gate-badge{background:rgba(255,255,255,.2);color:var(--white);}
+.gate-body{background:var(--white);padding:12px 14px;}
+.gate-row{
+  display:flex;justify-content:space-between;align-items:baseline;
+  padding:3px 0;border-bottom:.5px solid var(--teal-lt);
+  font-size:12px;
+}
+.gate-row:last-child{border:none;}
+.gate-row-label{color:var(--muted);font-size:11px;}
+.gate-row-val{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;
+  font-weight:700;color:var(--text);
+}
+.gate-row-val.amber{color:#B87800;}
+.gate-row-val.teal{color:var(--teal-dk);}
+
+/* ── Why two gates ── */
+.why-box{
+  background:var(--off);border:.5px solid var(--teal-bd);border-radius:4px;
+  padding:10px 14px;margin-bottom:14px;
+}
+.why-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--teal-dk);margin-bottom:5px;
+}
+.why-text{font-size:12px;color:var(--text);line-height:1.6;}
+.why-text strong{color:var(--navy);}
+
+/* ── Gate 1 preview list ── */
+.gate1-list{display:flex;flex-direction:column;gap:5px;}
+.gate1-item{
+  display:flex;gap:10px;background:var(--off);
+  border:.5px solid var(--teal-bd);border-radius:3px;padding:6px 10px;
+}
+.g1-num{
+  font-family:'Barlow Condensed',sans-serif;font-size:15px;font-weight:800;
+  color:var(--amber);min-width:18px;line-height:1;flex-shrink:0;margin-top:1px;
+}
+.g1-text{font-size:12px;color:var(--text);line-height:1.45;flex:1;}
+.g1-text strong{color:var(--navy);}
+.g1-ref{
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  color:var(--muted);white-space:nowrap;padding-top:1px;
+}
+
+/* ── Workload table ── */
+.wl-tbl{width:100%;border-collapse:collapse;font-size:12px;}
+.wl-tbl th{
+  background:var(--navy);color:var(--white);padding:6px 10px;
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  font-weight:700;letter-spacing:.07em;text-transform:uppercase;text-align:left;
+}
+.wl-tbl th.r{text-align:right;}
+.wl-tbl td{padding:6px 10px;border-bottom:.5px solid var(--teal-lt);color:var(--text);}
+.wl-tbl td.r{text-align:right;font-family:'Barlow Condensed',sans-serif;font-size:12px;}
+.wl-tbl td.label{color:var(--muted);font-size:11px;}
+.wl-tbl tr:nth-child(even) td{background:#FAFEFE;}
+.wl-tbl tr.total-row td{
+  background:var(--teal-lt)!important;font-weight:700;
+  color:var(--teal-dk);border-top:1.5px solid var(--teal);
+}
+.wl-tbl td.pts-cell{
+  font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;
+  color:var(--amber);
+}
+
+/* ── Sequence flow ── */
+.seq-flow{
+  display:flex;align-items:center;flex-wrap:wrap;gap:0;
+  padding:4px 0;
+}
+.seq-step{
+  background:var(--off);border:.5px solid var(--teal-bd);
+  border-radius:3px;padding:6px 10px;text-align:center;flex:1;min-width:80px;
+}
+.seq-step.gate{
+  background:var(--navy);border-color:var(--navy);
+}
+.seq-step.case-step{
+  background:var(--amb-lt);border-color:var(--amb-bd);
+}
+.seq-step-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  display:block;margin-bottom:2px;
+}
+.seq-step .seq-step-label{color:var(--muted);}
+.seq-step.gate .seq-step-label{color:var(--teal);}
+.seq-step.case-step .seq-step-label{color:#8A6000;}
+.seq-step-name{font-size:11px;font-weight:500;}
+.seq-step .seq-step-name{color:var(--text);}
+.seq-step.gate .seq-step-name{color:var(--white);}
+.seq-step.case-step .seq-step-name{color:#5C4200;}
+.seq-arr{
+  color:var(--teal-bd);font-size:14px;padding:0 4px;flex-shrink:0;
+}
+
+/* ── Callout ── */
+.callout{border-radius:4px;padding:9px 12px;margin:10px 0;border-left:4px solid;}
+.callout.amber{background:var(--amb-lt);border-color:var(--amber);}
+.callout.teal{background:var(--teal-lt);border-color:var(--teal);}
+.callout-lbl{
+  font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;margin-bottom:3px;
+}
+.callout.amber .callout-lbl{color:var(--amber);}
+.callout.teal  .callout-lbl{color:var(--teal-dk);}
+.callout p{font-size:12px;line-height:1.55;}
+.callout.amber p{color:#5C4200;}
+.callout.teal  p{color:var(--teal-dk);}
+
+/* ── Assessment summary ── */
+.assess-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.assess-card{
+  background:var(--off);border:.5px solid var(--teal-bd);border-radius:4px;
+  padding:10px 12px;
+}
+.ac-label{
+  font-family:'Barlow Condensed',sans-serif;font-size:8px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:4px;
+}
+.ac-pts{
+  font-family:'Barlow Condensed',sans-serif;font-size:26px;font-weight:800;
+  color:var(--amber);line-height:1;
+}
+.ac-name{font-size:11px;color:var(--text);margin-top:2px;}
+.ac-pct{
+  font-family:'Barlow Condensed',sans-serif;font-size:10px;
+  color:var(--muted);margin-top:1px;
+}
+
+@media(max-width:640px){
+  .lo-grid{grid-template-columns:1fr;}
+  .gate-grid{grid-template-columns:1fr;}
+  .assess-grid{grid-template-columns:1fr 1fr;}
+  .content{padding:16px 14px 40px;}
+  .page-hdr{padding:14px 16px;}
+  .seq-flow{gap:2px;}
+  .seq-step{min-width:60px;padding:4px 6px;}
+  .seq-step-name{font-size:9px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="page-hdr">
+  <div class="page-hdr-eyebrow">MKT 472 · Module 11 · Overview &amp; Orientation</div>
+  <div class="page-hdr-title">Portfolio Analysis &amp; <span>Strategic Market Planning</span></div>
+  <div class="page-hdr-sub">Chapter 11 · Junior–Senior Undergraduate · Read this page before opening the chapter</div>
+  <div class="meta-row">
+    <div class="meta-chip">Estimated time <span>4.3–5.5 hrs</span></div>
+    <div class="meta-chip">Textbook <span>Chapter 11</span></div>
+    <div class="meta-chip">Lecture video <span>~30 min · 2 segments</span></div>
+    <div class="meta-chip">Case analysis <span>120 pts · 60%</span></div>
+  </div>
+</div>
+
+<div class="content">
+
+<!-- ══ CENTRAL QUESTION ══ -->
+<div class="cq-block">
+  <div class="cq-label">Central Question — Module 11</div>
+  <div class="cq-text">Does current performance <span>predict</span> strategic priority?</div>
+  <div class="cq-body">The data you will analyze shows a product line with the highest Marketing ROS (32%) and ROI (320%) in the portfolio. The instinct is to protect it — manage defensively, preserve the margin, do not disturb what is working. <strong>This module argues that instinct is wrong in this specific case — and makes you prove why.</strong> The answer requires two index calculations, one grid placement, and a three-year financial projection. By the time you finish, you will have a defensible position. Whether it matches the instinct is the point of the exercise.</div>
+</div>
+
+<!-- ══ LEARNING OBJECTIVES ══ -->
+<div class="section">
+  <div class="section-hdr">
+    <span class="section-hdr-title">Learning Objectives</span>
+    <span class="section-hdr-meta">Chapter 11 · All six are assessed</span>
+  </div>
+  <div class="section-body">
+    <div class="lo-grid">
+      <div class="lo-card">
+        <div class="lo-n">1</div>
+        <div class="lo-content">
+          <div class="lo-level">Analysis</div>
+          <div class="lo-text">Evaluate portfolio balance across life-cycle stages; identify long-run revenue risk from mature-market concentration</div>
+        </div>
+      </div>
+      <div class="lo-card">
+        <div class="lo-n">2</div>
+        <div class="lo-content">
+          <div class="lo-level">Analysis</div>
+          <div class="lo-text">Distinguish GE/McKinsey multi-factor model from single-factor analysis; classify strategic plan vs. marketing mix actions</div>
+        </div>
+      </div>
+      <div class="lo-card">
+        <div class="lo-n">3</div>
+        <div class="lo-content">
+          <div class="lo-level">Application</div>
+          <div class="lo-text">Calculate Market Attractiveness Index using the 5-step weighted scoring method; interpret investment priority from the result</div>
+        </div>
+      </div>
+      <div class="lo-card">
+        <div class="lo-n">4</div>
+        <div class="lo-content">
+          <div class="lo-level">Application</div>
+          <div class="lo-text">Calculate Competitive Position Index; compute Share Development Index from market share and share potential inputs</div>
+        </div>
+      </div>
+      <div class="lo-card">
+        <div class="lo-n">5</div>
+        <div class="lo-content">
+          <div class="lo-level">Evaluation</div>
+          <div class="lo-text">Place a product on the 9-cell portfolio grid using MAI/CPI scores and zone thresholds; select and defend the appropriate strategy</div>
+        </div>
+      </div>
+      <div class="lo-card">
+        <div class="lo-n">6</div>
+        <div class="lo-content">
+          <div class="lo-level">Evaluation</div>
+          <div class="lo-text">Assess 3-year NMC, ROS, and ROI trade-offs between offensive and defensive strategies; explain the efficiency paradox</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout teal" style="margin-top:12px;margin-bottom:0;">
+      <div class="callout-lbl">Chapter 11 covers more than this module tests</div>
+      <p>The slide deck, lecture, and apps focus on LO3–LO6 (calculation and application). LO1 and LO2 draw primarily from Chapter 11 reading and appear in Gate 1. See the Study Focus Guide for specific page targets.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ TWO-GATE MODEL ══ -->
+<div class="section">
+  <div class="section-hdr">
+    <span class="section-hdr-title">Two-Gate Reading Accountability Model</span>
+    <span class="section-hdr-meta">How the module unlocks</span>
+  </div>
+  <div class="section-body">
+
+    <div class="why-box">
+      <div class="why-label">Why two gates instead of one</div>
+      <div class="why-text">A single pre-lecture quiz creates one weakness: students who score just above the threshold proceed without genuine chapter internalization. The two-gate model closes this gap. <strong>Gate 1 certifies you read before viewing the slides.</strong> <strong>Gate 2 certifies you synthesized reading with slides before viewing the lecture.</strong> Students who game Gate 1 cannot game Gate 2 — the applied questions require both sources.</div>
+    </div>
+
+    <div class="gate-grid">
+      <!-- Gate 1 -->
+      <div class="gate-card g1">
+        <div class="gate-hdr">
+          Gate 1: Basic Reading Check
+          <span class="gate-badge">Access Control</span>
+        </div>
+        <div class="gate-body">
+          <div class="gate-row"><span class="gate-row-label">Unlocks</span><span class="gate-row-val teal">Slide Deck Viewer</span></div>
+          <div class="gate-row"><span class="gate-row-label">Questions</span><span class="gate-row-val">5 · Multiple choice</span></div>
+          <div class="gate-row"><span class="gate-row-label">Content source</span><span class="gate-row-val">Chapter 11 only</span></div>
+          <div class="gate-row"><span class="gate-row-label">Threshold</span><span class="gate-row-val amber">70% — must pass to proceed</span></div>
+          <div class="gate-row"><span class="gate-row-label">Attempts</span><span class="gate-row-val">2 attempts</span></div>
+          <div class="gate-row"><span class="gate-row-label">Feedback</span><span class="gate-row-val">Per-answer with page reference</span></div>
+          <div class="gate-row"><span class="gate-row-label">Point value</span><span class="gate-row-val">0 pts — access only</span></div>
+        </div>
+      </div>
+      <!-- Gate 2 -->
+      <div class="gate-card g2">
+        <div class="gate-hdr">
+          Gate 2: Applied Reading Check
+          <span class="gate-badge">20 pts</span>
+        </div>
+        <div class="gate-body">
+          <div class="gate-row"><span class="gate-row-label">Unlocks</span><span class="gate-row-val teal">Lecture Video</span></div>
+          <div class="gate-row"><span class="gate-row-label">Questions</span><span class="gate-row-val">8 · MC + numeric entry</span></div>
+          <div class="gate-row"><span class="gate-row-label">Content source</span><span class="gate-row-val">Chapter 11 + slides synthesis</span></div>
+          <div class="gate-row"><span class="gate-row-label">Threshold</span><span class="gate-row-val">None — graded as submitted</span></div>
+          <div class="gate-row"><span class="gate-row-label">Attempts</span><span class="gate-row-val">1 attempt</span></div>
+          <div class="gate-row"><span class="gate-row-label">Feedback</span><span class="gate-row-val">Correct / Incorrect only</span></div>
+          <div class="gate-row"><span class="gate-row-label">Point value</span><span class="gate-row-val amber">20 pts = 10% of module</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gate 1 preview -->
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;margin-top:4px;">
+      What Gate 1 Tests — Chapter-Exclusive Content (Not in Slides)
+    </div>
+    <div class="gate1-list">
+      <div class="gate1-item">
+        <span class="g1-num">1</span>
+        <span class="g1-text"><strong>GE/McKinsey model</strong> — which two organizations developed the multi-factor portfolio matrix and what limitation of single-factor analysis it addresses</span>
+        <span class="g1-ref">p. 385</span>
+      </div>
+      <div class="gate1-item">
+        <span class="g1-num">2</span>
+        <span class="g1-text"><strong>Share Development Index formula</strong> — SDI = (Market Share Index ÷ Share Potential Index) × 100; full derivation from the market share performance tree</span>
+        <span class="g1-ref">Fig. 11-5 · pp. 380–381</span>
+      </div>
+      <div class="gate1-item">
+        <span class="g1-num">3</span>
+        <span class="g1-text"><strong>Relative market share</strong> — firm's share divided by combined share of three largest competitors; how it differs from SDI as a competitive position measure</span>
+        <span class="g1-ref">pp. 378–379</span>
+      </div>
+      <div class="gate1-item">
+        <span class="g1-num">4</span>
+        <span class="g1-text"><strong>Offensive vs. defensive 3-year NMC/ROS/ROI comparison</strong> — consumer electronics data; why offensive raises absolute NMC but lowers ROS and ROI simultaneously</span>
+        <span class="g1-ref">Fig. 11-14 · p. 393</span>
+      </div>
+      <div class="gate1-item">
+        <span class="g1-num">5</span>
+        <span class="g1-text"><strong>Portfolio diversification</strong> — two levels (product + market diversification); variance reduction data: individual product-markets 42% / 17% / 57% → combined portfolio 6%</span>
+        <span class="g1-ref">Fig. 11-16 · pp. 395–397</span>
+      </div>
+    </div>
+
+    <div class="callout amber" style="margin-top:12px;margin-bottom:0;">
+      <div class="callout-lbl">Strategy for Gate 1</div>
+      <p>All five topics above are in Chapter 11 and absent from the slides. The slides do not cover them — reading is the only way to answer Gate 1 questions correctly. Use the Study Focus Guide (in this module) for specific reading targets before you begin the chapter.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══ MODULE SEQUENCE ══ -->
+<div class="section">
+  <div class="section-hdr">
+    <span class="section-hdr-title">Module Sequence — What Unlocks What</span>
+    <span class="section-hdr-meta">Each item must be marked complete before the next opens</span>
+  </div>
+  <div class="section-body">
+
+    <div class="seq-flow" style="margin-bottom:14px;">
+      <div class="seq-step">
+        <span class="seq-step-label">Start here</span>
+        <span class="seq-step-name">Ch. 11 Reading</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step gate">
+        <span class="seq-step-label">Gate 1</span>
+        <span class="seq-step-name">Reading Check</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step">
+        <span class="seq-step-label">Slides</span>
+        <span class="seq-step-name">21 Slides</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step gate">
+        <span class="seq-step-label">Gate 2</span>
+        <span class="seq-step-name">20 pts</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step">
+        <span class="seq-step-label">Lecture</span>
+        <span class="seq-step-name">2 Segments</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step">
+        <span class="seq-step-label">Apps</span>
+        <span class="seq-step-name">App 1 + App 2</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step">
+        <span class="seq-step-label">Discussion</span>
+        <span class="seq-step-name">The Growth Trap</span>
+      </div>
+      <span class="seq-arr">→</span>
+      <div class="seq-step case-step">
+        <span class="seq-step-label">Case</span>
+        <span class="seq-step-name">Vantage Sound</span>
+      </div>
+    </div>
+
+    <table class="wl-tbl">
+      <thead>
+        <tr>
+          <th style="width:28px;">#</th>
+          <th>Item</th>
+          <th class="r" style="width:110px;">Est. Time</th>
+          <th class="r" style="width:90px;">Points</th>
+          <th style="width:160px;">Unlocks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">1</td>
+          <td><strong>Module Overview &amp; Orientation</strong> <span style="font-size:11px;color:var(--muted);">(this page)</span></td>
+          <td class="r label">5 min</td>
+          <td class="r label">—</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Chapter 11 Reading</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">2</td>
+          <td><strong>Chapter 11 Reading</strong> — with Study Focus Guide</td>
+          <td class="r label">70–80 min</td>
+          <td class="r label">—</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Gate 1</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">3</td>
+          <td><strong>Gate 1:</strong> Basic Reading Check <span style="font-size:10px;color:var(--muted);">· 5 Qs · 70% threshold · 2 attempts</span></td>
+          <td class="r label">10–12 min</td>
+          <td class="r label">0 pts</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Slide Deck Viewer</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">4</td>
+          <td><strong>Slide Deck Viewer</strong> — 21 slides with sidebar</td>
+          <td class="r label">15–20 min</td>
+          <td class="r label">—</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Gate 2</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">5</td>
+          <td><strong>Gate 2:</strong> Applied Reading Check <span style="font-size:10px;color:var(--muted);">· 8 Qs · 1 attempt · Chapter + slides synthesis</span></td>
+          <td class="r label">20–23 min</td>
+          <td class="r pts-cell">20 pts</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Lecture Video</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">6</td>
+          <td><strong>Lecture Video</strong> — Segments 1 &amp; 2 · ~12 min + ~18 min</td>
+          <td class="r label">~30 min</td>
+          <td class="r pts-cell">10 pts</td>
+          <td style="font-size:11px;color:var(--teal-dk);">App 1</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">7</td>
+          <td><strong>App 1:</strong> Portfolio Index Calculator + Worksheet</td>
+          <td class="r label">20–25 min</td>
+          <td class="r pts-cell">10 pts</td>
+          <td style="font-size:11px;color:var(--teal-dk);">App 2</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">8</td>
+          <td><strong>App 2:</strong> Strategy Performance Projector + Worksheet</td>
+          <td class="r label">20–25 min</td>
+          <td class="r pts-cell">10 pts</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Discussion</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">9</td>
+          <td><strong>Discussion:</strong> The Growth Trap <span style="font-size:10px;color:var(--muted);">· 150–300 words + peer reply</span></td>
+          <td class="r label">20–25 min</td>
+          <td class="r pts-cell">20 pts</td>
+          <td style="font-size:11px;color:var(--teal-dk);">Case Analysis</td>
+        </tr>
+        <tr>
+          <td style="font-family:'Barlow Condensed',sans-serif;font-weight:700;color:var(--muted);">10</td>
+          <td><strong>Case Analysis:</strong> Vantage Sound Systems <span style="font-size:10px;color:var(--muted);">· 4 parts · individual</span></td>
+          <td class="r label">55–65 min</td>
+          <td class="r pts-cell">120 pts</td>
+          <td style="font-size:11px;color:var(--muted);">Module complete</td>
+        </tr>
+        <tr class="total-row">
+          <td colspan="2"><strong>Total Estimated Time</strong></td>
+          <td class="r"><strong>4.3–5.5 hrs</strong></td>
+          <td class="r"><strong>190 pts</strong></td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ══ ASSESSMENT SUMMARY ══ -->
+<div class="section">
+  <div class="section-hdr">
+    <span class="section-hdr-title">Assessment Summary</span>
+    <span class="section-hdr-meta">190 pts total</span>
+  </div>
+  <div class="section-body">
+    <div class="assess-grid">
+      <div class="assess-card">
+        <div class="ac-label">Gate 2</div>
+        <div class="ac-pts">20</div>
+        <div class="ac-name">Applied Reading Check</div>
+        <div class="ac-pct">10% of module · auto-graded</div>
+      </div>
+      <div class="assess-card">
+        <div class="ac-label">In-Video Check Questions</div>
+        <div class="ac-pts">10</div>
+        <div class="ac-name">Lecture embedded Qs</div>
+        <div class="ac-pct">5% of module · Q2 auto-graded</div>
+      </div>
+      <div class="assess-card">
+        <div class="ac-label">App Worksheets</div>
+        <div class="ac-pts">20</div>
+        <div class="ac-name">App 1 + App 2 (10 pts each)</div>
+        <div class="ac-pct">10% of module · auto-graded</div>
+      </div>
+      <div class="assess-card">
+        <div class="ac-label">Discussion</div>
+        <div class="ac-pts">20</div>
+        <div class="ac-name">The Growth Trap</div>
+        <div class="ac-pct">10% of module · rubric-graded</div>
+      </div>
+      <div class="assess-card" style="border-color:var(--amb-bd);background:var(--amb-lt);">
+        <div class="ac-label" style="color:#8A6000;">Case Analysis</div>
+        <div class="ac-pts" style="color:#B87800;">120</div>
+        <div class="ac-name" style="color:#5C4200;">Vantage Sound Systems</div>
+        <div class="ac-pct" style="color:#8A6000;">60% of module · rubric-graded</div>
+      </div>
+      <div class="assess-card" style="background:var(--navy);border-color:var(--navy);">
+        <div class="ac-label" style="color:var(--teal);">Module Total</div>
+        <div class="ac-pts" style="color:var(--amber);">190</div>
+        <div class="ac-name" style="color:var(--white);">All assessments combined</div>
+        <div class="ac-pct" style="color:#6A9898;">Gate 1 = access only (0 pts)</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ START HERE ══ -->
+<div style="background:var(--navy);border-radius:8px;padding:14px 20px;display:flex;align-items:center;gap:16px;">
+  <div style="font-size:24px;flex-shrink:0;">📖</div>
+  <div>
+    <div style="font-family:'Barlow Condensed',sans-serif;font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--teal);margin-bottom:4px;">Your next step</div>
+    <div style="font-size:12px;color:#8AB0B0;line-height:1.5;">Open the <strong style="color:var(--white);">Study Focus Guide</strong> before reading Chapter 11. It identifies the eight specific questions to answer while reading — five of which are Gate 1 targets. Students who read with the focus guide in hand consistently outperform those who read linearly and then attempt Gate 1 cold.</div>
+  </div>
+</div>
+
+</div><!-- /content -->
+</body>
+</html>
