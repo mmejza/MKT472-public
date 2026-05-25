@@ -1,94 +1,25 @@
 [
-  {
-    "file": "slides/s01-title.html",
-    "title": "Module Launch"
-  },
-  {
-    "file": "slides/s02-objectives.html",
-    "title": "Learning Objectives"
-  },
-  {
-    "file": "slides/s03-chapter-gate.html",
-    "title": "Chapter-Only Content"
-  },
-  {
-    "file": "slides/s04-comm-definition.html",
-    "title": "Marketing Communications"
-  },
-  {
-    "file": "slides/s05-measurement-trap.html",
-    "title": "The Measurement Problem"
-  },
-  {
-    "file": "slides/s06-three-objectives.html",
-    "title": "Three Comm. Objectives"
-  },
-  {
-    "file": "slides/s07-objective-response-metric.html",
-    "title": "Objective \u2192 Response \u2192 Metric"
-  },
-  {
-    "file": "slides/s08-comm-mix.html",
-    "title": "Communications Mix"
-  },
-  {
-    "file": "slides/s09-cri-formula.html",
-    "title": "Customer Response Index"
-  },
-  {
-    "file": "slides/s10-cri-pilot-data.html",
-    "title": "CRI \u2014 Pilot Data"
-  },
-  {
-    "file": "slides/s11-cri-diagnostic-setup.html",
-    "title": "CRI Diagnostic \u2014 Setup"
-  },
-  {
-    "file": "slides/s12-cri-diagnostic-solution.html",
-    "title": "CRI Diagnostic \u2014 Solution"
-  },
-  {
-    "file": "slides/s13-low-response-causes.html",
-    "title": "Causes of Low Response"
-  },
-  {
-    "file": "slides/s14-message-frequency.html",
-    "title": "Message Frequency & Awareness"
-  },
-  {
-    "file": "slides/s15-weighted-frequency.html",
-    "title": "Messages Sent vs. Frequency"
-  },
-  {
-    "file": "slides/s16-media-selection-grp.html",
-    "title": "Media Selection & GRP"
-  },
-  {
-    "file": "slides/s17-pulsing-heavyup.html",
-    "title": "Pulsing vs. Heavy-Up"
-  },
-  {
-    "file": "slides/s18-pull-push.html",
-    "title": "Pull vs. Push Communications"
-  },
-  {
-    "file": "slides/s19-trade-promo-setup.html",
-    "title": "Trade Promotion \u2014 Setup"
-  },
-  {
-    "file": "slides/s20-trade-promo-trap.html",
-    "title": "Trade Promotion \u2014 Trap"
-  },
-  {
-    "file": "slides/s21-ad-elasticity.html",
-    "title": "Advertising Elasticity"
-  },
-  {
-    "file": "slides/s22-carryover-setup.html",
-    "title": "Carryover \u2014 Setup"
-  },
-  {
-    "file": "s23-carryover-solution.html",
-    "title": "Carryover \u2014 Solution"
-  }
+  "slides/s01-title.html",
+  "slides/s02-objectives.html",
+  "slides/s03-chapter-gate.html",
+  "slides/s04-comm-definition.html",
+  "slides/s05-measurement-trap.html",
+  "slides/s06-three-objectives.html",
+  "slides/s07-objective-response-metric.html",
+  "slides/s08-comm-mix.html",
+  "slides/s09-cri-formula.html",
+  "slides/s10-cri-pilot-data.html",
+  "slides/s11-cri-diagnostic-setup.html",
+  "slides/s12-cri-diagnostic-solution.html",
+  "slides/s13-low-response-causes.html",
+  "slides/s14-message-frequency.html",
+  "slides/s15-weighted-frequency.html",
+  "slides/s16-media-selection-grp.html",
+  "slides/s17-pulsing-heavyup.html",
+  "slides/s18-pull-push.html",
+  "slides/s19-trade-promo-setup.html",
+  "slides/s20-trade-promo-trap.html",
+  "slides/s21-ad-elasticity.html",
+  "slides/s22-carryover-setup.html",
+  "slides/s23-carryover-solution.html"
 ]
