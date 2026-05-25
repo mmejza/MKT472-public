@@ -60,7 +60,11 @@
       if(!slidePaths.length) throw new Error('Manifest has no slides.');
 
       els.container.innerHTML = '';
-      const nodes = await Promise.all(slidePaths.map(loadSlide));
+      const nodes = await Promise.all(
+  slidePaths.map((slide, idx) =>
+    loadSlide(typeof slide === 'string' ? slide : slide.file, idx)
+  )
+);
       nodes.forEach(node => els.container.appendChild(node));
       slides = Array.from(els.container.querySelectorAll('.slide-page'));
       buildDots();

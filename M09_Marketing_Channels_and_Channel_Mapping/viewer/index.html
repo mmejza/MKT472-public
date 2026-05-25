@@ -1,417 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M09 · Marketing Channels and Channel Mapping · MKT 472</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MKT 472 · Module 09 · Marketing Channels &amp; Channel Mapping</title>
 
-:root {
-  --navy:     #0f2340;
-  --blue:     #1d5fa8;
-  --accent:   #c8871a;
-  --accent-lt:#f5c05a;
-  --rule:     #d4cfca;
-  --bg:       #1a1a1e;
-  --mid-gray: #8a8278;
-  --slide-w:  900px;
-  --slide-h:  560px;
-}
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { height: 100%; overflow: hidden; background: var(--bg); font-family: 'IBM Plex Sans', sans-serif; }
-
-/* ── Shell layout ── */
-.shell {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  height: 100vh;
-}
-
-/* ── Top bar ── */
-.topbar {
-  background: #111115;
-  border-bottom: 1px solid #2a2a30;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-}
-
-.topbar-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.brand {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-}
-
-.mod-title {
-  font-size: 13px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.75);
-}
-
-.topbar-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-/* ── Slide counter ── */
-.counter {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  font-weight: 500;
-  color: rgba(255,255,255,0.5);
-  min-width: 52px;
-  text-align: right;
-}
-
-/* ── LO sidebar toggle ── */
-.btn-sidebar {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 3px;
-  padding: 5px 12px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.btn-sidebar:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
-.btn-sidebar.active { background: rgba(200,135,26,0.15); border-color: rgba(200,135,26,0.35); color: var(--accent-lt); }
-
-/* ── Center stage ── */
-.stage {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  padding: 24px 20px;
-  position: relative;
-}
-
-/* ── Slide frame ── */
-.slide-frame-wrap {
-  position: relative;
-  display: flex;
-  gap: 0;
-}
-
-.slide-frame {
-  width: var(--slide-w);
-  height: var(--slide-h);
-  border: none;
-  border-radius: 3px;
-  display: block;
-  box-shadow: 0 8px 40px rgba(0,0,0,0.5);
-  background: #fff;
-  flex-shrink: 0;
-}
-
-/* ── Sidebar ── */
-.sidebar {
-  width: 0;
-  overflow: hidden;
-  transition: width 0.25s ease;
-  flex-shrink: 0;
-}
-
-.sidebar.open {
-  width: 260px;
-  margin-left: 16px;
-}
-
-.sidebar-inner {
-  width: 260px;
-  background: #111115;
-  border: 1px solid #2a2a30;
-  border-radius: 3px;
-  height: var(--slide-h);
-  overflow-y: auto;
-  padding: 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.sidebar-section-label {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  padding-bottom: 6px;
-  border-bottom: 1px solid #2a2a30;
-}
-
-.sidebar-item {
-  padding: 8px 10px;
-  border-radius: 2px;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: all 0.12s ease;
-}
-
-.sidebar-item:hover { background: rgba(255,255,255,0.06); border-color: #3a3a42; }
-.sidebar-item.active { background: rgba(29,95,168,0.15); border-color: rgba(29,95,168,0.35); }
-
-.si-num {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  color: rgba(255,255,255,0.25);
-  margin-bottom: 2px;
-}
-
-.si-title {
-  font-size: 11.5px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.7);
-  line-height: 1.35;
-}
-
-.si-meta {
-  display: flex;
-  gap: 4px;
-  margin-top: 4px;
-  flex-wrap: wrap;
-}
-
-.si-tag {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 8.5px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  padding: 1px 5px;
-  border-radius: 2px;
-}
-
-.si-tag.lo1 { background: rgba(29,95,168,0.2); color: #7bb8f0; }
-.si-tag.lo2 { background: rgba(26,107,58,0.2); color: #6fcf97; }
-.si-tag.lo3 { background: rgba(122,48,0,0.2); color: #f2994a; }
-.si-tag.lo4 { background: rgba(92,61,143,0.2); color: #bb86fc; }
-.si-tag.all { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.4); }
-.si-tag.pat { background: rgba(255,255,255,0.04); color: rgba(255,255,255,0.3); font-style: italic; }
-
-/* ── Bottom nav ── */
-.navbar {
-  background: #111115;
-  border-top: 1px solid #2a2a30;
-  padding: 10px 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-shrink: 0;
-}
-
-.nav-btn {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 3px;
-  padding: 7px 20px;
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.6);
-  cursor: pointer;
-  transition: all 0.15s ease;
-  user-select: none;
-}
-
-.nav-btn:hover:not(:disabled) { background: rgba(255,255,255,0.1); color: #fff; }
-.nav-btn:disabled { opacity: 0.25; cursor: default; }
-
-.nav-btn.primary {
-  background: var(--navy);
-  border-color: rgba(255,255,255,0.15);
-  color: rgba(255,255,255,0.85);
-}
-
-.nav-btn.primary:hover:not(:disabled) { background: var(--blue); color: #fff; }
-
-/* ── Progress bar ── */
-.progress-bar {
-  flex: 1;
-  height: 3px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 2px;
-  margin: 0 20px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: var(--accent);
-  border-radius: 2px;
-  transition: width 0.2s ease;
-}
-
-/* ── Keyboard hint ── */
-.kbd-hint {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 9px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.08em;
-  text-align: center;
-}
-
-/* ── Scale for smaller viewports ── */
-@media (max-height: 680px) {
-  .slide-frame { transform-origin: top center; }
-}
-</style>
+  <link rel="stylesheet" href="../../canonical-viewer/styles.css" />
+  <script defer src="../../canonical-viewer/viewer.js"></script>
 </head>
 <body>
-
-<div class="shell">
-
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <span class="brand">MKT 472 · M09</span>
-      <span class="mod-title">Marketing Channels and Channel Mapping</span>
+  <header class="viewer-header">
+    <div>
+      <div class="viewer-kicker" id="viewer-module-label">MKT 472 · Module 09 · Lecture Slides</div>
+      <h1 id="viewer-title">Marketing Channels &amp; Channel Mapping</h1>
     </div>
-    <div class="topbar-right">
-      <span class="counter" id="counter">1 / 19</span>
-      <button class="btn-sidebar" id="btnSidebar" onclick="toggleSidebar()">Index</button>
-    </div>
+    <div class="viewer-counter" id="viewer-counter">Slide 0 of 0</div>
+  </header>
+
+  <div class="progress-track" aria-hidden="true">
+    <div class="progress-fill" id="progress-fill"></div>
   </div>
 
-  <!-- Stage -->
-  <div class="stage">
-    <div class="slide-frame-wrap">
-      <iframe class="slide-frame" id="slideFrame" src="" title="Slide"></iframe>
-      <div class="sidebar" id="sidebar">
-        <div class="sidebar-inner" id="sidebarInner">
-          <div class="sidebar-section-label">Slide Index</div>
-          <!-- populated by JS -->
+  <main class="viewer-layout">
+    <section class="slide-column" aria-label="Slides">
+      <div class="slide-frame">
+        <div class="slide-stage" id="slide-container">
+          <div class="loading-message">Loading slides…</div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- Nav bar -->
-  <div class="navbar">
-    <button class="nav-btn" id="btnPrev" onclick="navigate(-1)" disabled>← Prev</button>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-    <div class="kbd-hint">← → arrow keys to navigate</div>
-    <div class="progress-bar"><div class="progress-fill" id="progressFill2" style="width:0%"></div></div>
-    <button class="nav-btn primary" id="btnNext" onclick="navigate(1)">Next →</button>
-  </div>
+      <nav class="viewer-nav" aria-label="Slide navigation">
+        <button class="nav-btn" id="prev-btn" type="button">Previous</button>
+        <div class="slide-dots" id="slide-dots" aria-label="Slide dots"></div>
+        <button class="nav-btn" id="next-btn" type="button">Next</button>
+      </nav>
+      <div class="keyboard-hint">Use ← / → keys to navigate</div>
+    </section>
 
-</div>
+    <aside class="sidebar" aria-label="Slide metadata">
+      <section class="side-card">
+        <div class="side-card-header navy">Current Slide</div>
+        <div class="side-card-body">
+          <div class="side-title" id="side-title">—</div>
+          <div class="side-page" id="side-page">—</div>
+        </div>
+      </section>
 
-<script>
-const SLIDES = [
-  { id:'s01', file:'slides/s01-title.html',           title:'Module Launch',                          lo:null,  pattern:'Title' },
-  { id:'s02', file:'slides/s02-objectives.html',      title:'Learning Objectives',                    lo:'all', pattern:'LO' },
-  { id:'s03', file:'slides/s03-chapter-only.html',    title:'What Chapter 9 Covers Beyond This Deck', lo:null,  pattern:'Ch-Only' },
-  { id:'s04', file:'slides/s04-channel-def.html',     title:'Marketing Channels',                     lo:'lo4', pattern:'Concept Def' },
-  { id:'s05', file:'slides/s05-three-functions.html', title:'Why Channels Exist: Three Functions',    lo:'lo4', pattern:'Typology' },
-  { id:'s06', file:'slides/s06-contactual-prob.html', title:'Contactual Efficiency — The Problem',    lo:'lo4', pattern:'Diagnostic' },
-  { id:'s07', file:'slides/s07-contactual-rev.html',  title:'Contactual Efficiency — The Math',       lo:'lo4', pattern:'Reveal' },
-  { id:'s08', file:'slides/s08-channel-map.html',     title:'Channel Map: Electronic Components',     lo:'lo1', pattern:'Diagnostic' },
-  { id:'s09', file:'slides/s09-pocket-price-def.html',title:'Pocket Price: What You Actually Receive',lo:'lo1', pattern:'Concept Def' },
-  { id:'s10', file:'slides/s10-waterfall-setup.html', title:'Pocket Price Waterfall — Setup',         lo:'lo1', pattern:'WEx Setup' },
-  { id:'s11', file:'slides/s11-waterfall-sol.html',   title:'Pocket Price Waterfall — Solution',      lo:'lo1', pattern:'WEx Solution' },
-  { id:'s12', file:'slides/s12-channel-systems.html', title:'Direct vs. Indirect vs. Mixed',          lo:'lo4', pattern:'Contrast' },
-  { id:'s13', file:'slides/s13-b2c-channels.html',    title:'Channel Types: B2C',                     lo:'lo4', pattern:'Typology' },
-  { id:'s14', file:'slides/s14-b2b-channels.html',    title:'Channel Types: B2B',                     lo:'lo4', pattern:'Typology' },
-  { id:'s15', file:'slides/s15-roi-trap.html',        title:'The ROI Paradox — Setup',                lo:'lo2', pattern:'Trap' },
-  { id:'s16', file:'slides/s16-roi-reveal.html',      title:'The ROI Paradox — Reveal',               lo:'lo2', pattern:'Reveal' },
-  { id:'s17', file:'slides/s17-mix-shift.html',       title:'Channel Mix Shift — Practice',           lo:'lo3', pattern:'Practice' },
-  { id:'s18', file:'slides/s18-breakeven.html',       title:'Break-Even Market Share',                lo:'lo3', pattern:'Formula' },
-  { id:'s19', file:'slides/s19-salesforce.html',      title:'Sales Force Sizing',                     lo:'lo4', pattern:'Formula' },
-];
+      <section class="side-card">
+        <div class="side-card-header teal">Learning Objectives</div>
+        <div class="side-card-body">
+          <div class="lo-badges" id="side-los"></div>
+        </div>
+      </section>
 
-let current = 0;
-let sidebarOpen = false;
-
-function loadSlide(index) {
-  const slide = SLIDES[index];
-  document.getElementById('slideFrame').src = slide.file;
-  document.getElementById('counter').textContent = `${index + 1} / ${SLIDES.length}`;
-
-  const pct = ((index + 1) / SLIDES.length * 100).toFixed(1) + '%';
-  document.getElementById('progressFill').style.width  = pct;
-  document.getElementById('progressFill2').style.width = pct;
-
-  document.getElementById('btnPrev').disabled = (index === 0);
-  document.getElementById('btnNext').disabled = (index === SLIDES.length - 1);
-
-  // Update sidebar active state
-  document.querySelectorAll('.sidebar-item').forEach((el, i) => {
-    el.classList.toggle('active', i === index);
-  });
-  // Scroll active item into view
-  const active = document.querySelector('.sidebar-item.active');
-  if (active) active.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-}
-
-function navigate(dir) {
-  const next = current + dir;
-  if (next < 0 || next >= SLIDES.length) return;
-  current = next;
-  loadSlide(current);
-}
-
-function toggleSidebar() {
-  sidebarOpen = !sidebarOpen;
-  document.getElementById('sidebar').classList.toggle('open', sidebarOpen);
-  document.getElementById('btnSidebar').classList.toggle('active', sidebarOpen);
-}
-
-function buildSidebar() {
-  const container = document.getElementById('sidebarInner');
-  SLIDES.forEach((slide, i) => {
-    const item = document.createElement('div');
-    item.className = 'sidebar-item' + (i === 0 ? ' active' : '');
-    item.onclick = () => { current = i; loadSlide(i); };
-
-    const loTag = slide.lo
-      ? `<span class="si-tag ${slide.lo}">${slide.lo.toUpperCase()}</span>`
-      : '';
-    const patTag = `<span class="si-tag pat">${slide.pattern}</span>`;
-
-    item.innerHTML = `
-      <div class="si-num">S${String(i+1).padStart(2,'0')}</div>
-      <div class="si-title">${slide.title}</div>
-      <div class="si-meta">${loTag}${patTag}</div>
-    `;
-    container.appendChild(item);
-  });
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', e => {
-  if (e.key === 'ArrowRight' || e.key === 'ArrowDown') navigate(1);
-  if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   navigate(-1);
-  if (e.key === 'Home') { current = 0; loadSlide(0); }
-  if (e.key === 'End')  { current = SLIDES.length-1; loadSlide(SLIDES.length-1); }
-});
-
-// Init
-buildSidebar();
-loadSlide(0);
-</script>
-
+      <section class="side-card">
+        <div class="side-card-header amber">Notes</div>
+        <div class="side-card-body muted" id="side-notes">Slide notes appear here when provided.</div>
+      </section>
+    </aside>
+  </main>
 </body>
 </html>
