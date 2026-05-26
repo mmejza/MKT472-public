@@ -3,843 +3,908 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M02 Study Focus Guide — Marketing Metrics &amp; Marketing Profitability</title>
+<title>MKT 472 · Module 02 · Study Focus Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --teal: #0D9B87;
+    --teal-dk: #0a7a6b;
+    --teal-lt: #e6f7f5;
+    --teal-mid: #b3e4de;
+    --navy: #0F2027;
+    --navy-mid: #1a3340;
+    --amber: #E6A800;
+    --amber-lt: #fff8e1;
+    --amber-dk: #b37f00;
+    --gray-lt: #F2F4F5;
+    --gray-mid: #D0D5D8;
+    --gray-dk: #6b7280;
+    --white: #ffffff;
+    --text: #1a2630;
+    --text-soft: #4a5568;
 
-/* ── DESIGN TOKENS ─────────────────────────────────────── */
-:root {
-  --teal:       #0D9B87;
-  --teal-dark:  #097a6b;
-  --teal-light: #e6f6f4;
-  --navy:       #0F2027;
-  --navy-mid:   #1a3040;
-  --amber:      #E6A800;
-  --amber-dark: #b88000;
-  --amber-light:#fff8e0;
-  --grey-bg:    #F2F4F5;
-  --grey-mid:   #D0D5D8;
-  --grey-text:  #5a6472;
-  --body-text:  #1c2b36;
-  --white:      #ffffff;
-}
+    --font-head: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --font-body: 'Barlow', Arial, sans-serif;
 
-/* ── RESET ─────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    --radius: 8px;
+    --radius-sm: 5px;
+    --shadow: 0 2px 8px rgba(15,32,39,0.10);
+    --shadow-md: 0 4px 16px rgba(15,32,39,0.13);
+  }
 
-body {
-  font-family: 'Barlow', Arial, sans-serif;
-  font-size: 15px;
-  line-height: 1.65;
-  color: var(--body-text);
-  background: var(--grey-bg);
-  -webkit-font-smoothing: antialiased;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--gray-lt);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
 
-/* ── LAYOUT WRAPPER ────────────────────────────────────── */
-.sfg-wrap {
-  max-width: 860px;
-  margin: 0 auto;
-  background: var(--white);
-  box-shadow: 0 2px 16px rgba(15,32,39,0.10);
-}
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+  }
 
-/* ── 1. PAGE HEADER ────────────────────────────────────── */
-.sfg-header {
-  background: var(--navy);
-  padding: 36px 36px 30px;
-  position: relative;
-  overflow: hidden;
-}
-.sfg-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0; right: 0;
-  height: 4px;
-  background: var(--teal);
-}
-.sfg-eyebrow {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--teal);
-  margin-bottom: 10px;
-}
-.sfg-title {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 34px;
-  font-weight: 700;
-  color: var(--white);
-  letter-spacing: 0.5px;
-  line-height: 1.1;
-  margin-bottom: 8px;
-}
-.sfg-subtitle {
-  font-family: 'Barlow', Arial, sans-serif;
-  font-size: 14px;
-  font-weight: 400;
-  color: rgba(255,255,255,0.60);
-  line-height: 1.5;
-}
+  .page-header {
+    background: var(--navy);
+    padding: 36px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--teal);
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: rgba(13,155,135,0.35);
+  }
+  .eyebrow {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .header-subtitle {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--teal-mid);
+    font-weight: 400;
+    line-height: 1.4;
+  }
 
-/* ── 2. BADGE ROW ──────────────────────────────────────── */
-.sfg-badges {
-  background: var(--navy-mid);
-  padding: 14px 36px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-}
-.sfg-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.14);
-  border-radius: 3px;
-  padding: 5px 12px;
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.82);
-}
-.sfg-badge .b-icon {
-  font-size: 13px;
-  line-height: 1;
-}
-.sfg-badge.accent {
-  background: var(--amber);
-  border-color: var(--amber);
-  color: var(--navy);
-}
+  .badge-row {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .badge {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-right: 1px solid var(--gray-mid);
+  }
+  .badge:last-child { border-right: none; }
+  .badge-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .badge-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .badge-value {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
 
-/* ── CONTENT AREA ──────────────────────────────────────── */
-.sfg-content {
-  padding: 0 36px 40px;
-}
+  .purpose-block {
+    padding: 28px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+    border-left: 5px solid var(--teal);
+    background: var(--teal-lt);
+  }
+  .purpose-block p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .purpose-block p:last-child { margin-bottom: 0; }
+  .purpose-block strong { color: var(--navy); font-weight: 600; }
 
-/* ── 3. PURPOSE BLOCK ──────────────────────────────────── */
-.sfg-purpose {
-  margin: 28px 0 0;
-  background: var(--teal-light);
-  border-left: 4px solid var(--teal);
-  padding: 18px 20px;
-  border-radius: 0 4px 4px 0;
-}
-.sfg-purpose p {
-  font-size: 14.5px;
-  color: var(--body-text);
-  line-height: 1.7;
-}
-.sfg-purpose p + p { margin-top: 8px; }
-.sfg-purpose strong { color: var(--teal-dark); }
+  .gate-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .section-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    margin-bottom: 16px;
+  }
+  .gate-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .gate-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .gate-card-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gate-card--g1 .gate-card-header { background: var(--teal); }
+  .gate-card--g2 .gate-card-header { background: var(--navy); }
+  .gate-card-title {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .gate-badge {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .gate-card--g1 .gate-badge {
+    background: rgba(255,255,255,0.25);
+    color: var(--white);
+  }
+  .gate-card--g2 .gate-badge {
+    background: var(--teal);
+    color: var(--white);
+  }
+  .gate-card-body {
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  .gate-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-lt);
+    font-size: 13.5px;
+  }
+  .gate-spec:last-child { border-bottom: none; padding-bottom: 0; }
+  .gate-spec-key {
+    color: var(--gray-dk);
+    font-weight: 500;
+  }
+  .gate-spec-val {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 14px;
+    text-align: right;
+  }
+  .gate-spec-val--teal { color: var(--teal); }
+  .gate-spec-val--amber { color: var(--amber-dk); }
 
-/* ── 4. GATE CARDS ─────────────────────────────────────── */
-.sfg-section-label {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  color: var(--grey-text);
-  margin: 28px 0 12px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.sfg-section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--grey-mid);
-}
+  .tips-section {
+    padding: 32px 40px;
+    background: var(--gray-lt);
+    border-bottom: 2px solid var(--gray-mid);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .tip-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    border: 1px solid var(--gray-mid);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .tip-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tip-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .tip-body {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.55;
+  }
 
-.sfg-gate-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-}
-@media (max-width: 580px) { .sfg-gate-row { grid-template-columns: 1fr; } }
+  .questions-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .questions-section > .section-label { margin-bottom: 24px; }
+  .q-block {
+    margin-bottom: 22px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .q-block:last-child { margin-bottom: 0; }
+  .q-block--g1 { border-left: 5px solid var(--teal); }
+  .q-block--g2 { border-left: 5px solid var(--navy); }
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-lt);
+  }
+  .q-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .q-block--g1 .q-num { background: var(--teal); }
+  .q-block--g2 .q-num { background: var(--navy); }
+  .q-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .q-topic {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+  .q-tag-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .q-tag {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .q-tag--g1 { background: var(--teal-lt); color: var(--teal-dk); }
+  .q-tag--g2 { background: #e8ecf0; color: var(--navy); }
+  .q-tag--warn {
+    background: #fff3cd;
+    color: var(--amber-dk);
+    font-size: 11px;
+  }
+  .q-loc {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-dk);
+    background: var(--gray-lt);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .q-body {
+    padding: 18px 20px;
+    background: var(--white);
+  }
+  .q-text {
+    font-size: 14.5px;
+    line-height: 1.68;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .q-hint {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: var(--gray-lt);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--gray-dk);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .q-hint::before {
+    content: '→';
+    font-style: normal;
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .gate-divider {
+    margin: 28px 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .gate-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+  .gate-divider-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding: 6px 14px;
+    background: #e8ecf0;
+    border-radius: 20px;
+  }
 
-.sfg-gate-card {
-  border-radius: 4px;
-  overflow: hidden;
-  border: 1px solid var(--grey-mid);
-}
-.sfg-gate-card-head {
-  padding: 12px 16px 10px;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.sfg-gate-card.gate1 .sfg-gate-card-head { background: var(--teal); }
-.sfg-gate-card.gate2 .sfg-gate-card-head { background: var(--navy); }
-.sfg-gate-num {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1;
-  opacity: 0.30;
-  flex-shrink: 0;
-}
-.sfg-gate-name {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.3px;
-  color: var(--white);
-  line-height: 1.2;
-}
-.sfg-gate-tag {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  margin-top: 4px;
-  opacity: 0.72;
-  color: var(--white);
-}
-.sfg-gate-card.gate1 .sfg-gate-tag { color: rgba(255,255,255,0.75); }
-.sfg-gate-card.gate2 .sfg-gate-tag { color: var(--teal); opacity: 1; }
+  .callout-amber {
+    margin: 0 40px;
+    border-radius: var(--radius);
+    border: 2px solid var(--amber);
+    background: var(--amber-lt);
+    padding: 22px 26px;
+  }
+  .callout-amber-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .callout-amber-icon {
+    font-size: 22px;
+  }
+  .callout-amber-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber-dk);
+  }
+  .callout-amber-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .callout-amber-body strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .callout-amber-list {
+    margin-top: 10px;
+    padding-left: 18px;
+  }
+  .callout-amber-list li {
+    margin-bottom: 6px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .callout-amber-list li strong {
+    color: var(--navy);
+  }
 
-.sfg-gate-body {
-  background: var(--white);
-  padding: 14px 16px;
-}
-.sfg-gate-stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  padding: 5px 0;
-  border-bottom: 1px solid var(--grey-bg);
-  font-size: 13px;
-}
-.sfg-gate-stat:last-child { border-bottom: none; padding-bottom: 0; }
-.sfg-gate-stat .s-label {
-  color: var(--grey-text);
-  font-weight: 400;
-}
-.sfg-gate-stat .s-val {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  color: var(--body-text);
-  text-align: right;
-}
-.sfg-gate-stat .s-val.teal  { color: var(--teal); }
-.sfg-gate-stat .s-val.amber { color: var(--amber-dark); }
-.sfg-gate-stat .s-val.navy  { color: var(--navy); }
+  .seq-footer {
+    padding: 28px 40px;
+    background: var(--navy);
+    margin-top: 28px;
+  }
+  .seq-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .seq-track {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .seq-item {
+    flex: 1;
+    min-width: 120px;
+    position: relative;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+  }
+  .seq-item--done {
+    background: rgba(13,155,135,0.12);
+    border: 1px solid rgba(13,155,135,0.3);
+  }
+  .seq-item--current {
+    background: var(--teal);
+    border: 1px solid var(--teal);
+  }
+  .seq-item--next {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .seq-item--next-hot {
+    background: rgba(230,168,0,0.15);
+    border: 1px solid rgba(230,168,0,0.4);
+  }
+  .seq-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    color: rgba(255,255,255,0.3);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .seq-step-label {
+    font-family: var(--font-head);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .seq-item--done .seq-step-label { color: var(--teal); }
+  .seq-item--current .seq-step-label { color: rgba(255,255,255,0.8); }
+  .seq-item--next .seq-step-label { color: rgba(255,255,255,0.4); }
+  .seq-item--next-hot .seq-step-label { color: var(--amber); }
+  .seq-step-name {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .seq-item--done .seq-step-name { color: rgba(255,255,255,0.7); }
+  .seq-item--current .seq-step-name { color: var(--white); }
+  .seq-item--next .seq-step-name { color: rgba(255,255,255,0.5); }
+  .seq-item--next-hot .seq-step-name { color: rgba(255,255,255,0.85); }
 
-/* ── 5. READING STRATEGY TIPS ──────────────────────────── */
-.sfg-tips-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 0;
-}
-@media (max-width: 580px) { .sfg-tips-grid { grid-template-columns: 1fr; } }
-
-.sfg-tip {
-  background: var(--grey-bg);
-  border-radius: 4px;
-  padding: 14px 16px;
-  border-top: 3px solid var(--teal);
-  display: flex;
-  gap: 12px;
-  align-items: flex-start;
-}
-.sfg-tip-icon {
-  font-size: 20px;
-  line-height: 1;
-  flex-shrink: 0;
-  margin-top: 1px;
-}
-.sfg-tip-title {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  color: var(--navy);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.sfg-tip p {
-  font-size: 13px;
-  color: var(--grey-text);
-  line-height: 1.55;
-}
-
-/* ── 6. QUESTIONS ──────────────────────────────────────── */
-.sfg-questions { margin-top: 0; }
-
-.sfg-q-group-label {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 3px;
-  margin-bottom: 10px;
-  display: inline-block;
-}
-.sfg-q-group-label.gate1 {
-  background: var(--teal-light);
-  color: var(--teal-dark);
-  border: 1px solid rgba(13,155,135,0.25);
-}
-.sfg-q-group-label.gate2 {
-  background: rgba(15,32,39,0.07);
-  color: var(--navy);
-  border: 1px solid rgba(15,32,39,0.18);
-}
-
-.sfg-q {
-  display: flex;
-  gap: 14px;
-  margin-bottom: 12px;
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--white);
-  border: 1px solid var(--grey-mid);
-  border-left-width: 4px;
-  transition: box-shadow 0.15s ease;
-}
-.sfg-q:hover { box-shadow: 0 2px 10px rgba(15,32,39,0.08); }
-.sfg-q.gate1 { border-left-color: var(--teal); }
-.sfg-q.gate2 { border-left-color: var(--navy); }
-
-.sfg-q-num {
-  flex-shrink: 0;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--white);
-  margin: 14px 0 14px 14px;
-}
-.sfg-q.gate1 .sfg-q-num { background: var(--teal); }
-.sfg-q.gate2 .sfg-q-num { background: var(--navy); }
-
-.sfg-q-body {
-  flex: 1;
-  padding: 12px 14px 12px 0;
-  min-width: 0;
-}
-
-.sfg-q-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  align-items: center;
-  margin-bottom: 8px;
-}
-.sfg-q-tag {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 2px 8px;
-  border-radius: 2px;
-}
-.sfg-q.gate1 .sfg-q-tag { background: var(--teal-light); color: var(--teal-dark); }
-.sfg-q.gate2 .sfg-q-tag { background: rgba(15,32,39,0.08); color: var(--navy); }
-
-.sfg-q-loc {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--grey-text);
-  background: var(--grey-bg);
-  border: 1px solid var(--grey-mid);
-  padding: 2px 8px;
-  border-radius: 2px;
-  letter-spacing: 0.3px;
-}
-
-.sfg-q-counterintuitive {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  color: var(--amber-dark);
-  background: var(--amber-light);
-  border: 1px solid rgba(230,168,0,0.3);
-  padding: 2px 8px;
-  border-radius: 2px;
-}
-
-.sfg-q-text {
-  font-size: 14.5px;
-  font-weight: 500;
-  color: var(--body-text);
-  line-height: 1.60;
-  margin-bottom: 8px;
-}
-
-.sfg-q-hint {
-  font-family: 'Barlow', Arial, sans-serif;
-  font-size: 12.5px;
-  font-style: italic;
-  color: var(--grey-text);
-  line-height: 1.55;
-  display: flex;
-  gap: 6px;
-  align-items: flex-start;
-}
-.sfg-q-hint::before {
-  content: '→';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 11px;
-  color: var(--grey-mid);
-  flex-shrink: 0;
-  margin-top: 2px;
-}
-
-/* ── 7. AMBER CALLOUT ──────────────────────────────────── */
-.sfg-callout {
-  background: var(--amber-light);
-  border: 1px solid rgba(230,168,0,0.35);
-  border-left: 4px solid var(--amber);
-  border-radius: 0 4px 4px 0;
-  padding: 18px 20px;
-  margin-top: 0;
-}
-.sfg-callout-head {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  color: var(--amber-dark);
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.sfg-callout-head .ico { font-size: 16px; }
-.sfg-callout ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.sfg-callout li {
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  font-size: 13.5px;
-  color: var(--body-text);
-  line-height: 1.55;
-}
-.sfg-callout li::before {
-  content: '★';
-  color: var(--amber);
-  font-size: 11px;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-.sfg-callout li strong { color: var(--amber-dark); }
-.sfg-callout-note {
-  margin-top: 12px;
-  font-size: 12.5px;
-  color: var(--grey-text);
-  font-style: italic;
-  border-top: 1px solid rgba(230,168,0,0.2);
-  padding-top: 10px;
-}
-
-/* ── 8. SEQUENCE FOOTER ────────────────────────────────── */
-.sfg-sequence {
-  background: var(--navy);
-  padding: 22px 36px;
-  display: flex;
-  align-items: center;
-  gap: 0;
-  overflow-x: auto;
-}
-.sfg-seq-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px;
-  flex-shrink: 0;
-  min-width: 110px;
-}
-.sfg-seq-step.current .sfg-seq-icon-wrap {
-  background: var(--teal);
-  border-color: var(--teal);
-}
-.sfg-seq-step.next .sfg-seq-icon-wrap {
-  background: transparent;
-  border-color: rgba(255,255,255,0.25);
-}
-.sfg-seq-step.done .sfg-seq-icon-wrap {
-  background: rgba(255,255,255,0.1);
-  border-color: rgba(255,255,255,0.15);
-}
-.sfg-seq-icon-wrap {
-  width: 38px; height: 38px;
-  border-radius: 50%;
-  border: 2px solid transparent;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 17px;
-}
-.sfg-seq-label {
-  font-family: 'Barlow Condensed', Arial, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-align: center;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.3;
-  max-width: 90px;
-}
-.sfg-seq-step.current .sfg-seq-label { color: var(--white); }
-.sfg-seq-step.next .sfg-seq-label { color: rgba(255,255,255,0.75); }
-.sfg-seq-arrow {
-  color: rgba(255,255,255,0.22);
-  font-size: 18px;
-  flex-shrink: 0;
-  padding: 0 4px;
-  margin-bottom: 20px;
-}
-
-/* ── SECTION SPACER ────────────────────────────────────── */
-.sfg-section { margin-top: 28px; }
-
-/* ── CANVAS PASTE NOTE ─────────────────────────────────── */
-/* Remove this comment block before pasting into Canvas */
+  @media (max-width: 600px) {
+    .page-header { padding: 24px 20px 20px; }
+    .badge-row { flex-direction: column; }
+    .badge { border-right: none; border-bottom: 1px solid var(--gray-mid); }
+    .gate-cards { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .purpose-block,
+    .gate-section,
+    .tips-section,
+    .questions-section { padding: 20px; }
+    .q-header { flex-wrap: wrap; }
+    .q-loc { white-space: normal; }
+    .callout-amber { margin: 0 20px; }
+    .seq-footer { padding: 20px; }
+    .header-title { font-size: 26px; }
+    .seq-track { flex-direction: column; gap: 8px; }
+    .seq-arrow { transform: rotate(90deg); align-self: center; }
+    .gate-divider { flex-direction: column; gap: 8px; }
+    .gate-divider-line { width: 100%; }
+  }
 </style>
 </head>
 <body>
-<div class="sfg-wrap">
+<div class="page">
+  <header class="page-header">
+    <div class="eyebrow">MKT 472 &nbsp;·&nbsp; Module 02 &nbsp;·&nbsp; Chapter 2 Reading</div>
+    <h1 class="header-title">Study Focus Guide</h1>
+    <p class="header-subtitle"><em>Marketing Metrics and Marketing Profitability</em> &nbsp;·&nbsp; Eight questions to answer while you read &nbsp;·&nbsp; Est. 70–80 min</p>
+  </header>
 
-  <!-- ── 1. PAGE HEADER ─────────────────────────────────── -->
-  <div class="sfg-header">
-    <div class="sfg-eyebrow">MKT 472 &nbsp;·&nbsp; Module 02 &nbsp;·&nbsp; Chapter 2 Reading</div>
-    <div class="sfg-title">Study Focus Guide</div>
-    <div class="sfg-subtitle">Marketing Metrics &amp; Marketing Profitability &nbsp;·&nbsp; Estimated reading time: 70–80 minutes</div>
+  <div class="badge-row">
+    <div class="badge">
+      <div class="badge-icon">📖</div>
+      <div>
+        <div class="badge-label">Chapter pages</div>
+        <div class="badge-value">pp. 39–72</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">⏱</div>
+      <div>
+        <div class="badge-label">Reading time</div>
+        <div class="badge-value">70–80 min</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">✏️</div>
+      <div>
+        <div class="badge-label">Focus questions</div>
+        <div class="badge-value">8 questions</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔓</div>
+      <div>
+        <div class="badge-label">Unlocks</div>
+        <div class="badge-value">Gate 1 → Slides</div>
+      </div>
+    </div>
   </div>
 
-  <!-- ── 2. BADGE ROW ───────────────────────────────────── -->
-  <div class="sfg-badges">
-    <span class="sfg-badge"><span class="b-icon">📖</span> Pages 39–72</span>
-    <span class="sfg-badge"><span class="b-icon">⏱</span> 70–80 min</span>
-    <span class="sfg-badge"><span class="b-icon">❓</span> 8 Focus Questions</span>
-    <span class="sfg-badge accent"><span class="b-icon">⚡</span> Gate 1 Opens After Reading</span>
+  <div class="purpose-block">
+    <p>This guide identifies exactly what to look for as you read Chapter 2. <strong>Gate 1</strong> tests five chapter-only targets that do not appear in the slide deck or lecture, including exact figures, a four-item list, and chapter-exclusive quantitative results. <strong>Gate 2</strong> tests chapter-plus-slide synthesis and application across NMC, market growth, and product-line decision logic.</p>
+    <p>Answer these questions in your own words while you read, not before and not after. The guide itself is not graded. Gate 1 and Gate 2 are.</p>
   </div>
 
-  <div class="sfg-content">
-
-    <!-- ── 3. PURPOSE BLOCK ────────────────────────────── -->
-    <div class="sfg-purpose">
-      <p>Chapter 2 contains content that <strong>does not appear in the slide deck or lecture video</strong>. Specifically, five constructs tested in Gate 1 — including exact figures, four-item lists, and quantitative results — are chapter-exclusive. If you skip the chapter and rely only on slides, you will not have the information those questions require.</p>
-      <p>This guide identifies exactly what to look for and record while reading. Questions 1–5 are <strong>Gate 1 targets</strong> (chapter only, 5 questions, 70% threshold). Questions 6–8 are <strong>Gate 2 targets</strong> (chapter + slides synthesis, 8 questions, 20 pts). Work through all eight before you open Gate 1.</p>
-    </div>
-
-    <!-- ── 4. GATE CARDS ───────────────────────────────── -->
-    <div class="sfg-section">
-      <div class="sfg-section-label">Assessment Gates</div>
-      <div class="sfg-gate-row">
-
-        <!-- Gate 1 -->
-        <div class="sfg-gate-card gate1">
-          <div class="sfg-gate-card-head">
-            <div class="sfg-gate-num">1</div>
-            <div>
-              <div class="sfg-gate-name">Basic Reading Check</div>
-              <div class="sfg-gate-tag">Chapter Only &nbsp;·&nbsp; Access Control</div>
-            </div>
+  <div class="gate-section">
+    <div class="section-label">Gate Specifications</div>
+    <div class="gate-cards">
+      <div class="gate-card gate-card--g1">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 1 — Basic Reading Check</span>
+          <span class="gate-badge">Chapter Only</span>
+        </div>
+        <div class="gate-card-body">
+          <div class="gate-spec">
+            <span class="gate-spec-key">Questions</span>
+            <span class="gate-spec-val">5</span>
           </div>
-          <div class="sfg-gate-body">
-            <div class="sfg-gate-stat">
-              <span class="s-label">Questions</span>
-              <span class="s-val teal">5 (MC, 4 options each)</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Pass threshold</span>
-              <span class="s-val teal">70% &nbsp;— 3.5 / 5 correct</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Attempts</span>
-              <span class="s-val">2 (feedback shown after each)</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Point value</span>
-              <span class="s-val">0 pts — access control only</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Unlocks</span>
-              <span class="s-val teal">Slide Deck Viewer</span>
-            </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Threshold to pass</span>
+            <span class="gate-spec-val gate-spec-val--teal">70%</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Attempts</span>
+            <span class="gate-spec-val">2</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Point value</span>
+            <span class="gate-spec-val">0 pts — access only</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Feedback</span>
+            <span class="gate-spec-val">Per-answer with page refs</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Unlocks</span>
+            <span class="gate-spec-val gate-spec-val--teal">Slide Deck Viewer</span>
           </div>
         </div>
+      </div>
 
-        <!-- Gate 2 -->
-        <div class="sfg-gate-card gate2">
-          <div class="sfg-gate-card-head">
-            <div class="sfg-gate-num">2</div>
-            <div>
-              <div class="sfg-gate-name">Applied Reading Check</div>
-              <div class="sfg-gate-tag" style="color:var(--teal)">Chapter + Slides &nbsp;·&nbsp; Graded</div>
-            </div>
-          </div>
-          <div class="sfg-gate-body">
-            <div class="sfg-gate-stat">
-              <span class="s-label">Questions</span>
-              <span class="s-val navy">8 (MC + numeric entry)</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Pass threshold</span>
-              <span class="s-val">None — graded as submitted</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Attempts</span>
-              <span class="s-val">1 — no retries</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Point value</span>
-              <span class="s-val amber">20 pts = 10% of module grade</span>
-            </div>
-            <div class="sfg-gate-stat">
-              <span class="s-label">Unlocks</span>
-              <span class="s-val navy">Lecture Video</span>
-            </div>
-          </div>
+      <div class="gate-card gate-card--g2">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 2 — Applied Reading Check</span>
+          <span class="gate-badge">Chapter + Slides</span>
         </div>
-
-      </div><!-- /.sfg-gate-row -->
-    </div>
-
-    <!-- ── 5. READING STRATEGY TIPS ───────────────────── -->
-    <div class="sfg-section">
-      <div class="sfg-section-label">Reading Strategy</div>
-      <div class="sfg-tips-grid">
-        <div class="sfg-tip">
-          <div class="sfg-tip-icon">📝</div>
-          <div>
-            <div class="sfg-tip-title">Write exact figures</div>
-            <p>Several Gate 1 questions require a specific number or percentage — not a range or approximation. When you see a data point in a figure or footnote, write it down exactly as it appears.</p>
+        <div class="gate-card-body">
+          <div class="gate-spec">
+            <span class="gate-spec-key">Questions</span>
+            <span class="gate-spec-val">8</span>
           </div>
-        </div>
-        <div class="sfg-tip">
-          <div class="sfg-tip-icon">📋</div>
-          <div>
-            <div class="sfg-tip-title">Record complete lists</div>
-            <p>Chapter 2 contains one important four-item list. Gate 1 will ask you to identify or apply individual items from that list. Read each term carefully — common business words not on the list will be offered as distractors.</p>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Threshold to pass</span>
+            <span class="gate-spec-val">None — graded as submitted</span>
           </div>
-        </div>
-        <div class="sfg-tip">
-          <div class="sfg-tip-icon">🔢</div>
-          <div>
-            <div class="sfg-tip-title">Work the comparison tables</div>
-            <p>Gate 2 numeric questions pull directly from Figures 2-1, 2-4, and 2-15. As you read each comparative table, calculate the year-over-year differences yourself — don't just read them passively.</p>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Attempts</span>
+            <span class="gate-spec-val gate-spec-val--amber">1</span>
           </div>
-        </div>
-        <div class="sfg-tip">
-          <div class="sfg-tip-icon">⚠️</div>
-          <div>
-            <div class="sfg-tip-title">Trust the math over your intuition</div>
-            <p>Three questions in this guide are flagged counterintuitive. In each case, the chapter shows a result that contradicts what most people would predict. Verify the arithmetic, then accept the result — Gate 1 and the case both test whether you caught it.</p>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Point value</span>
+            <span class="gate-spec-val gate-spec-val--teal">20 pts — 10% of module</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Feedback</span>
+            <span class="gate-spec-val">Correct / Incorrect only</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Unlocks</span>
+            <span class="gate-spec-val gate-spec-val--teal">Lecture Video</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ── 6. THE EIGHT QUESTIONS ─────────────────────── -->
-    <div class="sfg-section">
-      <div class="sfg-section-label">Focus Questions</div>
-      <div class="sfg-questions">
-
-        <!-- GATE 1 GROUP -->
-        <div class="sfg-q-group-label gate1">Gate 1 · Chapter Only — Answer these five from the chapter before opening Gate 1</div>
-
-        <!-- Q1 -->
-        <div class="sfg-q gate1">
-          <div class="sfg-q-num">1</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 1 · Chapter Only</span>
-              <span class="sfg-q-loc">📍 pp. 42–44 · Figure 2-4</span>
-              <span class="sfg-q-counterintuitive">⚠️ Counterintuitive</span>
-            </div>
-            <div class="sfg-q-text">BioTronics tripled its pre-tax profits over three years while simultaneously losing market share. According to Figure 2-4, approximately how much additional pre-tax profit would BioTronics have earned over those three years had it maintained its base-year market share of 10 percent?</div>
-            <div class="sfg-q-hint">Record the exact dollar amount from the "Lost Profits" row in Figure 2-4, then note which single year produced the largest gap. The total and the year-3 figure are both tested.</div>
-          </div>
+  <div class="tips-section">
+    <div class="section-label">Reading Strategy for Chapter 2</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">📝</div>
+        <div>
+          <div class="tip-title">Write exact figures as you go</div>
+          <div class="tip-body">Several Gate 1 targets depend on an exact number or percentage, not a range. When Chapter 2 gives a dollar figure, percentage, or survey statistic, record it exactly as shown in the figure or text.</div>
         </div>
-
-        <!-- Q2 -->
-        <div class="sfg-q gate1">
-          <div class="sfg-q-num">2</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 1 · Chapter Only</span>
-              <span class="sfg-q-loc">📍 p. 44</span>
-            </div>
-            <div class="sfg-q-text">Chapter 2 states that marketing performance metrics must satisfy four specific criteria to be useful. What are all four criteria, stated in the exact terms the chapter uses?</div>
-            <div class="sfg-q-hint">Write down each term exactly as it appears — all four in order. Gate 1 will ask you to identify which criterion is described by a scenario, or identify which word is NOT on this list. Plausible-sounding substitutes will be offered as distractors.</div>
-          </div>
-        </div>
-
-        <!-- Q3 -->
-        <div class="sfg-q gate1">
-          <div class="sfg-q-num">3</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 1 · Chapter Only</span>
-              <span class="sfg-q-loc">📍 p. 44</span>
-            </div>
-            <div class="sfg-q-text">A CEO survey cited in Chapter 2 revealed that a majority of chief executives believe marketing lacks meaningful performance metrics. What exact percentage held that view, and which organization conducted the survey?</div>
-            <div class="sfg-q-hint">Record both the percentage (not a range — an exact number) and the full organization name. Both are tested independently. This statistic is the chapter's explanation for why Net Marketing Contribution was developed as a credibility tool.</div>
-          </div>
-        </div>
-
-        <!-- Q4 -->
-        <div class="sfg-q gate1">
-          <div class="sfg-q-num">4</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 1 · Chapter Only</span>
-              <span class="sfg-q-loc">📍 pp. 59–60 · Figures 2-15 &amp; 2-18</span>
-              <span class="sfg-q-counterintuitive">⚠️ Counterintuitive</span>
-            </div>
-            <div class="sfg-q-text">Figure 2-15 organizes Santa Fe Sportswear's performance by product line, and Figure 2-18 reorganizes the same data by customer segment. Both produce identical company-level totals for NMC, sales, and profit. What does the customer-segment view reveal that the product-line view conceals — and why do the two frameworks produce the same aggregate numbers?</div>
-            <div class="sfg-q-hint">Note the three customer segment names used in Figure 2-18 (not the five product line names). Then identify: how many segments are profitable in the customer view vs. how many product lines appear unprofitable in the product view. This is the insight Gate 1 will test.</div>
-          </div>
-        </div>
-
-        <!-- Q5 -->
-        <div class="sfg-q gate1">
-          <div class="sfg-q-num">5</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 1 · Chapter Only</span>
-              <span class="sfg-q-loc">📍 pp. 54–56</span>
-              <span class="sfg-q-counterintuitive">⚠️ Counterintuitive</span>
-            </div>
-            <div class="sfg-q-text">Santa Fe Sportswear's casual shorts product line reports a net profit of negative $1 million. Chapter 2 calculates what happens to the company's overall profit if this line is dropped, and separately what happens if both unprofitable lines are dropped. What are the two resulting company profit figures, and why does eliminating a money-losing line make the company worse off?</div>
-            <div class="sfg-q-hint">Write down the company profit before the drop ($10M), after dropping casual shorts alone, and after dropping both casual shorts and knitted sweaters. Then record the one metric — not net profit — that the chapter says should drive the drop decision.</div>
-          </div>
-        </div>
-
-        <!-- GATE 2 GROUP -->
-        <div class="sfg-q-group-label gate2" style="margin-top:20px;">Gate 2 · Chapter + Slides — Answer these three; you will also need the slide deck to complete Gate 2 fully</div>
-
-        <!-- Q6 -->
-        <div class="sfg-q gate2">
-          <div class="sfg-q-num">6</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 2 · Chapter + Slides</span>
-              <span class="sfg-q-loc">📍 pp. 50–53 · Figure 2-12</span>
-            </div>
-            <div class="sfg-q-text">Chapter 2 introduces a rule of thumb for estimating marketing and sales expenses when they are not separately reported. Based on the data in Figure 2-12, what percentage of a company's SGA expenses should be used to estimate MSE — and if a company reports gross profit of $48.5 million and SGA of $23.5 million, what is its estimated Net Marketing Contribution?</div>
-            <div class="sfg-q-hint">Gate 2 Q1 is a numeric entry question where SGA is given but not pre-separated. Practice the two-step: (1) multiply SGA by the percentage to get estimated MSE, then (2) subtract MSE from gross profit to get NMC. Confirm: $48.5M − ($23.5M × 75%) = ?</div>
-          </div>
-        </div>
-
-        <!-- Q7 -->
-        <div class="sfg-q gate2">
-          <div class="sfg-q-num">7</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 2 · Chapter + Slides</span>
-              <span class="sfg-q-loc">📍 pp. 54–56</span>
-              <span class="sfg-q-counterintuitive">⚠️ Counterintuitive</span>
-            </div>
-            <div class="sfg-q-text">Given the following product-line data — Total company NMC = $4.95M; one line has NMC = +$0.22M but net profit = −$0.18M — calculate the new total company NMC if that line is dropped. What does your answer reveal about the correct metric for a drop decision?</div>
-            <div class="sfg-q-hint">Gate 2 Q7 is a numeric entry question. The calculation is: new total NMC = current total NMC − dropped line's NMC. The allocated fixed overhead does not disappear when the line is dropped. Your answer should be less than $4.95M — record it to two decimal places.</div>
-          </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="sfg-q gate2">
-          <div class="sfg-q-num">8</div>
-          <div class="sfg-q-body">
-            <div class="sfg-q-meta">
-              <span class="sfg-q-tag">Gate 2 · Chapter + Slides</span>
-              <span class="sfg-q-loc">📍 pp. 41–44 · Figure 2-3</span>
-            </div>
-            <div class="sfg-q-text">BioTronics operated in a market growing at roughly 21 percent annually, yet grew its own sales at only 15 percent per year. Using the compounding formula Market(t) = Current × (1 + g)ᵗ: if a company starts with 10 percent share in a $100M market growing at 20 percent annually, how much revenue must it earn in Year 3 to maintain that share?</div>
-            <div class="sfg-q-hint">Gate 2 Q4 is a numeric entry question. Step 1: compute market size in Year 3 using the formula. Step 2: multiply by the share percentage. The answer is the company's required Year 3 revenue. Practice this with the BioTronics figures from Figure 2-3 before Gate 2 opens.</div>
-          </div>
-        </div>
-
-      </div><!-- /.sfg-questions -->
-    </div>
-
-    <!-- ── 7. AMBER CALLOUT ────────────────────────────── -->
-    <div class="sfg-section">
-      <div class="sfg-callout">
-        <div class="sfg-callout-head"><span class="ico">⭐</span> Highest-Probability Gate 1 Targets</div>
-        <ul>
-          <li>
-            <div><strong>The $41 million forfeited profit figure</strong> — Chapter 2, Figure 2-4. Gate 1 will ask for the cumulative three-year total and may ask which year produced the largest single-year gap. Both require reading Figure 2-4, not the text summary around it.</div>
-          </li>
-          <li>
-            <div><strong>The four metric criteria in exact order</strong> — Chapter 2, p. 44. Gate 1 will offer a plausible fifth term (a common business word not on the list) as a distractor. The only reliable defense is writing down all four terms while reading.</div>
-          </li>
-          <li>
-            <div><strong>The 51 percent CEO statistic and its source organization</strong> — Chapter 2, p. 44. Gate 1 will offer adjacent percentages (31%, 41%, 61%, 71%) and plausible organization names as distractors. Both the number and the organization name are required.</div>
-          </li>
-        </ul>
-        <div class="sfg-callout-note">These targets are not hinted at in the slides. If you are pressed for time, read pp. 42–44 and p. 44 first, record all three sets of data, then read the rest of the chapter.</div>
       </div>
-    </div>
-
-  </div><!-- /.sfg-content -->
-
-  <!-- ── 8. SEQUENCE FOOTER ──────────────────────────────── -->
-  <div class="sfg-sequence">
-    <div class="sfg-seq-step done">
-      <div class="sfg-seq-icon-wrap">📋</div>
-      <div class="sfg-seq-label">Module Overview</div>
-    </div>
-    <div class="sfg-seq-arrow">›</div>
-    <div class="sfg-seq-step current">
-      <div class="sfg-seq-icon-wrap">📖</div>
-      <div class="sfg-seq-label">Chapter 2 Reading</div>
-    </div>
-    <div class="sfg-seq-arrow">›</div>
-    <div class="sfg-seq-step next">
-      <div class="sfg-seq-icon-wrap" style="border-color:var(--teal);">🔓</div>
-      <div class="sfg-seq-label" style="color:var(--teal);">Gate 1</div>
-    </div>
-    <div class="sfg-seq-arrow">›</div>
-    <div class="sfg-seq-step next">
-      <div class="sfg-seq-icon-wrap">📊</div>
-      <div class="sfg-seq-label">Slide Deck Viewer</div>
-    </div>
-    <div class="sfg-seq-arrow">›</div>
-    <div class="sfg-seq-step next">
-      <div class="sfg-seq-icon-wrap">✏️</div>
-      <div class="sfg-seq-label">Gate 2</div>
-    </div>
-    <div class="sfg-seq-arrow">›</div>
-    <div class="sfg-seq-step next">
-      <div class="sfg-seq-icon-wrap">▶️</div>
-      <div class="sfg-seq-label">Lecture Video</div>
+      <div class="tip-card">
+        <div class="tip-icon">📋</div>
+        <div>
+          <div class="tip-title">Record the full four-item list</div>
+          <div class="tip-body">One Gate 1 question depends on the chapter's exact four criteria for a valid metric. Write all four terms down in the chapter's wording so distractor terms do not mislead you later.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔢</div>
+        <div>
+          <div class="tip-title">Work the comparison tables yourself</div>
+          <div class="tip-body">Figures 2-4, 2-12, and 2-15 matter because they require reading across rows, not just scanning totals. Recreate the intermediate steps while you read so the Gate 2 numeric entries feel procedural instead of new.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⚠️</div>
+        <div>
+          <div class="tip-title">Trust the accounting logic, not instinct</div>
+          <div class="tip-body">Chapter 2 includes counterintuitive results about lost profit, line drops, and customer-segment accounting. Pause when a result feels wrong and follow the math, because that tension is exactly what the assessments test.</div>
+        </div>
+      </div>
     </div>
   </div>
 
-</div><!-- /.sfg-wrap -->
+  <div class="questions-section">
+    <div class="section-label">Eight Focus Questions — Answer These While You Read</div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">1</div>
+        <div class="q-meta">
+          <div class="q-topic">BioTronics Lost-Profit Figure</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+            <span class="q-tag q-tag--warn">⚠️ Counterintuitive</span>
+          </div>
+        </div>
+        <div class="q-loc">pp. 42–44 · Fig. 2-4</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">BioTronics tripled its pre-tax profits over three years while simultaneously losing market share. According to Figure 2-4, approximately how much additional pre-tax profit would BioTronics have earned over those three years had it maintained its base-year market share of 10 percent?</div>
+        <div class="q-hint">Record the exact cumulative lost-profit figure from Figure 2-4 and note which year produced the largest single-year gap. Gate 1 uses both the total and the chapter's framing of why growth alone concealed the problem.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">2</div>
+        <div class="q-meta">
+          <div class="q-topic">Four Criteria for a Valid Metric</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+          </div>
+        </div>
+        <div class="q-loc">p. 44</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Chapter 2 states that marketing performance metrics must satisfy four specific criteria to be useful. What are all four criteria, stated in the exact terms the chapter uses?</div>
+        <div class="q-hint">Write down each term exactly as it appears and keep the list intact. Gate 1 is likely to test this through identification and distractor elimination, not just recall.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">3</div>
+        <div class="q-meta">
+          <div class="q-topic">CEO Credibility Gap Statistic</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+          </div>
+        </div>
+        <div class="q-loc">p. 44</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">A CEO survey cited in Chapter 2 revealed that a majority of chief executives believe marketing lacks meaningful performance metrics. What exact percentage held that view, and which organization conducted the survey?</div>
+        <div class="q-hint">Record both the exact percentage and the full organization name. Gate 1 may separate those into different distractor-heavy choices.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">4</div>
+        <div class="q-meta">
+          <div class="q-topic">Customer-Segment vs. Product-Line View</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+            <span class="q-tag q-tag--warn">⚠️ Counterintuitive</span>
+          </div>
+        </div>
+        <div class="q-loc">pp. 59–60 · Figs. 2-15 and 2-18</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Figure 2-15 organizes Santa Fe Sportswear's performance by product line, and Figure 2-18 reorganizes the same data by customer segment. Both produce identical company-level totals for NMC, sales, and profit. What does the customer-segment view reveal that the product-line view conceals, and why do the two frameworks still produce the same aggregate numbers?</div>
+        <div class="q-hint">Record the three customer segment names and compare how many units look healthy in the segment view versus the product-line view. The chapter is testing whether you understand what reclassification changes and what it does not.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">5</div>
+        <div class="q-meta">
+          <div class="q-topic">Product-Line Drop Calculation</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+            <span class="q-tag q-tag--warn">⚠️ Counterintuitive</span>
+          </div>
+        </div>
+        <div class="q-loc">pp. 54–56</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Santa Fe Sportswear's casual shorts product line reports a net profit of negative $1 million. Chapter 2 calculates what happens to the company's overall profit if this line is dropped, and separately what happens if both unprofitable lines are dropped. What are the two resulting company profit figures, and why does eliminating a money-losing line make the company worse off?</div>
+        <div class="q-hint">Write down the company profit before the drop, after dropping casual shorts alone, and after dropping both weak lines. Then record which metric the chapter says should drive the decision instead of net profit.</div>
+      </div>
+    </div>
+
+    <div class="gate-divider">
+      <div class="gate-divider-line"></div>
+      <div class="gate-divider-label">Gate 2 · Chapter + Slides Synthesis</div>
+      <div class="gate-divider-line"></div>
+    </div>
+
+    <div class="q-block q-block--g2">
+      <div class="q-header">
+        <div class="q-num">6</div>
+        <div class="q-meta">
+          <div class="q-topic">Estimating NMC from SGA</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g2">Gate 2 · Chapter + Slides</span>
+          </div>
+        </div>
+        <div class="q-loc">pp. 50–53 · Fig. 2-12</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Chapter 2 introduces a rule of thumb for estimating marketing and sales expenses when they are not separately reported. Based on the data in Figure 2-12, what percentage of a company's SGA expenses should be used to estimate MSE, and if a company reports gross profit of $48.5 million and SGA of $23.5 million, what is its estimated Net Marketing Contribution?</div>
+        <div class="q-hint">Practice the two-step process: estimate MSE from SGA, then subtract that estimate from gross profit to get NMC. Gate 2 changes the numbers but preserves that exact sequence.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g2">
+      <div class="q-header">
+        <div class="q-num">7</div>
+        <div class="q-meta">
+          <div class="q-topic">Drop Decision Using NMC</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g2">Gate 2 · Chapter + Slides</span>
+            <span class="q-tag q-tag--warn">⚠️ Counterintuitive</span>
+          </div>
+        </div>
+        <div class="q-loc">pp. 54–56</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Given the following product-line data, total company NMC equals $4.95 million and one line has NMC of +$0.22 million but net profit of −$0.18 million. Calculate the new total company NMC if that line is dropped. What does your answer reveal about the correct metric for a drop decision?</div>
+        <div class="q-hint">Use the chapter's logic, not intuition: when a positive-NMC line is dropped, total company NMC must fall. The fixed overhead logic from the reading is the key reason why.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g2">
+      <div class="q-header">
+        <div class="q-num">8</div>
+        <div class="q-meta">
+          <div class="q-topic">Market Compounding and Share Maintenance</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g2">Gate 2 · Chapter + Slides</span>
+          </div>
+        </div>
+        <div class="q-loc">pp. 41–44 · Fig. 2-3</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">BioTronics operated in a market growing at roughly 21 percent annually, yet grew its own sales at only 15 percent per year. Using the compounding formula Market(t) = Current × (1 + g)^t, if a company starts with 10 percent share in a $100 million market growing at 20 percent annually, how much revenue must it earn in Year 3 to maintain that share?</div>
+        <div class="q-hint">Complete the calculation in two stages: first compute Year 3 market size, then apply the 10 percent share. The reading and slides both reinforce that the required revenue rises with market growth even when share is unchanged.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-amber">
+    <div class="callout-amber-header">
+      <div class="callout-amber-icon">⚠️</div>
+      <div class="callout-amber-title">High-Risk Reading Traps</div>
+    </div>
+    <div class="callout-amber-body">Three Chapter 2 ideas routinely cause errors unless you stop and write out the logic:</div>
+    <ul class="callout-amber-list">
+      <li><strong>Growth can hide decline:</strong> BioTronics improved profit and still destroyed value because the market was compounding faster than the firm.</li>
+      <li><strong>Net profit is not the drop criterion:</strong> a line can show negative net profit and still contribute positive NMC, so removing it can lower total company profitability.</li>
+      <li><strong>Reclassification changes the story, not the totals:</strong> product-line and customer-segment views can produce identical company aggregates while pointing to very different strategic problems.</li>
+    </ul>
+  </div>
+
+  <div class="seq-footer">
+    <div class="seq-label">Where This Fits in the Module 02 Sequence</div>
+    <div class="seq-track">
+      <div class="seq-item seq-item--done">
+        <div class="seq-step-label">Step 1</div>
+        <div class="seq-step-name">Read Chapter</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--current">
+        <div class="seq-step-label">Step 2</div>
+        <div class="seq-step-name">Study Focus Guide</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next-hot">
+        <div class="seq-step-label">Step 3</div>
+        <div class="seq-step-name">Gate 1</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next">
+        <div class="seq-step-label">Step 4</div>
+        <div class="seq-step-name">Slide Deck Viewer</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next">
+        <div class="seq-step-label">Step 5</div>
+        <div class="seq-step-name">Gate 2</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next">
+        <div class="seq-step-label">Step 6</div>
+        <div class="seq-step-name">Lecture Video / Application Work</div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>

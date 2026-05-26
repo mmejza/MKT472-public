@@ -3,838 +3,709 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M09 Study Focus Guide — Chapter 9</title>
+<title>MKT 472 · Module 09 · Study Focus Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap');
-
   :root {
-    --navy:      #0f2340;
-    --navy-mid:  #1a3a5c;
-    --blue:      #1d5fa8;
-    --blue-lt:   #2e7dd4;
-    --accent:    #e8a020;
-    --accent-lt: #f5c05a;
-    --cream:     #faf8f4;
-    --warm-gray: #f0ece4;
-    --mid-gray:  #8a8278;
-    --text:      #1c1a17;
-    --text-soft: #4a4540;
-    --rule:      #ddd8ce;
-    --gate1:     #b84a1e;
-    --gate2:     #1a6b3a;
-    --chapter-only: #5c3d8f;
+    --teal:      #0D9B87;
+    --teal-dk:   #0a7a6b;
+    --teal-lt:   #e6f7f5;
+    --teal-mid:  #b3e4de;
+    --navy:      #0F2027;
+    --navy-mid:  #1a3340;
+    --amber:     #E6A800;
+    --amber-lt:  #fff8e1;
+    --amber-dk:  #b37f00;
+    --gray-lt:   #F2F4F5;
+    --gray-mid:  #D0D5D8;
+    --gray-dk:   #6b7280;
+    --white:     #ffffff;
+    --text:      #1a2630;
+    --text-soft: #4a5568;
+
+    --font-head: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --font-body: 'Barlow', Arial, sans-serif;
+
+    --radius:    8px;
+    --radius-sm: 5px;
+    --shadow:    0 2px 8px rgba(15,32,39,0.10);
+    --shadow-md: 0 4px 16px rgba(15,32,39,0.13);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  html { scroll-behavior: smooth; }
-
   body {
-    font-family: 'DM Sans', sans-serif;
-    font-weight: 300;
-    background: var(--cream);
+    font-family: var(--font-body);
+    background: var(--gray-lt);
     color: var(--text);
-    line-height: 1.7;
+    line-height: 1.6;
     font-size: 15px;
   }
 
-  /* ── Header ── */
-  .site-header {
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+  }
+
+  .page-header {
     background: var(--navy);
-    padding: 0;
+    padding: 36px 40px 32px;
     position: relative;
     overflow: hidden;
   }
-
-  .site-header::before {
+  .page-header::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background:
-      repeating-linear-gradient(
-        90deg,
-        transparent,
-        transparent 60px,
-        rgba(255,255,255,0.025) 60px,
-        rgba(255,255,255,0.025) 61px
-      ),
-      repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 60px,
-        rgba(255,255,255,0.025) 60px,
-        rgba(255,255,255,0.025) 61px
-      );
-    pointer-events: none;
+    top: 0; right: 0; bottom: 0;
+    width: 6px;
+    background: var(--teal);
   }
-
-  .header-inner {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 52px 40px 44px;
-    position: relative;
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 40px; right: 40px;
+    height: 1px;
+    background: rgba(13,155,135,0.35);
   }
-
-  .course-tag {
-    display: inline-block;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.18em;
+  .eyebrow {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--teal);
     text-transform: uppercase;
-    color: var(--accent);
-    background: rgba(232,160,32,0.12);
-    border: 1px solid rgba(232,160,32,0.3);
-    padding: 4px 10px;
-    border-radius: 2px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
-
   .header-title {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(28px, 4vw, 42px);
-    color: #fff;
-    line-height: 1.15;
-    margin-bottom: 10px;
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
     letter-spacing: -0.01em;
+    margin-bottom: 8px;
   }
-
-  .header-title em {
-    font-style: italic;
-    color: var(--accent-lt);
-  }
-
-  .header-sub {
-    font-size: 14px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.55);
-    letter-spacing: 0.02em;
-    margin-bottom: 28px;
-  }
-
-  .header-meta {
-    display: flex;
-    gap: 24px;
-    flex-wrap: wrap;
-  }
-
-  .meta-pill {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    font-size: 12px;
+  .header-subtitle {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--teal-mid);
     font-weight: 400;
-    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
   }
 
-  .meta-pill .dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: var(--accent);
-    flex-shrink: 0;
-  }
-
-  /* ── Layout ── */
-  .main {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 48px 40px 80px;
-  }
-
-  /* ── How To Use ── */
-  .how-to-use {
-    background: var(--navy);
-    color: #fff;
-    border-radius: 4px;
-    padding: 28px 32px;
-    margin-bottom: 44px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .how-to-use::after {
-    content: '';
-    position: absolute;
-    right: -20px; top: -20px;
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: rgba(232,160,32,0.08);
-    pointer-events: none;
-  }
-
-  .how-to-use h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 17px;
-    font-weight: 400;
-    color: var(--accent-lt);
-    margin-bottom: 12px;
-    letter-spacing: 0.01em;
-  }
-
-  .how-to-use p {
-    font-size: 13.5px;
-    font-weight: 300;
-    color: rgba(255,255,255,0.8);
-    line-height: 1.65;
-    margin-bottom: 10px;
-  }
-
-  .how-to-use p:last-child { margin-bottom: 0; }
-
-  .how-to-use strong { color: #fff; font-weight: 500; }
-
-  /* ── Badge legend ── */
-  .legend {
+  .badge-row {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
-    padding-bottom: 32px;
-    border-bottom: 1px solid var(--rule);
+    gap: 0;
+    border-bottom: 2px solid var(--gray-lt);
   }
-
-  .legend-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    font-weight: 400;
-    color: var(--text-soft);
-  }
-
   .badge {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-right: 1px solid var(--gray-mid);
+  }
+  .badge:last-child { border-right: none; }
+  .badge-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .badge-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .badge-value {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
+
+  .purpose-block {
+    padding: 28px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+    border-left: 5px solid var(--teal);
+    background: var(--teal-lt);
+  }
+  .purpose-block p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .purpose-block p:last-child { margin-bottom: 0; }
+  .purpose-block strong { color: var(--navy); font-weight: 600; }
+
+  .gate-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .section-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    margin-bottom: 16px;
+  }
+  .gate-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .gate-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .gate-card-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gate-card--g1 .gate-card-header { background: var(--teal); }
+  .gate-card--g2 .gate-card-header { background: var(--navy); }
+  .gate-card-title {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .gate-badge {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .gate-card--g1 .gate-badge {
+    background: rgba(255,255,255,0.25);
+    color: var(--white);
+  }
+  .gate-card--g2 .gate-badge {
+    background: var(--teal);
+    color: var(--white);
+  }
+  .gate-card-body {
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  .gate-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-lt);
+    font-size: 13.5px;
+  }
+  .gate-spec:last-child { border-bottom: none; padding-bottom: 0; }
+  .gate-spec-key { color: var(--gray-dk); font-weight: 500; }
+  .gate-spec-val {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 14px;
+    text-align: right;
+  }
+  .gate-spec-val--teal { color: var(--teal); }
+  .gate-spec-val--amber { color: var(--amber-dk); }
+
+  .tips-section {
+    padding: 32px 40px;
+    background: var(--gray-lt);
+    border-bottom: 2px solid var(--gray-mid);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .tip-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 12px;
+  }
+  .tip-icon { font-size: 22px; margin-top: 1px; flex-shrink: 0; }
+  .tip-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 5px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .tip-body { font-size: 13px; color: #444; line-height: 1.5; }
+
+  .questions-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .q-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .q-block {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--gray-mid);
+    background: var(--white);
+  }
+  .q-block--g1 { border-left: 4px solid var(--teal); }
+  .q-block--g2 { border-left: 4px solid var(--navy); }
+  .q-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .q-block--g1 .q-num { background: var(--teal); }
+  .q-block--g2 .q-num { background: var(--navy); color: var(--amber); }
+  .q-body {
+    background: var(--white);
+    padding: 12px 16px 12px 14px;
+  }
+  .q-tag {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 7px;
+  }
+  .q-block--g1 .q-tag { background: var(--teal-lt); color: var(--teal-dk); }
+  .q-block--g2 .q-tag { background: #e8ecf0; color: var(--navy); }
+  .q-tag--warn { background: #fef2f2 !important; color: #b91c1c !important; }
+  .q-topic {
+    font-family: var(--font-head);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .q-text {
+    font-size: 15px;
+    color: var(--navy);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .q-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .q-loc {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px;
-    font-weight: 500;
-    letter-spacing: 0.1em;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    background: var(--gray-lt);
+    border: 1px solid var(--gray-mid);
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+  .q-hint {
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-lt);
+    font-size: 13px;
+    color: var(--text-soft);
+    font-style: italic;
+  }
+
+  .amber-callout {
+    background: var(--amber-lt);
+    border: 2px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 28px 40px 0;
+  }
+  .amber-callout-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .amber-callout-icon { font-size: 22px; }
+  .amber-callout-title {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
     text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 2px;
-    white-space: nowrap;
-    flex-shrink: 0;
+    color: var(--amber-dk);
   }
-
-  .badge-g1 {
-    background: rgba(184,74,30,0.1);
-    color: var(--gate1);
-    border: 1px solid rgba(184,74,30,0.25);
+  .amber-callout-body {
+    font-size: 14px;
+    color: #5a4000;
+    line-height: 1.65;
   }
+  .amber-callout-body strong { color: #3a2800; }
+  .amber-callout-list { margin-top: 10px; padding-left: 18px; }
+  .amber-callout-list li { margin-bottom: 6px; font-size: 13.5px; color: #5a4000; }
 
-  .badge-g2 {
-    background: rgba(26,107,58,0.1);
-    color: var(--gate2);
-    border: 1px solid rgba(26,107,58,0.25);
+  .sequence-footer {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 44px 40px 0;
   }
-
-  .badge-ch {
-    background: rgba(92,61,143,0.1);
-    color: var(--chapter-only);
-    border: 1px solid rgba(92,61,143,0.25);
-  }
-
-  .badge-calc {
-    background: rgba(29,95,168,0.1);
-    color: var(--blue);
-    border: 1px solid rgba(29,95,168,0.25);
-  }
-
-  /* ── Chapter-only callout ── */
-  .chapter-alert {
-    background: rgba(92,61,143,0.06);
-    border-left: 3px solid var(--chapter-only);
-    border-radius: 0 4px 4px 0;
-    padding: 18px 24px;
-    margin-bottom: 40px;
-  }
-
-  .chapter-alert-title {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+  .sf-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
     text-transform: uppercase;
-    color: var(--chapter-only);
-    margin-bottom: 10px;
+    color: var(--teal);
+    margin-bottom: 14px;
   }
-
-  .chapter-alert ul {
-    list-style: none;
+  .sf-steps {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 10px;
   }
-
-  .chapter-alert li {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--text-soft);
+  .sf-step {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
-    line-height: 1.5;
+    gap: 12px;
   }
-
-  .chapter-alert li::before {
-    content: '→';
-    color: var(--chapter-only);
-    font-weight: 500;
+  .sf-step-num {
     flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(13,155,135,.25);
+    border: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal);
     margin-top: 1px;
   }
-
-  .chapter-alert .note {
-    margin-top: 12px;
-    font-size: 12px;
-    font-style: italic;
-    color: var(--mid-gray);
-    line-height: 1.5;
+  .sf-step-text {
+    font-size: 14px;
+    color: #c0d8d5;
+    line-height: 1.4;
   }
+  .sf-step-text strong { color: var(--white); }
+  .sf-step-text .arrow { color: var(--teal); font-weight: 700; }
 
-  /* ── Section heading ── */
-  .section-heading {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 28px;
-  }
-
-  .section-heading h2 {
-    font-family: 'DM Serif Display', serif;
-    font-size: 22px;
-    font-weight: 400;
-    color: var(--navy);
-    letter-spacing: -0.01em;
-  }
-
-  .section-heading::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--rule);
-  }
-
-  /* ── Question cards ── */
-  .questions {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .q-card {
-    background: #fff;
-    border: 1px solid var(--rule);
-    border-radius: 4px;
-    margin-bottom: 16px;
-    overflow: hidden;
-    transition: box-shadow 0.2s ease;
-  }
-
-  .q-card:hover {
-    box-shadow: 0 4px 20px rgba(15,35,64,0.07);
-  }
-
-  .q-header {
-    display: flex;
-    align-items: flex-start;
-    gap: 0;
-    cursor: pointer;
-    user-select: none;
-  }
-
-  .q-number {
-    flex-shrink: 0;
-    width: 52px;
-    background: var(--navy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-    align-self: stretch;
-  }
-
-  .q-number span {
-    font-family: 'DM Serif Display', serif;
-    font-size: 18px;
-    color: rgba(255,255,255,0.9);
-  }
-
-  .q-main {
-    flex: 1;
-    padding: 18px 20px 18px 20px;
-  }
-
-  .q-tags {
-    display: flex;
-    gap: 6px;
-    flex-wrap: wrap;
-    margin-bottom: 10px;
-  }
-
-  .q-text {
-    font-size: 14.5px;
-    font-weight: 400;
-    color: var(--text);
-    line-height: 1.6;
-  }
-
-  .q-text strong { font-weight: 600; }
-
-  .q-context {
-    margin-top: 10px;
-    padding: 10px 14px;
-    background: var(--warm-gray);
-    border-radius: 3px;
-    font-size: 12.5px;
-    color: var(--text-soft);
-    line-height: 1.55;
-  }
-
-  .q-context strong {
-    font-weight: 500;
-    color: var(--text);
-  }
-
-  /* Chapter-only flag on card */
-  .q-card.chapter-only .q-number {
-    background: var(--chapter-only);
-  }
-
-  /* Calc flag */
-  .q-card.calc-heavy .q-number {
-    background: var(--blue);
-  }
-
-  /* Mixed */
-  .q-card.mixed .q-number {
-    background: linear-gradient(180deg, var(--chapter-only) 50%, var(--gate2) 50%);
-  }
-
-  /* ── Page ref line ── */
-  .page-ref {
-    padding: 8px 20px 12px 72px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px;
-    color: var(--mid-gray);
-    letter-spacing: 0.05em;
-    border-top: 1px solid var(--warm-gray);
-  }
-
-  .page-ref a {
-    color: var(--blue);
-    text-decoration: none;
-    font-weight: 500;
-  }
-
-  /* ── Divider between sections ── */
-  .section-break {
-    height: 1px;
-    background: var(--rule);
-    margin: 40px 0;
-  }
-
-  /* ── Footer ── */
-  .page-footer {
-    margin-top: 56px;
-    padding-top: 28px;
-    border-top: 1px solid var(--rule);
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  .footer-col {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .footer-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 8px;
-  }
-
-  .footer-text {
-    font-size: 12.5px;
-    font-weight: 300;
-    color: var(--text-soft);
-    line-height: 1.6;
-  }
-
-  .footer-text strong { font-weight: 500; color: var(--text); }
-
-  /* ── Progress tracker (cosmetic) ── */
-  .tracker {
-    background: var(--warm-gray);
-    border-radius: 4px;
-    padding: 20px 24px;
-    margin-bottom: 40px;
-  }
-
-  .tracker-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--mid-gray);
-    margin-bottom: 12px;
-  }
-
-  .tracker-dots {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .t-dot {
-    width: 28px; height: 28px;
-    border-radius: 50%;
-    background: #fff;
-    border: 2px solid var(--rule);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'DM Mono', monospace;
-    font-size: 10px;
-    font-weight: 500;
-    color: var(--mid-gray);
-    cursor: pointer;
-    transition: all 0.15s ease;
-    flex-shrink: 0;
-  }
-
-  .t-dot:hover {
-    border-color: var(--blue);
-    color: var(--blue);
-  }
-
-  .t-dot.done {
-    background: var(--navy);
-    border-color: var(--navy);
-    color: #fff;
-  }
-
-  .tracker-note {
-    margin-top: 10px;
-    font-size: 11.5px;
-    color: var(--mid-gray);
-    font-style: italic;
-  }
-
-  /* ── Responsive ── */
   @media (max-width: 600px) {
-    .header-inner { padding: 36px 24px 32px; }
-    .main { padding: 32px 20px 60px; }
-    .how-to-use { padding: 22px 20px; }
-    .q-number { width: 40px; }
-    .page-ref { padding-left: 56px; }
-    .legend { gap: 12px; }
+    .page-header { padding: 24px 20px 20px; }
+    .badge-row { flex-direction: column; }
+    .badge { border-right: none; border-bottom: 1px solid var(--gray-mid); }
+    .badge:last-child { border-bottom: none; }
+    .gate-cards { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .purpose-block, .gate-section, .tips-section,
+    .questions-section { padding: 20px 20px; }
+    .amber-callout { margin: 0 20px; }
+    .sequence-footer { padding: 20px 20px; margin: 28px 20px 0; }
+    .header-title { font-size: 26px; }
   }
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- ── HEADER ─────────────────────────────────────────────────────────────── -->
-<header class="site-header">
-  <div class="header-inner">
-    <div class="course-tag">MKT 472 · Module 09</div>
-    <h1 class="header-title">Study Focus Guide<br><em>Marketing Channels &amp; Channel Mapping</em></h1>
-    <p class="header-sub">Chapter 9 · Reading Companion · Complete before Gate 1</p>
-    <div class="header-meta">
-      <div class="meta-pill"><span class="dot"></span> 8 directed questions</div>
-      <div class="meta-pill"><span class="dot"></span> ~70–80 min reading time</div>
-      <div class="meta-pill"><span class="dot"></span> Not graded — preparation only</div>
-    </div>
-  </div>
-</header>
+  <header class="page-header">
+    <div class="eyebrow">MKT 472 &nbsp;·&nbsp; Module 09 &nbsp;·&nbsp; Chapter 9 Reading</div>
+    <h1 class="header-title">Study Focus Guide</h1>
+    <p class="header-subtitle">
+      <em>Marketing Channels and Channel Mapping</em> &nbsp;·&nbsp;
+      Eight questions to answer while you read &nbsp;·&nbsp; Est. 70–80 min
+    </p>
+  </header>
 
-<!-- ── MAIN ───────────────────────────────────────────────────────────────── -->
-<main class="main">
-
-  <!-- How to use -->
-  <div class="how-to-use">
-    <h2>How to use this guide</h2>
-    <p>Read Chapter 9 with these 8 questions in front of you. <strong>Write down your answers as you read</strong> — in your notes, on paper, or in a document. You will not submit them here.</p>
-    <p>The questions are designed to direct your attention to the content that matters most in this module. Some target <strong>concepts that appear only in the chapter</strong> — not in the slides or lecture. Gate 1 will test those directly. Others preview the calculations you will need for Gate 2, the apps, and the case.</p>
-    <p><strong>Students who answer all 8 before sitting Gate 1 consistently outperform those who do not.</strong></p>
-  </div>
-
-  <!-- Badge legend -->
-  <div class="legend">
-    <div class="legend-item">
-      <span class="badge badge-g1">Gate 1</span>
-      Chapter-exclusive — slides won't help you answer this
-    </div>
-    <div class="legend-item">
-      <span class="badge badge-g2">Gate 2</span>
-      Requires chapter + slides synthesis
-    </div>
-    <div class="legend-item">
-      <span class="badge badge-ch">Chapter only</span>
-      Not in slides or narration at all
-    </div>
-    <div class="legend-item">
-      <span class="badge badge-calc">Calculation</span>
-      Requires working with numbers
-    </div>
-  </div>
-
-  <!-- Chapter-only alert -->
-  <div class="chapter-alert">
-    <div class="chapter-alert-title">⚠ Five topics in Chapter 9 do not appear in the slides or narration script</div>
-    <ul>
-      <li><strong>Channel value proposition</strong> — the four components a supplier must deliver to win intermediary commitment (sales growth, profitability, return on capital, brand leverage)</li>
-      <li><strong>Channel performance triad</strong> — customer reach, operating efficiency, and service quality as three interdependent pillars (Fig. 9-8)</li>
-      <li><strong>Distribution outlet share S-curve</strong> — the nonlinear relationship between outlet share and market share, and why dominant outlet share blocks competitor entry (Fig. 9-23)</li>
-      <li><strong>VARs vs. OEMs</strong> — the precise distinction between value-added resellers and original equipment manufacturers, with the Ford/IBM/Caterpillar examples</li>
-      <li><strong>Wholesaler transaction cost math</strong> — the specific figures: 24 million transactions → $1.2 billion without wholesalers; 241,200 transactions → $210 million with wholesalers (Figs. 9-21 and 9-22)</li>
-    </ul>
-    <p class="note">Gate 1 will test these directly. Do not skip these sections assuming the slides will cover them — they will not.</p>
-  </div>
-
-  <!-- Progress tracker -->
-  <div class="tracker">
-    <div class="tracker-label">Reading progress tracker</div>
-    <div class="tracker-dots" id="dots">
-      <div class="t-dot" onclick="toggleDone(this)">1</div>
-      <div class="t-dot" onclick="toggleDone(this)">2</div>
-      <div class="t-dot" onclick="toggleDone(this)">3</div>
-      <div class="t-dot" onclick="toggleDone(this)">4</div>
-      <div class="t-dot" onclick="toggleDone(this)">5</div>
-      <div class="t-dot" onclick="toggleDone(this)">6</div>
-      <div class="t-dot" onclick="toggleDone(this)">7</div>
-      <div class="t-dot" onclick="toggleDone(this)">8</div>
-    </div>
-    <p class="tracker-note">Click a number when you've answered that question. Progress is not saved — this is for your own tracking only.</p>
-  </div>
-
-  <!-- Section: Chapter-only questions -->
-  <div class="section-heading">
-    <h2>Questions 1–5 · Chapter-exclusive content</h2>
-  </div>
-
-  <div class="questions">
-
-    <!-- Q1 -->
-    <div class="q-card chapter-only">
-      <div class="q-header">
-        <div class="q-number"><span>1</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g1">Gate 1</span>
-            <span class="badge badge-ch">Chapter only</span>
-          </div>
-          <div class="q-text">
-            Chapter 9 identifies four components of the <strong>channel value proposition</strong> — the offer a supplier must make to convince intermediaries to actively carry and sell its products. Name all four components and give a one-sentence explanation of what each means to a channel partner.
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> Channel strategy isn't just about moving product — it's about convincing intermediaries that carrying your line is worth their shelf space, capital, and sales effort. The CVP framework is the supplier's answer to the intermediary's question: <em>"Why should I carry your line?"</em>
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · "Channel Value Proposition" section</div>
-    </div>
-
-    <!-- Q2 -->
-    <div class="q-card chapter-only">
-      <div class="q-header">
-        <div class="q-number"><span>2</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g1">Gate 1</span>
-            <span class="badge badge-ch">Chapter only</span>
-          </div>
-          <div class="q-text">
-            Chapter 9 presents a three-pillar framework for <strong>marketing channel performance</strong> (Fig. 9-8). Name the three pillars, the outcome each pillar most directly drives, and explain what happens to overall channel performance if any single pillar fails.
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> A channel can have excellent reach and terrible service quality and still fail. Understanding which pillar drives volume, which drives cost-to-serve, and which drives retention is essential for diagnosing channel problems — and for the case analysis.
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · "Marketing Channel Performance" section · Fig. 9-8</div>
-    </div>
-
-    <!-- Q3 -->
-    <div class="q-card chapter-only">
-      <div class="q-header">
-        <div class="q-number"><span>3</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g1">Gate 1</span>
-            <span class="badge badge-ch">Chapter only</span>
-          </div>
-          <div class="q-text">
-            Chapter 9 shows that the relationship between a company's <strong>distribution outlet share</strong> and its <strong>market share</strong> follows an S-shaped curve (Fig. 9-23). Describe the shape of the curve and explain: (a) at what outlet share level does market share begin to grow faster than outlet share, and (b) why does a dominant outlet share create a competitive advantage that goes beyond just having more points of sale?
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> In indirect channel markets, distribution access is a strategic asset. A company with 90 dealers doesn't just sell more than a company with 30 — it may also prevent competitors from accessing the best intermediaries at all. The S-curve tells you when adding outlets accelerates returns vs. when it yields diminishing ones.
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · "Distribution Advantage" section · Fig. 9-23</div>
-    </div>
-
-    <!-- Q4 -->
-    <div class="q-card chapter-only">
-      <div class="q-header">
-        <div class="q-number"><span>4</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g1">Gate 1</span>
-            <span class="badge badge-ch">Chapter only</span>
-          </div>
-          <div class="q-text">
-            Chapter 9 distinguishes between two B2B intermediary types that are unique to business markets: <strong>Value-Added Resellers (VARs)</strong> and <strong>Original Equipment Manufacturers (OEMs)</strong>. Define each precisely and explain the key difference. Then classify Ford, IBM, and Caterpillar — are they VARs or OEMs, and why?
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> The VAR/OEM distinction appears on Gate 1 and captures a conceptual line many students blur: bundling existing components for a customer vs. manufacturing a new product from purchased parts. The chapter examples (Ford buying tires, IBM buying processors) make this concrete.
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · "B2B Channels" section</div>
-    </div>
-
-    <!-- Q5 -->
-    <div class="q-card chapter-only">
-      <div class="q-header">
-        <div class="q-number"><span>5</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g1">Gate 1</span>
-            <span class="badge badge-ch">Chapter only</span>
-            <span class="badge badge-calc">Calculation</span>
-          </div>
-          <div class="q-text">
-            Chapter 9 analyzes a channel of <strong>100 manufacturers</strong> and <strong>20,000 retailers</strong> with monthly ordering. Work through the math in Figs. 9-21 and 9-22: (a) How many total annual transactions occur <em>without</em> wholesalers? At $50 per transaction, what is the total annual cost? (b) How many total annual transactions occur <em>with</em> wholesalers? What is the total cost? (c) What percentage reduction in total cost does adding wholesalers produce — and what common assumption about intermediaries does this refute?
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> This is one of the most counterintuitive insights in channel management. Most people assume more intermediaries mean higher costs. The math proves the opposite — and Gate 1 will test whether you have the specific numbers, not just the concept.
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · "Improving Cost Efficiency" section · Figs. 9-21 and 9-22</div>
-    </div>
-
-  </div><!-- /questions section 1 -->
-
-  <div class="section-break"></div>
-
-  <!-- Section: Chapter + slides synthesis -->
-  <div class="section-heading">
-    <h2>Questions 6–8 · Chapter + slides synthesis</h2>
-  </div>
-
-  <div class="questions">
-
-    <!-- Q6 -->
-    <div class="q-card calc-heavy">
-      <div class="q-header">
-        <div class="q-number"><span>6</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g2">Gate 2</span>
-            <span class="badge badge-calc">Calculation</span>
-          </div>
-          <div class="q-text">
-            Chapter 9 introduces the <strong>pocket price waterfall</strong> — the step-by-step deduction of retailer discounts, distributor discounts, agent commissions, and transaction costs from the end-user price. Using the electronic components channel data in Fig. 9-4, trace the pocket price waterfall for all three channels (direct, agent-distributor, and retailer-wholesale). For each channel, show every deduction in order and state the final pocket price. Then compute the <strong>weighted average pocket price</strong> across all three channels given the sales mix (40% / 20% / 40%).
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> The pocket price is what the manufacturer actually receives — not the end-user price. Gate 2 will ask you to compute this from scratch with different inputs. The waterfall structure (end-user → retailer cut → distributor cut → commission → transaction cost) is the same across all versions; only the percentages change.
-            <br><br>
-            <strong>Cross-check:</strong> The slides show a simplified version of this using the running shoe example. The chapter's Fig. 9-4 is the full version you need for Gate 2.
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · Figs. 9-4 and 9-5 · Slides S11 (pocket price concept)</div>
-    </div>
-
-    <!-- Q7 -->
-    <div class="q-card calc-heavy">
-      <div class="q-header">
-        <div class="q-number"><span>7</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g2">Gate 2</span>
-            <span class="badge badge-calc">Calculation</span>
-          </div>
-          <div class="q-text">
-            Using the channel profitability data in Fig. 9-5, compute <strong>Net Marketing Contribution (NMC)</strong>, <strong>Marketing ROS</strong>, and <strong>Marketing ROI</strong> for the direct and indirect channels. Then answer: which channel has the highest NMC? Which has the highest ROI? Are they the same channel — and if not, why does the channel with the lower NMC have the higher ROI?
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> This is the module's central paradox. Most students assume the channel with the highest margin and highest NMC is the "best" channel. The ROI calculation proves this is wrong — and understanding why is the difference between a good Gate 2 score and a great case analysis.
-            <br><br>
-            <strong>Formulas to know:</strong><br>
-            NMC = (Pocket Price − COGS) × Volume − M&amp;S Expenses ($)<br>
-            Marketing ROS = NMC ÷ Channel Revenue<br>
-            Marketing ROI = NMC ÷ M&amp;S Expenses ($)
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · Fig. 9-5 · Slides S12 (channel types)</div>
-    </div>
-
-    <!-- Q8 -->
-    <div class="q-card calc-heavy">
-      <div class="q-header">
-        <div class="q-number"><span>8</span></div>
-        <div class="q-main">
-          <div class="q-tags">
-            <span class="badge badge-g2">Gate 2</span>
-            <span class="badge badge-calc">Calculation</span>
-          </div>
-          <div class="q-text">
-            Chapter 9's Fig. 9-24 compares three channel scenarios for the same manufacturer: current indirect strategy, direct strategy at the same NMC level, and direct strategy at the same market share. Work through the break-even market share calculation for each scenario. Then answer: under what market share assumption does the direct channel strategy produce a higher NMC than the indirect strategy — and what does the break-even share tell you about the financial risk of each option?
-          </div>
-          <div class="q-context">
-            <strong>Why this matters:</strong> Break-even market share is the single most powerful decision tool in channel strategy. It tells you exactly how much share you can afford to lose before a channel switch destroys value. The case analysis (NovaTech Distribution) will require you to compute this for a proposed channel restructuring.
-            <br><br>
-            <strong>Formula:</strong> Break-Even Market Share (%) = M&amp;S Expense $ ÷ (Pocket Price − COGS) ÷ Market Demand × 100
-          </div>
-        </div>
-      </div>
-      <div class="page-ref">Chapter 9 · Fig. 9-24 · "Profit Impact of Alternative Marketing Channels" section</div>
-    </div>
-
-  </div><!-- /questions section 2 -->
-
-  <!-- Footer -->
-  <div class="page-footer">
-    <div class="footer-col">
-      <div class="footer-label">After reading</div>
-      <div class="footer-text">
-        Proceed to <strong>Gate 1: Basic Reading Check</strong> — 5 questions, 10–12 minutes, 70% required to unlock the slide viewer. You have 2 attempts.
+  <div class="badge-row">
+    <div class="badge">
+      <div class="badge-icon">📖</div>
+      <div>
+        <div class="badge-label">Chapter pages</div>
+        <div class="badge-value">pp. 273–298</div>
       </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-label">What the slides cover</div>
-      <div class="footer-text">
-        The slide viewer covers channel definitions, contactual efficiency, pocket price concept, and channel types. It does <strong>not</strong> cover the CVP framework, performance triad, outlet share S-curve, VAR/OEM distinction, or the precise wholesaler transaction math — those are chapter-only.
+    <div class="badge">
+      <div class="badge-icon">⏱</div>
+      <div>
+        <div class="badge-label">Reading time</div>
+        <div class="badge-value">70–80 min</div>
       </div>
     </div>
-    <div class="footer-col">
-      <div class="footer-label">Module sequence</div>
-      <div class="footer-text">
-        Reading → Gate 1 → Slides → Gate 2 → Lecture → App 1 → App 2 → Discussion → Case
+    <div class="badge">
+      <div class="badge-icon">✏️</div>
+      <div>
+        <div class="badge-label">Focus questions</div>
+        <div class="badge-value">8 questions</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔓</div>
+      <div>
+        <div class="badge-label">Unlocks</div>
+        <div class="badge-value">Gate 1 → Slides</div>
       </div>
     </div>
   </div>
 
-</main>
+  <div class="purpose-block">
+    <p>
+      This guide identifies exactly what to look for as you read Chapter 9.
+      <strong>Gate 1</strong> tests five topics that appear only in the chapter, not in the slides or lecture.
+      <strong>Gate 2</strong> tests three chapter-dependent topics that require both the reading and the slide deck to solve correctly.
+    </p>
+    <p>
+      Answer these questions in your own words while you read, not after.
+      The guide itself is not graded. Gate 1 and Gate 2 are.
+    </p>
+  </div>
 
-<script>
-  function toggleDone(el) {
-    el.classList.toggle('done');
-  }
-</script>
+  <div class="gate-section">
+    <div class="section-label">Gate Specifications</div>
+    <div class="gate-cards">
+      <div class="gate-card gate-card--g1">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 1 — Basic Reading Check</span>
+          <span class="gate-badge">Chapter Only</span>
+        </div>
+        <div class="gate-card-body">
+          <div class="gate-spec"><span class="gate-spec-key">Questions</span><span class="gate-spec-val">5</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Threshold to pass</span><span class="gate-spec-val gate-spec-val--teal">70% (3.5 of 5)</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Attempts</span><span class="gate-spec-val">2</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Point value</span><span class="gate-spec-val">0 pts — access only</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Feedback</span><span class="gate-spec-val">Per-answer with page ref</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Unlocks</span><span class="gate-spec-val gate-spec-val--teal">Slide Deck Viewer</span></div>
+        </div>
+      </div>
 
+      <div class="gate-card gate-card--g2">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 2 — Applied Reading Check</span>
+          <span class="gate-badge">Chapter + Slides</span>
+        </div>
+        <div class="gate-card-body">
+          <div class="gate-spec"><span class="gate-spec-key">Questions</span><span class="gate-spec-val">8</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Threshold to pass</span><span class="gate-spec-val">None — graded as submitted</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Attempts</span><span class="gate-spec-val gate-spec-val--amber">1 — no retries</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Point value</span><span class="gate-spec-val gate-spec-val--teal">20 pts (10% of module)</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Feedback</span><span class="gate-spec-val">Correct / Incorrect only</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Unlocks</span><span class="gate-spec-val gate-spec-val--teal">Lecture Video</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <div class="section-label">Reading Strategy for Chapter 9</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">📍</div>
+        <div>
+          <div class="tip-title">Mark the chapter-only figures</div>
+          <div class="tip-body">Flag Figures 9-8, 9-21, 9-22, 9-23, and 9-24 before you start. Gate 1 pulls from all of these and none are fully covered in the slide deck.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">✍️</div>
+        <div>
+          <div class="tip-title">Write down the formulas</div>
+          <div class="tip-body">Do not just memorize the names. Next to each formula, write what it measures and which channel decision it supports so the calculation logic is visible when you revisit it.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⚠️</div>
+        <div>
+          <div class="tip-title">Slow down at the counterintuitive parts</div>
+          <div class="tip-body">Two places trip students repeatedly: wholesalers can reduce transaction costs, and the channel with the highest NMC can still have the lower ROI. Mark both passages and restate them in your own words.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔗</div>
+        <div>
+          <div class="tip-title">Connect the channel metrics to the slides</div>
+          <div class="tip-body">Chapter 9 links pocket price, Marketing ROI, and break-even market share into one decision sequence. If you map the sequence now, Gate 2 calculation questions become much easier.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="questions-section">
+    <div class="section-label">Eight Focus Questions — Answer These While You Read</div>
+
+    <div class="q-list">
+      <div class="q-block q-block--g1">
+        <div class="q-num">1</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Channel value proposition</div>
+          <div class="q-text">Chapter 9 identifies four components of the channel value proposition — the offer a supplier must make to convince intermediaries to actively carry and sell its products. Name all four components and give a one-sentence explanation of what each means to a channel partner.</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Channel Value Proposition section</span></div>
+          <div class="q-hint">Remember that channels ask what is in it for them. The four components are the supplier's answer.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">2</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Channel performance triad</div>
+          <div class="q-text">Chapter 9 presents a three-pillar framework for marketing channel performance (Fig. 9-8). Name the three pillars, the outcome each pillar most directly drives, and explain what happens to overall channel performance if any single pillar fails.</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Fig. 9-8</span></div>
+          <div class="q-hint">Think of the triad as reach, efficiency, and service. Gate 1 expects the full logic, not just the labels.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">3</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Distribution outlet share S-curve</div>
+          <div class="q-text">Chapter 9 shows that the relationship between a company's distribution outlet share and its market share follows an S-shaped curve (Fig. 9-23). Describe the shape of the curve and explain: (a) at what outlet share level does market share begin to grow faster than outlet share, and (b) why a dominant outlet share creates a competitive advantage that goes beyond just having more points of sale?</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Fig. 9-23</span></div>
+          <div class="q-hint">The key idea is that access to quality outlets can block rivals, not just expand your own volume.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">4</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">VARs versus OEMs</div>
+          <div class="q-text">Chapter 9 distinguishes between two B2B intermediary types that are unique to business markets: Value-Added Resellers (VARs) and Original Equipment Manufacturers (OEMs). Define each precisely and explain the key difference. Then classify Ford, IBM, and Caterpillar — are they VARs or OEMs, and why?</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · B2B Channels section</span></div>
+          <div class="q-hint">The distinction is about what gets assembled or transformed, and who is responsible for the final product identity.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">5</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only · Calculation</div>
+          <div class="q-topic">Wholesaler transaction math</div>
+          <div class="q-text">Chapter 9 analyzes a channel of 100 manufacturers and 20,000 retailers with monthly ordering. Work through the math in Figs. 9-21 and 9-22: (a) How many total annual transactions occur without wholesalers? At $50 per transaction, what is the total annual cost? (b) How many total annual transactions occur with wholesalers? What is the total cost? (c) What percentage reduction in total cost does adding wholesalers produce — and what common assumption about intermediaries does this refute?</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Figs. 9-21 and 9-22</span></div>
+          <div class="q-hint">The math is the point: more intermediaries can reduce transaction cost dramatically when they reduce the number of transactions.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g2">
+        <div class="q-num">6</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 2 · Chapter + Slides</div>
+          <div class="q-topic">Pocket price waterfall</div>
+          <div class="q-text">Chapter 9 introduces the pocket price waterfall — the step-by-step deduction of retailer discounts, distributor discounts, agent commissions, and transaction costs from the end-user price. Using the electronic components channel data in Fig. 9-4, trace the pocket price waterfall for all three channels (direct, agent-distributor, and retailer-wholesale). For each channel, show every deduction in order and state the final pocket price. Then compute the weighted average pocket price across all three channels given the sales mix (40% / 20% / 40%).</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Figs. 9-4 and 9-5 · Slides S11</span></div>
+          <div class="q-hint">The pocket price is what the manufacturer actually receives. The waterfall structure is the same each time; only the percentages change.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g2">
+        <div class="q-num">7</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 2 · Chapter + Slides</div>
+          <div class="q-topic">Channel profitability paradox</div>
+          <div class="q-text">Using the channel profitability data in Fig. 9-5, compute Net Marketing Contribution (NMC), Marketing ROS, and Marketing ROI for the direct and indirect channels. Then answer: which channel has the highest NMC? Which has the highest ROI? Are they the same channel — and if not, why does the channel with the lower NMC have the higher ROI?</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Fig. 9-5 · Slides S12</span></div>
+          <div class="q-hint">The central paradox is that ROI depends on M&amp;S spending efficiency, not just absolute profit.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g2">
+        <div class="q-num">8</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 2 · Chapter + Slides</div>
+          <div class="q-topic">Break-even market share</div>
+          <div class="q-text">Chapter 9's Fig. 9-24 compares three channel scenarios for the same manufacturer: current indirect strategy, direct strategy at the same NMC level, and direct strategy at the same market share. Work through the break-even market share calculation for each scenario. Then answer: under what market share assumption does the direct channel strategy produce a higher NMC than the indirect strategy — and what does the break-even share tell you about the financial risk of each option?</div>
+          <div class="q-meta"><span class="q-loc">📄 Chapter 9 · Fig. 9-24 · Profit Impact of Alternative Marketing Channels</span></div>
+          <div class="q-hint">Use the break-even share formula to compare the downside risk of channel redesign decisions.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="amber-callout">
+    <div class="amber-callout-header">
+      <span class="amber-callout-icon">🎯</span>
+      <span class="amber-callout-title">Highest-Probability Gate 1 Targets</span>
+    </div>
+    <div class="amber-callout-body">
+      If you are short on time, prioritize these three areas — they appear on Gate 1 across all question variants and cannot be answered from the slides alone:
+      <ul class="amber-callout-list">
+        <li><strong>Channel value proposition (Q1):</strong> Know the four components and why intermediaries need each one.</li>
+        <li><strong>Channel performance and outlet share (Q2 &amp; Q3):</strong> Be able to explain the triad and the S-curve without looking at the figure.</li>
+        <li><strong>Wholesaler transaction math (Q5):</strong> Be able to compute why adding wholesalers reduces total transaction cost so dramatically.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sequence-footer">
+    <div class="sf-label">What comes next</div>
+    <div class="sf-steps">
+      <div class="sf-step">
+        <div class="sf-step-num">1</div>
+        <div class="sf-step-text"><strong>Complete Chapter 9 reading</strong> — work through Questions 1–5 as you go</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">2</div>
+        <div class="sf-step-text"><strong>Gate 1: Basic Reading Check</strong> <span class="arrow">→</span> 5 questions, chapter only, 70% to unlock slides · 2 attempts · 0 points</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">3</div>
+        <div class="sf-step-text"><strong>Slide Deck Viewer</strong> <span class="arrow">→</span> unlocked by Gate 1 · return to Questions 6–8 after viewing</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">4</div>
+        <div class="sf-step-text"><strong>Gate 2: Applied Reading Check</strong> <span class="arrow">→</span> 8 questions, chapter + slides, 1 attempt · 20 points</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">5</div>
+        <div class="sf-step-text"><strong>Lecture Video</strong> <span class="arrow">→</span> unlocked by Gate 2 · Segment 1 + Segment 2</div>
+      </div>
+    </div>
+  </div>
+
+</div>
 </body>
 </html>

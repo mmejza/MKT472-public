@@ -3,734 +3,709 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Chapter 8 Study Focus Guide | MKT 472 Module 08</title>
+<title>MKT 472 · Module 08 · Study Focus Guide</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-/* ── TOKENS ─────────────────────────────────────────────────────────── */
-:root {
-  --ink:      #0f1923;
-  --ink-mid:  #2d3f52;
-  --ink-soft: #5a6f82;
-  --rule:     #d4dce4;
-  --surface:  #f7f9fb;
-  --white:    #ffffff;
+  :root {
+    --teal:      #0D9B87;
+    --teal-dk:   #0a7a6b;
+    --teal-lt:   #e6f7f5;
+    --teal-mid:  #b3e4de;
+    --navy:      #0F2027;
+    --navy-mid:  #1a3340;
+    --amber:     #E6A800;
+    --amber-lt:  #fff8e1;
+    --amber-dk:  #b37f00;
+    --gray-lt:   #F2F4F5;
+    --gray-mid:  #D0D5D8;
+    --gray-dk:   #6b7280;
+    --white:     #ffffff;
+    --text:      #1a2630;
+    --text-soft: #4a5568;
 
-  --teal:     #0a7c6e;
-  --teal-lt:  #e0f4f1;
-  --teal-mid: #c2ece7;
-  --gold:     #c9860a;
-  --gold-lt:  #fdf3e0;
-  --gold-mid: #f9dfa0;
-  --red:      #b92b27;
-  --red-lt:   #fdecea;
-  --red-mid:  #f5c6c5;
-  --blue:     #1a56a0;
-  --blue-lt:  #e6effa;
-  --blue-mid: #c3d9f5;
-  --purple:   #6b3fa0;
-  --purple-lt:#f0eafa;
-  --purple-mid:#d9c8f0;
+    --font-head: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --font-body: 'Barlow', Arial, sans-serif;
 
-  --serif: 'DM Serif Display', Georgia, serif;
-  --sans:  'Outfit', system-ui, sans-serif;
-  --mono:  'DM Mono', 'Courier New', monospace;
+    --radius:    8px;
+    --radius-sm: 5px;
+    --shadow:    0 2px 8px rgba(15,32,39,0.10);
+    --shadow-md: 0 4px 16px rgba(15,32,39,0.13);
+  }
 
-  --r-sm: 4px;
-  --r-md: 8px;
-  --r-lg: 14px;
-  --shadow-sm: 0 1px 3px rgba(15,25,35,.07), 0 1px 2px rgba(15,25,35,.05);
-  --shadow-md: 0 4px 12px rgba(15,25,35,.09), 0 2px 4px rgba(15,25,35,.06);
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--gray-lt);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
 
-/* ── RESET ──────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: var(--sans);
-  color: var(--ink);
-  background: var(--surface);
-  line-height: 1.6;
-  padding-bottom: 80px;
-}
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+  }
 
-/* ── PAGE HEADER ────────────────────────────────────────────────────── */
-.page-header {
-  background: var(--ink);
-  color: var(--white);
-  padding: 44px 40px 36px;
-  position: relative; overflow: hidden;
-}
-.page-header::after {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 4px; background: var(--gold);
-}
-.page-header::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: repeating-linear-gradient(
-    -55deg, transparent, transparent 28px,
-    rgba(255,255,255,.02) 28px, rgba(255,255,255,.02) 29px
-  );
-  pointer-events: none;
-}
-.header-eyebrow {
-  display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
-  margin-bottom: 18px;
-}
-.badge {
-  display: inline-flex; align-items: center;
-  font-family: var(--mono); font-size: .69rem; font-weight: 500;
-  letter-spacing: .08em; text-transform: uppercase;
-  padding: 4px 11px; border-radius: 100px;
-  background: rgba(255,255,255,.1); color: rgba(255,255,255,.8);
-}
-.badge-gold   { background: rgba(201,134,10,.3); color: #f9d87a; }
-.badge-teal   { background: rgba(10,124,110,.3); color: #7de8dc; }
-.badge-red    { background: rgba(185,43,39,.3);  color: #f4a5a3; }
+  .page-header {
+    background: var(--navy);
+    padding: 36px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0;
+    width: 6px;
+    background: var(--teal);
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 40px; right: 40px;
+    height: 1px;
+    background: rgba(13,155,135,0.35);
+  }
+  .eyebrow {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .header-subtitle {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--teal-mid);
+    font-weight: 400;
+    line-height: 1.4;
+  }
 
-.header-title {
-  font-family: var(--serif);
-  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-  line-height: 1.15; color: var(--white);
-  max-width: 600px; margin-bottom: 10px;
-}
-.header-sub {
-  font-size: .92rem; font-weight: 300;
-  color: rgba(255,255,255,.58);
-  max-width: 560px; line-height: 1.6;
-  margin-bottom: 28px;
-}
-.header-meta { display: flex; flex-wrap: wrap; gap: 10px; }
+  .badge-row {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .badge {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-right: 1px solid var(--gray-mid);
+  }
+  .badge:last-child { border-right: none; }
+  .badge-icon {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .badge-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .badge-value {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
 
-/* ── CONTAINER ──────────────────────────────────────────────────────── */
-.container { max-width: 860px; margin: 0 auto; padding: 0 32px; }
+  .purpose-block {
+    padding: 28px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+    border-left: 5px solid var(--teal);
+    background: var(--teal-lt);
+  }
+  .purpose-block p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .purpose-block p:last-child { margin-bottom: 0; }
+  .purpose-block strong { color: var(--navy); font-weight: 600; }
 
-/* ── SECTION ────────────────────────────────────────────────────────── */
-.section { margin-top: 44px; }
-.section-label {
-  font-family: var(--mono); font-size: .7rem; font-weight: 500;
-  letter-spacing: .1em; text-transform: uppercase; color: var(--teal);
-  display: block; margin-bottom: 14px;
-}
+  .gate-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .section-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    margin-bottom: 16px;
+  }
+  .gate-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .gate-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .gate-card-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gate-card--g1 .gate-card-header { background: var(--teal); }
+  .gate-card--g2 .gate-card-header { background: var(--navy); }
+  .gate-card-title {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .gate-badge {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .gate-card--g1 .gate-badge {
+    background: rgba(255,255,255,0.25);
+    color: var(--white);
+  }
+  .gate-card--g2 .gate-badge {
+    background: var(--teal);
+    color: var(--white);
+  }
+  .gate-card-body {
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  .gate-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-lt);
+    font-size: 13.5px;
+  }
+  .gate-spec:last-child { border-bottom: none; padding-bottom: 0; }
+  .gate-spec-key { color: var(--gray-dk); font-weight: 500; }
+  .gate-spec-val {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 14px;
+    text-align: right;
+  }
+  .gate-spec-val--teal { color: var(--teal); }
+  .gate-spec-val--amber { color: var(--amber-dk); }
 
-/* ── HOW TO USE ─────────────────────────────────────────────────────── */
-.how-to-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
-  margin-top: 16px;
-}
-@media (max-width: 580px) { .how-to-grid { grid-template-columns: 1fr; } }
-.how-cell {
-  background: var(--white); border: 1px solid var(--rule);
-  border-radius: var(--r-md); padding: 16px 18px;
-  box-shadow: var(--shadow-sm);
-}
-.how-cell .hc-num {
-  width: 26px; height: 26px; border-radius: 50%;
-  background: var(--ink); color: var(--white);
-  font-family: var(--mono); font-size: .72rem; font-weight: 500;
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 10px;
-}
-.how-cell h4 { font-size: .9rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
-.how-cell p  { font-size: .82rem; color: var(--ink-soft); line-height: 1.5; margin: 0; }
+  .tips-section {
+    padding: 32px 40px;
+    background: var(--gray-lt);
+    border-bottom: 2px solid var(--gray-mid);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  .tip-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: var(--shadow);
+    display: flex;
+    gap: 12px;
+  }
+  .tip-icon { font-size: 22px; margin-top: 1px; flex-shrink: 0; }
+  .tip-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 5px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+  .tip-body { font-size: 13px; color: #444; line-height: 1.5; }
 
-/* ── CALLOUT ────────────────────────────────────────────────────────── */
-.callout {
-  border-radius: var(--r-md); padding: 14px 18px; margin: 16px 0;
-  font-size: .88rem; line-height: 1.65;
-  display: flex; gap: 12px; align-items: flex-start;
-}
-.callout-icon { font-size: 1rem; flex-shrink: 0; margin-top: 2px; }
-.callout.warn   { background: var(--gold-lt); border: 1px solid var(--gold-mid); color: #7a4e00; }
-.callout.info   { background: var(--blue-lt); border: 1px solid var(--blue-mid); color: var(--blue); }
-.callout.key    { background: var(--teal-lt); border: 1px solid var(--teal-mid); color: #005446; }
-.callout.alert  { background: var(--red-lt);  border: 1px solid var(--red-mid);  color: var(--red); }
-.callout strong { font-weight: 600; }
+  .questions-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .q-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 16px;
+  }
+  .q-block {
+    display: grid;
+    grid-template-columns: 54px 1fr;
+    gap: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--gray-mid);
+    background: var(--white);
+  }
+  .q-block--g1 { border-left: 4px solid var(--teal); }
+  .q-block--g2 { border-left: 4px solid var(--navy); }
+  .q-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .q-block--g1 .q-num { background: var(--teal); }
+  .q-block--g2 .q-num { background: var(--navy); color: var(--amber); }
+  .q-body {
+    background: var(--white);
+    padding: 12px 16px 12px 14px;
+  }
+  .q-tag {
+    display: inline-block;
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 2px;
+    margin-bottom: 7px;
+  }
+  .q-block--g1 .q-tag { background: var(--teal-lt); color: var(--teal-dk); }
+  .q-block--g2 .q-tag { background: #e8ecf0; color: var(--navy); }
+  .q-tag--warn { background: #fef2f2 !important; color: #b91c1c !important; }
+  .q-topic {
+    font-family: var(--font-head);
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .q-text {
+    font-size: 15px;
+    color: var(--navy);
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .q-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+  }
+  .q-loc {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    background: var(--gray-lt);
+    border: 1px solid var(--gray-mid);
+    border-radius: 3px;
+    padding: 2px 8px;
+  }
+  .q-hint {
+    padding-top: 10px;
+    border-top: 1px solid var(--gray-lt);
+    font-size: 13px;
+    color: var(--text-soft);
+    font-style: italic;
+  }
 
-/* ── QUESTION CARDS ─────────────────────────────────────────────────── */
-.q-card {
-  background: var(--white);
-  border: 1px solid var(--rule);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-  box-shadow: var(--shadow-md);
-  margin-bottom: 20px;
-  transition: box-shadow .15s;
-}
-.q-card:hover { box-shadow: var(--shadow-md), 0 0 0 2px var(--teal-mid); }
+  .amber-callout {
+    background: var(--amber-lt);
+    border: 2px solid var(--amber);
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 28px 40px 0;
+  }
+  .amber-callout-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .amber-callout-icon { font-size: 22px; }
+  .amber-callout-title {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--amber-dk);
+  }
+  .amber-callout-body {
+    font-size: 14px;
+    color: #5a4000;
+    line-height: 1.65;
+  }
+  .amber-callout-body strong { color: #3a2800; }
+  .amber-callout-list { margin-top: 10px; padding-left: 18px; }
+  .amber-callout-list li { margin-bottom: 6px; font-size: 13.5px; color: #5a4000; }
 
-/* header strip — color varies by gate target */
-.q-header {
-  padding: 14px 22px;
-  display: flex; align-items: center; gap: 14px;
-  border-bottom: 1px solid var(--rule);
-}
-.q-header.gate1 { background: var(--gold-lt); border-bottom-color: var(--gold-mid); }
-.q-header.gate2 { background: var(--teal-lt); border-bottom-color: var(--teal-mid); }
-.q-header.both  { background: var(--blue-lt); border-bottom-color: var(--blue-mid); }
+  .sequence-footer {
+    background: var(--navy);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin: 44px 40px 0;
+  }
+  .sf-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 14px;
+  }
+  .sf-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .sf-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .sf-step-num {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: rgba(13,155,135,.25);
+    border: 1.5px solid var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--teal);
+    margin-top: 1px;
+  }
+  .sf-step-text {
+    font-size: 14px;
+    color: #c0d8d5;
+    line-height: 1.4;
+  }
+  .sf-step-text strong { color: var(--white); }
+  .sf-step-text .arrow { color: var(--teal); font-weight: 700; }
 
-.q-num {
-  flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%;
-  font-family: var(--mono); font-size: .88rem; font-weight: 500;
-  display: flex; align-items: center; justify-content: center;
-  color: var(--white);
-}
-.gate1 .q-num { background: var(--gold); }
-.gate2 .q-num { background: var(--teal); }
-.both  .q-num { background: var(--blue); }
-
-.q-meta { flex: 1; }
-.q-meta h3 { font-size: .95rem; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
-.q-meta .meta-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
-
-.tag {
-  display: inline-flex; align-items: center;
-  font-family: var(--mono); font-size: .62rem; font-weight: 500;
-  letter-spacing: .06em; text-transform: uppercase;
-  padding: 2px 8px; border-radius: 100px;
-}
-.tag-gate1  { background: var(--gold-lt);   color: var(--gold);   border: 1px solid var(--gold-mid); }
-.tag-gate2  { background: var(--teal-lt);   color: var(--teal);   border: 1px solid var(--teal-mid); }
-.tag-both   { background: var(--blue-lt);   color: var(--blue);   border: 1px solid var(--blue-mid); }
-.tag-lo     { background: var(--surface);   color: var(--ink-soft); border: 1px solid var(--rule); }
-.tag-ref    { background: var(--surface);   color: var(--ink-soft); border: 1px solid var(--rule); font-style: italic; }
-.tag-slides-no { background: var(--red-lt); color: var(--red);    border: 1px solid var(--red-mid); }
-
-.q-body { padding: 22px 24px; }
-
-/* The question itself */
-.question-text {
-  font-family: var(--serif);
-  font-size: 1.12rem;
-  line-height: 1.45;
-  color: var(--ink);
-  margin-bottom: 16px;
-}
-
-/* What to look for */
-.look-for {
-  background: var(--surface);
-  border-radius: var(--r-md);
-  padding: 14px 18px;
-  margin-bottom: 14px;
-}
-.look-for .lf-label {
-  font-family: var(--mono); font-size: .63rem; font-weight: 500;
-  letter-spacing: .09em; text-transform: uppercase;
-  color: var(--ink-soft); margin-bottom: 8px; display: block;
-}
-.look-for ul {
-  list-style: none; display: flex; flex-direction: column; gap: 6px;
-}
-.look-for li {
-  display: flex; gap: 10px; align-items: flex-start;
-  font-size: .86rem; color: var(--ink-mid); line-height: 1.5;
-}
-.look-for li::before {
-  content: '›';
-  color: var(--teal); font-weight: 700; flex-shrink: 0; margin-top: 1px;
-}
-
-/* Page reference */
-.page-ref {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-family: var(--mono); font-size: .7rem; font-weight: 500;
-  letter-spacing: .05em;
-  color: var(--ink-soft);
-  background: var(--surface); border: 1px solid var(--rule);
-  border-radius: 100px; padding: 3px 10px;
-}
-.page-ref::before { content: '📖'; font-size: .8rem; }
-
-/* Warning flag for chapter-only */
-.slides-warning {
-  display: flex; align-items: center; gap: 8px; margin-top: 10px;
-  font-size: .8rem; color: var(--red);
-  font-family: var(--mono); font-weight: 500;
-}
-.slides-warning::before { content: '⚠'; }
-
-/* ── SECTION DIVIDER ────────────────────────────────────────────────── */
-.section-divider {
-  display: flex; align-items: center; gap: 14px;
-  margin: 36px 0 28px;
-}
-.section-divider::before, .section-divider::after {
-  content: ''; flex: 1; height: 1px; background: var(--rule);
-}
-.section-divider-pill {
-  flex-shrink: 0;
-  font-family: var(--mono); font-size: .68rem; font-weight: 500;
-  letter-spacing: .09em; text-transform: uppercase;
-  padding: 5px 14px; border-radius: 100px;
-  border: 1px solid var(--rule); color: var(--ink-soft);
-  background: var(--white); white-space: nowrap;
-}
-
-/* ── QUICK REF TABLE ────────────────────────────────────────────────── */
-.ref-table {
-  width: 100%; border-collapse: separate; border-spacing: 0;
-  border: 1px solid var(--rule); border-radius: var(--r-lg);
-  overflow: hidden; box-shadow: var(--shadow-sm);
-  font-size: .84rem; margin-top: 20px;
-}
-.ref-table th {
-  background: var(--ink-mid); color: rgba(255,255,255,.8);
-  font-family: var(--mono); font-size: .64rem; font-weight: 500;
-  letter-spacing: .07em; text-transform: uppercase;
-  padding: 10px 16px; text-align: left;
-}
-.ref-table td {
-  padding: 10px 16px; border-bottom: 1px solid var(--rule);
-  vertical-align: top; color: var(--ink-mid);
-  background: var(--white); line-height: 1.5;
-}
-.ref-table tr:last-child td { border-bottom: none; }
-.ref-table tr:nth-child(even) td { background: var(--surface); }
-.ref-table .formula {
-  font-family: var(--mono); font-size: .82rem; color: var(--teal);
-}
-
-/* ── DIVIDER ────────────────────────────────────────────────────────── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--rule) 20%, var(--rule) 80%, transparent);
-  margin: 44px 0;
-}
-
-/* ── UTILITIES ──────────────────────────────────────────────────────── */
-p { margin-bottom: 12px; font-size: .92rem; color: var(--ink-mid); line-height: 1.65; }
-p:last-child { margin-bottom: 0; }
-strong { color: var(--ink); font-weight: 600; }
-
-/* ── ANIMATIONS ─────────────────────────────────────────────────────── */
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.q-card { animation: fadeUp .32s ease both; }
-.q-card:nth-child(1) { animation-delay: .04s; }
-.q-card:nth-child(2) { animation-delay: .08s; }
-.q-card:nth-child(3) { animation-delay: .12s; }
-.q-card:nth-child(4) { animation-delay: .16s; }
-.q-card:nth-child(5) { animation-delay: .20s; }
-.q-card:nth-child(6) { animation-delay: .24s; }
-.q-card:nth-child(7) { animation-delay: .28s; }
-.q-card:nth-child(8) { animation-delay: .32s; }
+  @media (max-width: 600px) {
+    .page-header { padding: 24px 20px 20px; }
+    .badge-row { flex-direction: column; }
+    .badge { border-right: none; border-bottom: 1px solid var(--gray-mid); }
+    .badge:last-child { border-bottom: none; }
+    .gate-cards { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .purpose-block, .gate-section, .tips-section,
+    .questions-section { padding: 20px 20px; }
+    .amber-callout { margin: 0 20px; }
+    .sequence-footer { padding: 20px 20px; margin: 28px 20px 0; }
+    .header-title { font-size: 26px; }
+  }
 </style>
 </head>
 <body>
+<div class="page">
 
-<!-- ── HEADER ──────────────────────────────────────────────────────────── -->
-<div class="page-header">
-  <div class="container">
-    <div class="header-eyebrow">
-      <span class="badge">MKT 472 · Module 08</span>
-      <span class="badge badge-gold">Chapter 8 Reading</span>
-      <span class="badge badge-teal">8 Focus Questions</span>
-      <span class="badge badge-red">Read before Gate 1</span>
+  <header class="page-header">
+    <div class="eyebrow">MKT 472 &nbsp;·&nbsp; Module 08 &nbsp;·&nbsp; Chapter 8 Reading</div>
+    <h1 class="header-title">Study Focus Guide</h1>
+    <p class="header-subtitle">
+      <em>Value-Based Pricing and Pricing Strategies</em> &nbsp;·&nbsp;
+      Eight questions to answer while you read &nbsp;·&nbsp; Est. 80–90 min
+    </p>
+  </header>
+
+  <div class="badge-row">
+    <div class="badge">
+      <div class="badge-icon">📖</div>
+      <div>
+        <div class="badge-label">Chapter pages</div>
+        <div class="badge-value">pp. 273–298</div>
+      </div>
     </div>
-    <h1 class="header-title">Chapter 8<br>Study Focus Guide</h1>
-    <p class="header-sub">Eight questions to answer while you read. They map directly to Gate 1 and Gate 2 — working through them during your reading is the most efficient way to prepare.</p>
-    <div class="header-meta">
-      <span class="badge">Not submitted — for your own use</span>
-      <span class="badge">Answers come from Chapter 8</span>
-      <span class="badge">Ungraded</span>
+    <div class="badge">
+      <div class="badge-icon">⏱</div>
+      <div>
+        <div class="badge-label">Reading time</div>
+        <div class="badge-value">80–90 min</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">✏️</div>
+      <div>
+        <div class="badge-label">Focus questions</div>
+        <div class="badge-value">8 questions</div>
+      </div>
+    </div>
+    <div class="badge">
+      <div class="badge-icon">🔓</div>
+      <div>
+        <div class="badge-label">Unlocks</div>
+        <div class="badge-value">Gate 1 → Slides</div>
+      </div>
     </div>
   </div>
+
+  <div class="purpose-block">
+    <p>
+      This guide identifies exactly what to look for as you read Chapter 8.
+      <strong>Gate 1</strong> tests five topics that appear only in the chapter, not in the slides or lecture.
+      <strong>Gate 2</strong> tests three chapter-dependent topics that require both the reading and the slide deck to solve correctly.
+    </p>
+    <p>
+      Answer these questions in your own words while you read, not after.
+      The guide itself is not graded. Gate 1 and Gate 2 are.
+    </p>
+  </div>
+
+  <div class="gate-section">
+    <div class="section-label">Gate Specifications</div>
+    <div class="gate-cards">
+      <div class="gate-card gate-card--g1">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 1 — Basic Reading Check</span>
+          <span class="gate-badge">Chapter Only</span>
+        </div>
+        <div class="gate-card-body">
+          <div class="gate-spec"><span class="gate-spec-key">Questions</span><span class="gate-spec-val">5</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Threshold to pass</span><span class="gate-spec-val gate-spec-val--teal">70% (3.5 of 5)</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Attempts</span><span class="gate-spec-val">2</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Point value</span><span class="gate-spec-val">0 pts — access only</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Feedback</span><span class="gate-spec-val">Per-answer with page ref</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Unlocks</span><span class="gate-spec-val gate-spec-val--teal">Slide Deck Viewer</span></div>
+        </div>
+      </div>
+
+      <div class="gate-card gate-card--g2">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 2 — Applied Reading Check</span>
+          <span class="gate-badge">Chapter + Slides</span>
+        </div>
+        <div class="gate-card-body">
+          <div class="gate-spec"><span class="gate-spec-key">Questions</span><span class="gate-spec-val">8</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Threshold to pass</span><span class="gate-spec-val">None — graded as submitted</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Attempts</span><span class="gate-spec-val gate-spec-val--amber">1 — no retries</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Point value</span><span class="gate-spec-val gate-spec-val--teal">20 pts (10% of module)</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Feedback</span><span class="gate-spec-val">Correct / Incorrect only</span></div>
+          <div class="gate-spec"><span class="gate-spec-key">Unlocks</span><span class="gate-spec-val gate-spec-val--teal">Lecture Video</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <div class="section-label">Reading Strategy for Chapter 8</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">📍</div>
+        <div>
+          <div class="tip-title">Mark the chapter-only figures</div>
+          <div class="tip-body">Flag Figures 8-7, 8-8, 8-9, 8-21, 8-22, and 8-28 before you start. Gate 1 and Gate 2 both depend on those tables and formulas.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">✍️</div>
+        <div>
+          <div class="tip-title">Write the formulas with the direction rules</div>
+          <div class="tip-body">Do not just copy the equations. Next to each one, write what the result means for pricing direction, profit, or customer value so the logic is visible when you revisit it.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⚠️</div>
+        <div>
+          <div class="tip-title">Slow down at the counterintuitive parts</div>
+          <div class="tip-body">Two places trip students repeatedly: a higher price can be the better value when the NPV of savings exceeds the premium, and price increases can improve gross profit when demand is inelastic. Mark both passages.</div>
+        </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🔗</div>
+        <div>
+          <div class="tip-title">Connect the pricing logic to the slides</div>
+          <div class="tip-body">Chapter 8 links value pricing, reduce-focus pricing, harvest pricing, and elasticity decisions into one sequence. If you map the sequence now, Gate 2 calculation questions become much easier.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="questions-section">
+    <div class="section-label">Eight Focus Questions — Answer These While You Read</div>
+
+    <div class="q-list">
+      <div class="q-block q-block--g1">
+        <div class="q-num">1</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Life-Cycle Value Pricing</div>
+          <div class="q-text">BioTronics prices its medical apparatus at $60,000 — $10,000 more than the competitor's $50,000. The BioTronics unit saves the customer $7,000 per year in operating costs over a 5-year product life. At a 20% discount rate, the NPV of those savings is approximately $10,930. Is the $10,000 price premium justified? What is the maximum premium BioTronics could charge while still delivering positive economic value?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 275–276, Fig. 8-7</span></div>
+          <div class="q-hint">Record the discounted-savings rule and the premium ceiling rule. The premium is justified when it is less than the NPV of savings.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">2</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Perceived-Value Pricing</div>
+          <div class="q-text">A business calculates three customer benefit indexes: Product Performance = 120, Service Quality = 127, Brand Reputation = 134. The weighted overall Customer Benefits Index is 123. The business tests prices between $5,000 and $6,250. Both $6,000 and $6,250 produce a Perceived Value Index of approximately 23. Why did the business choose $6,250, and what does a target PVI of ~25 mean strategically?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 276–278, Figs. 8-8 &amp; 8-9</span></div>
+          <div class="q-hint">Note the three benefits dimensions, the CBI weight logic, and why the best price is the highest price that still lands near the target PVI.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">3</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Reduce-Focus Pricing</div>
+          <div class="q-text">A chemical company's paint division has five product lines, a 20.5% average margin, and 11.7% market share. Three product lines generate negative Net Marketing Contribution. After implementing a pricing strategy, share falls from 11.7% to 8.6% — but NMC more than doubles from $16M to $36.1M. Was this a success or failure? How does this strategy differ from harvest pricing, and at what life-cycle stage is it used?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 289–290, Fig. 8-21</span></div>
+          <div class="q-hint">The counterintuitive point is that share loss is the mechanism that improves NMC. Reduce-focus is a maturity strategy, not a decline strategy.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">4</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Harvest Pricing</div>
+          <div class="q-text">An auto components manufacturer has zero gross profit late in the product life cycle. It raises price 15% to $11.50 and loses 30% of volume. A second 10% increase to $12.65 causes only modest volume loss. A third 10% increase to $13.92 causes no volume loss at all. What does volume stabilization reveal? Why does each successive price increase cause less volume loss than the one before it?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 290–291, Fig. 8-22</span></div>
+          <div class="q-hint">Focus on the niche-discovery twist: stabilization means the remaining customers are inelastic enough to support a profitable niche.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g1">
+        <div class="q-num">5</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 1 · Chapter Only</div>
+          <div class="q-topic">Break-Even Market Share</div>
+          <div class="q-text">A business has fixed expenses of $50 million per year, a margin of $2 per unit, and market demand of 200 million units. Calculate break-even volume and break-even market share. The business currently holds 24% market share. A competitor's strategy threatens to cause a 15-point share loss. Should the business be concerned? Why is break-even market share a better risk metric than break-even volume?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 297–298, Fig. 8-28</span></div>
+          <div class="q-hint">Compute the market-share threshold and the safety cushion. The chapter prefers market share because it is bounded and easier to compare with actual share.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g2">
+        <div class="q-num">6</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 2 · Chapter + Slides</div>
+          <div class="q-topic">Economic Value Calculation</div>
+          <div class="q-text">A packaging material supplier charges $2.20 per pound — $0.20 more than the competitor's $2.00. A total-cost-of-ownership analysis shows: Competitor shipping $0.07, handling $0.10, inventory $0.05, usage $3.50, QC $0.03, disposal $0.10. Supplier: shipping $0.05, handling $0.13, inventory $0.01, usage $2.80, QC $0.01, disposal $0.02. Calculate total ownership cost for each product, customer savings per pound, and whether the $0.20 premium is financially justified.</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 273–276, Fig. 8-5 &amp; 8-6</span></div>
+          <div class="q-hint">Build the ownership-cost table row by row. Gate 2 uses the same structure with different numbers, so focus on the method.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g2">
+        <div class="q-num">7</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 2 · Chapter + Slides</div>
+          <div class="q-topic">Break-Even Percentage Scenarios</div>
+          <div class="q-text">A company prices a product at $100 with a variable cost of $60 (contribution margin $40 = 40%). Management proposes a 10% price cut. Scenario A: What minimum percentage volume increase is required to maintain gross profit? Scenario B: If price were raised 10% instead, what is the maximum allowable volume decrease while maintaining gross profit? What does the comparison of these two numbers reveal about the direction of pricing in an inelastic market?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 293–298, Fig. 8-27 · Slides 37–46</span></div>
+          <div class="q-hint">Use the new contribution margin after each price change. The price-cut and price-raise scenarios produce different break-even percentages.</div>
+        </div>
+      </div>
+
+      <div class="q-block q-block--g2">
+        <div class="q-num">8</div>
+        <div class="q-body">
+          <div class="q-tag">Gate 2 · Chapter + Slides</div>
+          <div class="q-topic">Price Elasticity Direction</div>
+          <div class="q-text">A company's price elasticity is estimated at −0.7. Management is debating whether to raise or lower price by 10%. Using Fig. 8-27, predict the effect on gross profit under each direction. Then generalize: when elasticity is inelastic (0 to −0.99), what is always the correct price direction, and why does the opposite feel intuitive to most managers?</div>
+          <div class="q-meta"><span class="q-loc">📄 pp. 293–296, Fig. 8-27</span></div>
+          <div class="q-hint">The central strategic insight is that inelastic demand favors price increases. Rehearse the logic until the direction feels automatic.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="amber-callout">
+    <div class="amber-callout-header">
+      <span class="amber-callout-icon">🎯</span>
+      <span class="amber-callout-title">Highest-Probability Gate 1 Targets</span>
+    </div>
+    <div class="amber-callout-body">
+      If you are short on time, prioritize these three areas — they appear on Gate 1 across all question variants and cannot be answered from the slides alone:
+      <ul class="amber-callout-list">
+        <li><strong>Life-cycle value pricing (Q1):</strong> Know the discounted-savings rule and the premium ceiling rule.</li>
+        <li><strong>Reduce-focus and harvest pricing (Q3 &amp; Q4):</strong> Be able to separate maturity-stage share shedding from decline-stage harvesting, and explain why harvest can reveal a profitable niche.</li>
+        <li><strong>Break-even market share (Q5):</strong> Be able to compute the threshold and explain why it is a better risk metric than break-even volume.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sequence-footer">
+    <div class="sf-label">What comes next</div>
+    <div class="sf-steps">
+      <div class="sf-step">
+        <div class="sf-step-num">1</div>
+        <div class="sf-step-text"><strong>Complete Chapter 8 reading</strong> — work through Questions 1–5 as you go</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">2</div>
+        <div class="sf-step-text"><strong>Gate 1: Basic Reading Check</strong> <span class="arrow">→</span> 5 questions, chapter only, 70% to unlock slides · 2 attempts · 0 points</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">3</div>
+        <div class="sf-step-text"><strong>Slide Deck Viewer</strong> <span class="arrow">→</span> unlocked by Gate 1 · return to Questions 6–8 after viewing</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">4</div>
+        <div class="sf-step-text"><strong>Gate 2: Applied Reading Check</strong> <span class="arrow">→</span> 8 questions, chapter + slides, 1 attempt · 20 points</div>
+      </div>
+      <div class="sf-step">
+        <div class="sf-step-num">5</div>
+        <div class="sf-step-text"><strong>Lecture Video</strong> <span class="arrow">→</span> unlocked by Gate 2 · Segment 1 + Segment 2</div>
+      </div>
+    </div>
+  </div>
+
 </div>
-
-<div class="container">
-
-<!-- ── HOW TO USE ─────────────────────────────────────────────────────── -->
-<div class="section">
-  <span class="section-label">How to Use This Guide</span>
-
-  <div class="how-to-grid">
-    <div class="how-cell">
-      <div class="hc-num">1</div>
-      <h4>Read with this guide open</h4>
-      <p>Work through the chapter section by section. When you reach a topic covered by a focus question, stop and write a brief answer in your notes before moving on.</p>
-    </div>
-    <div class="how-cell">
-      <div class="hc-num">2</div>
-      <h4>Pay attention to the tags</h4>
-      <p>Questions tagged <strong>Gate 1</strong> test chapter-exclusive content — topics that do not appear on slides. Questions tagged <strong>Gate 2</strong> require calculation. Questions tagged <strong>Both</strong> appear in some form in both gates.</p>
-    </div>
-    <div class="how-cell">
-      <div class="hc-num">3</div>
-      <h4>Do not skip the math</h4>
-      <p>Gate 2 has five numeric-entry questions. The "What to look for" bullets on each card tell you exactly which numbers the chapter provides and what the formula produces. Work through each one in the margin.</p>
-    </div>
-  </div>
-
-  <div class="callout warn" style="margin-top:16px;">
-    <span class="callout-icon">⚠️</span>
-    <div><strong>The slides cover only 5 of the 8 major pricing methodologies in Chapter 8.</strong> Questions 1, 2, 3, and 4 in this guide test content that appears nowhere in the slide deck or lecture video. If you rely on the slides alone, you will not pass Gate 1. Read the chapter first.</div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ── QUESTIONS ──────────────────────────────────────────────────────── -->
-<div class="section">
-  <span class="section-label">Chapter-Exclusive Topics — Gate 1 Only</span>
-  <p style="margin-bottom:24px;">These four questions test content in the chapter that does not appear on slides or in the lecture video. Gate 1 is drawn from these topics. Read these sections carefully before attempting Gate 1.</p>
-
-  <!-- Q1 -->
-  <div class="q-card">
-    <div class="q-header gate1">
-      <div class="q-num">1</div>
-      <div class="q-meta">
-        <h3>Life-Cycle Value Pricing — NPV of Ownership Savings</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate1">Gate 1 — Q1</span>
-          <span class="tag tag-lo">LO2</span>
-          <span class="tag tag-ref">pp. 275–276, Fig. 8-7</span>
-          <span class="tag tag-slides-no">Not on slides</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">BioTronics prices its medical apparatus at $60,000 — $10,000 more than the competitor's $50,000. The BioTronics unit saves the customer $7,000 per year in operating costs over a 5-year product life. At a 20% discount rate, the NPV of those savings is approximately $10,930. Is the $10,000 price premium justified? What is the maximum premium BioTronics could charge while still delivering positive economic value?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The definition of <strong>Life-Cycle Value Pricing</strong> and how it extends value-in-use by applying a discount rate to future ownership savings (p. 275)</li>
-          <li>How to interpret the comparison: premium ($10,000) vs. NPV of savings ($10,930). When premium &lt; NPV, the higher-priced product is the better economic value for the customer (Fig. 8-7)</li>
-          <li>The <strong>maximum justified premium rule</strong>: the NPV of ownership savings is the ceiling. At exactly that premium the customer breaks even; below it they save money (p. 276)</li>
-          <li>How life-cycle value pricing differs from simple value-in-use: it discounts multi-year savings to present value, accounting for the time value of money (pp. 273–276)</li>
-        </ul>
-      </div>
-
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-        <span class="page-ref">pp. 275–276, Fig. 8-7</span>
-        <div class="slides-warning">This topic does not appear on slides — read the chapter section carefully</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q2 -->
-  <div class="q-card">
-    <div class="q-header gate1">
-      <div class="q-num">2</div>
-      <div class="q-meta">
-        <h3>Perceived-Value Pricing — Benefits Index and Target PVI</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate1">Gate 1 — Q2</span>
-          <span class="tag tag-lo">LO1 · LO3</span>
-          <span class="tag tag-ref">pp. 276–278, Fig. 8-8 &amp; 8-9</span>
-          <span class="tag tag-slides-no">Not on slides</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">A business calculates three customer benefit indexes: Product Performance = 120, Service Quality = 127, Brand Reputation = 134. The weighted overall Customer Benefits Index is 123. The business tests prices between $5,000 and $6,250. Both $6,000 and $6,250 produce a Perceived Value Index of approximately 23. Why did the business choose $6,250, and what does a target PVI of ~25 mean strategically?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The three dimensions of the <strong>Customer Benefits Index</strong> — product performance, service quality, brand reputation — and how they are weighted by relative importance (Fig. 8-8, p. 277)</li>
-          <li>What an index of 123 means: the business delivers 23% more perceived benefits than competitors on a weighted basis (not 23% more in product performance alone)</li>
-          <li>The <strong>target Perceived Value Index of approximately 25</strong>: why the business aims for ~25, not the maximum possible — a PVI far above target means the business is underpricing (Fig. 8-9)</li>
-          <li>The three components of the <strong>Cost of Purchase Index</strong>: price of equipment, service and maintenance costs, and depreciated value — all customer-borne costs, not seller costs (Fig. 8-9, p. 278)</li>
-          <li>Why the business chose $6,250 over $6,000 when both produced the same PVI (~23): the higher price delivers the same customer value at a better margin (p. 277)</li>
-        </ul>
-      </div>
-
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-        <span class="page-ref">pp. 276–278, Fig. 8-8 &amp; 8-9</span>
-        <div class="slides-warning">This topic does not appear on slides — read the chapter section carefully</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q3 -->
-  <div class="q-card">
-    <div class="q-header gate1">
-      <div class="q-num">3</div>
-      <div class="q-meta">
-        <h3>Reduce-Focus Pricing — Intentional Share Loss to Improve NMC</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate1">Gate 1 — Q3</span>
-          <span class="tag tag-lo">LO4</span>
-          <span class="tag tag-ref">pp. 289–290, Fig. 8-21</span>
-          <span class="tag tag-slides-no">Not on slides</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">A chemical company's paint division has five product lines, a 20.5% average margin, and 11.7% market share. Three product lines generate negative Net Marketing Contribution. After implementing a pricing strategy, share falls from 11.7% to 8.6% — but NMC more than doubles from $16M to $36.1M. Was this a success or failure? How does this strategy differ from harvest pricing, and at what life-cycle stage is it used?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The definition of <strong>reduce-focus pricing</strong>: raises prices to shed price-sensitive customers in maturity, improving margins and NMC even as share declines — share loss is the mechanism, not the failure (pp. 289–290)</li>
-          <li>The chapter's exact data: share 11.7% → 8.6%; NMC $16M → $36.1M; average margin 20.5% → 32.1%; volume 125M → 92.1M units (Fig. 8-21)</li>
-          <li>Why margins rise when share falls: price increases drive away the least profitable price-sensitive customers; remaining customers pay more and are more profitable</li>
-          <li><strong>How reduce-focus differs from harvest pricing</strong>: reduce-focus is a maturity strategy that finds a profitable price-volume combination and stays there; harvest pricing is a decline strategy that progressively raises prices toward market exit (pp. 289–291)</li>
-          <li>The <strong>PLC stage</strong>: reduce-focus is positioned at maturity in Fig. 8-15 — not decline, not growth</li>
-        </ul>
-      </div>
-
-      <span class="page-ref">pp. 289–290, Fig. 8-15 &amp; 8-21</span>
-      <div class="slides-warning" style="margin-top:10px;">This topic does not appear on slides — read the chapter section carefully</div>
-    </div>
-  </div>
-
-  <!-- Q4 -->
-  <div class="q-card">
-    <div class="q-header gate1">
-      <div class="q-num">4</div>
-      <div class="q-meta">
-        <h3>Harvest Pricing — Niche Discovery Through Sequential Price Increases</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate1">Gate 1 — Q4</span>
-          <span class="tag tag-lo">LO4</span>
-          <span class="tag tag-ref">pp. 290–291, Fig. 8-22</span>
-          <span class="tag tag-slides-no">Not on slides</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">An auto components manufacturer has zero gross profit late in the product life cycle. It raises price 15% to $11.50 and loses 30% of volume. A second 10% increase to $12.65 causes only modest volume loss. A third 10% increase to $13.92 causes no volume loss at all. What does volume stabilization reveal? Why does each successive price increase cause less volume loss than the one before it?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The <strong>harvest pricing sequence</strong> and what it's designed to do: raise prices in decline to progressively reduce volume, eventually exiting the market (pp. 290–291)</li>
-          <li>The <strong>niche-discovery twist</strong>: at some price point, volume stabilizes because the remaining customers are inelastic enough to absorb the premium — the business has uncovered a profitable niche worth managing, not exiting (p. 291)</li>
-          <li>The exact gross profit at the $13.92 price: margin per unit = $3.92 × 6 million units = $23.52 million — significantly above zero (Fig. 8-22)</li>
-          <li><strong>Why successive increases cause less volume loss</strong>: price-sensitive customers leave after the first increase; the remaining base is less elastic and less likely to defect at further increases</li>
-          <li>The <strong>correct strategic conclusion</strong> after niche discovery: manage the niche at the discovered price-volume combination — do not continue raising prices toward exit</li>
-        </ul>
-      </div>
-
-      <span class="page-ref">pp. 290–291, Fig. 8-22</span>
-      <div class="slides-warning" style="margin-top:10px;">This topic does not appear on slides — read the chapter section carefully</div>
-    </div>
-  </div>
-
-  <!-- DIVIDER: Gate 1 → Both -->
-  <div class="section-divider">
-    <span class="section-divider-pill">Chapter + Slides Synthesis — Gates 1 &amp; 2</span>
-  </div>
-
-  <!-- Q5 -->
-  <div class="q-card">
-    <div class="q-header gate1">
-      <div class="q-num">5</div>
-      <div class="q-meta">
-        <h3>Break-Even Market Share vs. Break-Even Volume</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate1">Gate 1 — Q5</span>
-          <span class="tag tag-lo">LO5</span>
-          <span class="tag tag-ref">pp. 297–298, Fig. 8-28</span>
-          <span class="tag tag-slides-no">Not on slides</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">A business has fixed expenses of $50 million per year, a margin of $2 per unit, and market demand of 200 million units. Calculate break-even volume and break-even market share. The business currently holds 24% market share. A competitor's strategy threatens to cause a 15-point share loss. Should the business be concerned? Why is break-even market share a better risk metric than break-even volume?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The <strong>break-even volume formula</strong>: Fixed Expenses ÷ Margin per Unit = $50M ÷ $2 = 25 million units (p. 297)</li>
-          <li>The <strong>break-even market share formula</strong>: Break-Even Volume ÷ Market Demand = 25M ÷ 200M = 12.5% (pp. 297–298)</li>
-          <li>The <strong>safety cushion</strong>: current share (24%) − break-even share (12.5%) = 11.5 percentage points. A 15-point loss would drop share to 9% — below the 12.5% threshold, resulting in a loss</li>
-          <li>Why market share is a superior risk metric: it is constrained between 0 and 100%, making the cushion interpretable in context. Break-even volume is unconstrained and harder to assess without knowing market size (p. 297)</li>
-        </ul>
-      </div>
-
-      <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
-        <span class="page-ref">pp. 297–298, Fig. 8-28</span>
-        <div class="slides-warning">Not covered in slides — chapter-exclusive for Gate 1</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DIVIDER: → Gate 2 -->
-  <div class="section-divider">
-    <span class="section-divider-pill">Calculation Questions — Gate 2 Targets</span>
-  </div>
-
-  <!-- Q6 -->
-  <div class="q-card">
-    <div class="q-header gate2">
-      <div class="q-num">6</div>
-      <div class="q-meta">
-        <h3>Economic Value — Total Cost of Ownership Calculation</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate2">Gate 2 — Q3</span>
-          <span class="tag tag-lo">LO2</span>
-          <span class="tag tag-ref">pp. 273–276, Fig. 8-6</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">A packaging material supplier charges $2.20 per pound — $0.20 more than the competitor's $2.00. A total-cost-of-ownership analysis shows: Competitor shipping $0.07, handling $0.10, inventory $0.05, usage $3.50, QC $0.03, disposal $0.10. Supplier: shipping $0.05, handling $0.13, inventory $0.01, usage $2.80, QC $0.01, disposal $0.02. Calculate total ownership cost for each product, customer savings per pound, and whether the $0.20 premium is financially justified.</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The <strong>total cost of ownership</strong> framework (Fig. 8-5): purchase price is only the tip of the iceberg — acquisition, usage, maintenance, quality control, and disposal costs are the hidden majority (p. 273)</li>
-          <li>How to build the <strong>side-by-side ownership cost table</strong> (Fig. 8-6): sum all cost categories including purchase price for each product, then compute savings per category and total customer savings</li>
-          <li>The <strong>premium justification rule</strong>: the firm can charge the $0.20 premium and still save the customer $0.75 per pound — and could theoretically charge up to $0.75 more before the economic value disappears</li>
-          <li>The chapter's specific numbers: Competitor TCO ≈ $6.00/lb; Firm TCO ≈ $5.25/lb; customer saves $0.75/lb despite paying $0.20 more at purchase (Fig. 8-6)</li>
-        </ul>
-      </div>
-
-      <div class="callout info" style="margin-top:12px;">
-        <span class="callout-icon">🔢</span>
-        <div><strong>Gate 2 Q3 will use different numbers</strong> but the same table structure. Practice computing the totals from Fig. 8-6 row by row — the method is what you need, not the specific dollar amounts.</div>
-      </div>
-
-      <span class="page-ref">pp. 273–276, Fig. 8-5 &amp; 8-6</span>
-    </div>
-  </div>
-
-  <!-- Q7 -->
-  <div class="q-card">
-    <div class="q-header gate2">
-      <div class="q-num">7</div>
-      <div class="q-meta">
-        <h3>Break-Even Percentage — Price Cut and Price Increase Scenarios</h3>
-        <div class="meta-row">
-          <span class="tag tag-gate2">Gate 2 — Q4 &amp; Q5</span>
-          <span class="tag tag-lo">LO5</span>
-          <span class="tag tag-ref">pp. 294–298, Slides 37–46</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">A company prices a product at $100 with a variable cost of $60 (contribution margin $40 = 40%). Management proposes a 10% price cut. <em>Scenario A:</em> What minimum percentage volume increase is required to maintain gross profit? <em>Scenario B:</em> If price were raised 10% instead, what is the maximum allowable volume decrease while maintaining gross profit? What does the comparison of these two numbers reveal about the direction of pricing in an inelastic market?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter (and slides)</span>
-        <ul>
-          <li>The <strong>break-even % formula</strong>: BE% = −$ΔCM ÷ New $CM, where $ΔCM = change in contribution margin per unit (covered in slides 37–43)</li>
-          <li><strong>Scenario A (price cut −10%):</strong> New price = $90; new CM = $30; BE% = $10 ÷ $30 = <strong>33.3%</strong> required volume increase</li>
-          <li><strong>Scenario B (price increase +10%):</strong> New price = $110; new CM = $50; BE% = $10 ÷ $50 = <strong>20.0%</strong> maximum allowable volume decrease</li>
-          <li>The <strong>inelastic market insight</strong> from Fig. 8-27: when elasticity is between 0 and −1, raising price always improves gross profit — the volume loss is smaller than the margin gain. Lowering price always destroys gross profit in an inelastic market</li>
-          <li>The chapter's Yellow Pages example (pp. 294–295): elasticity −0.7, price cut to $90 → gross profit falls from $50M to $42.8M; price raise to $110 → gross profit rises to $55.8M</li>
-        </ul>
-      </div>
-
-      <div class="callout warn" style="margin-top:12px;">
-        <span class="callout-icon">⚠️</span>
-        <div><strong>Common error:</strong> Students use the original CM as the denominator instead of the new CM. Always compute the new CM after the price change first, then apply the formula. Gate 2 Q4 and Q5 are separate questions for the cut and raise scenarios — practice both.</div>
-      </div>
-
-      <span class="page-ref">pp. 293–298, Fig. 8-27 · Slides 37–46</span>
-    </div>
-  </div>
-
-  <!-- Q8 -->
-  <div class="q-card">
-    <div class="q-header both">
-      <div class="q-num">8</div>
-      <div class="q-meta">
-        <h3>Price Elasticity Direction — When Raising Price Improves Profit</h3>
-        <div class="meta-row">
-          <span class="tag tag-both">Gates 1 &amp; 2 — Q6 &amp; Q8</span>
-          <span class="tag tag-lo">LO6</span>
-          <span class="tag tag-ref">pp. 293–296, Fig. 8-27</span>
-        </div>
-      </div>
-    </div>
-    <div class="q-body">
-      <div class="question-text">A company's price elasticity is estimated at −0.7. Management is debating whether to raise or lower price by 10%. Using Fig. 8-27, predict the effect on gross profit under each direction. Then generalize: when elasticity is inelastic (0 to −0.99), what is always the correct price direction, and why does the opposite feel intuitive to most managers?</div>
-
-      <div class="look-for">
-        <span class="lf-label">What to find in the chapter</span>
-        <ul>
-          <li>The <strong>price elasticity decision matrix</strong> in Fig. 8-27: for each combination of elasticity range (inelastic / unit / elastic) and price direction (raise / lower), the table shows the effect on unit volume, sales revenue, unit margin, and total contribution</li>
-          <li>The <strong>inelastic rule</strong>: when elasticity is between 0 and −0.99, raising price increases gross profit (volume loss is smaller than margin gain); lowering price decreases gross profit (volume gain is smaller than margin loss). Neither result is intuitively obvious</li>
-          <li>The Yellow Pages worked example (pp. 294–295): elasticity −0.7, current price $100, VC $50. Lower price → GP falls $7.2M. Raise price → GP rises $5.8M. Know both numbers</li>
-          <li><strong>Why it feels counterintuitive:</strong> revenue falls when price rises in an inelastic market (volume drops more than price rises). Managers confuse revenue decline with profit decline. They are not the same</li>
-          <li>The <strong>elastic case</strong> (elasticity −1.01 and beyond): a price decrease can increase gross profit if the volume gain is large enough — but this depends on the margin level and must be verified with the BE% formula</li>
-        </ul>
-      </div>
-
-      <div class="callout key" style="margin-top:12px;">
-        <span class="callout-icon">💡</span>
-        <div><strong>This is the module's central strategic insight.</strong> Gate 2 Q6 asks you to apply Fig. 8-27 directly; Gate 2 Q8 asks you to synthesize it with the break-even formula to evaluate the VP of Sales' price-cut proposal in the Vantara case. Master the decision matrix.</div>
-      </div>
-
-      <span class="page-ref">pp. 293–296, Fig. 8-27 · Slides 34–37</span>
-    </div>
-  </div>
-
-</div><!-- /section -->
-
-<div class="divider"></div>
-
-<!-- ── QUICK REFERENCE ────────────────────────────────────────────────── -->
-<div class="section">
-  <span class="section-label">Quick Reference — Key Formulas and Numbers</span>
-  <p>These are the specific numbers and formulas the chapter contains that appear in Gate 1 or Gate 2. Know them before you attempt either gate.</p>
-
-  <table class="ref-table">
-    <thead>
-      <tr>
-        <th style="width:200px;">Topic</th>
-        <th>Key Number or Formula</th>
-        <th style="width:130px;">Chapter Location</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><strong>Life-Cycle Value Pricing</strong></td>
-        <td>BioTronics: $7,000/yr savings × 3.352 PV factor (5yr, 20%) = <span class="formula">NPV $10,930</span>. Premium $10,000 &lt; NPV → justified. Max premium = NPV of savings.</td>
-        <td>pp. 275–276, Fig. 8-7</td>
-      </tr>
-      <tr>
-        <td><strong>Perceived-Value Pricing</strong></td>
-        <td>Product Performance 120, Service Quality 127, Brand Reputation 134 → weighted CBI = 123. Target PVI ≈ <span class="formula">25</span>. Optimal price: $6,250 (PVI = 23).</td>
-        <td>pp. 276–278, Fig. 8-8 &amp; 8-9</td>
-      </tr>
-      <tr>
-        <td><strong>Reduce-Focus Pricing</strong></td>
-        <td>Share: 11.7% → 8.6%. NMC: $16M → <span class="formula">$36.1M</span>. Margin: 20.5% → 32.1%. PLC stage: maturity.</td>
-        <td>pp. 289–290, Fig. 8-21</td>
-      </tr>
-      <tr>
-        <td><strong>Harvest Pricing</strong></td>
-        <td>Price $10 → $11.50 → $12.65 → $13.92. Volume stabilizes at 6M units. GP = $3.92 × 6M = <span class="formula">$23.52M</span>. PLC stage: decline.</td>
-        <td>pp. 290–291, Fig. 8-22</td>
-      </tr>
-      <tr>
-        <td><strong>Break-Even Market Share</strong></td>
-        <td>BE Volume = Fixed Costs ÷ Margin/unit. <span class="formula">BE Market Share = BE Volume ÷ Market Demand</span>. Example: $50M ÷ $2 = 25M units; 25M ÷ 200M = 12.5%.</td>
-        <td>pp. 297–298, Fig. 8-28</td>
-      </tr>
-      <tr>
-        <td><strong>Break-Even % (price cut)</strong></td>
-        <td><span class="formula">BE% = −$ΔCM ÷ New CM</span>. Example: 10% cut, P=$100, VC=$60 → new CM=$30; BE% = $10/$30 = 33.3% required volume increase.</td>
-        <td>pp. 296–298, Slides 42–43</td>
-      </tr>
-      <tr>
-        <td><strong>Break-Even % (price raise)</strong></td>
-        <td>Same formula. 10% raise → new CM=$50; BE% = $10/$50 = <span class="formula">20.0%</span> max allowable volume decrease.</td>
-        <td>pp. 294–296, Slides 45–46</td>
-      </tr>
-      <tr>
-        <td><strong>Inelastic Market Rule</strong></td>
-        <td>Elasticity 0 to −0.99: <span class="formula">always raise price</span>. Yellow Pages: elasticity −0.7; raising price +$10 → GP +$5.8M; cutting price −$10 → GP −$7.2M.</td>
-        <td>pp. 293–295, Fig. 8-27</td>
-      </tr>
-    </tbody>
-  </table>
-
-  <div class="callout key" style="margin-top:16px;">
-    <span class="callout-icon">✅</span>
-    <div><strong>You are ready for Gate 1 when:</strong> you can explain the five chapter-exclusive topics (Q1–Q5) without looking at your notes. You are ready for Gate 2 when you can run the four calculations (Q6–Q8 plus performance value scoring from the slides) from the formula alone.</div>
-  </div>
-</div>
-
-</div><!-- /container -->
 </body>
 </html>

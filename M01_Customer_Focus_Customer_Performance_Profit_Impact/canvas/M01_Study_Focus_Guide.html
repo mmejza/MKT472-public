@@ -3,822 +3,906 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M01 Study Focus Guide — Chapter 1</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<title>MKT 472 · Module 01 · Study Focus Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
 <style>
-/* ── Reset ──────────────────────────────────────────────────────────────── */
-*{box-sizing:border-box;margin:0;padding:0;}
+  :root {
+    --teal: #0D9B87;
+    --teal-dk: #0a7a6b;
+    --teal-lt: #e6f7f5;
+    --teal-mid: #b3e4de;
+    --navy: #0F2027;
+    --navy-mid: #1a3340;
+    --amber: #E6A800;
+    --amber-lt: #fff8e1;
+    --amber-dk: #b37f00;
+    --gray-lt: #F2F4F5;
+    --gray-mid: #D0D5D8;
+    --gray-dk: #6b7280;
+    --white: #ffffff;
+    --text: #1a2630;
+    --text-soft: #4a5568;
 
-/* ── Tokens ─────────────────────────────────────────────────────────────── */
-:root{
-  --teal:#0D9B87;
-  --teal-dk:#0A7A6A;
-  --teal-lt:#E5F5F3;
-  --teal-bd:#C0E4DE;
-  --navy:#0F2027;
-  --navy-lt:#1A3040;
-  --amber:#E6A800;
-  --amb-lt:#FFF8E6;
-  --amb-bd:#F0CC6A;
-  --gray-lt:#F2F4F5;
-  --gray-mid:#D0D5D8;
-  --white:#FFFFFF;
-  --text:#1A2E2C;
-  --muted:#6B8088;
-  --red:#C0392B;
-  --red-lt:#FEF5F5;
-}
+    --font-head: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
+    --font-body: 'Barlow', Arial, sans-serif;
 
-/* ── Base ────────────────────────────────────────────────────────────────── */
-body{
-  font-family:'Barlow',Arial,sans-serif;
-  background:var(--gray-lt);
-  color:var(--text);
-  line-height:1.55;
-  font-size:15px;
-}
+    --radius: 8px;
+    --radius-sm: 5px;
+    --shadow: 0 2px 8px rgba(15,32,39,0.10);
+    --shadow-md: 0 4px 16px rgba(15,32,39,0.13);
+  }
 
-.page{
-  max-width:860px;
-  margin:0 auto;
-  padding:0 0 48px;
-}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--gray-lt);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
 
-/* ── Page Header ─────────────────────────────────────────────────────────── */
-.page-hdr{
-  background:var(--navy);
-  padding:32px 36px 28px;
-  position:relative;
-  overflow:hidden;
-}
-.page-hdr::before{
-  content:'';
-  position:absolute;
-  left:0;top:0;bottom:0;
-  width:5px;
-  background:var(--teal);
-}
-.page-hdr::after{
-  content:'';
-  position:absolute;
-  right:-50px;top:-50px;
-  width:200px;height:200px;
-  border-radius:50%;
-  background:rgba(13,154,135,.08);
-  pointer-events:none;
-}
-.hdr-eyebrow{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--teal);
-  margin-bottom:10px;
-}
-.hdr-title{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:34px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:.02em;
-  color:var(--white);
-  line-height:1;
-  margin-bottom:8px;
-}
-.hdr-subtitle{
-  font-size:14px;
-  color:rgba(255,255,255,.6);
-  font-style:italic;
-}
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--white);
+    box-shadow: var(--shadow-md);
+  }
 
-/* ── Badge Row ───────────────────────────────────────────────────────────── */
-.badge-row{
-  background:var(--navy-lt);
-  padding:14px 36px;
-  display:flex;
-  gap:28px;
-  align-items:center;
-  flex-wrap:wrap;
-  border-bottom:1px solid rgba(255,255,255,.06);
-}
-.badge{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.badge-icon{
-  width:28px;height:28px;
-  border-radius:50%;
-  background:rgba(13,154,135,.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:13px;
-  flex-shrink:0;
-}
-.badge-text{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:13px;
-  font-weight:700;
-  color:var(--white);
-  letter-spacing:.04em;
-}
-.badge-sub{
-  font-size:10px;
-  color:rgba(255,255,255,.4);
-  letter-spacing:.04em;
-  text-transform:uppercase;
-  display:block;
-  margin-top:1px;
-}
+  .page-header {
+    background: var(--navy);
+    padding: 36px 40px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .page-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--teal);
+  }
+  .page-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 40px;
+    right: 40px;
+    height: 1px;
+    background: rgba(13,155,135,0.35);
+  }
+  .eyebrow {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--teal);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header-title {
+    font-family: var(--font-head);
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .header-subtitle {
+    font-family: var(--font-body);
+    font-size: 15px;
+    color: var(--teal-mid);
+    font-weight: 400;
+    line-height: 1.4;
+  }
 
-/* ── Content wrapper ─────────────────────────────────────────────────────── */
-.content{
-  padding:28px 36px 0;
-  display:flex;
-  flex-direction:column;
-  gap:24px;
-}
+  .badge-row {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .badge {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 24px;
+    border-right: 1px solid var(--gray-mid);
+  }
+  .badge:last-child { border-right: none; }
+  .badge-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+  .badge-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+  .badge-value {
+    font-family: var(--font-head);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1;
+  }
 
-/* ── Section label ───────────────────────────────────────────────────────── */
-.section-label{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:10px;
-}
+  .purpose-block {
+    padding: 28px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+    border-left: 5px solid var(--teal);
+    background: var(--teal-lt);
+  }
+  .purpose-block p {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.65;
+    margin-bottom: 8px;
+  }
+  .purpose-block p:last-child { margin-bottom: 0; }
+  .purpose-block strong { color: var(--navy); font-weight: 600; }
 
-/* ── Purpose block ───────────────────────────────────────────────────────── */
-.purpose-block{
-  background:var(--white);
-  border-radius:6px;
-  border:.5px solid var(--teal-bd);
-  border-left:4px solid var(--teal);
-  padding:18px 20px;
-}
-.purpose-block p{
-  font-size:14px;
-  color:var(--text);
-  line-height:1.65;
-  margin-bottom:10px;
-}
-.purpose-block p:last-child{margin-bottom:0;}
-.purpose-block strong{color:var(--teal-dk);}
+  .gate-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .section-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gray-dk);
+    margin-bottom: 16px;
+  }
+  .gate-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .gate-card {
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .gate-card-header {
+    padding: 14px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .gate-card--g1 .gate-card-header { background: var(--teal); }
+  .gate-card--g2 .gate-card-header { background: var(--navy); }
+  .gate-card-title {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: 0.02em;
+  }
+  .gate-badge {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .gate-card--g1 .gate-badge {
+    background: rgba(255,255,255,0.25);
+    color: var(--white);
+  }
+  .gate-card--g2 .gate-badge {
+    background: var(--teal);
+    color: var(--white);
+  }
+  .gate-card-body {
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--gray-mid);
+    border-top: none;
+    border-radius: 0 0 var(--radius) var(--radius);
+  }
+  .gate-spec {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--gray-lt);
+    font-size: 13.5px;
+  }
+  .gate-spec:last-child { border-bottom: none; padding-bottom: 0; }
+  .gate-spec-key {
+    color: var(--gray-dk);
+    font-weight: 500;
+  }
+  .gate-spec-val {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--navy);
+    font-size: 14px;
+    text-align: right;
+  }
+  .gate-spec-val--teal { color: var(--teal); }
+  .gate-spec-val--amber { color: var(--amber-dk); }
 
-/* ── Gate cards ──────────────────────────────────────────────────────────── */
-.gate-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:14px;
-}
-.gate-card{
-  border-radius:6px;
-  overflow:hidden;
-  border:.5px solid var(--gray-mid);
-}
-.gate-card-hdr{
-  padding:12px 16px;
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.gate-card-hdr.g1{background:var(--teal);color:var(--white);}
-.gate-card-hdr.g2{background:var(--navy);color:var(--white);}
-.gate-card-hdr .unlock{
-  margin-left:auto;
-  font-size:10px;
-  opacity:.75;
-  font-weight:600;
-}
-.gate-card-body{
-  background:var(--white);
-  padding:14px 16px;
-}
-.gate-row{
-  display:flex;
-  justify-content:space-between;
-  align-items:baseline;
-  padding:5px 0;
-  border-bottom:.5px solid var(--gray-lt);
-  font-size:13px;
-}
-.gate-row:last-child{border-bottom:none;}
-.gate-row .lbl{color:var(--muted);font-size:12px;}
-.gate-row .val{font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;font-size:14px;color:var(--text);}
-.gate-row .val.teal{color:var(--teal-dk);}
-.gate-row .val.amber{color:#8A6000;}
-.gate-row .val.red{color:var(--red);}
+  .tips-section {
+    padding: 32px 40px;
+    background: var(--gray-lt);
+    border-bottom: 2px solid var(--gray-mid);
+  }
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .tip-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    border: 1px solid var(--gray-mid);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .tip-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .tip-title {
+    font-family: var(--font-head);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .tip-body {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.55;
+  }
 
-/* ── Tips grid ───────────────────────────────────────────────────────────── */
-.tips-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.tip-card{
-  background:var(--white);
-  border-radius:6px;
-  border:.5px solid var(--gray-mid);
-  padding:14px 16px;
-  display:flex;
-  gap:12px;
-  align-items:flex-start;
-}
-.tip-icon{
-  font-size:18px;
-  flex-shrink:0;
-  margin-top:1px;
-}
-.tip-title{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:13px;
-  font-weight:700;
-  color:var(--navy);
-  text-transform:uppercase;
-  letter-spacing:.04em;
-  margin-bottom:4px;
-}
-.tip-body{
-  font-size:12.5px;
-  color:var(--muted);
-  line-height:1.5;
-}
+  .questions-section {
+    padding: 32px 40px;
+    border-bottom: 2px solid var(--gray-lt);
+  }
+  .questions-section > .section-label { margin-bottom: 24px; }
+  .q-block {
+    margin-bottom: 22px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .q-block:last-child { margin-bottom: 0; }
+  .q-block--g1 { border-left: 5px solid var(--teal); }
+  .q-block--g2 { border-left: 5px solid var(--navy); }
+  .q-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-lt);
+  }
+  .q-num {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--white);
+    flex-shrink: 0;
+  }
+  .q-block--g1 .q-num { background: var(--teal); }
+  .q-block--g2 .q-num { background: var(--navy); }
+  .q-meta {
+    flex: 1;
+    min-width: 0;
+  }
+  .q-topic {
+    font-family: var(--font-head);
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+  .q-tag-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .q-tag {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+  }
+  .q-tag--g1 { background: var(--teal-lt); color: var(--teal-dk); }
+  .q-tag--g2 { background: #e8ecf0; color: var(--navy); }
+  .q-tag--warn {
+    background: #fff3cd;
+    color: var(--amber-dk);
+    font-size: 11px;
+  }
+  .q-loc {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--gray-dk);
+    background: var(--gray-lt);
+    padding: 4px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .q-body {
+    padding: 18px 20px;
+    background: var(--white);
+  }
+  .q-text {
+    font-size: 14.5px;
+    line-height: 1.68;
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+  .q-hint {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    padding: 10px 14px;
+    background: var(--gray-lt);
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--gray-dk);
+    font-style: italic;
+    line-height: 1.5;
+  }
+  .q-hint::before {
+    content: '→';
+    font-style: normal;
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .gate-divider {
+    margin: 28px 0 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .gate-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gray-mid);
+  }
+  .gate-divider-label {
+    font-family: var(--font-head);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--navy);
+    padding: 6px 14px;
+    background: #e8ecf0;
+    border-radius: 20px;
+  }
 
-/* ── Questions ───────────────────────────────────────────────────────────── */
-.questions-list{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
-.q-card{
-  background:var(--white);
-  border-radius:6px;
-  border:.5px solid var(--gray-mid);
-  overflow:hidden;
-  display:flex;
-}
-.q-left-bar{
-  width:4px;
-  flex-shrink:0;
-}
-.q-left-bar.g1{background:var(--teal);}
-.q-left-bar.g2{background:var(--navy);}
-.q-body{
-  flex:1;
-  padding:14px 16px 14px 14px;
-}
-.q-top{
-  display:flex;
-  align-items:flex-start;
-  gap:10px;
-  margin-bottom:8px;
-}
-.q-num{
-  width:26px;height:26px;
-  border-radius:50%;
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:13px;
-  font-weight:800;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-  margin-top:1px;
-}
-.q-num.g1{background:var(--teal);color:var(--white);}
-.q-num.g2{background:var(--navy);color:var(--white);}
-.q-meta{
-  display:flex;
-  flex-direction:column;
-  gap:3px;
-  flex:1;
-}
-.q-tag{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:9px;
-  font-weight:700;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  padding:2px 7px;
-  border-radius:2px;
-  display:inline-block;
-  width:fit-content;
-}
-.q-tag.g1{background:var(--teal-lt);color:var(--teal-dk);}
-.q-tag.g2{background:#E8EEF2;color:var(--navy);}
-.q-text{
-  font-size:14px;
-  color:var(--text);
-  line-height:1.55;
-  font-weight:500;
-  margin-top:2px;
-}
-.q-footer{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  flex-wrap:wrap;
-  margin-top:8px;
-}
-.q-loc{
-  background:var(--gray-lt);
-  border:.5px solid var(--gray-mid);
-  border-radius:3px;
-  padding:3px 8px;
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:11px;
-  font-weight:700;
-  color:var(--muted);
-  letter-spacing:.04em;
-  white-space:nowrap;
-}
-.q-hint{
-  font-size:12px;
-  color:var(--muted);
-  font-style:italic;
-  line-height:1.45;
-}
-.q-ci-flag{
-  display:inline-flex;
-  align-items:center;
-  gap:4px;
-  background:var(--amb-lt);
-  border:.5px solid var(--amb-bd);
-  border-radius:3px;
-  padding:2px 8px;
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:10px;
-  font-weight:700;
-  color:#7A5500;
-  letter-spacing:.04em;
-  white-space:nowrap;
-  margin-left:auto;
-}
+  .callout-amber {
+    margin: 0 40px;
+    border-radius: var(--radius);
+    border: 2px solid var(--amber);
+    background: var(--amber-lt);
+    padding: 22px 26px;
+  }
+  .callout-amber-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .callout-amber-icon {
+    font-size: 22px;
+  }
+  .callout-amber-title {
+    font-family: var(--font-head);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--amber-dk);
+  }
+  .callout-amber-body {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--text);
+  }
+  .callout-amber-body strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .callout-amber-list {
+    margin-top: 10px;
+    padding-left: 18px;
+  }
+  .callout-amber-list li {
+    margin-bottom: 6px;
+    font-size: 13.5px;
+    color: var(--text);
+  }
+  .callout-amber-list li strong {
+    color: var(--navy);
+  }
 
-/* ── Amber callout ───────────────────────────────────────────────────────── */
-.amber-callout{
-  background:var(--amb-lt);
-  border:.5px solid var(--amb-bd);
-  border-left:4px solid var(--amber);
-  border-radius:6px;
-  padding:18px 20px;
-}
-.amber-callout .callout-hdr{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:11px;
-  font-weight:700;
-  letter-spacing:.12em;
-  text-transform:uppercase;
-  color:var(--amber);
-  margin-bottom:10px;
-  display:flex;
-  align-items:center;
-  gap:6px;
-}
-.amber-callout p{
-  font-size:13.5px;
-  color:#4A3200;
-  line-height:1.6;
-  margin-bottom:8px;
-}
-.amber-callout p:last-child{margin-bottom:0;}
-.hi-target{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-weight:700;
-  color:var(--teal-dk);
-  font-size:14px;
-}
+  .seq-footer {
+    padding: 28px 40px;
+    background: var(--navy);
+    margin-top: 28px;
+  }
+  .seq-label {
+    font-family: var(--font-head);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 16px;
+  }
+  .seq-track {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    overflow-x: auto;
+  }
+  .seq-item {
+    flex: 1;
+    min-width: 120px;
+    position: relative;
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+  }
+  .seq-item--done {
+    background: rgba(13,155,135,0.12);
+    border: 1px solid rgba(13,155,135,0.3);
+  }
+  .seq-item--current {
+    background: var(--teal);
+    border: 1px solid var(--teal);
+  }
+  .seq-item--next {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+  .seq-item--next-hot {
+    background: rgba(230,168,0,0.15);
+    border: 1px solid rgba(230,168,0,0.4);
+  }
+  .seq-arrow {
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+    color: rgba(255,255,255,0.3);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .seq-step-label {
+    font-family: var(--font-head);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .seq-item--done .seq-step-label { color: var(--teal); }
+  .seq-item--current .seq-step-label { color: rgba(255,255,255,0.8); }
+  .seq-item--next .seq-step-label { color: rgba(255,255,255,0.4); }
+  .seq-item--next-hot .seq-step-label { color: var(--amber); }
+  .seq-step-name {
+    font-family: var(--font-head);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  .seq-item--done .seq-step-name { color: rgba(255,255,255,0.7); }
+  .seq-item--current .seq-step-name { color: var(--white); }
+  .seq-item--next .seq-step-name { color: rgba(255,255,255,0.5); }
+  .seq-item--next-hot .seq-step-name { color: rgba(255,255,255,0.85); }
 
-/* ── Sequence footer ─────────────────────────────────────────────────────── */
-.seq-footer{
-  background:var(--white);
-  border-radius:6px;
-  border:.5px solid var(--gray-mid);
-  padding:16px 20px;
-}
-.seq-title{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:10px;
-  font-weight:700;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  color:var(--muted);
-  margin-bottom:12px;
-}
-.seq-steps{
-  display:flex;
-  align-items:center;
-  gap:0;
-  flex-wrap:wrap;
-  row-gap:8px;
-}
-.seq-step{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.seq-dot{
-  width:30px;height:30px;
-  border-radius:50%;
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-size:13px;
-  font-weight:800;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;
-}
-.seq-dot.done{background:var(--gray-mid);color:var(--white);}
-.seq-dot.current{background:var(--teal);color:var(--white);}
-.seq-dot.next{background:var(--amber);color:var(--navy);}
-.seq-dot.future{background:var(--gray-lt);color:var(--gray-mid);border:.5px solid var(--gray-mid);}
-.seq-step-lbl{
-  font-size:12px;
-  line-height:1.3;
-}
-.seq-step-lbl .top{
-  font-family:'Barlow Condensed',Arial,sans-serif;
-  font-weight:700;
-  font-size:13px;
-  color:var(--text);
-}
-.seq-step-lbl .sub{
-  font-size:10px;
-  color:var(--muted);
-  display:block;
-}
-.seq-step-lbl.current-lbl .top{color:var(--teal-dk);}
-.seq-step-lbl.next-lbl .top{color:#7A5500;}
-.seq-arrow{
-  color:var(--gray-mid);
-  font-size:16px;
-  margin:0 8px;
-  flex-shrink:0;
-}
-
-/* ── Divider ─────────────────────────────────────────────────────────────── */
-.divider{
-  height:.5px;
-  background:var(--teal-bd);
-  margin:0;
-}
+  @media (max-width: 600px) {
+    .page-header { padding: 24px 20px 20px; }
+    .badge-row { flex-direction: column; }
+    .badge { border-right: none; border-bottom: 1px solid var(--gray-mid); }
+    .gate-cards { grid-template-columns: 1fr; }
+    .tips-grid { grid-template-columns: 1fr; }
+    .purpose-block,
+    .gate-section,
+    .tips-section,
+    .questions-section { padding: 20px; }
+    .q-header { flex-wrap: wrap; }
+    .q-loc { white-space: normal; }
+    .callout-amber { margin: 0 20px; }
+    .seq-footer { padding: 20px; }
+    .header-title { font-size: 26px; }
+    .seq-track { flex-direction: column; gap: 8px; }
+    .seq-arrow { transform: rotate(90deg); align-self: center; }
+    .gate-divider { flex-direction: column; gap: 8px; }
+    .gate-divider-line { width: 100%; }
+  }
 </style>
 </head>
 <body>
 <div class="page">
+  <header class="page-header">
+    <div class="eyebrow">MKT 472 &nbsp;·&nbsp; Module 01 &nbsp;·&nbsp; Chapter 1 Reading</div>
+    <h1 class="header-title">Study Focus Guide</h1>
+    <p class="header-subtitle"><em>Customer Focus, Customer Performance, and Profit Impact</em> &nbsp;·&nbsp; Eight questions to answer while you read &nbsp;·&nbsp; Est. 70–80 min</p>
+  </header>
 
-  <!-- ── PAGE HEADER ────────────────────────────────────────────────────── -->
-  <div class="page-hdr">
-    <div class="hdr-eyebrow">MKT 472 &nbsp;·&nbsp; Module 01 &nbsp;·&nbsp; Chapter 1 Reading</div>
-    <div class="hdr-title">Study Focus Guide</div>
-    <div class="hdr-subtitle">Chapter 1: Customer Focus, Customer Performance, and Profit Impact &nbsp;·&nbsp; Estimated reading time: 70–80 minutes</div>
-  </div>
-
-  <!-- ── BADGE ROW ──────────────────────────────────────────────────────── -->
   <div class="badge-row">
     <div class="badge">
       <div class="badge-icon">📖</div>
       <div>
-        <div class="badge-text">Chapter 1</div>
-        <span class="badge-sub">Pages 1–30 approx.</span>
+        <div class="badge-label">Chapter pages</div>
+        <div class="badge-value">Ch. 1 · pp. 1–30</div>
       </div>
     </div>
     <div class="badge">
       <div class="badge-icon">⏱</div>
       <div>
-        <div class="badge-text">70–80 min</div>
-        <span class="badge-sub">Reading time</span>
+        <div class="badge-label">Reading time</div>
+        <div class="badge-value">70–80 min</div>
       </div>
     </div>
     <div class="badge">
-      <div class="badge-icon">🎯</div>
+      <div class="badge-icon">✏️</div>
       <div>
-        <div class="badge-text">8 Focus Questions</div>
-        <span class="badge-sub">5 Gate 1 &nbsp;·&nbsp; 3 Gate 2</span>
+        <div class="badge-label">Focus questions</div>
+        <div class="badge-value">8 questions</div>
       </div>
     </div>
     <div class="badge">
-      <div class="badge-icon">⚠️</div>
+      <div class="badge-icon">🔓</div>
       <div>
-        <div class="badge-text">2 Counterintuitive Results</div>
-        <span class="badge-sub">Flag these while reading</span>
+        <div class="badge-label">Unlocks</div>
+        <div class="badge-value">Gate 1 → Slides</div>
       </div>
     </div>
   </div>
 
-  <div class="content">
+  <div class="purpose-block">
+    <p>This guide identifies exactly what to look for as you read Chapter 1. <strong>Gate 1</strong> tests five topics that appear only in the chapter, not in the slides or lecture. <strong>Gate 2</strong> tests chapter-plus-slide synthesis and application, including quantitative work that depends on the reading and the slide deck together.</p>
+    <p>Answer these questions in your own words while you read, not before and not after. The guide itself is not graded. Gate 1 and Gate 2 are.</p>
+  </div>
 
-    <!-- ── PURPOSE BLOCK ──────────────────────────────────────────────────── -->
-    <div>
-      <div class="section-label">Why this guide exists</div>
-      <div class="purpose-block">
-        <p>Chapter 1 contains content that is tested in two different places in this module — and the distinction matters. <strong>Gate 1</strong> tests chapter-only material: concepts, frameworks, and cases that appear in the textbook but are intentionally absent from the slide deck and lecture. Students who skip the reading and rely on slides alone will not be able to answer Gate 1 questions correctly.</p>
-        <p><strong>Gate 2</strong> tests synthesis: it combines chapter data with slide deck content and requires calculation. Some Gate 2 questions use numerical data that only appears in the chapter. This guide tells you exactly which questions to answer while reading, what to record, and where to find the content.</p>
-        <p>Work through these eight questions as you read — not after. Write your answers down. The goal is active reading, not passive scanning.</p>
+  <div class="gate-section">
+    <div class="section-label">Gate Specifications</div>
+    <div class="gate-cards">
+      <div class="gate-card gate-card--g1">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 1 — Basic Reading Check</span>
+          <span class="gate-badge">Chapter Only</span>
+        </div>
+        <div class="gate-card-body">
+          <div class="gate-spec">
+            <span class="gate-spec-key">Questions</span>
+            <span class="gate-spec-val">5</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Threshold to pass</span>
+            <span class="gate-spec-val gate-spec-val--teal">70%</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Attempts</span>
+            <span class="gate-spec-val">2</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Point value</span>
+            <span class="gate-spec-val">0 pts — access only</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Feedback</span>
+            <span class="gate-spec-val">Per-answer with page refs</span>
+          </div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Unlocks</span>
+            <span class="gate-spec-val gate-spec-val--teal">Slide Deck Viewer</span>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <!-- ── GATE OVERVIEW CARDS ────────────────────────────────────────────── -->
-    <div>
-      <div class="section-label">Gate structure — what you are working toward</div>
-      <div class="gate-grid">
-
-        <div class="gate-card">
-          <div class="gate-card-hdr g1">
-            <span>Gate 1 &mdash; Basic Reading Check</span>
-            <span class="unlock">Unlocks: Slide Viewer →</span>
-          </div>
-          <div class="gate-card-body">
-            <div class="gate-row"><span class="lbl">Questions</span><span class="val teal">5 multiple choice</span></div>
-            <div class="gate-row"><span class="lbl">Content source</span><span class="val">Chapter only</span></div>
-            <div class="gate-row"><span class="lbl">Passing threshold</span><span class="val teal">70% (4 of 5)</span></div>
-            <div class="gate-row"><span class="lbl">Attempts</span><span class="val">2 attempts</span></div>
-            <div class="gate-row"><span class="lbl">Feedback</span><span class="val">Per-answer with page reference</span></div>
-            <div class="gate-row"><span class="lbl">Point value</span><span class="val">0 pts — access control only</span></div>
-          </div>
+      <div class="gate-card gate-card--g2">
+        <div class="gate-card-header">
+          <span class="gate-card-title">Gate 2 — Applied Reading Check</span>
+          <span class="gate-badge">Chapter + Slides</span>
         </div>
-
-        <div class="gate-card">
-          <div class="gate-card-hdr g2">
-            <span>Gate 2 &mdash; Applied Reading Check</span>
-            <span class="unlock">Unlocks: Lecture Video →</span>
+        <div class="gate-card-body">
+          <div class="gate-spec">
+            <span class="gate-spec-key">Questions</span>
+            <span class="gate-spec-val">8</span>
           </div>
-          <div class="gate-card-body">
-            <div class="gate-row"><span class="lbl">Questions</span><span class="val">8 MC + numeric entry</span></div>
-            <div class="gate-row"><span class="lbl">Content source</span><span class="val">Chapter + slides synthesis</span></div>
-            <div class="gate-row"><span class="lbl">Passing threshold</span><span class="val">None — graded as submitted</span></div>
-            <div class="gate-row"><span class="lbl">Attempts</span><span class="val amber">1 attempt only</span></div>
-            <div class="gate-row"><span class="lbl">Feedback</span><span class="val">Correct / Incorrect only</span></div>
-            <div class="gate-row"><span class="lbl">Point value</span><span class="val amber">20 pts = 10% of module grade</span></div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Threshold to pass</span>
+            <span class="gate-spec-val">None — graded as submitted</span>
           </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- ── READING TIPS ────────────────────────────────────────────────────── -->
-    <div>
-      <div class="section-label">Reading strategy for Chapter 1</div>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <div class="tip-icon">✏️</div>
-          <div>
-            <div class="tip-title">Work the numbers as you read</div>
-            <div class="tip-body">Chapter 1 introduces the CSI weighted average, the complaint-resolution model, the N formula, and CLV. Do not just read past the tables — reproduce each calculation on paper before moving on. Gate 2 will ask you to compute these from different inputs.</div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Attempts</span>
+            <span class="gate-spec-val gate-spec-val--amber">1</span>
           </div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-icon">🗂</div>
-          <div>
-            <div class="tip-title">Record exact names and definitions</div>
-            <div class="tip-body">Gate 1 tests precise vocabulary: the three behavioral components of market orientation, the five loyalty types, and the zone of tolerance. The exact names matter. Write them down as you encounter them — do not paraphrase.</div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Point value</span>
+            <span class="gate-spec-val gate-spec-val--teal">20 pts — 10% of module</span>
           </div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-icon">⚠️</div>
-          <div>
-            <div class="tip-title">Flag counterintuitive results before reveals</div>
-            <div class="tip-body">Two sections in Chapter 1 produce results that contradict common intuition. Before you read the chapter's answer, write down your own prediction. When the chapter contradicts it, that is the concept Gate 2 and the case analysis will test.</div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Feedback</span>
+            <span class="gate-spec-val">Correct / Incorrect only</span>
           </div>
-        </div>
-        <div class="tip-card">
-          <div class="tip-icon">📌</div>
-          <div>
-            <div class="tip-title">Mark chapter-exclusive figures</div>
-            <div class="tip-body">Several figures in Chapter 1 do not appear in the slide deck: the zone of tolerance diagram, the loyalty classification matrix, Fig. 1-8 (retention profit leverage), and the MBNA case data. These are Gate 1 targets. Mark them as you read.</div>
+          <div class="gate-spec">
+            <span class="gate-spec-key">Unlocks</span>
+            <span class="gate-spec-val gate-spec-val--teal">Lecture Video</span>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- ── QUESTIONS ──────────────────────────────────────────────────────── -->
-    <div>
-      <div class="section-label">Eight focus questions — answer while reading</div>
-      <div class="questions-list">
-
-        <!-- Q1 -->
-        <div class="q-card">
-          <div class="q-left-bar g1"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g1">1</div>
-              <div class="q-meta">
-                <span class="q-tag g1">Gate 1 &nbsp;·&nbsp; Chapter Only</span>
-                <div class="q-text">What are the three behavioral components of market orientation, and how does the chapter distinguish between transactional and relational marketing? Which component most directly requires collaboration across departments?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; Opening sections</span>
-              <span class="q-hint">Record all three component names exactly. Note the specific departments or activities the chapter associates with each. The transactional vs. relational distinction appears in the same section — write one sentence for each.</span>
-            </div>
-          </div>
+  <div class="tips-section">
+    <div class="section-label">Reading Strategy for Chapter 1</div>
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">✏️</div>
+        <div>
+          <div class="tip-title">Work the formulas as you read</div>
+          <div class="tip-body">Chapter 1 introduces weighted-average CSI, the complaint-resolution logic, the N formula, and CLV setup. Reproduce each calculation on paper instead of reading past the tables. Gate 2 changes the numbers, not the method.</div>
         </div>
-
-        <!-- Q2 -->
-        <div class="q-card">
-          <div class="q-left-bar g1"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g1">2</div>
-              <div class="q-meta">
-                <span class="q-tag g1">Gate 1 &nbsp;·&nbsp; Chapter Only</span>
-                <div class="q-text">What is the zone of tolerance, and where does it sit relative to a customer's minimum acceptable service level and their desired service level? Can a customer be inside the zone of tolerance and still have a CSI score below 100?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; Satisfaction measurement section</span>
-              <span class="q-hint">Draw a quick diagram showing the three levels: desired, zone of tolerance, minimum acceptable. The zone of tolerance does not appear in the slide deck — Gate 1 will ask you to identify or apply it from the chapter alone.</span>
-            </div>
-          </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🗂️</div>
+        <div>
+          <div class="tip-title">Record exact chapter-only terms</div>
+          <div class="tip-body">Gate 1 depends on precise labels: the three behavioral components of market orientation, the five loyalty types, and the zone of tolerance. Write those names down exactly as the chapter states them.</div>
         </div>
-
-        <!-- Q3 -->
-        <div class="q-card">
-          <div class="q-left-bar g1"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g1">3</div>
-              <div class="q-meta">
-                <span class="q-tag g1">Gate 1 &nbsp;·&nbsp; Chapter Only</span>
-                <div class="q-text">The chapter classifies performance metrics as either forward-looking or backward-looking. Which side of that distinction do customer satisfaction, retention rate, and loyalty fall on — and which side do sales revenue and market share fall on? Why does the distinction matter strategically?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; Customer metrics section</span>
-              <span class="q-hint">Make a two-column list: forward-looking metrics on the left, backward-looking on the right. The chapter's argument about why forward-looking metrics are more strategically valuable is the key insight here — write it in one sentence.</span>
-            </div>
-          </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">⚠️</div>
+        <div>
+          <div class="tip-title">Stop at the counterintuitive results</div>
+          <div class="tip-body">Two chapter sections are designed to violate instinct: the retention-profit leverage result and the distribution example where removing weaker customers makes the average worse. Predict the result before reading the explanation.</div>
         </div>
-
-        <!-- Q4 -->
-        <div class="q-card">
-          <div class="q-left-bar g1"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g1">4</div>
-              <div class="q-meta">
-                <span class="q-tag g1">Gate 1 &nbsp;·&nbsp; Chapter Only</span>
-                <div class="q-text">Chapter 1 identifies five types of customers in a loyalty classification system. What are the two subtypes of unprofitable customers, and what distinguishes a "misfit" from a "spinner"? Under what condition does the chapter suggest a firm should consider abandoning a customer segment?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; Loyalty classification section</span>
-              <span class="q-hint">List all five loyalty types. Pay special attention to misfits and spinners — both are unprofitable but for different reasons. The chapter's strategic recommendation for handling each is a likely Gate 1 scenario question.</span>
-            </div>
-          </div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">📌</div>
+        <div>
+          <div class="tip-title">Mark figures that do not appear on slides</div>
+          <div class="tip-body">The zone of tolerance diagram, the loyalty classification matrix, the retention-profit leverage figure, and MBNA case details are Gate 1 targets because they stay in the chapter. Flag them as chapter-exclusive while you read.</div>
         </div>
-
-        <!-- Q5 — COUNTERINTUITIVE -->
-        <div class="q-card">
-          <div class="q-left-bar g1"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g1">5</div>
-              <div class="q-meta">
-                <span class="q-tag g1">Gate 1 &nbsp;·&nbsp; Chapter Only</span>
-                <div class="q-text">The MBNA case shows that improving customer retention from 90% to 95% produced a 16-fold increase in profits and moved the firm from 38th to 4th in industry ranking. Why does a 5-percentage-point retention improvement produce such a disproportionately large profit increase — what is the mechanism?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; pp. 18–19</span>
-              <span class="q-hint">Record the three specific outcomes the chapter cites: the profit multiplier (16×), the ranking change (38th → 4th), and the retention change (90% → 95%). Then write the chapter's explanation of why small retention gains produce large profit gains.</span>
-              <span class="q-ci-flag">⚠️ Counterintuitive — a 5-point gain driving 16× profit is not linear</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q6 -->
-        <div class="q-card">
-          <div class="q-left-bar g2"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g2">6</div>
-              <div class="q-meta">
-                <span class="q-tag g2">Gate 2 &nbsp;·&nbsp; Chapter + Slides</span>
-                <div class="q-text">Using the six satisfaction tiers and their CSI values (Very Satisfied = 100, Satisfied = 85, Somewhat Satisfied = 70, Somewhat Dissatisfied = 50, Dissatisfied = 30, Very Dissatisfied = 0), calculate the weighted-average CSI for a company whose customer distribution is: 20% VS, 35% S, 25% SS, 12% SD, 8% D, 0% VD.</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; CSI section &nbsp;·&nbsp; Fig. 1-4</span>
-              <span class="q-hint">Practice the weighted-average formula now: multiply each CSI value by its percentage weight (as a decimal) and sum across all tiers. Gate 2 will give you a different distribution — the method is what you are learning, not this specific answer.</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q7 — COUNTERINTUITIVE -->
-        <div class="q-card">
-          <div class="q-left-bar g2"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g2">7</div>
-              <div class="q-meta">
-                <span class="q-tag g2">Gate 2 &nbsp;·&nbsp; Chapter + Slides</span>
-                <div class="q-text">Chapter 1 demonstrates that eliminating all "somewhat dissatisfied" customers from a company's base does not improve — and in fact reduces — average customer profit. What happens to the weighted-average CSI and to average profit when this segment is removed, and why does the result defy most managers' initial intuition?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; Distributions section &nbsp;·&nbsp; Fig. 1-5</span>
-              <span class="q-hint">Record the before and after: CSI score with the segment included vs. excluded, and average profit with vs. without. The chapter explains the mechanism — write it down. This is the module's central cognitive trap and Gate 2 will test the analytical version of it.</span>
-              <span class="q-ci-flag">⚠️ Counterintuitive — removing "bad" customers makes the average worse</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Q8 -->
-        <div class="q-card">
-          <div class="q-left-bar g2"></div>
-          <div class="q-body">
-            <div class="q-top">
-              <div class="q-num g2">8</div>
-              <div class="q-meta">
-                <span class="q-tag g2">Gate 2 &nbsp;·&nbsp; Chapter + Slides</span>
-                <div class="q-text">Using the formula N = 1 ÷ (1 − r), what is the customer life expectancy for a company with an 85% monthly retention rate? Then reverse the problem: if a company's average customer lifetime is 8.33 periods, what is its retention rate?</div>
-              </div>
-            </div>
-            <div class="q-footer">
-              <span class="q-loc">Ch. 1 &nbsp;·&nbsp; Retention section &nbsp;·&nbsp; CLV formula derivation</span>
-              <span class="q-hint">Solve both directions: N from r, and r from N. Gate 2 will give you one or the other — you need fluency in both. The inverse formula is r = 1 − (1 ÷ N). Record the formulas and your worked solutions.</span>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /questions-list -->
+      </div>
     </div>
+  </div>
 
-    <!-- ── AMBER CALLOUT ───────────────────────────────────────────────────── -->
-    <div class="amber-callout">
-      <div class="callout-hdr">🎯 Highest-probability Gate 1 targets</div>
-      <p>Three constructs from Chapter 1 appear most frequently across Gate 1 question variants. These are worth extra attention while reading:</p>
-      <p><span class="hi-target">The zone of tolerance</span> — its definition, its boundaries relative to the CSI scale, and what happens to customer behavior when service falls below the lower boundary. This is chapter-exclusive and will not be in the slides.</p>
-      <p><span class="hi-target">Misfits and spinners</span> — the two subtypes of unprofitable customers in the loyalty classification system, and the strategic distinction between them. Know the names, the definitions, and the recommended response to each.</p>
-      <p><span class="hi-target">The MBNA retention leverage result</span> — the specific numbers (90% → 95%, 16-fold profit increase, 38th → 4th ranking) and the chapter's explanation of why a small retention gain produces a disproportionately large profit impact. Gate 1 will ask about the mechanism, not just the statistics.</p>
-    </div>
+  <div class="questions-section">
+    <div class="section-label">Eight Focus Questions — Answer These While You Read</div>
 
-    <!-- ── SEQUENCE FOOTER ─────────────────────────────────────────────────── -->
-    <div class="seq-footer">
-      <div class="seq-title">Where this fits in the Module 01 sequence</div>
-      <div class="seq-steps">
-
-        <div class="seq-step">
-          <div class="seq-dot done">1</div>
-          <div class="seq-step-lbl">
-            <div class="top">Module Overview</div>
-            <span class="sub">Complete ✓</span>
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">1</div>
+        <div class="q-meta">
+          <div class="q-topic">Market Orientation and Relational Marketing</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
           </div>
         </div>
-        <div class="seq-arrow">›</div>
-
-        <div class="seq-step">
-          <div class="seq-dot current">2</div>
-          <div class="seq-step-lbl current-lbl">
-            <div class="top">Chapter 1 Reading</div>
-            <span class="sub">You are here — Study Focus Guide</span>
-          </div>
-        </div>
-        <div class="seq-arrow">›</div>
-
-        <div class="seq-step">
-          <div class="seq-dot next">3</div>
-          <div class="seq-step-lbl next-lbl">
-            <div class="top">Gate 1</div>
-            <span class="sub">5 Qs · 70% to unlock slides</span>
-          </div>
-        </div>
-        <div class="seq-arrow">›</div>
-
-        <div class="seq-step">
-          <div class="seq-dot future">4</div>
-          <div class="seq-step-lbl">
-            <div class="top">Slide Viewer</div>
-            <span class="sub">Unlocked by Gate 1</span>
-          </div>
-        </div>
-        <div class="seq-arrow">›</div>
-
-        <div class="seq-step">
-          <div class="seq-dot future">5</div>
-          <div class="seq-step-lbl">
-            <div class="top">Gate 2</div>
-            <span class="sub">20 pts · 1 attempt</span>
-          </div>
-        </div>
-        <div class="seq-arrow">›</div>
-
-        <div class="seq-step">
-          <div class="seq-dot future">6</div>
-          <div class="seq-step-lbl">
-            <div class="top">Lecture Video</div>
-            <span class="sub">Unlocked by Gate 2</span>
-          </div>
-        </div>
-
+        <div class="q-loc">Ch. 1 · Opening sections</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What are the three behavioral components of market orientation, and how does the chapter distinguish between transactional and relational marketing? Which component most directly requires collaboration across departments?</div>
+        <div class="q-hint">Record all three component names exactly. Note the specific departments or activities the chapter associates with each. Write one sentence distinguishing transactional from relational marketing in the same section.</div>
       </div>
     </div>
 
-  </div><!-- /content -->
-</div><!-- /page -->
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">2</div>
+        <div class="q-meta">
+          <div class="q-topic">Zone of Tolerance</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · Satisfaction measurement section</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">What is the zone of tolerance, and where does it sit relative to a customer's minimum acceptable service level and desired service level? Can a customer be inside the zone of tolerance and still have a CSI score below 100?</div>
+        <div class="q-hint">Draw a quick three-level diagram: desired service, zone of tolerance, and minimum acceptable service. This concept stays in the chapter and does not appear in the slide deck.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">3</div>
+        <div class="q-meta">
+          <div class="q-topic">Forward-Looking vs. Backward-Looking Metrics</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · Customer metrics section</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">The chapter classifies performance metrics as either forward-looking or backward-looking. Which side of that distinction do customer satisfaction, retention rate, and loyalty fall on, and which side do sales revenue and market share fall on? Why does the distinction matter strategically?</div>
+        <div class="q-hint">Make a two-column list as you read. The key idea is not just which metrics go where, but why the chapter treats one category as more strategically valuable.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">4</div>
+        <div class="q-meta">
+          <div class="q-topic">Misfits, Spinners, and Loyalty Types</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · Loyalty classification section</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Chapter 1 identifies five types of customers in a loyalty classification system. What are the two subtypes of unprofitable customers, and what distinguishes a misfit from a spinner? Under what condition does the chapter suggest a firm should consider abandoning a customer segment?</div>
+        <div class="q-hint">List all five loyalty types for context, then focus on the strategic distinction between misfits and spinners and the chapter's recommended response to each.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g1">
+      <div class="q-header">
+        <div class="q-num">5</div>
+        <div class="q-meta">
+          <div class="q-topic">MBNA Retention Leverage Result</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g1">Gate 1 · Chapter Only</span>
+            <span class="q-tag q-tag--warn">⚠️ Counterintuitive</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · pp. 18–19</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">The MBNA case shows that improving customer retention from 90% to 95% produced a 16-fold increase in profits and moved the firm from 38th to 4th in industry ranking. Why does a 5-percentage-point retention improvement produce such a disproportionately large profit increase, and what mechanism does the chapter use to explain it?</div>
+        <div class="q-hint">Record the three cited outcomes exactly: 90% to 95%, 16-fold profit increase, and 38th to 4th ranking. Gate 1 tests the mechanism behind the leverage, not just the numbers.</div>
+      </div>
+    </div>
+
+    <div class="gate-divider">
+      <div class="gate-divider-line"></div>
+      <div class="gate-divider-label">Gate 2 · Chapter + Slides Synthesis</div>
+      <div class="gate-divider-line"></div>
+    </div>
+
+    <div class="q-block q-block--g2">
+      <div class="q-header">
+        <div class="q-num">6</div>
+        <div class="q-meta">
+          <div class="q-topic">Weighted-Average CSI Calculation</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g2">Gate 2 · Chapter + Slides</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · CSI section · Fig. 1-4</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Using the six satisfaction tiers and their CSI values, calculate the weighted-average CSI for a company whose customer distribution is 20% Very Satisfied, 35% Satisfied, 25% Somewhat Satisfied, 12% Somewhat Dissatisfied, 8% Dissatisfied, and 0% Very Dissatisfied.</div>
+        <div class="q-hint">Practice the weighted-average method while you read: multiply each CSI value by its percentage weight as a decimal and sum across the tiers. Gate 2 changes the distribution but relies on the same method.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g2">
+      <div class="q-header">
+        <div class="q-num">7</div>
+        <div class="q-meta">
+          <div class="q-topic">Distribution Trap: Removing Dissatisfied Customers</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g2">Gate 2 · Chapter + Slides</span>
+            <span class="q-tag q-tag--warn">⚠️ Counterintuitive</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · Distributions section · Fig. 1-5</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Chapter 1 demonstrates that eliminating all somewhat dissatisfied customers from a company's base does not improve and can reduce average customer profit. What happens to the weighted-average CSI and to average profit when this segment is removed, and why does the result defy most managers' initial intuition?</div>
+        <div class="q-hint">Record the before-and-after CSI and average-profit values, then write down the chapter's explanation of the mechanism. This is the module's central cognitive trap.</div>
+      </div>
+    </div>
+
+    <div class="q-block q-block--g2">
+      <div class="q-header">
+        <div class="q-num">8</div>
+        <div class="q-meta">
+          <div class="q-topic">N Formula and Retention Rate Conversion</div>
+          <div class="q-tag-row">
+            <span class="q-tag q-tag--g2">Gate 2 · Chapter + Slides</span>
+          </div>
+        </div>
+        <div class="q-loc">Ch. 1 · Retention section · CLV derivation</div>
+      </div>
+      <div class="q-body">
+        <div class="q-text">Using the formula N = 1 ÷ (1 − r), what is the customer life expectancy for a company with an 85% monthly retention rate? Then reverse the problem: if a company's average customer lifetime is 8.33 periods, what is its retention rate?</div>
+        <div class="q-hint">Solve the formula in both directions as you read. Gate 2 may give you retention and ask for lifetime, or give you lifetime and ask for retention. Record both formulas and your worked setup.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="callout-amber">
+    <div class="callout-amber-header">
+      <div class="callout-amber-icon">⚠️</div>
+      <div class="callout-amber-title">High-Risk Reading Traps</div>
+    </div>
+    <div class="callout-amber-body">Three Chapter 1 ideas are easy to misread unless you stop and write them out:</div>
+    <ul class="callout-amber-list">
+      <li><strong>Zone of tolerance:</strong> know where it sits between desired service and minimum acceptable service, and do not confuse it with a perfect CSI score.</li>
+      <li><strong>Misfits versus spinners:</strong> both are unprofitable, but for different reasons, so the strategic response is not the same.</li>
+      <li><strong>Retention and distribution effects:</strong> a small retention gain can create a huge profit change, while removing low-satisfaction segments can actually lower average profit because the remaining distribution shifts toward the middle, not the top.</li>
+    </ul>
+  </div>
+
+  <div class="seq-footer">
+    <div class="seq-label">Where This Fits in the Module 01 Sequence</div>
+    <div class="seq-track">
+      <div class="seq-item seq-item--done">
+        <div class="seq-step-label">Step 1</div>
+        <div class="seq-step-name">Read Chapter</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--current">
+        <div class="seq-step-label">Step 2</div>
+        <div class="seq-step-name">Study Focus Guide</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next-hot">
+        <div class="seq-step-label">Step 3</div>
+        <div class="seq-step-name">Gate 1</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next">
+        <div class="seq-step-label">Step 4</div>
+        <div class="seq-step-name">Slide Deck Viewer</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next">
+        <div class="seq-step-label">Step 5</div>
+        <div class="seq-step-name">Gate 2</div>
+      </div>
+      <div class="seq-arrow">›</div>
+      <div class="seq-item seq-item--next">
+        <div class="seq-step-label">Step 6</div>
+        <div class="seq-step-name">Lecture Video / Application Work</div>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
