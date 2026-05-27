@@ -135,7 +135,7 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
 .student-view .viewer-layout {
   grid-template-columns: minmax(0, 1fr) !important;
   max-width: none;
-  padding: 10px 20px 6px;
+  padding: 8px 18px 4px;
 }
 
 .student-view .slide-column,
@@ -146,11 +146,11 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
 }
 
 .student-view .slide-column {
-  gap: 8px;
+  gap: 6px;
 }
 
 .student-view {
-  --slide-scale: 1.18;
+  --slide-scale: 1.22;
 }
 
 .student-view .slide-frame {
@@ -160,7 +160,7 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
 .student-view .slide-stage {
   aspect-ratio: auto;
   height: auto;
-  min-height: clamp(520px, 64vh, 720px);
+  min-height: clamp(560px, 68vh, 740px);
 }
 
 .student-view .slide-page.active {
@@ -170,47 +170,106 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
 }
 
 .student-view .slide-page {
-  font-size: calc(10.6px * var(--slide-scale));
-  line-height: 1.45;
+  font-size: calc(10.8px * var(--slide-scale));
+  line-height: 1.5;
+}
+
+.student-view .le-titleblock {
+  padding: 8px 16px 4px;
+}
+
+.student-view .le-body {
+  padding: 7px 16px 9px;
+  gap: 6px;
+}
+
+.student-view .le-footer {
+  padding: 5px 16px;
+  gap: 6px;
+}
+
+.student-view .lo-grid,
+.student-view .card-grid {
+  gap: 6px;
+}
+
+.student-view .callout {
+  padding: 7px 9px;
 }
 
 .student-view .callout p,
 .student-view .callout li,
 .student-view .lo-t {
-  font-size: calc(10.4px * var(--slide-scale));
-  line-height: 1.5;
+  font-size: calc(10.8px * var(--slide-scale));
+  line-height: 1.52;
+}
+
+.student-view .callout-label {
+  font-size: calc(11.6px * var(--slide-scale));
 }
 
 .student-view .mini-card p,
 .student-view .mini-card li {
-  font-size: calc(10px * var(--slide-scale));
-  line-height: 1.45;
+  font-size: calc(10.4px * var(--slide-scale));
+  line-height: 1.48;
+}
+
+.student-view .mini-card h4 {
+  font-size: calc(13.8px * var(--slide-scale));
 }
 
 .student-view .clean-table {
-  font-size: calc(9.6px * var(--slide-scale));
+  font-size: calc(10px * var(--slide-scale));
 }
 
 .student-view .clean-table th {
-  font-size: calc(8.4px * var(--slide-scale));
+  font-size: calc(8.8px * var(--slide-scale));
 }
 
 .student-view .clean-table td {
   padding: 4.5px 6px;
+  line-height: 1.45;
 }
 
 .student-view .data-tbl {
-  font-size: calc(9.6px * var(--slide-scale));
+  font-size: calc(10px * var(--slide-scale));
 }
 
 .student-view .data-tbl th {
-  font-size: calc(8.4px * var(--slide-scale));
+  font-size: calc(8.8px * var(--slide-scale));
+}
+
+.student-view .data-tbl td {
+  line-height: 1.45;
 }
 
 .student-view .viewer-nav {
-  gap: 8px;
+  gap: 6px;
 }
 
 .student-view .keyboard-hint {
-  padding: 2px 0 4px;
+  padding: 1px 0 3px;
+}
+
+.student-view .title-slide .title-content {
+  padding: 8px 40px 12px;
+  justify-content: space-evenly;
+}
+
+.student-view .title-kicker {
+  font-size: 13px;
+  margin-bottom: 10px;
+}
+
+.student-view .title-main {
+  font-size: calc(46px * var(--slide-scale));
+  line-height: 1.02;
+}
+
+.student-view .title-meta {
+  font-size: 14px;
+}
+
+.student-view .title-read {
+  font-size: 13px;
 }
