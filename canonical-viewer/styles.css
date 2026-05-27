@@ -143,3 +143,24 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
   width: 100%;
   max-width: none;
 }
+
+.student-view {
+  --slide-scale: 1.2;
+}
+
+.student-view .slide-frame {
+  overflow: visible;
+}
+
+.student-view .slide-stage {
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+
+.student-view .slide-page.active {
+  position: relative;
+  height: auto;
+  min-height: 0;
+}
