@@ -14,22 +14,22 @@
   </div>
   <div class="le-body" style="gap:9px;">
     <div style="background:var(--navy);border-radius:4px;padding:8px 13px;margin-bottom:2px;">
-      <div style="font-size:8.5px;color:#e8f8f8;line-height:1.6;"><strong style="color:var(--teal);">Given:</strong> Credit card customer · Margin per year = $61 · Retention rate = 80% per year · Discount rate = 10% per year · Acquisition cost = $51</div>
+      <div class="slide-small" style="color:#e8f8f8;line-height:1.6"><strong style="color:var(--teal);">Given:</strong> Credit card customer · Margin per year = $61 · Retention rate = 80% per year · Discount rate = 10% per year · Acquisition cost = $51</div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
       <div style="background:var(--off);border:.5px solid var(--teal-bd);border-radius:4px;padding:9px 12px;">
-        <div style="font-size:8.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Method 1 — Formula</div>
-        <div style="font-size:9px;color:var(--text);line-height:1.7;">CLV = [M × (r ÷ (1 + i − r))] − AC<br><br>CLV = [$61 × (0.80 ÷ (1 + 0.10 − 0.80))] − $51<br><br>CLV = [$61 × (0.80 ÷ ?)] − $51 = <strong style="color:var(--red);">?</strong></div>
+        <div class="gate-source" style="font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Method 1 — Formula</div>
+        <div class="slide-copy" style="color:var(--text);line-height:1.7">CLV = [M × (r ÷ (1 + i − r))] − AC<br><br>CLV = [$61 × (0.80 ÷ (1 + 0.10 − 0.80))] − $51<br><br>CLV = [$61 × (0.80 ÷ ?)] − $51 = <strong style="color:var(--red);">?</strong></div>
       </div>
       <div style="background:var(--off);border:.5px solid var(--teal-bd);border-radius:4px;padding:9px 12px;">
-        <div style="font-size:8.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;">Method 2 — Period-by-Period PV</div>
-        <div style="font-size:9px;color:var(--text);line-height:1.7;">Year 1: P(stay) = 1.0 → Profit = $61 → PV = $61 ÷ 1.10 = <strong style="color:var(--red);">?</strong><br>Year 2: P(stay) = 0.80 → Profit = $48.80 → PV = <strong style="color:var(--red);">?</strong><br>Year 3: P(stay) = 0.64 → Profit = $39.04 → PV = <strong style="color:var(--red);">?</strong><br>Sum to ∞ − AC = <strong style="color:var(--red);">CLV = ?</strong></div>
+        <div class="gate-source" style="font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Method 2 — Period-by-Period PV</div>
+        <div class="slide-copy" style="color:var(--text);line-height:1.7">Year 1: P(stay) = 1.0 → Profit = $61 → PV = $61 ÷ 1.10 = <strong style="color:var(--red);">?</strong><br>Year 2: P(stay) = 0.80 → Profit = $48.80 → PV = <strong style="color:var(--red);">?</strong><br>Year 3: P(stay) = 0.64 → Profit = $39.04 → PV = <strong style="color:var(--red);">?</strong><br>Sum to ∞ − AC = <strong style="color:var(--red);">CLV = ?</strong></div>
       </div>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
       <div style="background:var(--off);border:.5px solid var(--teal-bd);border-radius:3px;padding:7px 10px;">
-        <div style="font-size:8px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;">Period-by-Period Rule</div>
-        <div style="font-size:8.5px;color:var(--text);line-height:1.6;">Expected profit in year t = M × r^(t−1)<br>PV of year t = Expected profit ÷ (1 + i)^t<br>CLV = Σ PV of all years − AC</div>
+        <div class="gate-source" style="font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Period-by-Period Rule</div>
+        <div class="slide-small" style="color:var(--text);line-height:1.6">Expected profit in year t = M × r^(t−1)<br>PV of year t = Expected profit ÷ (1 + i)^t<br>CLV = Σ PV of all years − AC</div>
       </div>
       <div class="callout amber">
         <div class="callout-label">Both Methods Should Agree</div>
