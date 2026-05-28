@@ -96,6 +96,21 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
 .two-col{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:stretch;}
 .three-col{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:stretch;}
 
+/* Archetype semantic text hooks */
+.slide-copy{font-size:9px;color:var(--text);line-height:1.5;}
+.slide-card-copy{font-size:9px;color:var(--text);line-height:1.5;}
+.slide-small{font-size:8.5px;color:var(--text);line-height:1.6;}
+.slide-meta{font-size:8px;color:var(--muted);line-height:1.4;}
+.slide-label{font-size:8.5px;font-weight:700;line-height:1.35;}
+.slide-caption{font-size:8px;color:var(--muted);line-height:1.35;}
+.slide-table-text{font-size:9px;line-height:1.45;}
+.slide-formula-caption{font-size:8.5px;line-height:1.35;}
+.slide-variable-note{font-size:8px;line-height:1.35;}
+.slide-formula-text{font-size:22px;line-height:1.05;}
+.gate-source{font-size:8px;color:var(--muted);font-weight:400;line-height:1.35;}
+.archetype-title{font-size:13px;line-height:1.2;}
+.archetype-subtitle{font-size:10px;line-height:1.4;}
+
 /* Navigation */
 .viewer-nav{display:flex;align-items:center;justify-content:space-between;padding:0 2px;gap:10px;}
 .slide-dots{display:flex;gap:5px;flex-wrap:wrap;max-width:62%;justify-content:center;}
@@ -169,6 +184,15 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
   min-height: 0;
 }
 
+.student-view .slide-page.title-cover.active {
+  min-height: clamp(560px, 68vh, 740px);
+}
+
+.student-view .slide-page.title-cover.active .title-slide {
+  height: 100%;
+  min-height: 100%;
+}
+
 .student-view .slide-page {
   font-size: clamp(16px, 1.05vw, 20px);
   line-height: 1.52;
@@ -223,9 +247,36 @@ body{font-family:'Barlow',sans-serif;background:#F0F4F3;min-height:100vh;display
   line-height: 1.52;
 }
 
-.student-view .callout-label {
-  font-size: calc(11.6px * var(--slide-scale));
+.student-view .slide-copy,
+.student-view .slide-card-copy,
+.student-view .slide-table-text,
+.student-view .slide-formula-text {
+  font-size: clamp(16px, 1.05vw, 20px);
+  line-height: 1.5;
 }
+
+.student-view .slide-small,
+.student-view .slide-label,
+.student-view .slide-formula-caption,
+.student-view .slide-variable-note,
+.student-view .slide-caption,
+.student-view .archetype-subtitle {
+  font-size: clamp(14px, 0.95vw, 17px);
+  line-height: 1.4;
+}
+
+.student-view .slide-meta,
+.student-view .gate-source {
+  font-size: clamp(12px, 0.8vw, 13px);
+  line-height: 1.35;
+}
+
+.student-view .archetype-title {
+  font-size: clamp(18px, 1.3vw, 24px);
+  line-height: 1.2;
+}
+
+.student-view .callout-label {font-size: clamp(13px, 0.85vw, 15px);}
 
 .student-view .mini-card p,
 .student-view .mini-card li {
