@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Needs-Based Segmentation Builder</title>
+	<link rel="stylesheet" href="styles.css" />
 	<style>
 		:root {
 			--bg-a: #f4f8f2;
@@ -32,10 +33,26 @@
 		}
 
 		.app-shell {
-			width: min(1300px, 96vw);
+			width: min(1100px, 96vw);
 			margin: 1rem auto 2rem;
 			display: grid;
 			gap: 1rem;
+		}
+
+		.skip-link {
+			position: absolute;
+			left: -999px;
+			top: -999px;
+			background: #1f5d3a;
+			color: #fff;
+			padding: 0.45rem 0.7rem;
+			border-radius: 8px;
+			z-index: 1000;
+		}
+
+		.skip-link:focus {
+			left: 0.7rem;
+			top: 0.7rem;
 		}
 
 		.hero,
@@ -50,7 +67,7 @@
 
 		.hero h1 {
 			margin: 0;
-			font-size: clamp(1.3rem, 2vw, 2rem);
+			font-size: clamp(1.3rem, 2vw, 1.6rem);
 		}
 
 		.hero p {
@@ -61,7 +78,111 @@
 		.panel h2,
 		.feedback-panel h2 {
 			margin: 0 0 0.7rem;
-			font-size: 1.15rem;
+			font-size: 1.2rem;
+		}
+
+		.quiz-card,
+		.required-callout,
+		.how-to,
+		.interactive-app,
+		.results-dashboard,
+		.canvas-reminder {
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			background: var(--panel);
+			box-shadow: var(--shadow);
+			padding: 0.95rem;
+		}
+
+		.quiz-card h2,
+		.interactive-head h2,
+		.results-dashboard h2 {
+			margin: 0 0 0.5rem;
+			font-size: 1.2rem;
+		}
+
+		.quiz-card ol,
+		.how-to ol {
+			margin: 0;
+			padding-left: 1.2rem;
+			display: grid;
+			gap: 0.2rem;
+		}
+
+		.required-callout {
+			border-left: 4px solid var(--accent);
+		}
+
+		.required-label {
+			margin: 0 0 0.2rem;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--accent);
+		}
+
+		.how-to summary {
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		.how-to[open] summary {
+			margin-bottom: 0.45rem;
+		}
+
+		.interactive-app {
+			display: grid;
+			gap: 0.8rem;
+		}
+
+		.interactive-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.focus-btn {
+			border: 1px solid #8ba686;
+			border-radius: 10px;
+			background: #e8f5e3;
+			color: #22412a;
+			padding: 0.42rem 0.65rem;
+			cursor: pointer;
+		}
+
+		.focus-btn:hover {
+			filter: brightness(0.98);
+		}
+
+		.quiz-workflow-banner {
+			margin: 0;
+			border: 1px solid #9db896;
+			border-radius: 10px;
+			background: #edf7e9;
+			padding: 0.5rem 0.65rem;
+			font-weight: 700;
+			font-size: 0.92rem;
+		}
+
+		.results-dashboard__note {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.9rem;
+		}
+
+		.canvas-reminder {
+			padding-top: 0.6rem;
+			padding-bottom: 0.6rem;
+			text-align: center;
+			font-size: 0.82rem;
+			color: var(--muted);
+		}
+
+		body.focus-mode [data-focus-hide] {
+			display: none;
 		}
 
 		label {
@@ -341,15 +462,66 @@
 			.benefit-card {
 				width: 100%;
 			}
+
+			.quiz-card,
+			.required-callout,
+			.how-to,
+			.interactive-app,
+			.results-dashboard,
+			.canvas-reminder {
+				padding: 0.85rem;
+			}
 		}
 	</style>
 </head>
 <body>
+	<a class="skip-link" href="#appContainer">Skip to interactive app</a>
 	<main class="app-shell">
 		<section class="hero">
+			<p class="required-label">MKT 472 · Module 5 · App 1</p>
 			<h1>Needs-Based Segmentation Builder</h1>
-			<p>This activity shows why demographics alone are not enough. Build segments around needs, behaviors, and psychographics.</p>
+			<p>This activity helps you build segments around needs, behaviors, and psychographics rather than demographics alone.</p>
 		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Learning Goal</h2>
+			<p>Identify distinct customer segments by sorting needs-based benefits into coherent buckets. Build a segment profile that combines needs, psychographics, and usage behavior. Evaluate completeness and contradiction flags to improve segment quality.</p>
+		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Worksheet Quiz Instructions</h2>
+			<ol>
+				<li>Read the Canvas quiz question first.</li>
+				<li>Follow the preset, scenario, or modifications specified in the question.</li>
+				<li>Use this app to perform the required calculations and analysis.</li>
+				<li>Enter your answers in the Canvas quiz.</li>
+				<li>Answers are submitted through Canvas, not through this app.</li>
+			</ol>
+		</section>
+
+		<section class="required-callout" data-focus-hide>
+			<p class="required-label">Required for Quiz</p>
+			<p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default preset shown in this app.</p>
+		</section>
+
+		<details class="how-to" data-focus-hide>
+			<summary>How to Use This App</summary>
+			<ol>
+				<li>Select a product category and review the customer problem and benefits.</li>
+				<li>Assign benefit cards to segment buckets and resolve contradiction flags.</li>
+				<li>Build a profile with core need, demographic, psychographic, and usage identifiers.</li>
+				<li>Review completeness score, strengths, missing items, and QA checks.</li>
+			</ol>
+		</details>
+
+		<section class="interactive-app" id="interactiveApp">
+			<div class="interactive-head">
+				<h2>Interactive App</h2>
+				<button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+			</div>
+			<p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
+
+			<div id="appContainer">
 
 		<section class="panel" aria-labelledby="panel-a-title">
 			<h2 id="panel-a-title">1) Product Category / Customer Problem Selection</h2>
@@ -455,8 +627,18 @@
 				</div>
 			</div>
 		</section>
+			</div>
+		</section>
+
+		<section class="results-dashboard" aria-label="Results Dashboard">
+			<h2>Results Dashboard</h2>
+			<p class="results-dashboard__note">Use the completeness score, contradiction status, and QA checks in Panel 3 to confirm segment quality before entering quiz answers.</p>
+		</section>
+
+		<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
 	</main>
 
+	<script src="script.js"></script>
 	<script>
 		(function initNeedsSegmentationBuilder() {
 			const DATA = {

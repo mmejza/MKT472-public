@@ -8,6 +8,8 @@
 </head>
 <body>
 
+  <a class="skip-link" href="#interactive-app">Skip to interactive app</a>
+
   <!-- ═══════════════════════════════════════════
        HEADER
   ═══════════════════════════════════════════ -->
@@ -16,14 +18,53 @@
       <p class="app-header__eyebrow">MKT 472 · Module 4</p>
       <h1 class="app-header__title">Lifecycle Cost &amp; Economic Value Calculator</h1>
       <p class="app-header__instructions">
-        Adjust the sliders to set each cost component for the competitor and your company.
-        The dashboard below shows whether your higher purchase price still creates positive
-        economic value for the buyer once all lifecycle costs are included.
+        Compare total lifecycle costs to determine whether a higher purchase price still creates positive customer value.
       </p>
     </div>
   </header>
 
   <main class="app-main">
+
+    <section class="quiz-card" data-focus-hide aria-labelledby="learning-goal-title">
+      <h2 class="quiz-card__title" id="learning-goal-title">Learning Goal</h2>
+      <p>
+        Use lifecycle cost components to compare the competitor and your company beyond purchase price alone.
+        Identify when total cost differences create positive economic value for the buyer.
+      </p>
+    </section>
+
+    <section class="quiz-card" data-focus-hide aria-labelledby="worksheet-instructions-title">
+      <h2 class="quiz-card__title" id="worksheet-instructions-title">Worksheet Quiz Instructions</h2>
+      <ol class="quiz-card__list">
+        <li>Use this app to perform the required calculations.</li>
+        <li>Follow the required preset or scenario.</li>
+        <li>Record your final answers in the Canvas quiz questions below.</li>
+        <li>Answers are submitted through Canvas, not through this app.</li>
+      </ol>
+    </section>
+
+    <section class="required-callout" data-focus-hide aria-label="Required for Quiz">
+      <p class="required-callout__label">Required for Quiz</p>
+      <p>Start with the Telecom Switch preset before making any modifications.</p>
+    </section>
+
+    <details class="how-to" data-focus-hide>
+      <summary>How to Use This App</summary>
+      <ol>
+        <li>Load the required preset for the quiz task.</li>
+        <li>Adjust lifecycle cost sliders for competitor and company as directed.</li>
+        <li>Check Economic Value, Indifference Price, and Headroom in the dashboard.</li>
+        <li>Use the quantity toggle to scale customer savings when needed.</li>
+      </ol>
+    </details>
+
+    <section class="interactive-app" id="interactive-app" aria-label="Interactive app">
+      <div class="interactive-app__head">
+        <h2 class="interactive-app__title">Interactive App</h2>
+        <button class="btn btn--focus" id="focus-toggle" type="button" aria-pressed="false">
+          Focus Mode
+        </button>
+      </div>
 
     <!-- ═══════════════════════════════════════
          PRESET SELECTOR
@@ -269,6 +310,8 @@
       </div>
     </section>
 
+    </section>
+
     <!-- ═══════════════════════════════════════
          OUTPUT DASHBOARD
     ═══════════════════════════════════════ -->
@@ -361,6 +404,10 @@
                 role="img"></canvas>
       </div>
     </section>
+
+    <p class="canvas-reminder" aria-label="Canvas submission reminder">
+      Submit final answers through the Canvas quiz questions below the app.
+    </p>
 
   </main>
 

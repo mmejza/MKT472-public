@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Channel Pocket Price & Profitability Calculator</title>
+	<link rel="stylesheet" href="styles.css">
 	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<style>
 		:root {
@@ -28,10 +29,26 @@
 		}
 
 		.app {
-			width: min(1320px, 97vw);
+			width: min(1100px, 97vw);
 			margin: 0.8rem auto;
 			display: grid;
 			gap: 0.75rem;
+		}
+
+		.skip-link {
+			position: absolute;
+			left: -999px;
+			top: -999px;
+			background: #12222d;
+			color: #fff;
+			padding: 0.45rem 0.7rem;
+			border-radius: 8px;
+			z-index: 1000;
+		}
+
+		.skip-link:focus {
+			left: 0.7rem;
+			top: 0.7rem;
 		}
 
 		.panel {
@@ -39,6 +56,112 @@
 			border-radius: 12px;
 			background: var(--bg);
 			padding: 0.75rem;
+		}
+
+		.quiz-card,
+		.required-callout,
+		.how-to,
+		.interactive-app,
+		.results-dashboard,
+		.canvas-reminder,
+		.app-header {
+			border: 1px solid var(--line);
+			border-radius: 12px;
+			background: #fff;
+			padding: 0.75rem;
+			box-shadow: 0 6px 14px rgba(18, 34, 45, 0.05);
+		}
+
+		.app-header h1 {
+			font-size: clamp(1.3rem, 2vw, 1.6rem);
+		}
+
+		.quiz-card h2,
+		.interactive-head h2,
+		.results-dashboard h2 {
+			font-size: 1.2rem;
+			margin: 0 0 0.45rem;
+		}
+
+		.quiz-card ol,
+		.how-to ol {
+			margin: 0;
+			padding-left: 1.2rem;
+			display: grid;
+			gap: 0.2rem;
+		}
+
+		.required-callout {
+			border-left: 4px solid var(--brand);
+		}
+
+		.required-label {
+			margin: 0 0 0.2rem;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--brand);
+		}
+
+		.how-to summary {
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		.how-to[open] summary {
+			margin-bottom: 0.45rem;
+		}
+
+		.interactive-app {
+			display: grid;
+			gap: 0.75rem;
+		}
+
+		.interactive-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.focus-btn {
+			border: 1px solid #79a8a0;
+			border-radius: 8px;
+			background: #fff;
+			color: var(--ink);
+			padding: 0.35rem 0.62rem;
+			cursor: pointer;
+		}
+
+		.quiz-workflow-banner {
+			margin: 0;
+			border: 1px solid #b8c4ce;
+			border-radius: 10px;
+			background: #eef3f7;
+			padding: 0.5rem 0.65rem;
+			font-size: 0.92rem;
+			font-weight: 700;
+			color: #1f2937;
+		}
+
+		.results-dashboard p {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.9rem;
+		}
+
+		.canvas-reminder {
+			padding-top: 0.6rem;
+			padding-bottom: 0.6rem;
+			text-align: center;
+			font-size: 0.82rem;
+			color: var(--muted);
+		}
+
+		body.focus-mode [data-focus-hide] {
+			display: none;
 		}
 
 		h1, h2, h3, p { margin: 0; }
@@ -64,6 +187,13 @@
 		}
 
 		button, input { font: inherit; }
+
+		button:focus,
+		input:focus,
+		summary:focus {
+			outline: 2px solid #2e83b4;
+			outline-offset: 1px;
+		}
 
 		button {
 			border: 1px solid #79a8a0;
@@ -282,15 +412,29 @@
 		@media (max-width: 1080px) {
 			.input-grid, .metrics-grid, .viz-grid { grid-template-columns: 1fr; }
 		}
+
+		@media (max-width: 800px) {
+			.quiz-card,
+			.required-callout,
+			.how-to,
+			.interactive-app,
+			.results-dashboard,
+			.canvas-reminder,
+			.app-header {
+				padding: 0.85rem;
+			}
+		}
 	</style>
 </head>
 <body>
+	<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
 	<main class="app">
-		<section class="panel">
+		<section class="app-header">
 			<div class="header-top">
 				<div>
 					<h1>Channel Pocket Price &amp; Profitability Calculator</h1>
 					<p class="module-tag">MKT 472 · M09 · App 1</p>
+					<p>Compare channel pocket price and profitability tradeoffs across Direct, Mixed, and Indirect structures.</p>
 				</div>
 				<div class="preset-row">
 					<button type="button" id="base-btn">Base Case</button>
@@ -299,6 +443,44 @@
 				</div>
 			</div>
 		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Learning Goal</h2>
+			<p>Compare channel profitability outcomes using pocket price, NMC, ROS, and ROI metrics. Evaluate how channel structure changes can shift ranking between NMC and ROI results. Interpret break-even share and margin-of-safety outputs for channel viability decisions.</p>
+		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Worksheet Quiz Instructions</h2>
+			<ol>
+				<li>Read the Canvas quiz question first.</li>
+				<li>Follow the preset, scenario, or modifications specified in the question.</li>
+				<li>Use this app to perform the required calculations and analysis.</li>
+				<li>Enter your answers in the Canvas quiz.</li>
+				<li>Answers are submitted through Canvas, not through this app.</li>
+			</ol>
+		</section>
+
+		<section class="required-callout" data-focus-hide>
+			<p class="required-label">Required for Quiz</p>
+			<p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default preset shown in this app. Default preset: Base Case.</p>
+		</section>
+
+		<details class="how-to" data-focus-hide>
+			<summary>How to Use This App</summary>
+			<ol>
+				<li>Choose a preset or adjust channel inputs for Direct, Mixed, and Indirect columns.</li>
+				<li>Review waterfall steps to confirm channel pocket price formation.</li>
+				<li>Compare profitability cards and aggregate metrics to evaluate channel tradeoffs.</li>
+				<li>Use chart and break-even bars to assess ROI, NMC, and margin-of-safety implications.</li>
+			</ol>
+		</details>
+
+		<section class="interactive-app" id="interactiveApp">
+			<div class="interactive-head">
+				<h2>Interactive App</h2>
+				<button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+			</div>
+			<p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
 
 		<section class="panel">
 			<h2>Inputs</h2>
@@ -333,7 +515,7 @@
 			<div class="viz-grid">
 				<div class="chart-card">
 					<h2>ROI vs. NMC - Are They the Same Channel?</h2>
-					<canvas id="roi-nmc-chart" height="300"></canvas>
+					<canvas id="roi-nmc-chart" height="300" style="max-height:320px;"></canvas>
 				</div>
 				<div class="break-card">
 					<h2>Break-even Market Share Bars</h2>
@@ -345,6 +527,14 @@
 				</div>
 			</div>
 		</section>
+		</section>
+
+		<section class="results-dashboard" aria-label="Results Dashboard">
+			<h2>Results / Dashboard</h2>
+			<p>Use waterfall outputs, profitability metrics, and break-even share comparisons to complete Canvas quiz responses.</p>
+		</section>
+
+		<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
 	</main>
 
 	<script>
@@ -432,6 +622,7 @@
 			const state = JSON.parse(JSON.stringify(BASE_CASE));
 
 			const refs = {
+				focusModeBtn: document.getElementById("focusModeBtn"),
 				inputGrid: document.getElementById("input-grid"),
 				waterfallBody: document.getElementById("waterfall-body"),
 				metricsGrid: document.getElementById("metrics-grid"),
@@ -865,6 +1056,13 @@
 			refs.baseBtn.addEventListener("click", () => applyPreset("base"));
 			refs.shiftBtn.addEventListener("click", () => applyPreset("shift"));
 			refs.resetBtn.addEventListener("click", () => applyPreset("base"));
+			if (refs.focusModeBtn) {
+				refs.focusModeBtn.addEventListener("click", function onFocusToggle() {
+					const enabled = document.body.classList.toggle("focus-mode");
+					refs.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+					refs.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+				});
+			}
 
 			renderInputs();
 			refs.marketDemand.value = String(BASE_CASE.marketDemand);

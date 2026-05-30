@@ -356,8 +356,7 @@ function initChart() {
     data: buildChartData(),
     options: {
       responsive: true,
-      maintainAspectRatio: true,
-      aspectRatio: 1.6,
+      maintainAspectRatio: false,
       plugins: {
         legend: {
           position: 'bottom',
@@ -398,6 +397,18 @@ function initChart() {
         },
       },
     },
+  });
+}
+
+/** Toggle focus mode to hide support cards while keeping interactive work area visible. */
+function wireFocusToggle() {
+  const btn = document.getElementById('focus-toggle');
+  if (!btn) return;
+
+  btn.addEventListener('click', () => {
+    const enabled = document.body.classList.toggle('focus-mode');
+    btn.textContent = enabled ? 'Exit Focus Mode' : 'Focus Mode';
+    btn.setAttribute('aria-pressed', String(enabled));
   });
 }
 
@@ -515,6 +526,7 @@ function init() {
   wireSliders();
   wirePresetButtons();
   wireQuantityButtons();
+  wireFocusToggle();
   syncPresetButtons();
   syncQuantityButtons();
   initChart();

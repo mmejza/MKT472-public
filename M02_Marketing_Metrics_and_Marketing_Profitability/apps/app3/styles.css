@@ -8,12 +8,63 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   color: #1a1a2e;
   background: #f5f7fa;
-  padding: 2rem;
-  max-width: 1000px;
+  padding: 0;
+  max-width: none;
   margin: 0 auto;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+  background: #0d1b4b;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  z-index: 1000;
+}
+
+.skip-link:focus {
+  left: 10px;
+  top: 10px;
+}
+
+.app-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.app-header,
+.info-card,
+.required-callout,
+.how-to,
+.interactive-app,
+.results-dashboard,
+.app-footer {
+  background: #fff;
+  border: 1px solid #d9deea;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+
+.app-header {
+  padding: 14px 16px;
+}
+
+.module-id {
+  margin: 0 0 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #5a6478;
 }
 
 /* ─── TITLE & INSTRUCTIONS ──────────────────────────────────────────────────── */
@@ -27,19 +78,119 @@ body {
 
 #instructions {
   color: #444;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   line-height: 1.5;
   max-width: 780px;
+}
+
+.info-card {
+  padding: 14px 16px;
+}
+
+.info-card h2,
+.interactive-head h2,
+.results-dashboard h2 {
+  margin: 0 0 8px;
+  font-size: 1.18rem;
+}
+
+.info-card p,
+.info-card li,
+.required-callout p,
+.how-to li,
+.results-dashboard__note {
+  font-size: 0.93rem;
+}
+
+.info-card ol,
+.how-to ol {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 4px;
+}
+
+.required-callout {
+  padding: 12px 16px;
+  border-left: 4px solid #0d1b4b;
+}
+
+.required-label {
+  margin: 0 0 3px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0d1b4b;
+}
+
+.required-callout p {
+  margin: 0;
+}
+
+.how-to {
+  padding: 12px 16px;
+}
+
+.how-to summary {
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.how-to[open] summary {
+  margin-bottom: 8px;
+}
+
+.interactive-app {
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.interactive-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.focus-btn {
+  border: 1px solid #0d1b4b;
+  background: #fff;
+  color: #0d1b4b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.quiz-workflow-banner {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px solid #0d1b4b;
+  border-radius: 6px;
+  background: #e9eefb;
+  color: #0d1b4b;
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+body.focus-mode [data-focus-hide] {
+  display: none;
 }
 
 /* ─── APP CONTAINER ─────────────────────────────────────────────────────────── */
 
 #appContainer {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
   padding: 0 0 1.5rem;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
   overflow: hidden;
 }
 
@@ -66,6 +217,15 @@ body {
 .tab-btn:hover {
   color: #0d1b4b;
   background: #e4e9f8;
+}
+
+.tab-btn:focus-visible,
+#resetBtn:focus-visible,
+.focus-btn:focus-visible,
+.how-to summary:focus-visible,
+.ta-input-row input[type="number"]:focus-visible {
+  outline: 3px solid #1f6fb8;
+  outline-offset: 2px;
 }
 
 .tab-btn.active {
@@ -362,6 +522,8 @@ body {
   border: 1px solid #d0d8f0;
   border-radius: 8px;
   padding: 1rem;
+  max-height: 320px;
+  overflow: auto;
 }
 
 .scatter-title {
@@ -472,10 +634,32 @@ body {
   background: #545b62;
 }
 
+.results-dashboard {
+  padding: 12px;
+}
+
+.results-dashboard__note {
+  margin: 0;
+  color: #555;
+}
+
+.app-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px;
+}
+
+.canvas-reminder {
+  margin: 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #5a6478;
+}
+
 /* ─── RESPONSIVE ────────────────────────────────────────────────────────────── */
 
 @media (max-width: 700px) {
-  body { padding: 1rem; }
+  .app-shell { padding: 12px; }
 
   #appContainer { padding-bottom: 1rem; }
 
@@ -486,4 +670,14 @@ body {
   .scatter-charts { grid-template-columns: 1fr; }
 
   .ta-output-grid { grid-template-columns: 1fr; }
+
+  .app-header,
+  .info-card,
+  .required-callout,
+  .how-to,
+  .interactive-app,
+  .results-dashboard,
+  .app-footer {
+    padding: 12px;
+  }
 }

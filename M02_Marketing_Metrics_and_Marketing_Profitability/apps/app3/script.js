@@ -425,6 +425,8 @@ function buildScatterPlot(metric) {
   wrap.appendChild(el('h4', { className: 'scatter-title', textContent: title }));
 
   const chartArea = el('div', { className: 'scatter-chart' });
+  chartArea.style.maxHeight = '300px';
+  chartArea.style.overflow = 'auto';
 
   const values = COMPETITORS.map(c => c[metric]);
   const maxVal = Math.max(...values) * 1.2;
@@ -519,6 +521,15 @@ document.addEventListener('DOMContentLoaded', () => {
   buildTabB();
 
   document.getElementById('resetBtn').addEventListener('click', reset);
+
+  const focusModeBtn = document.getElementById('focusModeBtn');
+  if (focusModeBtn) {
+    focusModeBtn.addEventListener('click', () => {
+      const enabled = document.body.classList.toggle('focus-mode');
+      focusModeBtn.textContent = enabled ? 'Exit Focus Mode' : 'Focus Mode';
+      focusModeBtn.setAttribute('aria-pressed', String(enabled));
+    });
+  }
 
   switchTab('tabA');
 });

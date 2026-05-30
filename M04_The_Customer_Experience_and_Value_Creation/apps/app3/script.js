@@ -185,6 +185,7 @@ FILES
 
   var state = {
     attributes: [],
+    focusMode: false,
     strategyA: {
       selections: [],
       pricePremium: 40
@@ -254,10 +255,28 @@ FILES
   function init() {
     applyPreset();
     bindPresetControls();
+    bindFocusMode();
     buildEditor();
     buildStrategyControls();
     initCharts();
     updateAll();
+  }
+
+  function bindFocusMode() {
+    var focusBtn = document.getElementById("focus-mode-btn");
+    var status = document.getElementById("focus-mode-status");
+
+    if (!focusBtn || !status) {
+      return;
+    }
+
+    focusBtn.addEventListener("click", function () {
+      state.focusMode = !state.focusMode;
+      document.body.classList.toggle("focus-mode", state.focusMode);
+      focusBtn.textContent = state.focusMode ? "Exit Focus Mode" : "Focus Mode";
+      focusBtn.setAttribute("aria-label", state.focusMode ? "Exit focus mode" : "Enter focus mode");
+      status.textContent = state.focusMode ? "Focus mode on" : "Focus mode off";
+    });
   }
 
   function deepCopyPresetAttributes() {

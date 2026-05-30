@@ -256,6 +256,7 @@ ACCEPTANCE TESTS
 	};
 
 	const ui = {
+		focusModeBtn: document.querySelector("#focusModeBtn"),
 		activeScenario: document.querySelector("#active-scenario"),
 		presetButtons: document.querySelectorAll("button[data-preset]"),
 		resetBtn: document.querySelector("#reset-btn"),
@@ -663,6 +664,14 @@ ACCEPTANCE TESTS
 				recompute();
 			});
 		});
+
+		if (ui.focusModeBtn) {
+			ui.focusModeBtn.addEventListener("click", function onFocusToggle() {
+				const enabled = document.body.classList.toggle("focus-mode");
+				ui.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+				ui.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+			});
+		}
 	}
 
 	setTab("a");

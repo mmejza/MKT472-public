@@ -254,6 +254,7 @@ ACCEPTANCE TESTS
   };
 
   const els = {
+    focusModeBtn: document.querySelector("#focusModeBtn"),
     formMessage: document.querySelector("#form-message"),
     tableBody: document.querySelector("#cost-table-body"),
     metricsList: document.querySelector("#metrics-list"),
@@ -517,6 +518,14 @@ ACCEPTANCE TESTS
       loadPreset("base");
       els.formMessage.textContent = "Reset to Base Case defaults.";
     });
+
+    if (els.focusModeBtn) {
+      els.focusModeBtn.addEventListener("click", function onFocusToggle() {
+        const enabled = document.body.classList.toggle("focus-mode");
+        els.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+        els.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+      });
+    }
   }
 
   wireInputs();

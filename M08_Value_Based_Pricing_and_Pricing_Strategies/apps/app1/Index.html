@@ -7,7 +7,53 @@
 	<link rel="stylesheet" href="styles.css">
 </head>
 <body>
+	<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
 	<main class="app-shell">
+		<header class="app-header">
+			<p class="module-label">MKT 472 · Module 8 · App 1</p>
+			<h1>Value-in-Use / Economic Value Calculator</h1>
+			<p class="intro">Compare purchase price vs. total cost of ownership and test whether a firm premium is economically justified.</p>
+		</header>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Learning Goal</h2>
+			<p>Evaluate whether a higher purchase price is justified by total ownership savings over time. Compare annual and discounted economic value across firm and competitor offers. Interpret price premium decisions using EV-based metrics instead of price alone.</p>
+		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Worksheet Quiz Instructions</h2>
+			<ol>
+				<li>Read the Canvas quiz question first.</li>
+				<li>Follow the preset, scenario, or modifications specified in the question.</li>
+				<li>Use this app to perform the required calculations and analysis.</li>
+				<li>Enter your answers in the Canvas quiz.</li>
+				<li>Answers are submitted through Canvas, not through this app.</li>
+			</ol>
+		</section>
+
+		<section class="required-callout" data-focus-hide>
+			<p class="required-label">Required for Quiz</p>
+			<p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default preset shown in this app. Default preset: Base Case.</p>
+		</section>
+
+		<details class="how-to" data-focus-hide>
+			<summary>How to Use This App</summary>
+			<ol>
+				<li>Load a preset or enter competitor and firm costs for each ownership component.</li>
+				<li>Set product life, discount rate, and annual volume to match the quiz scenario.</li>
+				<li>Review the ownership table and summary metrics, including NPV of savings.</li>
+				<li>Use the verdict and cost chart to judge whether the firm premium is justified.</li>
+			</ol>
+		</details>
+
+		<section class="interactive-app" id="interactiveApp">
+			<div class="interactive-head">
+				<h2>Interactive App</h2>
+				<button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+			</div>
+			<p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
+
+			<div class="app-grid">
 		<section class="col inputs-col">
 			<h1>Value-in-Use / Economic Value Calculator</h1>
 			<p class="intro">Compare purchase price vs. total cost of ownership and test whether a firm premium is economically justified.</p>
@@ -123,6 +169,15 @@
 			<div id="tco-chart" class="stack-chart" role="img" aria-label="Horizontal stacked total cost of ownership comparison for competitor and firm."></div>
 			<div id="chart-legend" class="legend"></div>
 		</section>
+			</div>
+		</section>
+
+		<section class="results-dashboard" aria-label="Results Dashboard">
+			<h2>Results / Dashboard</h2>
+			<p>Use ownership totals, EV metrics, and price-premium verdict outputs to complete Canvas quiz responses.</p>
+		</section>
+
+		<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
 	</main>
 
 	<script src="script.js"></script>

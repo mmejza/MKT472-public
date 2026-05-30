@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Segment Portfolio Optimizer</title>
+	<link rel="stylesheet" href="styles.css" />
 	<style>
 		:root {
 			--bg-a: #f4f6fb;
@@ -32,10 +33,26 @@
 		}
 
 		.app-shell {
-			width: min(1320px, 96vw);
+			width: min(1100px, 96vw);
 			margin: 1rem auto 2rem;
 			display: grid;
 			gap: 1rem;
+		}
+
+		.skip-link {
+			position: absolute;
+			left: -999px;
+			top: -999px;
+			background: #2b6cb0;
+			color: #fff;
+			padding: 0.45rem 0.7rem;
+			border-radius: 8px;
+			z-index: 1000;
+		}
+
+		.skip-link:focus {
+			left: 0.7rem;
+			top: 0.7rem;
 		}
 
 		.hero,
@@ -54,6 +71,10 @@
 		h2,
 		h3 {
 			margin: 0;
+		}
+
+		.hero h1 {
+			font-size: clamp(1.3rem, 2vw, 1.6rem);
 		}
 
 		.hero p {
@@ -101,6 +122,88 @@
 
 		button:hover {
 			filter: brightness(0.98);
+		}
+
+		.quiz-card,
+		.required-callout,
+		.how-to,
+		.interactive-app,
+		.results-dashboard,
+		.canvas-reminder {
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			background: var(--panel);
+			box-shadow: var(--shadow);
+			padding: 0.9rem;
+		}
+
+		.quiz-card h2,
+		.interactive-head h2,
+		.results-dashboard h2 {
+			margin: 0 0 0.5rem;
+			font-size: 1.2rem;
+		}
+
+		.quiz-card ol,
+		.how-to ol {
+			margin: 0;
+			padding-left: 1.2rem;
+			display: grid;
+			gap: 0.2rem;
+		}
+
+		.required-callout {
+			border-left: 4px solid var(--accent);
+		}
+
+		.required-label {
+			margin: 0 0 0.2rem;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--accent);
+		}
+
+		.how-to summary {
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		.how-to[open] summary {
+			margin-bottom: 0.45rem;
+		}
+
+		.interactive-app {
+			display: grid;
+			gap: 0.8rem;
+		}
+
+		.interactive-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.focus-btn {
+			border: 1px solid #8ea0c7;
+			border-radius: 10px;
+			background: #e8eefc;
+			color: #1f3e73;
+			padding: 0.4rem 0.7rem;
+			cursor: pointer;
+		}
+
+		.quiz-workflow-banner {
+			margin: 0;
+			border: 1px solid #98abd3;
+			border-radius: 10px;
+			background: #edf3ff;
+			padding: 0.5rem 0.65rem;
+			font-weight: 700;
+			font-size: 0.92rem;
 		}
 
 		.tabs {
@@ -204,7 +307,25 @@
 
 		canvas {
 			width: 100%;
-			max-height: 360px;
+			max-height: 320px;
+		}
+
+		.results-dashboard__note {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.9rem;
+		}
+
+		.canvas-reminder {
+			padding-top: 0.6rem;
+			padding-bottom: 0.6rem;
+			text-align: center;
+			font-size: 0.82rem;
+			color: var(--muted);
+		}
+
+		body.focus-mode [data-focus-hide] {
+			display: none;
 		}
 
 		.callout {
@@ -240,12 +361,23 @@
 			.tabs {
 				flex-wrap: wrap;
 			}
+
+			.quiz-card,
+			.required-callout,
+			.how-to,
+			.interactive-app,
+			.results-dashboard,
+			.canvas-reminder {
+				padding: 0.85rem;
+			}
 		}
 	</style>
 </head>
 <body>
+	<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
 	<main class="app-shell">
 		<section class="hero">
+			<p class="required-label">MKT 472 · Module 5 · App 3</p>
 			<h1>Segment Portfolio Optimizer</h1>
 			<p>Compare segment choices with NMC, Marketing ROS, and Marketing ROI. This app highlights that absolute NMC and resource-constrained ROI can point to different choices.</p>
 			<div class="preset-row">
@@ -259,6 +391,44 @@
 				<button id="reload-preset" type="button">Reload Preset Values</button>
 			</div>
 		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Learning Goal</h2>
+			<p>Compare segment options using NMC, Marketing ROS, and Marketing ROI to see how ranking changes across decision criteria. Examine when absolute NMC and resource-constrained ROI indicate different segment choices. Use the optimizer combinations to justify a portfolio recommendation.</p>
+		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Worksheet Quiz Instructions</h2>
+			<ol>
+				<li>Read the Canvas quiz question first.</li>
+				<li>Follow the preset, scenario, or modifications specified in the question.</li>
+				<li>Use this app to perform the required calculations and analysis.</li>
+				<li>Enter your answers in the Canvas quiz.</li>
+				<li>Answers are submitted through Canvas, not through this app.</li>
+			</ol>
+		</section>
+
+		<section class="required-callout" data-focus-hide>
+			<p class="required-label">Required for Quiz</p>
+			<p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default preset shown in this app. Default preset: Silicon Sealants.</p>
+		</section>
+
+		<details class="how-to" data-focus-hide>
+			<summary>How to Use This App</summary>
+			<ol>
+				<li>Select a preset and optionally reload its baseline values.</li>
+				<li>Edit segment inputs in Tab A to set demand, share, price, margin, and M&amp;S percentages.</li>
+				<li>Open Tab B to review calculated NMC, ROS, and ROI outputs plus the dual-axis comparison chart.</li>
+				<li>Open Tab C to compare all portfolio combinations by total NMC and average ROI.</li>
+			</ol>
+		</details>
+
+		<section class="interactive-app" id="interactiveApp">
+			<div class="interactive-head">
+				<h2>Interactive App</h2>
+				<button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+			</div>
+			<p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
 
 		<section class="tabs" aria-label="App Tabs">
 			<button class="tab-btn active" data-tab="inputs" type="button">Tab A - Segment Inputs</button>
@@ -318,9 +488,18 @@
 			<h2>QA Checks</h2>
 			<ul id="qa-list"></ul>
 		</section>
+		</section>
+
+		<section class="results-dashboard" aria-label="Results Dashboard">
+			<h2>Results / Dashboard</h2>
+			<p class="results-dashboard__note">Use calculated outputs, chart comparisons, and portfolio recommendations to finalize answers in Canvas.</p>
+		</section>
+
+		<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
 	</main>
 
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+	<script src="script.js"></script>
 	<script>
 		(function initSegmentPortfolioOptimizer() {
 			const PRESETS = {

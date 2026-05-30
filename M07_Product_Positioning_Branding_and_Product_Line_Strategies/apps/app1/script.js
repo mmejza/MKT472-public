@@ -374,6 +374,7 @@ END SOURCE OF TRUTH
   };
 
   const els = {
+    focusModeBtn: document.querySelector("#focusModeBtn"),
     tabButtons: document.querySelectorAll(".tab-btn"),
     tabPanels: {
       cvh: document.querySelector("#tab-cvh"),
@@ -715,6 +716,14 @@ END SOURCE OF TRUTH
     });
 
     els.analyzePop.addEventListener("click", analyzePopsPods);
+
+    if (els.focusModeBtn) {
+      els.focusModeBtn.addEventListener("click", function onFocusToggle() {
+        const enabled = document.body.classList.toggle("focus-mode");
+        els.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+        els.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+      });
+    }
   }
 
   wireEvents();

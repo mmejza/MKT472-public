@@ -351,5 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('resetBtn').addEventListener('click', () => applyPreset('base'));
 
+  const focusModeBtn = document.getElementById('focusModeBtn');
+  if (focusModeBtn) {
+    focusModeBtn.addEventListener('click', () => {
+      const enabled = document.body.classList.toggle('focus-mode');
+      focusModeBtn.textContent = enabled ? 'Exit Focus Mode' : 'Focus Mode';
+      focusModeBtn.setAttribute('aria-pressed', String(enabled));
+    });
+  }
+
   applyPreset('base');
 });

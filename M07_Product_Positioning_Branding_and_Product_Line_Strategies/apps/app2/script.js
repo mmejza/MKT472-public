@@ -258,6 +258,7 @@ END SOURCE OF TRUTH
 	};
 
 	const els = {
+		focusModeBtn: document.querySelector("#focusModeBtn"),
 		tabButtons: document.querySelectorAll(".tab-btn"),
 		panels: {
 			assets: document.querySelector("#tab-assets"),
@@ -586,6 +587,14 @@ END SOURCE OF TRUTH
 		els.resetAll.addEventListener("click", resetNeutral);
 		els.runSpike.addEventListener("click", runSpike);
 		els.resetSpike.addEventListener("click", resetSpikeView);
+
+		if (els.focusModeBtn) {
+			els.focusModeBtn.addEventListener("click", function onFocusToggle() {
+				const enabled = document.body.classList.toggle("focus-mode");
+				els.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+				els.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+			});
+		}
 	}
 
 	wireEvents();

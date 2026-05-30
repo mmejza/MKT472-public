@@ -7,13 +7,62 @@
 	<link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+	<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
 	<main class="app-shell" aria-label="PLC Diagnostor">
 		<header class="app-header">
+			<p class="module-id">MKT 472 · Module 3 · App 2</p>
 			<h1>Product Life-Cycle Stage Diagnostor</h1>
 			<p>
-				Diagnose PLC stage from observable indicators and compare demand, GP, and NMC timing.
+				Diagnose PLC stage from observable indicators to interpret demand, GP, and NMC timing patterns.
 			</p>
 		</header>
+
+		<section class="info-card" data-focus-hide aria-labelledby="learning-goal-title">
+			<h2 id="learning-goal-title">Learning Goal</h2>
+			<p>
+				Use market indicators to identify the most likely PLC stage and evaluate confidence in the diagnosis.
+				Connect stage conditions to strategy guidance and timing differences between NMC and demand peaks.
+			</p>
+		</section>
+
+		<section class="info-card" data-focus-hide aria-labelledby="quiz-instructions-title">
+			<h2 id="quiz-instructions-title">Worksheet Quiz Instructions</h2>
+			<ol>
+				<li>Read the Canvas quiz question first.</li>
+				<li>Follow the preset, scenario, or modifications specified in the question.</li>
+				<li>Use this app to perform the required calculations and analysis.</li>
+				<li>Enter your answers in the Canvas quiz.</li>
+				<li>Answers are submitted through Canvas, not through this app.</li>
+			</ol>
+		</section>
+
+		<section class="required-callout" data-focus-hide aria-label="Required for Quiz">
+			<p class="required-label">Required for Quiz</p>
+			<p>
+				The Canvas quiz question determines which preset, scenario, or modifications to use. If a question
+				does not specify otherwise, begin with the default preset shown in this app. Default preset: Introduction.
+			</p>
+		</section>
+
+		<details class="how-to" data-focus-hide>
+			<summary>How to Use This App</summary>
+			<ol>
+				<li>Choose a preset or adjust sliders and trend selectors to match the scenario.</li>
+				<li>Review diagnosed stage and confidence after each input change.</li>
+				<li>Use the strategy card and indicator summary table to check stage consistency.</li>
+				<li>Interpret the trajectory chart and optional GP overlay for timing relationships.</li>
+			</ol>
+		</details>
+
+		<section class="interactive-app" id="interactiveApp" aria-label="Interactive App">
+			<div class="interactive-head">
+				<h2>Interactive App</h2>
+				<button id="focusModeBtn" type="button" class="focus-btn" aria-pressed="false">Focus Mode</button>
+			</div>
+
+			<p class="quiz-workflow-banner" aria-label="Quiz workflow">
+				Quiz Workflow: Read Question → Use App → Submit Answer
+			</p>
 
 		<section class="preset-section" aria-label="PLC Presets">
 			<div class="preset-buttons">
@@ -26,7 +75,6 @@
 			<p id="presetInfo" class="preset-info"></p>
 		</section>
 
-		<section class="grid-two">
 			<section class="panel" aria-label="Diagnosis Inputs">
 				<h2>Diagnosis Inputs</h2>
 
@@ -82,7 +130,9 @@
 					</select>
 				</div>
 			</section>
+		</section>
 
+		<section class="results-dashboard" aria-label="Results Dashboard">
 			<section class="panel" aria-label="Diagnosis Output">
 				<h2>Diagnosed Stage</h2>
 
@@ -106,9 +156,8 @@
 					<ul id="strategyList"></ul>
 				</article>
 			</section>
-		</section>
 
-		<section class="panel" aria-label="Stage Indicator Summary">
+			<section class="panel" aria-label="Stage Indicator Summary">
 			<h2>Stage Indicator Summary</h2>
 			<table class="summary-table">
 				<thead>
@@ -121,9 +170,9 @@
 				</thead>
 				<tbody id="summaryTableBody"></tbody>
 			</table>
-		</section>
+			</section>
 
-		<section class="panel" aria-label="NMC Trajectory Chart">
+			<section class="panel" aria-label="NMC Trajectory Chart">
 			<div class="chart-header">
 				<h2>NMC Trajectory Chart</h2>
 				<label class="toggle-wrap" for="showGpOverlay">
@@ -135,11 +184,16 @@
 			<p class="chart-note">
 				NMC peaks in Late Growth and Demand peaks in Maturity.
 			</p>
+			</section>
+
+			<footer class="app-footer">
+				<button id="resetBtn" type="button">Reset to Introduction</button>
+			</footer>
 		</section>
 
-		<footer class="app-footer">
-			<button id="resetBtn" type="button">Reset to Introduction</button>
-		</footer>
+		<p class="canvas-reminder" aria-label="Canvas submission reminder">
+			Submit final answers through the Canvas quiz questions below the app.
+		</p>
 	</main>
 
 	<script src="script.js"></script>

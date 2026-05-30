@@ -109,3 +109,16 @@ GLOBAL:
 - No external APIs.
 - If behavior conflicts with the spec, the spec wins.
 */
+
+document.addEventListener("DOMContentLoaded", () => {
+    const focusModeBtn = document.getElementById("focusModeBtn");
+    if (!focusModeBtn) {
+        return;
+    }
+
+    focusModeBtn.addEventListener("click", () => {
+        const enabled = document.body.classList.toggle("focus-mode");
+        focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+        focusModeBtn.setAttribute("aria-pressed", String(enabled));
+    });
+});

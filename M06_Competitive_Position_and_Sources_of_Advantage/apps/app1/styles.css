@@ -26,10 +26,26 @@ body {
 }
 
 .app-shell {
-	width: min(1200px, 95vw);
+	width: min(1100px, 95vw);
 	margin: 1.5rem auto 2rem;
 	display: grid;
 	gap: 1rem;
+}
+
+.skip-link {
+	position: absolute;
+	left: -999px;
+	top: -999px;
+	background: #2f5aa6;
+	color: #fff;
+	padding: 0.45rem 0.7rem;
+	border-radius: 8px;
+	z-index: 1000;
+}
+
+.skip-link:focus {
+	left: 0.7rem;
+	top: 0.7rem;
 }
 
 .app-header {
@@ -42,8 +58,17 @@ body {
 
 .app-header h1 {
 	margin: 0;
-	font-size: clamp(1.4rem, 2.2vw, 2rem);
+	font-size: clamp(1.35rem, 2vw, 1.6rem);
 	letter-spacing: 0.02em;
+}
+
+.module-label {
+	margin: 0 0 0.2rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: #2f5aa6;
 }
 
 .app-header p {
@@ -57,6 +82,108 @@ body {
 	border-radius: var(--radius);
 	box-shadow: var(--shadow);
 	padding: 1rem;
+}
+
+.quiz-card,
+.required-callout,
+.how-to,
+.interactive-app,
+.results-dashboard,
+.canvas-reminder {
+	background: var(--panel);
+	border: 1px solid var(--line);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+	padding: 1rem;
+}
+
+.quiz-card h2,
+.interactive-head h2,
+.results-dashboard h2 {
+	margin: 0 0 0.55rem;
+	font-size: 1.2rem;
+}
+
+.quiz-card ol,
+.how-to ol {
+	margin: 0;
+	padding-left: 1.2rem;
+	display: grid;
+	gap: 0.2rem;
+}
+
+.required-callout {
+	border-left: 4px solid var(--info);
+}
+
+.required-label {
+	margin: 0 0 0.2rem;
+	font-size: 0.78rem;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--info);
+}
+
+.how-to summary {
+	cursor: pointer;
+	font-weight: 700;
+}
+
+.how-to[open] summary {
+	margin-bottom: 0.45rem;
+}
+
+.interactive-app {
+	display: grid;
+	gap: 0.9rem;
+}
+
+.interactive-head {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 0.6rem;
+	flex-wrap: wrap;
+}
+
+.focus-btn {
+	border: 1px solid #b7a989;
+	border-radius: 10px;
+	background: #fffdf9;
+	color: var(--text);
+	padding: 0.42rem 0.55rem;
+	font: inherit;
+	cursor: pointer;
+}
+
+.quiz-workflow-banner {
+	margin: 0;
+	border: 1px solid #b7a989;
+	border-radius: 10px;
+	background: #f8f1e3;
+	padding: 0.5rem 0.65rem;
+	font-size: 0.92rem;
+	font-weight: 700;
+	color: #4e3f1f;
+}
+
+.results-dashboard p {
+	margin: 0;
+	color: var(--muted);
+	font-size: 0.9rem;
+}
+
+.canvas-reminder {
+	padding-top: 0.6rem;
+	padding-bottom: 0.6rem;
+	text-align: center;
+	font-size: 0.82rem;
+	color: var(--muted);
+}
+
+body.focus-mode [data-focus-hide] {
+	display: none;
 }
 
 h2 {
@@ -91,9 +218,19 @@ input[type="text"] {
 }
 
 input:focus,
-select:focus {
+select:focus,
+button:focus,
+summary:focus {
 	outline: 2px solid #d7922f;
 	outline-offset: 1px;
+}
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+	outline: 3px solid #1f6fb8;
+	outline-offset: 2px;
 }
 
 .input-groups {
@@ -315,5 +452,14 @@ select:focus {
 	.ca-grid,
 	.sensitivity-grid {
 		grid-template-columns: 1fr;
+	}
+
+	.quiz-card,
+	.required-callout,
+	.how-to,
+	.interactive-app,
+	.results-dashboard,
+	.canvas-reminder {
+		padding: 0.9rem;
 	}
 }

@@ -3,6 +3,7 @@
 (function () {
   var state = {
     activeTab: "A",
+    focusMode: false,
     signAcknowledged: false,
     weights: {
       product: 0.6,
@@ -76,9 +77,27 @@
     bindTabEvents();
     bindWeightEvents();
     bindSignCheckButton();
+    bindFocusMode();
     initChart();
 
     recalculateAll();
+  }
+
+  function bindFocusMode() {
+    var focusBtn = document.getElementById("focus-mode-btn");
+    var status = document.getElementById("focus-mode-status");
+
+    if (!focusBtn || !status) {
+      return;
+    }
+
+    focusBtn.addEventListener("click", function () {
+      state.focusMode = !state.focusMode;
+      document.body.classList.toggle("focus-mode", state.focusMode);
+      focusBtn.textContent = state.focusMode ? "Exit Focus Mode" : "Focus Mode";
+      focusBtn.setAttribute("aria-label", state.focusMode ? "Exit focus mode" : "Enter focus mode");
+      status.textContent = state.focusMode ? "Focus mode on" : "Focus mode off";
+    });
   }
 
   function cloneRows(rows) {

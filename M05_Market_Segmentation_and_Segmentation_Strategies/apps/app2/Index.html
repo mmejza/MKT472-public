@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Segment Attractiveness Scorer</title>
+	<link rel="stylesheet" href="styles.css" />
 	<style>
 		:root {
 			--bg-a: #f7f5ee;
@@ -33,10 +34,26 @@
 		}
 
 		.app-shell {
-			width: min(1300px, 96vw);
+			width: min(1100px, 96vw);
 			margin: 1rem auto 2rem;
 			display: grid;
 			gap: 1rem;
+		}
+
+		.skip-link {
+			position: absolute;
+			left: -999px;
+			top: -999px;
+			background: #2a677f;
+			color: #fff;
+			padding: 0.45rem 0.7rem;
+			border-radius: 8px;
+			z-index: 1000;
+		}
+
+		.skip-link:focus {
+			left: 0.7rem;
+			top: 0.7rem;
 		}
 
 		.hero,
@@ -55,6 +72,10 @@
 		h2,
 		h3 {
 			margin: 0;
+		}
+
+		.hero h1 {
+			font-size: clamp(1.3rem, 2vw, 1.6rem);
 		}
 
 		.hero p {
@@ -104,6 +125,106 @@
 			color: #3f3520;
 			padding: 0.44rem 0.7rem;
 			cursor: pointer;
+		}
+
+		.quiz-card,
+		.required-callout,
+		.how-to,
+		.interactive-app,
+		.results-dashboard,
+		.canvas-reminder {
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			background: var(--panel);
+			box-shadow: var(--shadow);
+			padding: 0.9rem;
+		}
+
+		.quiz-card h2,
+		.interactive-head h2,
+		.results-dashboard h2 {
+			margin: 0 0 0.5rem;
+			font-size: 1.2rem;
+		}
+
+		.quiz-card ol,
+		.how-to ol {
+			margin: 0;
+			padding-left: 1.2rem;
+			display: grid;
+			gap: 0.2rem;
+		}
+
+		.required-callout {
+			border-left: 4px solid var(--accent);
+		}
+
+		.required-label {
+			margin: 0 0 0.2rem;
+			font-size: 0.78rem;
+			font-weight: 700;
+			letter-spacing: 0.06em;
+			text-transform: uppercase;
+			color: var(--accent);
+		}
+
+		.how-to summary {
+			cursor: pointer;
+			font-weight: 700;
+		}
+
+		.how-to[open] summary {
+			margin-bottom: 0.45rem;
+		}
+
+		.interactive-app {
+			display: grid;
+			gap: 0.8rem;
+		}
+
+		.interactive-head {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 0.6rem;
+			flex-wrap: wrap;
+		}
+
+		.focus-btn {
+			border: 1px solid #a8976f;
+			border-radius: 10px;
+			background: #efe7d1;
+			color: #3f3520;
+			padding: 0.44rem 0.7rem;
+			cursor: pointer;
+		}
+
+		.quiz-workflow-banner {
+			margin: 0;
+			border: 1px solid #a8976f;
+			border-radius: 10px;
+			background: #f4ecd8;
+			padding: 0.5rem 0.65rem;
+			font-weight: 700;
+			font-size: 0.92rem;
+		}
+
+		.results-dashboard__note {
+			margin: 0;
+			color: var(--muted);
+			font-size: 0.9rem;
+		}
+
+		.canvas-reminder {
+			padding-top: 0.6rem;
+			padding-bottom: 0.6rem;
+			text-align: center;
+			font-size: 0.82rem;
+			color: var(--muted);
+		}
+
+		body.focus-mode [data-focus-hide] {
+			display: none;
 		}
 
 		.weights-note {
@@ -203,12 +324,23 @@
 			.output-grid {
 				grid-template-columns: 1fr;
 			}
+
+			.quiz-card,
+			.required-callout,
+			.how-to,
+			.interactive-app,
+			.results-dashboard,
+			.canvas-reminder {
+				padding: 0.85rem;
+			}
 		}
 	</style>
 </head>
 <body>
+	<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
 	<main class="app-shell">
 		<section class="hero">
+			<p class="required-label">MKT 472 · Module 5 · App 2</p>
 			<h1>Segment Attractiveness Scorer</h1>
 			<p>Compare two segments using demand, competitive intensity, and access. This tool is designed to expose the size trap: the biggest segment can still be less attractive.</p>
 			<div class="preset-row">
@@ -223,6 +355,44 @@
 				<button type="button" id="reset-btn">Reset to 1</button>
 			</div>
 		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Learning Goal</h2>
+			<p>Evaluate segment attractiveness using weighted demand, competitive intensity, and market access factors. Compare segment scores to identify when a larger segment is still less attractive. Use driver summaries and QA checks to justify segment selection.</p>
+		</section>
+
+		<section class="quiz-card" data-focus-hide>
+			<h2>Worksheet Quiz Instructions</h2>
+			<ol>
+				<li>Read the Canvas quiz question first.</li>
+				<li>Follow the preset, scenario, or modifications specified in the question.</li>
+				<li>Use this app to perform the required calculations and analysis.</li>
+				<li>Enter your answers in the Canvas quiz.</li>
+				<li>Answers are submitted through Canvas, not through this app.</li>
+			</ol>
+		</section>
+
+		<section class="required-callout" data-focus-hide>
+			<p class="required-label">Required for Quiz</p>
+			<p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default preset shown in this app. Default preset: Base Case / Health Insurance Parallel.</p>
+		</section>
+
+		<details class="how-to" data-focus-hide>
+			<summary>How to Use This App</summary>
+			<ol>
+				<li>Load a preset or enter manual scores from 1 to 10 for both segments.</li>
+				<li>Review demand, intensity, and access averages for each segment.</li>
+				<li>Compare weighted attractiveness totals and winner margin.</li>
+				<li>Use driver and QA lines to validate the recommendation.</li>
+			</ol>
+		</details>
+
+		<section class="interactive-app" id="interactiveApp">
+			<div class="interactive-head">
+				<h2>Interactive App</h2>
+				<button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+			</div>
+			<p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
 
 		<section class="panel" aria-labelledby="input-title">
 			<h2 id="input-title">Two-Segment Inputs</h2>
@@ -308,7 +478,17 @@
 			<h2 id="qa-title">QA Checks</h2>
 			<ul id="qa-list"></ul>
 		</section>
+		</section>
+
+		<section class="results-dashboard" aria-label="Results Dashboard">
+			<h2>Results Dashboard</h2>
+			<p class="results-dashboard__note">Use the outputs, comparison result, and QA checks to confirm segment attractiveness before entering quiz answers.</p>
+		</section>
+
+		<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
 	</main>
+
+	<script src="script.js"></script>
 
 	<script>
 		(function initSegmentAttractivenessScorer() {

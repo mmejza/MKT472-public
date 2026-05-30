@@ -466,14 +466,14 @@ function renderPortfolioPlot(sdi, mdi, productLabel) {
 
    const x = Math.max(0, Math.min(100, sdi));
    const y = Math.max(0, Math.min(100, mdi));
-   const svgSize = 360;
+   const svgSize = 320;
    const pad = 34;
    const inner = svgSize - pad * 2;
    const px = pad + (x / 100) * inner;
    const py = pad + (1 - y / 100) * inner;
 
    plot.innerHTML = `
-      <svg viewBox="0 0 ${svgSize} ${svgSize}" width="100%" height="360" role="img" aria-label="SDI MDI portfolio plot">
+      <svg viewBox="0 0 ${svgSize} ${svgSize}" width="100%" height="320" role="img" aria-label="SDI MDI portfolio plot">
          <rect x="${pad}" y="${pad}" width="${inner}" height="${inner}" fill="#fff" stroke="#cbd5e1" />
          <line x1="${pad + inner / 2}" y1="${pad}" x2="${pad + inner / 2}" y2="${pad + inner}" stroke="#94a3b8" stroke-dasharray="4 4" />
          <line x1="${pad}" y1="${pad + inner / 2}" x2="${pad + inner}" y2="${pad + inner / 2}" stroke="#94a3b8" stroke-dasharray="4 4" />
@@ -631,6 +631,15 @@ function bindEvents() {
    document.getElementById("showSdiTrajectory").addEventListener("change", syncTabB);
 
    document.getElementById("resetBtn").addEventListener("click", () => applyPreset("textbook"));
+
+   const focusModeBtn = document.getElementById("focusModeBtn");
+   if (focusModeBtn) {
+      focusModeBtn.addEventListener("click", () => {
+         const enabled = document.body.classList.toggle("focus-mode");
+         focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+         focusModeBtn.setAttribute("aria-pressed", String(enabled));
+      });
+   }
 }
 
 function init() {

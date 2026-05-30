@@ -255,6 +255,7 @@ END SOURCE OF TRUTH
 	};
 
 	const els = {
+		focusModeBtn: document.querySelector("#focusModeBtn"),
 		tabs: document.querySelectorAll(".tab-btn"),
 		panels: {
 			roa: document.querySelector("#tab-roa"),
@@ -536,6 +537,14 @@ END SOURCE OF TRUTH
 			node.addEventListener("input", classifyStrategy);
 			node.addEventListener("change", classifyStrategy);
 		});
+
+		if (els.focusModeBtn) {
+			els.focusModeBtn.addEventListener("click", function onFocusToggle() {
+				const enabled = document.body.classList.toggle("focus-mode");
+				els.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+				els.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+			});
+		}
 	}
 
 	wireEvents();

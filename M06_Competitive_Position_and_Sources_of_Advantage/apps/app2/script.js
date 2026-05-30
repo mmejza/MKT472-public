@@ -146,6 +146,7 @@ GLOBAL:
   };
 
   const els = {
+    focusModeBtn: document.querySelector("#focusModeBtn"),
     inputsA: document.querySelector("#inputs-a"),
     inputsB: document.querySelector("#inputs-b"),
     enableB: document.querySelector("#enable-b"),
@@ -551,6 +552,14 @@ GLOBAL:
     els.presetB.addEventListener("change", function onPresetB(event) {
       applyPreset("b", event.target.value);
     });
+
+    if (els.focusModeBtn) {
+      els.focusModeBtn.addEventListener("click", function onFocusToggle() {
+        const enabled = document.body.classList.toggle("focus-mode");
+        els.focusModeBtn.textContent = enabled ? "Exit Focus Mode" : "Focus Mode";
+        els.focusModeBtn.setAttribute("aria-pressed", String(enabled));
+      });
+    }
   }
 
   buildInputs();
