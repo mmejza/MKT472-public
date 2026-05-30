@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>MKT 472 Module 4 - Conjoint Analysis CVI Simulator</title>
+	<link rel="stylesheet" href="styles.css" />
+	<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" defer></script>
+	<script src="script.js" defer></script>
+</head>
+<body>
+	<main class="app-shell" aria-labelledby="page-title">
+		<header class="card header-card">
+			<h1 id="page-title">Conjoint Analysis CVI Simulator</h1>
+			<p>
+				Adjust attribute preferences and compare Strategy A vs Strategy B using CVI scoring,
+				then evaluate whether customer-value ranking matches profitability ranking.
+			</p>
+		</header>
+
+		<section class="card control-card" aria-label="Preset controls">
+			<h2>Preset Controls</h2>
+			<div class="preset-row">
+				<label for="preset-select">Preset</label>
+				<select id="preset-select" aria-label="Preset selection">
+					<option value="silent-floor">Silent Floor</option>
+				</select>
+				<button id="apply-preset-btn" type="button" aria-label="Apply selected preset">Apply Preset</button>
+				<button id="reset-btn" type="button" aria-label="Reset simulator">Reset</button>
+			</div>
+		</section>
+
+		<section class="card" aria-label="Conjoint preference editor">
+			<h2>Editable Conjoint Preference Table</h2>
+			<div id="attribute-editor" class="attribute-editor"></div>
+		</section>
+
+		<section class="card" aria-label="Strategy setup">
+			<h2>Strategy Setup</h2>
+			<div class="strategy-grid">
+				<article class="strategy-card">
+					<h3>Strategy A</h3>
+					<div id="strategy-a-controls" class="strategy-controls"></div>
+					<label for="strategy-a-price">Strategy A Price Premium (%)</label>
+					<input id="strategy-a-price" type="number" min="0" max="100" step="5" aria-label="Strategy A price premium percent" />
+				</article>
+				<article class="strategy-card">
+					<h3>Strategy B</h3>
+					<div id="strategy-b-controls" class="strategy-controls"></div>
+					<label for="strategy-b-price">Strategy B Price Premium (%)</label>
+					<input id="strategy-b-price" type="number" min="0" max="100" step="5" aria-label="Strategy B price premium percent" />
+				</article>
+			</div>
+		</section>
+
+		<section class="card" aria-label="CVI dashboard">
+			<h2>Decision Dashboard</h2>
+			<div class="dashboard-grid">
+				<article class="metric-card"><h3>CVI A</h3><p id="cvi-a">0.00</p></article>
+				<article class="metric-card"><h3>CVI B</h3><p id="cvi-b">0.00</p></article>
+				<article class="metric-card"><h3>Higher Customer-Value Strategy</h3><p id="higher-cvi">-</p></article>
+				<article class="metric-card"><h3>Higher Price-Premium Strategy</h3><p id="higher-price">-</p></article>
+				<article class="metric-card"><h3>Do Rankings Match?</h3><p id="ranking-match">-</p></article>
+			</div>
+
+			<div class="value-drivers">
+				<p id="value-driver-a">Value driver: -</p>
+				<p id="value-driver-b">Value driver: -</p>
+			</div>
+
+			<div id="profitability-flag" class="callout" role="status" aria-live="polite"></div>
+			<div id="interpretation" class="interpretation" role="status" aria-live="polite"></div>
+		</section>
+
+		<section class="card" aria-label="Preference curve charts">
+			<h2>Preference Curves</h2>
+			<div id="pref-chart-grid" class="pref-chart-grid"></div>
+		</section>
+
+		<section class="card" aria-label="CVI comparison chart">
+			<h2>CVI Comparison</h2>
+			<div class="cvi-chart-wrap">
+				<canvas id="cvi-chart" aria-label="Horizontal bar chart comparing CVI for Strategy A and Strategy B"></canvas>
+			</div>
+			<p id="cvi-chart-note" class="chart-note" role="status" aria-live="polite"></p>
+			<p id="cvi-chart-summary" class="chart-summary" role="status" aria-live="polite"></p>
+		</section>
+	</main>
+</body>
+</html>
