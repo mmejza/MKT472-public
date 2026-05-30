@@ -18,14 +18,175 @@
   --text:#1A2E2C;--muted:#7A9896;--border:#E0EEEC;--gray:#F2F4F3;
 }
 
-body{font-family:'Barlow',sans-serif;background:var(--gray);color:var(--text);font-size:14px;line-height:1.5;}
+body{font-family:'Barlow',sans-serif;background:var(--gray);color:var(--text);font-size:16px;line-height:1.5;}
+
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:-999px;
+  background:#12222d;
+  color:#fff;
+  padding:.45rem .7rem;
+  border-radius:8px;
+  z-index:1000;
+}
+
+.skip-link:focus{
+  left:.7rem;
+  top:.7rem;
+}
+
+.page-shell{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  gap:14px;
+  padding:0 0 12px;
+}
+
+.quiz-card,
+.required-callout,
+.how-to,
+.interactive-app,
+.results-dashboard,
+.canvas-reminder,
+.compact-header{
+  margin:0 16px;
+  border:.5px solid var(--border);
+  border-radius:8px;
+  background:var(--white);
+  padding:14px 16px;
+  box-shadow:0 6px 14px rgba(15,32,39,.06);
+}
+
+.compact-header h1{
+  margin:0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(1.45rem,2vw,1.58rem);
+  font-weight:800;
+  line-height:1.1;
+  color:var(--navy);
+}
+
+.compact-header .module-tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:4px;
+  display:block;
+}
+
+.compact-header p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.quiz-card h2,
+.interactive-head h2,
+.results-dashboard h2,
+.how-to summary{
+  margin:0 0 6px;
+  font-size:1.2rem;
+  color:var(--teal-dk);
+  font-weight:600;
+}
+
+.quiz-card p,
+.required-callout p,
+.how-to li,
+.results-dashboard p{
+  margin:0;
+  font-size:.92rem;
+}
+
+.quiz-card ol,
+.how-to ol{
+  margin:0;
+  padding-left:1.2rem;
+  display:grid;
+  gap:.15rem;
+}
+
+.required-callout{
+  border-left:4px solid var(--amber);
+}
+
+.required-label{
+  margin:0 0 4px;
+  color:#8a651d;
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:700;
+}
+
+.how-to summary{
+  cursor:pointer;
+  font-weight:700;
+}
+
+.how-to[open] summary{margin-bottom:8px;}
+
+.interactive-app{
+  display:grid;
+  gap:12px;
+  padding:14px 0 0;
+  overflow:hidden;
+}
+
+.interactive-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:0 16px;
+}
+
+.focus-btn{
+  border:1px solid var(--teal-bd);
+  border-radius:8px;
+  background:var(--white);
+  color:var(--teal-dk);
+  padding:7px 10px;
+  font-size:.84rem;
+  font-weight:600;
+  cursor:pointer;
+  font-family:'Barlow',sans-serif;
+}
+
+.quiz-workflow-banner{
+  margin:0 16px;
+  border:1px solid var(--teal-bd);
+  border-radius:10px;
+  background:var(--teal-lt);
+  color:var(--navy);
+  padding:10px 12px;
+  font-weight:700;
+  font-size:14px;
+}
+
+.results-dashboard p{color:var(--muted);}
+
+.canvas-reminder{
+  text-align:center;
+  font-size:.82rem;
+  color:var(--muted);
+  padding-top:8px;
+  padding-bottom:8px;
+}
+
+body.focus-mode [data-focus-hide]{display:none;}
 
 .app-header{background:var(--navy);color:#fff;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--teal);}
 .app-header .module-tag{font-family:'Barlow Condensed',sans-serif;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);margin-bottom:2px;}
 .app-header h1{font-family:'Barlow Condensed',sans-serif;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;color:#fff;}
 .lo-badge{background:rgba(13,155,135,.2);border:.5px solid var(--teal);color:var(--teal);font-size:10px;font-weight:600;padding:3px 8px;border-radius:3px;font-family:'Barlow Condensed',sans-serif;letter-spacing:.05em;}
 
-.main{display:grid;grid-template-columns:1fr 360px;gap:16px;padding:16px;max-width:1200px;margin:0 auto;}
+.main{display:grid;grid-template-columns:1fr 360px;gap:16px;padding:16px;max-width:1100px;margin:0 auto;}
 
 .left{display:flex;flex-direction:column;gap:12px;}
 .right{display:flex;flex-direction:column;gap:12px;}
@@ -140,26 +301,78 @@ body{font-family:'Barlow',sans-serif;background:var(--gray);color:var(--text);fo
 /* Chart */
 .chart-wrap{position:relative;height:180px;margin-top:8px;}
 
-/* Worksheet */
-.worksheet-card{background:var(--white);border:.5px solid var(--border);border-radius:8px;overflow:hidden;}
-.worksheet-header{background:var(--navy);padding:10px 16px;font-family:'Barlow Condensed',sans-serif;font-size:11px;font-weight:700;color:var(--teal);letter-spacing:.1em;text-transform:uppercase;}
-.worksheet-body{padding:14px 16px;}
-.q-block{margin-bottom:14px;}
-.q-block:last-child{margin-bottom:0;}
-.q-num{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--teal);color:#fff;font-size:10px;font-weight:700;flex-shrink:0;margin-right:8px;margin-bottom:6px;}
-.q-text{font-size:12px;color:var(--text);line-height:1.5;margin-bottom:8px;}
-.q-pts{font-size:10px;color:var(--muted);font-style:italic;float:right;}
-textarea{width:100%;border:.5px solid var(--border);border-radius:6px;padding:8px 10px;font-family:'Barlow',sans-serif;font-size:12px;color:var(--text);resize:vertical;min-height:70px;background:var(--off);outline:none;}
-textarea:focus{border-color:var(--teal);background:#fff;}
-.submit-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:12px;border-top:.5px solid var(--border);}
-.submit-btn{font-family:'Barlow Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:7px 20px;border-radius:4px;cursor:pointer;background:var(--teal);color:#fff;border:none;transition:background .15s;}
-.submit-btn:hover{background:var(--teal-dk);}
-.submit-msg{font-size:11px;color:var(--muted);font-style:italic;}
 
-@media(max-width:800px){.main{grid-template-columns:1fr;}.right{order:2;}}
+button:focus,
+input:focus,
+summary:focus{
+  outline:2px solid #0D9B87;
+  outline-offset:1px;
+}
+
+@media(max-width:800px){
+  .compact-header,
+  .quiz-card,
+  .required-callout,
+  .how-to,
+  .interactive-app,
+  .results-dashboard,
+  .canvas-reminder{margin:0 10px;padding:12px;}
+  .interactive-head,
+  .quiz-workflow-banner{padding-left:12px;padding-right:12px;}
+  .main{grid-template-columns:1fr;}
+  .right{order:2;}
+}
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
+
+<div class="page-shell">
+
+<section class="compact-header">
+  <span class="module-tag">M01 · App 2 of 3</span>
+  <h1>Complaint-Resolution Economics Calculator</h1>
+  <p>Model how complaint behavior and retention rates affect retained customers, incremental profit, and the financial case for a complaint-resolution program.</p>
+</section>
+
+<section class="quiz-card" data-focus-hide>
+  <h2>Learning Goal</h2>
+  <p>Use the complaint-resolution model to evaluate the financial case for retaining dissatisfied customers. This app helps you quantify how complaint motivation, recovery retention, and program cost change ROI and reveal the module's counterintuitive trap: a complaint program can sound valuable and still fail the break-even test.</p>
+</section>
+
+<section class="quiz-card" data-focus-hide>
+  <h2>Worksheet Quiz Instructions</h2>
+  <ol>
+    <li>Read the Canvas quiz question first.</li>
+    <li>Follow the preset, scenario, or modifications specified in the question.</li>
+    <li>Use this app to perform the required calculations and analysis.</li>
+    <li>Enter your answers in the Canvas quiz.</li>
+    <li>Answers are submitted through Canvas, not through this app.</li>
+  </ol>
+</section>
+
+<section class="required-callout" data-focus-hide>
+  <p class="required-label">Required for Quiz</p>
+  <p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default settings shown in this app: 30% dissatisfied customers, 10% motivated to complain, 80% complainer retention, 17% silent-dissatisfied retention, 90% satisfied retention, $250 annual profit, and $0 program cost.</p>
+</section>
+
+<details class="how-to" data-focus-hide>
+  <summary>How to Use This App</summary>
+  <ol>
+    <li>Adjust the customer base, dissatisfaction rate, complaint motivation rate, retention rates, profit, and program cost inputs.</li>
+    <li>Read the customer retention flow to see how customers move from satisfied, complaining, and silent-dissatisfied paths.</li>
+    <li>Use the retention results, incremental retained, and incremental profit cards to compare the current scenario against the 0% complaint baseline.</li>
+    <li>Check the retained-customer chart and break-even calculator to evaluate whether the current program cost is financially justified.</li>
+  </ol>
+</details>
+
+<section class="interactive-app" id="interactiveApp">
+  <div class="interactive-head">
+    <h2>Interactive App</h2>
+    <button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+  </div>
+  <p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
 
 <div class="app-header">
   <div>
@@ -419,30 +632,18 @@ textarea:focus{border-color:var(--teal);background:#fff;}
       <div class="breakeven-verdict" id="be-verdict"></div>
     </div>
 
-    <!-- Worksheet -->
-    <div class="worksheet-card">
-      <div class="worksheet-header">Worksheet — submit to Canvas</div>
-      <div class="worksheet-body">
-        <div class="q-block">
-          <span class="q-num">1</span>
-          <span class="q-pts">5 pts</span>
-          <div class="q-text">At the default settings (10% of dissatisfied customers motivated to complain), how many customers does the complaint program retain that would otherwise be lost? What is the annual profit value of those customers? Show your reading of the calculator.</div>
-          <textarea id="q1-text" placeholder="Your answer..."></textarea>
-        </div>
-        <div class="q-block">
-          <span class="q-num">2</span>
-          <span class="q-pts">5 pts</span>
-          <div class="q-text">Adjust the "motivated to complain" slider from 10% to 20%. How does the number of incremental retained customers change? Enter a program cost of $50,000 in the annual program cost field. Is this cost financially justified at 20% complaint motivation? Calculate the maximum per-customer program cost that would be justified, and explain your reasoning.</div>
-          <textarea id="q2-text" placeholder="Your answer..."></textarea>
-        </div>
-        <div class="submit-row">
-          <div class="submit-msg" id="submit-msg"></div>
-          <button class="submit-btn" onclick="handleSubmit()">Record answers</button>
-        </div>
-      </div>
-    </div>
-
   </div>
+</div>
+
+</section>
+
+<section class="results-dashboard" aria-label="Results Dashboard">
+  <h2>Results / Dashboard</h2>
+  <p>Use the retention flow, summary cards, incremental impact, chart, and break-even verdict to complete the Canvas quiz responses.</p>
+</section>
+
+<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
+
 </div>
 
 <script>
@@ -614,15 +815,6 @@ function bindSlider(id, valId, suffix='%'){
   });
 }
 
-function handleSubmit(){
-  const q1 = document.getElementById('q1-text').value.trim();
-  const q2 = document.getElementById('q2-text').value.trim();
-  const msg = document.getElementById('submit-msg');
-  if(!q1||!q2){msg.style.color='#C0392B';msg.textContent='Please answer both questions before submitting.';return;}
-  msg.style.color='#0D7A6B';
-  msg.textContent='Answers recorded. Copy your responses into the Canvas assignment.';
-}
-
 document.addEventListener('DOMContentLoaded',()=>{
   bindSlider('sl-dissatisfied','vl-dissatisfied');
   bindSlider('sl-complain','vl-complain');
@@ -632,6 +824,16 @@ document.addEventListener('DOMContentLoaded',()=>{
   ['in-total','in-profit','in-cost'].forEach(id=>{
     document.getElementById(id).addEventListener('input',update);
   });
+
+  const focusModeBtn = document.getElementById('focusModeBtn');
+  if(focusModeBtn){
+    focusModeBtn.addEventListener('click',()=>{
+      const enabled = document.body.classList.toggle('focus-mode');
+      focusModeBtn.textContent = enabled ? 'Exit Focus Mode' : 'Focus Mode';
+      focusModeBtn.setAttribute('aria-pressed', String(enabled));
+    });
+  }
+
   buildChart();
   update();
 });

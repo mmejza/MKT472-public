@@ -22,10 +22,171 @@ body{
   font-family:'Barlow',sans-serif;
   background:var(--gray);
   color:var(--text);
-  font-size:14px;
+  font-size:16px;
   line-height:1.5;
   padding:0;
 }
+
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:-999px;
+  background:#12222d;
+  color:#fff;
+  padding:.45rem .7rem;
+  border-radius:8px;
+  z-index:1000;
+}
+
+.skip-link:focus{
+  left:.7rem;
+  top:.7rem;
+}
+
+.page-shell{
+  max-width:1100px;
+  margin:0 auto;
+  display:grid;
+  gap:14px;
+  padding:0 0 12px;
+}
+
+.quiz-card,
+.required-callout,
+.how-to,
+.interactive-app,
+.results-dashboard,
+.canvas-reminder,
+.compact-header{
+  margin:0 16px;
+  border:.5px solid var(--border);
+  border-radius:8px;
+  background:var(--white);
+  padding:14px 16px;
+  box-shadow:0 6px 14px rgba(15,32,39,.06);
+}
+
+.compact-header h1{
+  margin:0;
+  font-family:'Barlow Condensed',sans-serif;
+  font-size:clamp(1.45rem,2vw,1.58rem);
+  font-weight:800;
+  line-height:1.1;
+  color:var(--navy);
+}
+
+.compact-header .module-tag{
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--teal);
+  margin-bottom:4px;
+  display:block;
+}
+
+.compact-header p{
+  margin:6px 0 0;
+  color:var(--muted);
+  font-size:.92rem;
+}
+
+.quiz-card h2,
+.interactive-head h2,
+.results-dashboard h2,
+.how-to summary{
+  margin:0 0 6px;
+  font-size:1.2rem;
+  color:var(--teal-dk);
+  font-weight:600;
+}
+
+.quiz-card p,
+.required-callout p,
+.how-to li,
+.results-dashboard p{
+  margin:0;
+  font-size:.92rem;
+}
+
+.quiz-card ol,
+.how-to ol{
+  margin:0;
+  padding-left:1.2rem;
+  display:grid;
+  gap:.15rem;
+}
+
+.required-callout{
+  border-left:4px solid var(--amber);
+}
+
+.required-label{
+  margin:0 0 4px;
+  color:#8a651d;
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  font-weight:700;
+}
+
+.how-to summary{
+  cursor:pointer;
+  font-weight:700;
+}
+
+.how-to[open] summary{margin-bottom:8px;}
+
+.interactive-app{
+  display:grid;
+  gap:12px;
+  padding:14px 0 0;
+  overflow:hidden;
+}
+
+.interactive-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  flex-wrap:wrap;
+  padding:0 16px;
+}
+
+.focus-btn{
+  border:1px solid var(--teal-bd);
+  border-radius:8px;
+  background:var(--white);
+  color:var(--teal-dk);
+  padding:7px 10px;
+  font-size:.84rem;
+  font-weight:600;
+  cursor:pointer;
+  font-family:'Barlow',sans-serif;
+}
+
+.quiz-workflow-banner{
+  margin:0 16px;
+  border:1px solid var(--teal-bd);
+  border-radius:10px;
+  background:var(--teal-lt);
+  color:var(--navy);
+  padding:10px 12px;
+  font-weight:700;
+  font-size:14px;
+}
+
+.results-dashboard p{color:var(--muted);}
+
+.canvas-reminder{
+  text-align:center;
+  font-size:.82rem;
+  color:var(--muted);
+  padding-top:8px;
+  padding-bottom:8px;
+}
+
+body.focus-mode [data-focus-hide]{display:none;}
 
 .app-header{
   background:var(--navy);
@@ -58,7 +219,7 @@ body{
   grid-template-columns:1fr 340px;
   gap:16px;
   padding:16px;
-  max-width:1200px;
+  max-width:1100px;
   margin:0 auto;
 }
 
@@ -325,13 +486,84 @@ textarea:focus{border-color:var(--teal);background:#fff;}
 .submit-btn:hover{background:var(--teal-dk);}
 .submit-msg{font-size:11px;color:var(--muted);font-style:italic;}
 
+button:focus,
+input:focus,
+summary:focus,
+textarea:focus{
+  outline:2px solid #0D9B87;
+  outline-offset:1px;
+}
+
 @media(max-width:800px){
+  .compact-header,
+  .quiz-card,
+  .required-callout,
+  .how-to,
+  .interactive-app,
+  .results-dashboard,
+  .canvas-reminder{
+    margin:0 10px;
+    padding:12px;
+  }
+  .interactive-head,
+  .quiz-workflow-banner{
+    padding-left:12px;
+    padding-right:12px;
+  }
   .main{grid-template-columns:1fr;}
   .right{order:2;}
 }
 </style>
 </head>
 <body>
+
+<a class="skip-link" href="#interactiveApp">Skip to interactive app</a>
+
+<div class="page-shell">
+
+<section class="compact-header">
+  <span class="module-tag">M01 · App 1 of 3</span>
+  <h1>CSI &amp; Profit Simulator</h1>
+  <p>Model how customer satisfaction distribution changes weighted-average CSI and average profit across satisfaction tiers.</p>
+</section>
+
+<section class="quiz-card" data-focus-hide>
+  <h2>Learning Goal</h2>
+  <p>Use the customer distribution and tier economics to calculate weighted-average CSI and interpret what the score reveals, and what it conceals, about firm performance. This app is designed to surface the module's central trap: removing dissatisfied customers does not automatically improve average profit.</p>
+</section>
+
+<section class="quiz-card" data-focus-hide>
+  <h2>Worksheet Quiz Instructions</h2>
+  <ol>
+    <li>Read the Canvas quiz question first.</li>
+    <li>Follow the preset, scenario, or modifications specified in the question.</li>
+    <li>Use this app to perform the required calculations and analysis.</li>
+    <li>Enter your answers in the Canvas quiz.</li>
+    <li>Answers are submitted through Canvas, not through this app.</li>
+  </ol>
+</section>
+
+<section class="required-callout" data-focus-hide>
+  <p class="required-label">Required for Quiz</p>
+  <p>The Canvas quiz question determines which preset, scenario, or modifications to use. If a question does not specify otherwise, begin with the default scenario shown in this app. Default scenario: Base case.</p>
+</section>
+
+<details class="how-to" data-focus-hide>
+  <summary>How to Use This App</summary>
+  <ol>
+    <li>Load a preset or adjust the customer distribution sliders until the total equals 100%.</li>
+    <li>Review the profitability-by-tier table and weighted-average row for CSI, revenue, margin, and profit effects.</li>
+    <li>Use the summary cards and profit chart to compare distribution changes visually.</li>
+    <li>Read the insight box to interpret the current distribution and identify the dissatisfied-customer trap.</li>
+  </ol>
+</details>
+
+<section class="interactive-app" id="interactiveApp">
+  <div class="interactive-head">
+    <h2>Interactive App</h2>
+    <button id="focusModeBtn" class="focus-btn" type="button" aria-pressed="false">Focus Mode</button>
+  </div>
+  <p class="quiz-workflow-banner">Quiz Workflow: Read Question → Use App → Submit Answer</p>
 
 <div class="app-header">
   <div>
@@ -434,30 +666,18 @@ textarea:focus{border-color:var(--teal);background:#fff;}
     <!-- Dynamic insight -->
     <div id="insight-container"></div>
 
-    <!-- Worksheet -->
-    <div class="worksheet-card">
-      <div class="worksheet-header">Worksheet — submit to Canvas</div>
-      <div class="worksheet-body">
-        <div class="q-block">
-          <span class="q-num">1</span>
-          <span class="q-pts">5 pts</span>
-          <div class="q-text">Load the "No Dissatisfied Customers" preset. What happens to average customer profit compared to the base case? Is the company better off? Explain why this result surprises most people — and why it actually makes sense when you think about distributions rather than averages.</div>
-          <textarea id="q1-text" placeholder="Your answer..."></textarea>
-        </div>
-        <div class="q-block">
-          <span class="q-num">2</span>
-          <span class="q-pts">5 pts</span>
-          <div class="q-text">In the base case, some customer segments generate negative profit. A manager proposes simply not serving those customers. Using the sliders, model what happens when you remove those segments (set them to 0% and redistribute to the profitable tiers). Does average profit improve? Explain why or why not, and whether you would support the manager's proposal.</div>
-          <textarea id="q2-text" placeholder="Your answer..."></textarea>
-        </div>
-        <div class="submit-row">
-          <div class="submit-msg" id="submit-msg"></div>
-          <button class="submit-btn" onclick="handleSubmit()">Record answers</button>
-        </div>
-      </div>
-    </div>
-
   </div>
+</div>
+
+</section>
+
+<section class="results-dashboard" aria-label="Results Dashboard">
+  <h2>Results / Dashboard</h2>
+  <p>Use the weighted-average row, summary metrics, profit chart, and insight box to complete the Canvas quiz responses.</p>
+</section>
+
+<p class="canvas-reminder">Submit final answers through the Canvas quiz questions below the app.</p>
+
 </div>
 
 <script>
@@ -786,27 +1006,18 @@ function updateInsight(wAvg){
   container.appendChild(box);
 }
 
-function handleSubmit(){
-  const q1 = document.getElementById('q1-text').value.trim();
-  const q2 = document.getElementById('q2-text').value.trim();
-  const msg = document.getElementById('submit-msg');
-
-  if(!q1 || !q2){
-    msg.style.color = '#C0392B';
-    msg.textContent = 'Please answer both questions before submitting.';
-    return;
-  }
-
-  msg.style.color = '#0D7A6B';
-  msg.textContent = 'Answers recorded. Copy your responses into the Canvas assignment.';
-
-  const output = `MKT 472 — M01 App 1 Worksheet\n\nQ1:\n${q1}\n\nQ2:\n${q2}`;
-  console.log('WORKSHEET OUTPUT:\n'+output);
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   buildSliders();
   buildChart();
+
+  const focusModeBtn = document.getElementById('focusModeBtn');
+  if(focusModeBtn){
+    focusModeBtn.addEventListener('click', () => {
+      const enabled = document.body.classList.toggle('focus-mode');
+      focusModeBtn.textContent = enabled ? 'Exit Focus Mode' : 'Focus Mode';
+      focusModeBtn.setAttribute('aria-pressed', String(enabled));
+    });
+  }
 
   const annotPlugin = {
     id:'annotPlugin',
