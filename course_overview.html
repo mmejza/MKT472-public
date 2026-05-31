@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MKT 472 — Course Overview</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    color: #1a1a1a;
+    background: #f5f5f3;
+    padding: 2rem 1rem 4rem;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: #0F2027;
+    border-radius: 12px;
+    padding: 2rem 2.25rem 1.75rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: #E6A800;
+  }
+  .hero-label {
+    font-size: 11px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: #7ABFCC;
+    margin-bottom: 6px;
+  }
+  .hero-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .hero-sub {
+    font-size: 14px;
+    color: #A8C8D0;
+    margin-bottom: 1.25rem;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .pill {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,.2);
+    color: #A8C8D0;
+    background: rgba(255,255,255,.07);
+  }
+
+  /* ── Section heading ── */
+  .sec-head {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 10px;
+  }
+
+  .divider {
+    height: 1px;
+    background: #e0e0dc;
+    margin: 1.5rem 0;
+  }
+
+  /* ── Time cards ── */
+  .time-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .time-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 8px;
+    padding: 10px 14px;
+    flex: 1;
+    min-width: 100px;
+  }
+  .time-val {
+    font-size: 20px;
+    font-weight: 600;
+    color: #0F2027;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .time-lbl {
+    font-size: 11px;
+    color: #888;
+  }
+
+  /* ── How it works ── */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 8px;
+    margin-bottom: 1.5rem;
+  }
+  .how-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .how-step {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .07em;
+    color: #0D9B87;
+    margin-bottom: 5px;
+  }
+  .how-text {
+    font-size: 12px;
+    line-height: 1.55;
+    color: #444;
+  }
+
+  /* ── Gate cards ── */
+  .gate-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 500px) { .gate-row { grid-template-columns: 1fr; } }
+  .gate-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .gate-label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    margin-bottom: 8px;
+  }
+  .gate-label.g1 { color: #185FA5; }
+  .gate-label.g2 { color: #3B6D11; }
+  .gate-item {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 3px;
+  }
+  .gate-item b { color: #1a1a1a; font-weight: 500; }
+
+  /* ── Part label ── */
+  .part-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    padding: 10px 0 8px;
+    border-bottom: 1px solid #e0e0dc;
+    margin-bottom: 8px;
+  }
+
+  /* ── Module accordion ── */
+  .mod-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1.25rem;
+  }
+  .mod {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .mod-hdr {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    user-select: none;
+    transition: background .15s;
+  }
+  .mod-hdr:hover { background: #f9f9f7; }
+  .badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 20px;
+    min-width: 72px;
+    text-align: center;
+    flex-shrink: 0;
+    letter-spacing: .02em;
+  }
+  .b-built {
+    background: #E6F1FB;
+    color: #185FA5;
+    border: 1px solid #B5D4F4;
+  }
+  .b-soon {
+    background: #f2f2f0;
+    color: #999;
+    border: 1px solid #ddd;
+  }
+  .mod-title {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+    color: #1a1a1a;
+  }
+  .mod-chap {
+    font-size: 11px;
+    color: #aaa;
+    flex-shrink: 0;
+  }
+  .chev {
+    font-size: 10px;
+    color: #bbb;
+    transition: transform .2s;
+    flex-shrink: 0;
+    margin-left: 4px;
+  }
+  .chev.open { transform: rotate(90deg); }
+
+  .mod-body {
+    border-top: 1px solid #f0f0ec;
+    padding: 12px 16px 14px;
+    display: none;
+  }
+  .mod-body.open { display: block; }
+
+  .mod-desc {
+    font-size: 13px;
+    line-height: 1.65;
+    color: #555;
+    margin-bottom: 10px;
+  }
+
+  .lo-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .lo-item {
+    display: flex;
+    gap: 10px;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: #333;
+  }
+  .lo-n {
+    font-size: 10px;
+    font-weight: 600;
+    color: #0D9B87;
+    min-width: 32px;
+    padding-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .coming-note {
+    font-size: 13px;
+    color: #aaa;
+    font-style: italic;
+    padding: 4px 0;
+  }
+
+  /* ── Footer note ── */
+  .footer-note {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    padding-top: 1rem;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">MKT 472 &nbsp;·&nbsp; Five-Week Summer Session &nbsp;·&nbsp; Canvas LMS</p>
+    <h1 class="hero-title">Market-Based Strategic Management</h1>
+    <p class="hero-sub">An analytically rigorous, asynchronous online course covering the full arc of market-based strategy — from measuring customer value and market potential through competitive positioning, pricing, communications, and portfolio planning.</p>
+    <div class="pills">
+      <span class="pill">Junior–senior undergraduate</span>
+      <span class="pill">13 modules · 13 chapters</span>
+      <span class="pill">~5 hrs per module</span>
+      <span class="pill">Two-gate reading model</span>
+      <span class="pill">Canvas Classic Quizzes</span>
+    </div>
+  </div>
+
+  <!-- Time per module -->
+  <p class="sec-head">Estimated time per module</p>
+  <div class="time-row">
+    <div class="time-card"><div class="time-val">60–75</div><div class="time-lbl">min · chapter reading</div></div>
+    <div class="time-card"><div class="time-val">10–12</div><div class="time-lbl">min · Gate 1</div></div>
+    <div class="time-card"><div class="time-val">15–20</div><div class="time-lbl">min · slide viewer</div></div>
+    <div class="time-card"><div class="time-val">20–23</div><div class="time-lbl">min · Gate 2</div></div>
+    <div class="time-card"><div class="time-val">25–30</div><div class="time-lbl">min · lecture video</div></div>
+    <div class="time-card"><div class="time-val">50–75</div><div class="time-lbl">min · apps + case</div></div>
+  </div>
+
+  <!-- How it works -->
+  <p class="sec-head">How each module works</p>
+  <div class="how-grid">
+    <div class="how-card"><p class="how-step">Step 1</p><p class="how-text">Read the chapter. All modules require the textbook first — slides and video are supplements, not replacements.</p></div>
+    <div class="how-card"><p class="how-step">Step 2</p><p class="how-text">Pass Gate 1 (chapter-only questions) to unlock the interactive slide viewer.</p></div>
+    <div class="how-card"><p class="how-step">Step 3</p><p class="how-text">Work through the HTML slide viewer. Embedded check questions pause progress at key moments.</p></div>
+    <div class="how-card"><p class="how-step">Step 4</p><p class="how-text">Pass Gate 2 (chapter + slides synthesis) to unlock the lecture video.</p></div>
+    <div class="how-card"><p class="how-step">Step 5</p><p class="how-text">Watch the lecture video (~30 min), complete apps and worksheets, then submit the case analysis.</p></div>
+  </div>
+
+  <!-- Two-gate model -->
+  <p class="sec-head">Two-gate reading accountability model</p>
+  <div class="gate-row">
+    <div class="gate-card">
+      <p class="gate-label g1">Gate 1 — Basic reading check</p>
+      <p class="gate-item"><b>Unlocks:</b> slide deck viewer</p>
+      <p class="gate-item"><b>Questions:</b> 5 · chapter-exclusive content only</p>
+      <p class="gate-item"><b>Threshold:</b> 70% · 2 attempts</p>
+      <p class="gate-item"><b>Points:</b> 0 (access control only)</p>
+      <p class="gate-item"><b>Time target:</b> 10–12 minutes</p>
+    </div>
+    <div class="gate-card">
+      <p class="gate-label g2">Gate 2 — Applied reading check</p>
+      <p class="gate-item"><b>Unlocks:</b> lecture video</p>
+      <p class="gate-item"><b>Questions:</b> 8 · chapter + slides synthesis</p>
+      <p class="gate-item"><b>Threshold:</b> none — graded as submitted</p>
+      <p class="gate-item"><b>Points:</b> 20 pts = 10% of module grade</p>
+      <p class="gate-item"><b>Time target:</b> 20–23 minutes</p>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ── PART I ── -->
+  <p class="part-label">Part I — Market Orientation &amp; Performance Metrics &nbsp;(M01–M02)</p>
+  <div class="mod-list">
+
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-built">M01 · Built</span>
+        <span class="mod-title">Market Orientation &amp; Customer Lifetime Value</span>
+        <span class="mod-chap">Ch. 1</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body">
+        <p class="mod-desc">Establishes that firm profitability depends on how well a company satisfies and retains customers over time. The central challenge — the distributions-versus-averages problem — leads students to a counterintuitive insight: eliminating dissatisfied customers often reduces average profit rather than raising it.</p>
+        <ul class="lo-list">
+          <li class="lo-item"><span class="lo-n">LO1</span>Trace the causal chain from insufficient customer focus through declining satisfaction to diminished shareholder value.</li>
+          <li class="lo-item"><span class="lo-n">LO2</span>Calculate and interpret a weighted-average Customer Satisfaction Index (CSI).</li>
+          <li class="lo-item"><span class="lo-n">LO3</span>Assess the financial case for investing in a complaint-resolution program.</li>
+          <li class="lo-item"><span class="lo-n">LO4</span>Distinguish customer retention from loyalty; classify customers; calculate a Customer Loyalty Index.</li>
+          <li class="lo-item"><span class="lo-n">LO5</span>Calculate customer life expectancy from a retention rate using N = 1 ÷ (1 − r).</li>
+          <li class="lo-item"><span class="lo-n">LO6</span>Compute CLV using the closed-form formula and the period-by-period present value method.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-built">M02 · Built</span>
+        <span class="mod-title">Marketing Metrics &amp; Marketing Profitability</span>
+        <span class="mod-chap">Ch. 2</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body">
+        <p class="mod-desc">Builds the financial vocabulary of marketing strategy. The central counterintuitive result: dropping a product line with negative net profit often reduces total company profit — a direct consequence of how net marketing contribution (NMC) isolates marketing's contribution from shared overhead.</p>
+        <ul class="lo-list">
+          <li class="lo-item"><span class="lo-n">LO1</span>Distinguish financial (internal) performance metrics from marketing (external) performance metrics.</li>
+          <li class="lo-item"><span class="lo-n">LO2</span>Classify the four categories of marketing metrics and explain the forward/backward-looking distinction.</li>
+          <li class="lo-item"><span class="lo-n">LO3</span>Calculate net marketing contribution (NMC) and explain how it differs from net profit.</li>
+          <li class="lo-item"><span class="lo-n">LO4</span>Calculate marketing ROS and marketing ROI; benchmark against Fortune 500 averages.</li>
+          <li class="lo-item"><span class="lo-n">LO5</span>Use NMC decomposition to plan and evaluate alternative marketing strategies.</li>
+          <li class="lo-item"><span class="lo-n">LO6</span>Apply the market size growth formula and interpret NMC product/customer line management insights.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PART II ── -->
+  <p class="part-label">Part II — Market Analysis &nbsp;(M03–M05)</p>
+  <div class="mod-list">
+
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-built">M03 · Built</span>
+        <span class="mod-title">Market Potential, Market Demand &amp; Market Share</span>
+        <span class="mod-chap">Ch. 3</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body">
+        <p class="mod-desc">Establishes the measurement vocabulary for sizing and tracking markets — how to calculate market potential, measure development stage, apply the product life cycle, and diagnose a company's share position relative to its potential.</p>
+        <ul class="lo-list">
+          <li class="lo-item"><span class="lo-n">LO1</span>Distinguish generic, product category, and product form markets; construct examples of each.</li>
+          <li class="lo-item"><span class="lo-n">LO2</span>Define market potential and apply the formula to calculate unit and dollar potential.</li>
+          <li class="lo-item"><span class="lo-n">LO3</span>Calculate and interpret the Market Development Index (MDI).</li>
+          <li class="lo-item"><span class="lo-n">LO4</span>Identify the seven forces that prevent markets from reaching full potential and the adoption forces.</li>
+          <li class="lo-item"><span class="lo-n">LO5</span>Describe the four PLC stages and explain how demand, profit, pricing, and strategy differ across them.</li>
+          <li class="lo-item"><span class="lo-n">LO6</span>Calculate market share; construct and interpret a market share performance tree and MSI.</li>
+          <li class="lo-item"><span class="lo-n">LO7</span>Calculate SDI; use the MDI × SDI growth opportunity portfolio to classify growth strategies.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-built">M04 · Built</span>
+        <span class="mod-title">Customer Value &amp; the Customer Experience</span>
+        <span class="mod-chap">Ch. 4</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body">
+        <p class="mod-desc">Moves from market-level metrics to the individual customer — how companies quantify the value their products deliver across four distinct dimensions and use customer experience insights to drive product and service improvements.</p>
+        <ul class="lo-list">
+          <li class="lo-item"><span class="lo-n">LO1</span>Define economic value and explain how lifecycle costs determine it (EV = Competitor LC Cost − Our LC Cost).</li>
+          <li class="lo-item"><span class="lo-n">LO2</span>Describe three ways a business can create more economic value.</li>
+          <li class="lo-item"><span class="lo-n">LO3</span>Explain why willingness-to-pay cannot be assumed from economic value alone.</li>
+          <li class="lo-item"><span class="lo-n">LO4</span>Calculate relative performance value using the fair price line and price-performance ratio.</li>
+          <li class="lo-item"><span class="lo-n">LO5</span>Calculate perceived value using importance-performance analysis and interpret the value map.</li>
+          <li class="lo-item"><span class="lo-n">LO6</span>Explain conjoint analysis (CVI) and emotional value / brand personality.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M05 · Coming</span>
+        <span class="mod-title">Market Segmentation &amp; Segmentation Strategies</span>
+        <span class="mod-chap">Ch. 5</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body">
+        <p class="coming-note">This module is in development. Check back when it opens.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── PART III ── -->
+  <p class="part-label">Part III — Competitive Strategy &nbsp;(M06–M08)</p>
+  <div class="mod-list">
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M06 · Coming</span>
+        <span class="mod-title">Competitive Position &amp; Sources of Advantage</span>
+        <span class="mod-chap">Ch. 6</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M07 · Coming</span>
+        <span class="mod-title">Product Positioning, Branding &amp; Product Line Strategies</span>
+        <span class="mod-chap">Ch. 7</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M08 · Coming</span>
+        <span class="mod-title">Value-Based Pricing &amp; Pricing Strategies</span>
+        <span class="mod-chap">Ch. 8</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+  </div>
+
+  <!-- ── PART IV ── -->
+  <p class="part-label">Part IV — Go-to-Market Execution &nbsp;(M09–M10)</p>
+  <div class="mod-list">
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M09 · Coming</span>
+        <span class="mod-title">Marketing Channels &amp; Channel Mapping</span>
+        <span class="mod-chap">Ch. 9</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M10 · Coming</span>
+        <span class="mod-title">Marketing Communications, Social Media &amp; Customer Response</span>
+        <span class="mod-chap">Ch. 10</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+  </div>
+
+  <!-- ── PART V ── -->
+  <p class="part-label">Part V — Strategic Planning &amp; Portfolio Management &nbsp;(M11–M13)</p>
+  <div class="mod-list">
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M11 · Coming</span>
+        <span class="mod-title">Portfolio Analysis &amp; Strategic Market Planning</span>
+        <span class="mod-chap">Ch. 11</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M12 · Coming</span>
+        <span class="mod-title">Offensive Strategies</span>
+        <span class="mod-chap">Ch. 12</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+    <div class="mod">
+      <div class="mod-hdr" onclick="tog(this)">
+        <span class="badge b-soon">M13 · Coming</span>
+        <span class="mod-title">Defensive Strategies</span>
+        <span class="mod-chap">Ch. 13</span>
+        <span class="chev">&#9654;</span>
+      </div>
+      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
+    </div>
+  </div>
+
+  <div class="footer-note">MKT 472 · Market-Based Strategic Management · Course Overview</div>
+
+</div>
+
+<script>
+function tog(hdr) {
+  var body = hdr.nextElementSibling;
+  var chev = hdr.querySelector('.chev');
+  if (!body) return;
+  var isOpen = body.classList.toggle('open');
+  chev.classList.toggle('open', isOpen);
+}
+</script>
+</body>
+</html>
