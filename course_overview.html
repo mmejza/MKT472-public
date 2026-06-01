@@ -88,6 +88,34 @@
     margin: 1.5rem 0;
   }
 
+  /* ── Textbook Card ── */
+  .textbook-card {
+    background: #fff;
+    border: 1px solid #e8e8e4;
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 1.5rem;
+  }
+  .textbook-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #8B1E1E;
+    margin-bottom: 10px;
+  }
+  .textbook-meta {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #444;
+  }
+  .textbook-note {
+    font-size: 12px;
+    color: #777;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0ec;
+  }
+
+
   /* ── Time cards ── */
   .time-row {
     display: flex;
@@ -305,13 +333,27 @@
   <!-- Hero -->
   <div class="hero">
     <p class="hero-label">MKT 472 &nbsp;·&nbsp; Five-Week Summer Session &nbsp;·&nbsp; </p>
-    <h1 class="hero-title">Marketing Planning & Analysis</h1>
+    <h1 class="hero-title">Market Planning & Analysis</h1>
     <p class="hero-sub">An analytically rigorous, asynchronous online course covering the full arc of market-based strategy — from measuring customer value and market potential through competitive positioning, pricing, communications, and portfolio planning.</p>
     <div class="pills">
       <span class="pill">11 modules · 11 chapters</span>
-      <span class="pill">~5 hrs per module</span>    
+      <span class="pill">~5 hrs per module</span>
     </div>
   </div>
+
+  <!-- Required Textbook -->
+  <p class="sec-head">Required textbook</p>
+  <div class="textbook-card">
+    <div class="textbook-title">Market-Based Management</div>
+    <div class="textbook-meta">
+      <div><strong>Author:</strong> Roger J. Best</div>
+      <div><strong>Edition:</strong> 6th Edition</div>
+      <div><strong>Publisher:</strong> Pearson</div>
+      <div><strong>ISBN-13:</strong> 9780130387752</div>
+    </div>
+    <p class="textbook-note">Students are responsible for obtaining the required textbook. Course slides, videos, and apps supplement the textbook; they do not replace it.</p>
+  </div>
+
 
   <!-- Time per module -->
   <p class="sec-head">Estimated time per module</p>
@@ -518,7 +560,7 @@
   </div>
 
   <!-- ── PART V ── -->
-  <p class="part-label">Part V — Strategic Planning &amp; Portfolio Management &nbsp;(M11–M13)</p>
+  <p class="part-label">Part V — Strategic Planning &amp; Portfolio Management &nbsp;(M11)</p>
   <div class="mod-list">
     <div class="mod">
       <div class="mod-hdr" onclick="tog(this)">
@@ -530,21 +572,7 @@
       <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
     </div>
     <div class="mod">
-      <div class="mod-hdr" onclick="tog(this)">
-        <span class="badge b-soon">M12 · Coming</span>
-        <span class="mod-title">Offensive Strategies</span>
-        <span class="mod-chap">Ch. 12</span>
-        <span class="chev">&#9654;</span>
-      </div>
-      <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
-    </div>
-    <div class="mod">
-      <div class="mod-hdr" onclick="tog(this)">
-        <span class="badge b-soon">M13 · Coming</span>
-        <span class="mod-title">Defensive Strategies</span>
-        <span class="mod-chap">Ch. 13</span>
-        <span class="chev">&#9654;</span>
-      </div>
+      
       <div class="mod-body"><p class="coming-note">This module is in development.</p></div>
     </div>
   </div>
